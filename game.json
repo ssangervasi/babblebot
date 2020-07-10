@@ -1,0 +1,119 @@
+{
+  "firstLayout": "",
+  "gdVersion": {
+    "build": 98,
+    "major": 4,
+    "minor": 0,
+    "revision": 0
+  },
+  "properties": {
+    "adMobAppId": "",
+    "adaptGameResolutionAtRuntime": true,
+    "folderProject": true,
+    "linuxExecutableFilename": "",
+    "macExecutableFilename": "",
+    "orientation": "landscape",
+    "packageName": "com.example.gamename",
+    "projectFile": "C:\\Users\\Sebastian\\workspace\\gmtk-2020\\game.json",
+    "scaleMode": "nearest",
+    "sizeOnStartupMode": "adaptWidth",
+    "useExternalSourceFiles": false,
+    "version": "1.0.0",
+    "winExecutableFilename": "",
+    "winExecutableIconFile": "",
+    "name": "GMTK-2020",
+    "author": "Sebastian Sangervasi & Nicole Van Meter",
+    "windowWidth": 800,
+    "windowHeight": 600,
+    "latestCompilationDirectory": "",
+    "maxFPS": 60,
+    "minFPS": 20,
+    "verticalSync": false,
+    "platformSpecificAssets": {},
+    "loadingScreen": {
+      "showGDevelopSplash": true
+    },
+    "extensions": [
+      {
+        "name": "BuiltinObject"
+      },
+      {
+        "name": "BuiltinAudio"
+      },
+      {
+        "name": "BuiltinVariables"
+      },
+      {
+        "name": "BuiltinTime"
+      },
+      {
+        "name": "BuiltinMouse"
+      },
+      {
+        "name": "BuiltinKeyboard"
+      },
+      {
+        "name": "BuiltinJoystick"
+      },
+      {
+        "name": "BuiltinCamera"
+      },
+      {
+        "name": "BuiltinWindow"
+      },
+      {
+        "name": "BuiltinFile"
+      },
+      {
+        "name": "BuiltinNetwork"
+      },
+      {
+        "name": "BuiltinScene"
+      },
+      {
+        "name": "BuiltinAdvanced"
+      },
+      {
+        "name": "Sprite"
+      },
+      {
+        "name": "BuiltinCommonInstructions"
+      },
+      {
+        "name": "BuiltinCommonConversions"
+      },
+      {
+        "name": "BuiltinStringInstructions"
+      },
+      {
+        "name": "BuiltinMathematicalTools"
+      },
+      {
+        "name": "BuiltinExternalLayouts"
+      }
+    ],
+    "platforms": [
+      {
+        "name": "GDevelop JS platform"
+      }
+    ],
+    "currentPlatform": "GDevelop JS platform"
+  },
+  "resources": {
+    "resources": [],
+    "resourceFolders": []
+  },
+  "objects": [],
+  "objectsGroups": [],
+  "variables": [],
+  "layouts": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/new-scene"
+    }
+  ],
+  "externalEvents": [],
+  "eventsFunctionsExtensions": [],
+  "externalLayouts": [],
+  "externalSourceFiles": []
+}
