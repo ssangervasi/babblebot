@@ -27,7 +27,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "console.log(eventsFunctionContext.getArgument(\"Message\"))",
+          "inlineCode": "const logLevel = eventsFunctionContext.getArgument(\"Level\") || 0\r\nconst message = eventsFunctionContext.getArgument(\"Message\")\r\nif (logLevel === 1) {\r\n    console.warn(message)\r\n} else if (logLevel >= 2) {\r\n    console.error(message)\r\n} else {\r\n    console.log(message)\r\n}",
           "parameterObjects": "",
           "useStrict": true
         }
@@ -42,6 +42,16 @@
           "optional": false,
           "supplementaryInformation": "",
           "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "0 = log, 1 = warn, 2 = error",
+          "longDescription": "",
+          "name": "Level",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
         }
       ],
       "objectGroups": []

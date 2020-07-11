@@ -219,7 +219,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.76
+        "zoomFactor": 0.736
       },
       "objectsGroups": [
         {
@@ -262,8 +262,8 @@
           "locked": false,
           "name": "PC",
           "width": 0,
-          "x": 917,
-          "y": 728,
+          "x": 922,
+          "y": 845,
           "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
@@ -536,6 +536,21 @@
               "value": 0
             }
           ],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 263,
+          "layer": "",
+          "locked": false,
+          "name": "PlayArea",
+          "width": 745,
+          "x": 732,
+          "y": 747,
+          "zOrder": 22,
+          "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
         }
@@ -1024,6 +1039,74 @@
             "g": 0,
             "r": 0
           }
+        },
+        {
+          "name": "PlayArea",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "Inactive",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "assets\\res.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Active",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "assets\\placeholders\\hand.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -1041,130 +1124,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
-          "name": "Deck",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "DepartScene"
-                  },
-                  "parameters": [
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "decking::Deck::build"
-                  },
-                  "parameters": [
-                    "Deck",
-                    "Deck",
-                    "Card",
-                    "Card",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SourisSurObjet"
-                  },
-                  "parameters": [
-                    "Deck",
-                    "",
-                    "",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "MouseButtonReleased"
-                  },
-                  "parameters": [
-                    "",
-                    "Left"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "decking::Hand::drawFrom"
-                  },
-                  "parameters": [
-                    "Hand",
-                    "Hand",
-                    "Card",
-                    "Card",
-                    "Deck",
-                    "Deck",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "decking::Hand::handleSelection"
-                  },
-                  "parameters": [
-                    "Hand",
-                    "Hand",
-                    "Card",
-                    "Card",
-                    "Deck",
-                    "Deck",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "colorB": 228,
-          "colorG": 176,
-          "colorR": 74,
-          "creationTime": 0,
-          "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Res",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -1234,7 +1194,115 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "disabled": true,
+          "disabled": false,
+          "folded": false,
+          "name": "Deck",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DepartScene"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "decking::Deck::build"
+                  },
+                  "parameters": [
+                    "Deck",
+                    "Deck",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Repeat",
+                  "repeatExpression": "3",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Hand::drawFrom"
+                      },
+                      "parameters": [
+                        "Hand",
+                        "Hand",
+                        "Card",
+                        "Card",
+                        "Deck",
+                        "Deck",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": true,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "Deck",
+                    "",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MouseButtonReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
           "folded": false,
           "name": "Dialog",
           "source": "",
@@ -1242,7 +1310,7 @@
           "events": [
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -1353,33 +1421,6 @@
                       "subInstructions": []
                     }
                   ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Cache"
-                      },
-                      "parameters": [
-                        "PC"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [],
                   "events": []
                 }
               ]
@@ -1540,11 +1581,11 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "KeyReleased"
+                        "value": "MouseButtonReleased"
                       },
                       "parameters": [
                         "",
-                        "Space"
+                        "Left"
                       ],
                       "subInstructions": []
                     }
@@ -1562,38 +1603,6 @@
                   "events": []
                 }
               ]
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "DialogueTree::IsDialogueLineType"
-                  },
-                  "parameters": [
-                    "\"options\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "SelectionState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
             },
             {
               "disabled": false,
@@ -1715,7 +1724,80 @@
                       "parameters": [
                         "SelectionState",
                         "=",
-                        "\"confirmed\""
+                        "\"init\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "decking::Hand::finishPlaying"
+                          },
+                          "parameters": [
+                            "Hand",
+                            "Hand",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Hand::handleSelection"
+                      },
+                      "parameters": [
+                        "Hand",
+                        "Hand",
+                        "Card",
+                        "Card",
+                        "Deck"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Hand::handlePlayCard"
+                      },
+                      "parameters": [
+                        "Hand",
+                        "Hand",
+                        "Card",
+                        "Card",
+                        "CardPool",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Hand::handlePlayArea"
+                      },
+                      "parameters": [
+                        "Hand",
+                        "Hand",
+                        "PlayArea",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -1738,123 +1820,40 @@
                         "\"waiting\""
                       ],
                       "subInstructions": []
-                    }
-                  ],
-                  "actions": [
+                    },
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "decking::Hand::IsPlaying"
                       },
                       "parameters": [
-                        "ChosenCardId",
-                        "=",
-                        "\"\""
+                        "Hand",
+                        "Hand",
+                        ""
                       ],
                       "subInstructions": []
                     }
                   ],
+                  "actions": [],
                   "events": [
                     {
                       "disabled": false,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "MouseButtonReleased"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
+                      "conditions": [],
                       "actions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "utils::log"
-                          },
-                          "parameters": [
-                            "",
-                            "\"touch\"",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": [
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "SourisSurObjet"
-                              },
-                              "parameters": [
-                                "DeprecatedCardsAvailable",
-                                "",
-                                "",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "utils::log"
-                              },
-                              "parameters": [
-                                "",
-                                "\"CardsAvailable.VariableString(Id): \" + DeprecatedCardsAvailable.VariableString(Id)",
-                                ""
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarSceneTxt"
-                              },
-                              "parameters": [
-                                "ChosenCardId",
-                                "=",
-                                "DeprecatedCardsAvailable.VariableString(Id)"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        }
-                      ]
-                    },
-                    {
-                      "disabled": false,
-                      "folded": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "VarSceneTxt"
+                            "value": "ModVarSceneTxt"
                           },
                           "parameters": [
                             "ChosenCardId",
-                            "!=",
-                            "\"\""
+                            "=",
+                            "Hand.Hand::LastPlayedId()"
                           ],
                           "subInstructions": []
-                        }
-                      ],
-                      "actions": [
+                        },
                         {
                           "type": {
                             "inverted": false,
@@ -1863,7 +1862,7 @@
                           "parameters": [
                             "RepeatIndex",
                             "=",
-                            "0"
+                            "-1"
                           ],
                           "subInstructions": []
                         },
@@ -1900,29 +1899,21 @@
                               "subInstructions": []
                             }
                           ],
-                          "actions": [],
-                          "events": [
+                          "actions": [
                             {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "utils::log"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "DialogueTree::Option(Variable(RepeatIndex)) + \"=?\" + VariableString(ChosenCardId)",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                }
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "RepeatIndex",
+                                "+",
+                                "1"
                               ],
-                              "events": []
-                            },
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
                             {
                               "disabled": false,
                               "folded": false,
@@ -1937,7 +1928,7 @@
                                   "parameters": [
                                     "IdToCompare",
                                     "=",
-                                    "utils::trim(DialogueTree::Option(Variable(RepeatIndex)))"
+                                    "DialogueTree::Option(Variable(RepeatIndex))"
                                   ],
                                   "subInstructions": []
                                 }
@@ -1957,7 +1948,7 @@
                                   },
                                   "parameters": [
                                     "",
-                                    "\"trimmed: '\"  + VariableString(IdToCompare) +\"'\"",
+                                    "VariableString(IdToCompare) + \" =? \" + VariableString(ChosenCardId)",
                                     ""
                                   ],
                                   "subInstructions": []
@@ -1993,27 +1984,6 @@
                                     "FoundIndex",
                                     "=",
                                     "Variable(RepeatIndex)"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "ModVarScene"
-                                  },
-                                  "parameters": [
-                                    "RepeatIndex",
-                                    "+",
-                                    "1"
                                   ],
                                   "subInstructions": []
                                 }
@@ -2055,39 +2025,8 @@
                                   },
                                   "parameters": [
                                     "",
-                                    "\"found stuff\"",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                },
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "utils::log"
-                                  },
-                                  "parameters": [
-                                    "",
                                     "\"Variable(FoundIndex): \" + ToString(Variable(FoundIndex))",
                                     ""
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "DialogueTree::SelectOption"
-                                  },
-                                  "parameters": [
-                                    "Variable(FoundIndex)"
                                   ],
                                   "subInstructions": []
                                 }
@@ -2111,100 +2050,19 @@
                                     "\"selected\""
                                   ],
                                   "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "DialogueTree::SelectOption"
+                                  },
+                                  "parameters": [
+                                    "Variable(FoundIndex)"
+                                  ],
+                                  "subInstructions": []
                                 }
                               ],
                               "events": []
-                            },
-                            {
-                              "disabled": true,
-                              "folded": true,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [],
-                              "events": [
-                                {
-                                  "disabled": false,
-                                  "folded": false,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "utils::log"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "\"Option: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex())",
-                                        ""
-                                      ],
-                                      "subInstructions": []
-                                    },
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "utils::log"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "\"line text before: \" + DialogueTree::LineText()",
-                                        ""
-                                      ],
-                                      "subInstructions": []
-                                    }
-                                  ],
-                                  "events": []
-                                },
-                                {
-                                  "disabled": false,
-                                  "folded": false,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "DialogueTree::GoToNextLine"
-                                      },
-                                      "parameters": [],
-                                      "subInstructions": []
-                                    },
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "utils::log"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "\"line text after: \" + DialogueTree::LineText()",
-                                        ""
-                                      ],
-                                      "subInstructions": []
-                                    },
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "TextObject::String"
-                                      },
-                                      "parameters": [
-                                        "PC",
-                                        "=",
-                                        "\"Response: \" + DialogueTree::LineText()"
-                                      ],
-                                      "subInstructions": []
-                                    }
-                                  ],
-                                  "events": []
-                                },
-                                {
-                                  "disabled": false,
-                                  "folded": false,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [],
-                                  "events": []
-                                }
-                              ]
                             }
                           ]
                         },
@@ -2245,6 +2103,640 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "colorB": 228,
+                  "colorG": 176,
+                  "colorR": 74,
+                  "creationTime": 0,
+                  "disabled": true,
+                  "folded": false,
+                  "name": "Old",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarSceneTxt"
+                          },
+                          "parameters": [
+                            "SelectionState",
+                            "=",
+                            "\"init\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "SelectionState",
+                            "=",
+                            "\"waiting\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarSceneTxt"
+                          },
+                          "parameters": [
+                            "SelectionState",
+                            "=",
+                            "\"selected\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::HasSelectedOptionChanged"
+                          },
+                          "parameters": [],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "utils::log"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Option: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex())",
+                            ""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::ConfirmSelectOption"
+                          },
+                          "parameters": [],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "SelectionState",
+                            "=",
+                            "\"confirmed\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarSceneTxt"
+                          },
+                          "parameters": [
+                            "SelectionState",
+                            "=",
+                            "\"waiting\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "ChosenCardId",
+                            "=",
+                            "\"\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"touch\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "SourisSurObjet"
+                                  },
+                                  "parameters": [
+                                    "DeprecatedCardsAvailable",
+                                    "",
+                                    "",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"CardsAvailable.VariableString(Id): \" + DeprecatedCardsAvailable.VariableString(Id)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarSceneTxt"
+                                  },
+                                  "parameters": [
+                                    "ChosenCardId",
+                                    "=",
+                                    "DeprecatedCardsAvailable.VariableString(Id)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarSceneTxt"
+                              },
+                              "parameters": [
+                                "ChosenCardId",
+                                "!=",
+                                "\"\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "RepeatIndex",
+                                "=",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "FoundIndex",
+                                "=",
+                                "-1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Repeat",
+                              "repeatExpression": "DialogueTree::OptionsCount()",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarScene"
+                                  },
+                                  "parameters": [
+                                    "FoundIndex",
+                                    "=",
+                                    "-1"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "DialogueTree::Option(Variable(RepeatIndex)) + \"=?\" + VariableString(ChosenCardId)",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "ModVarSceneTxt"
+                                      },
+                                      "parameters": [
+                                        "IdToCompare",
+                                        "=",
+                                        "utils::trim(DialogueTree::Option(Variable(RepeatIndex)))"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "\"trimmed: '\"  + VariableString(IdToCompare) +\"'\"",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "StrEqual"
+                                      },
+                                      "parameters": [
+                                        "VariableString(IdToCompare)",
+                                        "=",
+                                        "VariableString(ChosenCardId)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "ModVarScene"
+                                      },
+                                      "parameters": [
+                                        "FoundIndex",
+                                        "=",
+                                        "Variable(RepeatIndex)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "ModVarScene"
+                                      },
+                                      "parameters": [
+                                        "RepeatIndex",
+                                        "+",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                }
+                              ]
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarScene"
+                                  },
+                                  "parameters": [
+                                    "FoundIndex",
+                                    ">=",
+                                    "0"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "\"found stuff\"",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    },
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "\"Variable(FoundIndex): \" + ToString(Variable(FoundIndex))",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "DialogueTree::SelectOption"
+                                      },
+                                      "parameters": [
+                                        "Variable(FoundIndex)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "ModVarSceneTxt"
+                                      },
+                                      "parameters": [
+                                        "SelectionState",
+                                        "=",
+                                        "\"selected\""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": true,
+                                  "folded": true,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [],
+                                  "events": [
+                                    {
+                                      "disabled": false,
+                                      "folded": false,
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "inverted": false,
+                                            "value": "utils::log"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "\"Option: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex())",
+                                            ""
+                                          ],
+                                          "subInstructions": []
+                                        },
+                                        {
+                                          "type": {
+                                            "inverted": false,
+                                            "value": "utils::log"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "\"line text before: \" + DialogueTree::LineText()",
+                                            ""
+                                          ],
+                                          "subInstructions": []
+                                        }
+                                      ],
+                                      "events": []
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "folded": false,
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "inverted": false,
+                                            "value": "DialogueTree::GoToNextLine"
+                                          },
+                                          "parameters": [],
+                                          "subInstructions": []
+                                        },
+                                        {
+                                          "type": {
+                                            "inverted": false,
+                                            "value": "utils::log"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "\"line text after: \" + DialogueTree::LineText()",
+                                            ""
+                                          ],
+                                          "subInstructions": []
+                                        },
+                                        {
+                                          "type": {
+                                            "inverted": false,
+                                            "value": "TextObject::String"
+                                          },
+                                          "parameters": [
+                                            "PC",
+                                            "=",
+                                            "\"Response: \" + DialogueTree::LineText()"
+                                          ],
+                                          "subInstructions": []
+                                        }
+                                      ],
+                                      "events": []
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "folded": false,
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [],
+                                      "events": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarScene"
+                                  },
+                                  "parameters": [
+                                    "FoundIndex",
+                                    "=",
+                                    "-1"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"Messed up finding option: \" + VariableString(IdToCompare)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
                 }
               ]
             },
@@ -4205,7 +4697,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "console.log(eventsFunctionContext.getArgument(\"Message\"))",
+              "inlineCode": "const logLevel = eventsFunctionContext.getArgument(\"Level\") || 0\r\nconst message = eventsFunctionContext.getArgument(\"Message\")\r\nif (logLevel === 1) {\r\n    console.warn(message)\r\n} else if (logLevel >= 2) {\r\n    console.error(message)\r\n} else {\r\n    console.log(message)\r\n}",
               "parameterObjects": "",
               "useStrict": true
             }
@@ -4220,6 +4712,16 @@
               "optional": false,
               "supplementaryInformation": "",
               "type": "string"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "0 = log, 1 = warn, 2 = error",
+              "longDescription": "",
+              "name": "Level",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -6513,11 +7015,72 @@
                     {
                       "type": {
                         "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"init\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "LastPlayedId",
+                        "=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
                         "value": "ModVarObjet"
                       },
                       "parameters": [
                         "Object",
                         "LastDrawnInstanceId",
+                        "=",
+                        "-1"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "LastPlayedInstanceId",
+                        "=",
+                        "-1"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SelectedInstanceId",
                         "=",
                         "-1"
                       ],
@@ -6533,61 +7096,6 @@
                   "inlineCode": "const [hand] = objects\nhand.cardInstanceIds = []",
                   "parameterObjects": "Object",
                   "useStrict": true
-                }
-              ],
-              "parameters": [
-                {
-                  "codeOnly": false,
-                  "defaultValue": "",
-                  "description": "Object",
-                  "longDescription": "",
-                  "name": "Object",
-                  "optional": false,
-                  "supplementaryInformation": "",
-                  "type": "object"
-                },
-                {
-                  "codeOnly": false,
-                  "defaultValue": "",
-                  "description": "Behavior",
-                  "longDescription": "",
-                  "name": "Behavior",
-                  "optional": false,
-                  "supplementaryInformation": "decking::Hand",
-                  "type": "behavior"
-                }
-              ],
-              "objectGroups": []
-            },
-            {
-              "description": "",
-              "fullName": "",
-              "functionType": "Action",
-              "name": "doStepPreEvents",
-              "sentence": "",
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 109,
-                    "g": 230,
-                    "r": 255,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "",
-                  "comment2": ""
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [],
-                  "events": []
                 }
               ],
               "parameters": [
@@ -6938,13 +7446,25 @@
               "fullName": "handleSelection",
               "functionType": "Action",
               "name": "handleSelection",
-              "sentence": "_PARAM0_ handleSelection _PARAM2_ (_PARAM4_)",
+              "sentence": "_PARAM0_ handleSelection _PARAM2_",
               "events": [
                 {
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "decking::Hand::IsPlaying"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
                     {
                       "type": {
                         "inverted": false,
@@ -6961,27 +7481,6 @@
                   "actions": [],
                   "events": [
                     {
-                      "disabled": true,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "utils::log"
-                          },
-                          "parameters": [
-                            "",
-                            "\"linked cards: \" + ToString(Count(CardObject))",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
                       "disabled": false,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
@@ -6996,10 +7495,45 @@
                             "Left"
                           ],
                           "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SourisSurObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "",
+                            "",
+                            ""
+                          ],
+                          "subInstructions": []
                         }
                       ],
                       "actions": [],
                       "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjet"
+                              },
+                              "parameters": [
+                                "Object",
+                                "SelectedInstanceId",
+                                "=",
+                                "-1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
                         {
                           "disabled": false,
                           "folded": false,
@@ -7008,39 +7542,6 @@
                           "conditions": [],
                           "actions": [],
                           "events": [
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "utils::log"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "\"linked cards: \" + ToString(Count(CardObject))",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                },
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "utils::log"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "CardObject.CardBehavior::Id()",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
                             {
                               "disabled": false,
                               "folded": false,
@@ -7055,6 +7556,18 @@
                                     "CardObject",
                                     "",
                                     "",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "decking::Hand::IsAnySelected"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "Behavior",
                                     ""
                                   ],
                                   "subInstructions": []
@@ -7072,51 +7585,22 @@
                                     ""
                                   ],
                                   "subInstructions": []
-                                }
-                              ],
-                              "events": [
-                                {
-                                  "disabled": false,
-                                  "folded": false,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "utils::log"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "\"selecting\"",
-                                        ""
-                                      ],
-                                      "subInstructions": []
-                                    },
-                                    {
-                                      "type": {
-                                        "inverted": false,
-                                        "value": "utils::log"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "CardObject.CardBehavior::Id()",
-                                        ""
-                                      ],
-                                      "subInstructions": []
-                                    }
-                                  ],
-                                  "events": []
                                 },
                                 {
-                                  "disabled": false,
-                                  "folded": false,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [],
-                                  "events": []
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarObjet"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "SelectedInstanceId",
+                                    "=",
+                                    "CardObject.CardBehavior::InstanceId()"
+                                  ],
+                                  "subInstructions": []
                                 }
-                              ]
+                              ],
+                              "events": []
                             },
                             {
                               "disabled": false,
@@ -7125,14 +7609,13 @@
                               "conditions": [
                                 {
                                   "type": {
-                                    "inverted": true,
-                                    "value": "SourisSurObjet"
+                                    "inverted": false,
+                                    "value": "Egal"
                                   },
                                   "parameters": [
-                                    "CardObject",
-                                    "",
-                                    "",
-                                    ""
+                                    "Object.Behavior::SelectedInstanceId()",
+                                    "!=",
+                                    "CardObject.CardBehavior::InstanceId()"
                                   ],
                                   "subInstructions": []
                                 }
@@ -7151,6 +7634,372 @@
                                   "subInstructions": []
                                 }
                               ],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "CardObject",
+                  "longDescription": "",
+                  "name": "CardObject",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "objectList"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "CardBehavior",
+                  "longDescription": "",
+                  "name": "CardBehavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "handlePlayArea",
+              "fullName": "handlePlayArea",
+              "functionType": "Action",
+              "name": "handlePlayArea",
+              "sentence": "_PARAM0_ handlePlayArea _PARAM2_",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"init\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "decking::Hand::IsAnySelected"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Behavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetAnimationName"
+                          },
+                          "parameters": [
+                            "PlayAreaObject",
+                            "\"Active\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "SourisSurObjet"
+                              },
+                              "parameters": [
+                                "PlayAreaObject",
+                                "",
+                                "",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "State",
+                                "=",
+                                "\"play_requested\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"play_finished\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"init\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetAnimationName"
+                          },
+                          "parameters": [
+                            "PlayAreaObject",
+                            "\"Inactive\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "PlayAreaObject",
+                  "longDescription": "",
+                  "name": "PlayAreaObject",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "objectList"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "handlePlayCard",
+              "fullName": "handlePlayCard",
+              "functionType": "Action",
+              "name": "handlePlayCard",
+              "sentence": "_PARAM0_ handlePlayCard _PARAM2_ (_PARAM4_)",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"play_requested\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "CardObject",
+                            "Object"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::ForEach",
+                          "object": "CardObject",
+                          "conditions": [],
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "decking::Card::IsSelected"
+                                  },
+                                  "parameters": [
+                                    "CardObject",
+                                    "CardBehavior",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "decking::Card::deselect"
+                                  },
+                                  "parameters": [
+                                    "CardObject",
+                                    "CardBehavior",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "decking::Hand::startPlaying"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "Behavior",
+                                    "CardObject.CardBehavior::InstanceId()",
+                                    "CardObject.CardBehavior::Id()",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
                               "events": [
                                 {
                                   "disabled": false,
@@ -7165,7 +8014,7 @@
                                       },
                                       "parameters": [
                                         "",
-                                        "\"deselecting\"",
+                                        "\"playing card: \" + ToString(Count(CardObject))",
                                         ""
                                       ],
                                       "subInstructions": []
@@ -7179,6 +8028,62 @@
                                         "",
                                         "CardObject.CardBehavior::Id()",
                                         ""
+                                      ],
+                                      "subInstructions": []
+                                    },
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "ToString(CardObject.CardBehavior::InstanceId())",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "MettreAutourPos"
+                                      },
+                                      "parameters": [
+                                        "CardObject",
+                                        "PoolObject.X()",
+                                        "PoolObject.Y() + PoolObject.Height() - CardObject.Height()",
+                                        "(CardObject.Width() + 10) * Object.Behavior::Size()",
+                                        "0"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "LinkedObjects::RemoveLinkBetween"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Object",
+                                        "CardObject"
                                       ],
                                       "subInstructions": []
                                     }
@@ -7238,9 +8143,413 @@
                 {
                   "codeOnly": false,
                   "defaultValue": "",
-                  "description": "DeckObject",
+                  "description": "PoolObject",
                   "longDescription": "",
-                  "name": "DeckObject",
+                  "name": "PoolObject",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "objectList"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "startPlaying",
+              "fullName": "startPlaying",
+              "functionType": "Action",
+              "name": "startPlaying",
+              "sentence": "_PARAM0_ startPlaying _PARAM2_ ",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "!=",
+                        "\"play_requested\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"startPlaying when no play was requested\"",
+                        "2",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "LastPlayedInstanceId",
+                        "=",
+                        "GetArgumentAsNumber(\"InstanceId\")"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "LastPlayedId",
+                        "=",
+                        "GetArgumentAsString(\"Id\")"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"play_started\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "InstanceId",
+                  "longDescription": "",
+                  "name": "InstanceId",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "expression"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Card Id",
+                  "longDescription": "",
+                  "name": "Id",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "string"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "finishPlaying",
+              "fullName": "finishPlaying",
+              "functionType": "Action",
+              "name": "finishPlaying",
+              "sentence": "_PARAM0_ finishPlaying",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "!=",
+                        "\"play_started\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"finishedPlaying when no card was played\"",
+                        "2",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"play_finished\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "IsPlaying - call finishPlaying after handling this",
+              "fullName": "IsPlaying",
+              "functionType": "Condition",
+              "name": "IsPlaying",
+              "sentence": "_PARAM0_ IsPlaying",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"play_started\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "IsLastPlayed",
+              "fullName": "IsLastPlayed",
+              "functionType": "Condition",
+              "name": "IsLastPlayed",
+              "sentence": "_PARAM0_ IsLastPlayed _PARAM2_ ",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Card::IsInstance"
+                      },
+                      "parameters": [
+                        "CardObject",
+                        "CardBehavior",
+                        "Object.Behavior::LastPlayedInstanceId()",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "CardObject",
+                  "longDescription": "",
+                  "name": "CardObject",
                   "optional": false,
                   "supplementaryInformation": "Sprite",
                   "type": "objectList"
@@ -7248,11 +8557,247 @@
                 {
                   "codeOnly": false,
                   "defaultValue": "",
-                  "description": "DeckBehavior",
+                  "description": "CardBehavior",
                   "longDescription": "",
-                  "name": "DeckBehavior",
+                  "name": "CardBehavior",
                   "optional": false,
-                  "supplementaryInformation": "decking::Deck",
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "IsAnySelected",
+              "fullName": "IsAnySelected",
+              "functionType": "Condition",
+              "name": "IsAnySelected",
+              "sentence": "_PARAM0_ IsAnySelected",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Egal"
+                      },
+                      "parameters": [
+                        "Object.Behavior::SelectedInstanceId()",
+                        ">",
+                        "-1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "LastPlayedInstanceId",
+              "fullName": "LastPlayedInstanceId",
+              "functionType": "Expression",
+              "name": "SelectedInstanceId",
+              "sentence": "",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnNumber"
+                      },
+                      "parameters": [
+                        "Object.Variable(SelectedInstanceId)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "LastPlayedId",
+              "fullName": "LastPlayedId",
+              "functionType": "StringExpression",
+              "name": "LastPlayedId",
+              "sentence": "_PARAM0_ IsLastPlayed _PARAM2_ ",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnString"
+                      },
+                      "parameters": [
+                        "Object.VariableString(LastPlayedId)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "LastPlayedInstanceId",
+              "fullName": "LastPlayedInstanceId",
+              "functionType": "Expression",
+              "name": "LastPlayedInstanceId",
+              "sentence": "",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnNumber"
+                      },
+                      "parameters": [
+                        "Object.Variable(LastPlayedInstanceId)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
                   "type": "behavior"
                 }
               ],
