@@ -22,7 +22,7 @@
     "gridWidth": 32,
     "snap": true,
     "windowMask": false,
-    "zoomFactor": 0.736
+    "zoomFactor": 0.52
   },
   "objectsGroups": [
     {
@@ -1113,7 +1113,7 @@
       "events": [
         {
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -1127,19 +1127,7 @@
               "subInstructions": []
             }
           ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "DialogueTree::LoadDialogueFromJsonFile"
-              },
-              "parameters": [
-                "",
-                "dialogues\\decking.json"
-              ],
-              "subInstructions": []
-            }
-          ],
+          "actions": [],
           "events": [
             {
               "disabled": false,
@@ -1147,6 +1135,17 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::LoadDialogueFromJsonFile"
+                  },
+                  "parameters": [
+                    "",
+                    "dialogues\\decking.json"
+                  ],
+                  "subInstructions": []
+                },
                 {
                   "type": {
                     "inverted": false,
@@ -1166,39 +1165,6 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "utils::log"
-                  },
-                  "parameters": [
-                    "",
-                    "\"yep\"",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "Mood",
-                    "=",
-                    "0"
-                  ],
-                  "subInstructions": []
-                },
                 {
                   "type": {
                     "inverted": false,
@@ -1291,6 +1257,14 @@
             }
           ],
           "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            },
             {
               "disabled": false,
               "folded": false,
@@ -1913,7 +1887,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": true,
-              "folded": false,
+              "folded": true,
               "name": "Old",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -2554,6 +2528,38 @@
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
           "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DepartScene"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "Mood",
+                    "=",
+                    "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
             {
               "disabled": false,
               "folded": false,
