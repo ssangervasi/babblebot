@@ -14,7 +14,7 @@
     "macExecutableFilename": "",
     "orientation": "landscape",
     "packageName": "com.example.gamename",
-    "projectFile": "C:\\Users\\Sebastian\\workspace\\gmtk-2020\\game.json",
+    "projectFile": "C:\\Users\\nvanm\\Documents\\gmtk-2020\\game.json",
     "scaleMode": "linear",
     "sizeOnStartupMode": "adaptWidth",
     "useExternalSourceFiles": false,
@@ -23,7 +23,7 @@
     "winExecutableIconFile": "",
     "name": "GMTK-2020",
     "author": "Sebastian Sangervasi & Nicole Van Meter",
-    "windowWidth": 1920,
+    "windowWidth": 1440,
     "windowHeight": 1080,
     "latestCompilationDirectory": "",
     "maxFPS": 60,
@@ -125,24 +125,6 @@
         "name": "assets\\res.png",
         "smoothed": true,
         "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/deck.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\deck.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/card.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\card.png",
-        "smoothed": true,
-        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -153,7 +135,7 @@
   "layouts": [
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/decking"
+      "referenceTo": "/layouts/artscene"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
@@ -165,10 +147,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/utils"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/decking"
     }
   ],
   "externalLayouts": [],
