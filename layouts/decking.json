@@ -22,7 +22,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.496
+    "zoomFactor": 0.736
   },
   "objectsGroups": [
     {
@@ -1464,6 +1464,30 @@
               "events": []
             }
           ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::Hand::fitIntoSlots"
+              },
+              "parameters": [
+                "Hand",
+                "Hand",
+                "Card",
+                "Card",
+                "HandSlot",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         },
         {
           "disabled": true,
@@ -3140,13 +3164,13 @@
   "layers": [
     {
       "name": "OffScreen",
-      "visibility": false,
+      "visibility": true,
       "cameras": [],
       "effects": []
     },
     {
       "name": "",
-      "visibility": false,
+      "visibility": true,
       "cameras": [
         {
           "defaultSize": true,
@@ -3163,7 +3187,7 @@
     },
     {
       "name": "Cards",
-      "visibility": false,
+      "visibility": true,
       "cameras": [],
       "effects": []
     },
