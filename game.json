@@ -127,39 +127,12 @@
         "userAdded": true
       },
       {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/deck.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\deck.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/card.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\card.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
         "disablePreload": false,
         "file": "dialogues/decking.json",
         "kind": "json",
         "metadata": "",
         "name": "dialogues\\decking.json",
         "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/hand.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\hand.png",
-        "smoothed": true,
-        "userAdded": false
       },
       {
         "alwaysLoaded": false,
@@ -187,6 +160,114 @@
         "name": "assets\\placeholders\\cards\\insult.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/CardBack.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\CardBack.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Bar.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Bar.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/Hand.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\Hand.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/CardFront.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\CardFront.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Outside.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Outside.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Restaurant.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Restaurant.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/test_layouts.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\test_layouts.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/GoodHeart.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\GoodHeart.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/MoodMeter.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\MoodMeter.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/TextBox.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\TextBox.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/card.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\card.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/deck.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\deck.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
