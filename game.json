@@ -100,7 +100,24 @@
     "currentPlatform": "GDevelop JS platform"
   },
   "resources": {
-    "resources": [],
+    "resources": [
+      {
+        "disablePreload": false,
+        "file": "assets/example-dialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "assets\\example-dialogue.json",
+        "userAdded": false
+      },
+      {
+        "disablePreload": false,
+        "file": "NewFile.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "NewFile.json",
+        "userAdded": false
+      }
+    ],
     "resourceFolders": []
   },
   "objects": [],
@@ -113,7 +130,12 @@
     }
   ],
   "externalEvents": [],
-  "eventsFunctionsExtensions": [],
+  "eventsFunctionsExtensions": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/utils"
+    }
+  ],
   "externalLayouts": [],
   "externalSourceFiles": []
 }
