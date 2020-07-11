@@ -160,6 +160,33 @@
         "name": "assets\\placeholders\\hand.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/generic_compliment.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\generic_compliment.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/blue_sweater.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\blue_sweater.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/insult.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\insult.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []

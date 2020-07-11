@@ -160,6 +160,33 @@
         "name": "assets\\placeholders\\hand.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/generic_compliment.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\generic_compliment.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/blue_sweater.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\blue_sweater.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/insult.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\insult.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -192,7 +219,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.472
+        "zoomFactor": 0.76
       },
       "objectsGroups": [
         {
@@ -220,8 +247,8 @@
           "locked": false,
           "name": "NPC",
           "width": 0,
-          "x": 519,
-          "y": 455,
+          "x": 902,
+          "y": 392,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -235,8 +262,8 @@
           "locked": false,
           "name": "PC",
           "width": 0,
-          "x": 517,
-          "y": 552,
+          "x": 917,
+          "y": 728,
           "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
@@ -244,30 +271,15 @@
         },
         {
           "angle": 0,
-          "customSize": false,
-          "height": 0,
+          "customSize": true,
+          "height": 128,
           "layer": "Text",
           "locked": false,
           "name": "Mood",
-          "width": 0,
-          "x": 796,
-          "y": 367,
+          "width": 67,
+          "x": 1732,
+          "y": 101,
           "zOrder": 7,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "Text",
-          "locked": false,
-          "name": "Answers",
-          "width": 0,
-          "x": 865,
-          "y": 574,
-          "zOrder": 9,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -355,13 +367,13 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 259,
+          "height": 242,
           "layer": "Cards",
           "locked": false,
           "name": "Deck",
-          "width": 155,
-          "x": 1194,
-          "y": 697,
+          "width": 403,
+          "x": 52,
+          "y": 50,
           "zOrder": 14,
           "numberProperties": [],
           "stringProperties": [],
@@ -495,89 +507,14 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 353,
+          "height": 706,
           "layer": "Cards",
           "locked": false,
           "name": "Hand",
-          "width": 934,
-          "x": 207,
-          "y": 670,
+          "width": 408,
+          "x": 43,
+          "y": 320,
           "zOrder": 19,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "Text",
-          "locked": false,
-          "name": "CardText",
-          "width": 0,
-          "x": 306,
-          "y": -822,
-          "zOrder": 20,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "Text",
-          "locked": false,
-          "name": "CardText",
-          "width": 0,
-          "x": 68,
-          "y": -583,
-          "zOrder": 20,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "Text",
-          "locked": false,
-          "name": "CardText",
-          "width": 0,
-          "x": 56,
-          "y": -706,
-          "zOrder": 20,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "Text",
-          "locked": false,
-          "name": "CardText",
-          "width": 0,
-          "x": 73,
-          "y": -840,
-          "zOrder": 20,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "Text",
-          "locked": false,
-          "name": "CardText",
-          "width": 0,
-          "x": 207,
-          "y": -824,
-          "zOrder": 20,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -616,7 +553,7 @@
           "behaviors": [],
           "string": "Nothing said yet",
           "font": "",
-          "characterSize": 20,
+          "characterSize": 60,
           "color": {
             "b": 0,
             "g": 0,
@@ -654,7 +591,7 @@
           "behaviors": [],
           "string": "No response",
           "font": "",
-          "characterSize": 20,
+          "characterSize": 60,
           "color": {
             "b": 5,
             "g": 117,
@@ -745,11 +682,11 @@
           "behaviors": [],
           "string": "0",
           "font": "",
-          "characterSize": 20,
+          "characterSize": 60,
           "color": {
-            "b": 0,
-            "g": 0,
-            "r": 0
+            "b": 6,
+            "g": 6,
+            "r": 228
           }
         },
         {
@@ -811,7 +748,7 @@
           ],
           "animations": [
             {
-              "name": "Front",
+              "name": "Back",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -820,7 +757,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "assets\\placeholders\\card.png",
+                      "image": "assets\\placeholders\\deck.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -840,7 +777,7 @@
               ]
             },
             {
-              "name": "Back",
+              "name": "generic_compliment",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -849,7 +786,65 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "assets\\placeholders\\deck.png",
+                      "image": "assets\\placeholders\\cards\\generic_compliment.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "blue_sweater",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "assets\\placeholders\\cards\\blue_sweater.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "insult",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "assets\\placeholders\\cards\\insult.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -1071,19 +1066,6 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::Card::manageText"
-                  },
-                  "parameters": [
-                    "Card",
-                    "Card",
-                    "CardText",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
                     "value": "decking::Deck::build"
                   },
                   "parameters": [
@@ -1096,45 +1078,6 @@
                   "subInstructions": []
                 }
               ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "decking::Card::manageText"
-                  },
-                  "parameters": [
-                    "Card",
-                    "Card",
-                    "CardText",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": true,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Card",
-              "conditions": [],
-              "actions": [],
               "events": []
             },
             {
@@ -1172,6 +1115,31 @@
                   "type": {
                     "inverted": false,
                     "value": "decking::Hand::drawFrom"
+                  },
+                  "parameters": [
+                    "Hand",
+                    "Hand",
+                    "Card",
+                    "Card",
+                    "Deck",
+                    "Deck",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "decking::Hand::handleSelection"
                   },
                   "parameters": [
                     "Hand",
@@ -2543,7 +2511,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.208
+        "zoomFactor": 0.652
       },
       "objectsGroups": [
         {
@@ -2673,9 +2641,9 @@
           "customSize": true,
           "height": 1080,
           "layer": "Text",
-          "locked": true,
+          "locked": false,
           "name": "Res",
-          "width": 1920,
+          "width": 1440,
           "x": 0,
           "y": 0,
           "zOrder": 10,
@@ -2688,27 +2656,12 @@
           "customSize": true,
           "height": 1080,
           "layer": "",
-          "locked": true,
+          "locked": false,
           "name": "Res",
-          "width": 1920,
+          "width": 1440,
           "x": 0,
           "y": 0,
           "zOrder": 10,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 228,
-          "layer": "",
-          "locked": false,
-          "name": "Deck",
-          "width": 137,
-          "x": 1041,
-          "y": 542,
-          "zOrder": 11,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -2882,113 +2835,6 @@
                     {
                       "hasCustomCollisionMask": false,
                       "image": "assets\\res.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "centerPoint": {
-                        "automatic": true,
-                        "name": "centre",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "customCollisionMask": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Deck",
-          "tags": "",
-          "type": "Sprite",
-          "updateIfNotVisible": false,
-          "variables": [],
-          "behaviors": [],
-          "animations": [
-            {
-              "name": "",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": false,
-                      "image": "assets\\placeholders\\deck.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "centerPoint": {
-                        "automatic": true,
-                        "name": "centre",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "customCollisionMask": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Card",
-          "tags": "",
-          "type": "Sprite",
-          "updateIfNotVisible": false,
-          "variables": [],
-          "behaviors": [],
-          "animations": [
-            {
-              "name": "Front",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": false,
-                      "image": "assets\\placeholders\\card.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "centerPoint": {
-                        "automatic": true,
-                        "name": "centre",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "customCollisionMask": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "Back",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": false,
-                      "image": "assets\\placeholders\\deck.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -4558,9 +4404,296 @@
                         "\"false\""
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SelectionState",
+                        "=",
+                        "\"init\""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "",
+              "fullName": "",
+              "functionType": "Action",
+              "name": "doStepPreEvents",
+              "sentence": "",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Card::IsFaceUp"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "CenterX",
+                            "=",
+                            "Object.PointX(\"Center\")"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "CenterY",
+                            "=",
+                            "Object.PointY(\"Center\")"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "OriginalScale",
+                            "=",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "OriginalScale",
+                            "=",
+                            "Object.ScaleX()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SourisSurObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "",
+                            "",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangeScale"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "2 * Object.Variable(OriginalScale)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "SourisSurObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "",
+                            "",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "decking::Card::IsSelected"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Behavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangeScale"
+                              },
+                              "parameters": [
+                                "Object",
+                                "=",
+                                "Object.Variable(OriginalScale)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "decking::Card::IsSelected"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Behavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangeScale"
+                              },
+                              "parameters": [
+                                "Object",
+                                "=",
+                                "1.2 * Object.Variable(OriginalScale)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "MettreAutourPos"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Object.Variable(CenterX)",
+                            "Object.Variable(CenterY)",
+                            "0",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
                 }
               ],
               "parameters": [
@@ -5219,6 +5352,384 @@
                 }
               ],
               "objectGroups": []
+            },
+            {
+              "description": "faceDown",
+              "fullName": "faceDown",
+              "functionType": "Action",
+              "name": "faceDown",
+              "sentence": "_PARAM0_ faceDown",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetAnimationName"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"Back\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "faceUp",
+              "fullName": "faceUp",
+              "functionType": "Action",
+              "name": "faceUp",
+              "sentence": "_PARAM0_ faceUp",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetAnimationName"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Object.Behavior::Id()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "IsFaceUp",
+              "fullName": "IsFaceUp",
+              "functionType": "Condition",
+              "name": "IsFaceUp",
+              "sentence": "_PARAM0_ IsFaceUp",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "AnimationName"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"Back\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "deselect",
+              "fullName": "deselect",
+              "functionType": "Action",
+              "name": "deselect",
+              "sentence": "_PARAM0_ deselect",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SelectionState",
+                        "=",
+                        "\"init\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "select",
+              "fullName": "select",
+              "functionType": "Action",
+              "name": "select",
+              "sentence": "_PARAM0_ select",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SelectionState",
+                        "=",
+                        "\"selected\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "IsSelected",
+              "fullName": "IsSelected",
+              "functionType": "Condition",
+              "name": "IsSelected",
+              "sentence": "_PARAM0_ IsSelected",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SelectionState",
+                        "=",
+                        "\"selected\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
             }
           ],
           "propertyDescriptors": [
@@ -5501,6 +6012,27 @@
                     {
                       "type": {
                         "inverted": false,
+                        "value": "decking::Card::faceDown"
+                      },
+                      "parameters": [
+                        "CardObject",
+                        "CardBehavior",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
                         "value": "MettreAutour"
                       },
                       "parameters": [
@@ -5619,57 +6151,88 @@
                 {
                   "disabled": false,
                   "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "decking::Card::IsInstance"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "CardBehavior",
-                        "Object.Behavior::LastDrawnInstanceId()",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "LinkedObjects::RemoveLinkBetween"
-                      },
-                      "parameters": [
-                        "",
-                        "Object",
-                        "CardObject"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "CardObject",
+                  "conditions": [],
+                  "actions": [],
                   "events": [
                     {
                       "disabled": false,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
+                      "conditions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ChangePlan"
+                            "value": "decking::Card::IsInstance"
                           },
                           "parameters": [
                             "CardObject",
-                            "=",
-                            "Object.ZOrder() + 1"
+                            "CardBehavior",
+                            "Object.Behavior::LastDrawnInstanceId()",
+                            ""
                           ],
                           "subInstructions": []
                         }
                       ],
-                      "events": []
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "LinkedObjects::RemoveLinkBetween"
+                          },
+                          "parameters": [
+                            "",
+                            "Object",
+                            "CardObject"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Matched card\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "=",
+                                "Object.ZOrder() + 1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
                     }
                   ]
                 }
@@ -5749,7 +6312,7 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "const [deck] = objects\ndeck.cardInstancesIds = _.shuffle(deck.cardInstancesIds)\nconsole.log(\"shuffled\")",
+                  "inlineCode": "const [deck] = objects\ndeck.cardInstanceIds = _.shuffle(deck.cardInstanceIds)",
                   "parameterObjects": "Object",
                   "useStrict": true
                 }
@@ -5997,6 +6560,61 @@
               "objectGroups": []
             },
             {
+              "description": "",
+              "fullName": "",
+              "functionType": "Action",
+              "name": "doStepPreEvents",
+              "sentence": "",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "",
+                  "comment2": ""
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
               "description": "drawFrom",
               "fullName": "drawFrom",
               "functionType": "Action",
@@ -6043,10 +6661,285 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "const [hand] = objects\nconst instanceIdVar = hand.getVariables().get('LastDrawnInstanceId')\nconst instanceId = instanceIdVar.getAsNumber()\nconsole.log(\"Hand drew card\", { instanceId })\nhand.cardInstanceIds.push(instanceId)",
+                  "inlineCode": "const [hand] = objects\nconst instanceIdVar = hand.getVariables().get('LastDrawnInstanceId')\nconst instanceId = instanceIdVar.getAsNumber()\nhand.cardInstanceIds.push(instanceId)",
                   "parameterObjects": "Object",
                   "useStrict": true
                 },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "CardObject",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "decking::Card::IsInstance"
+                          },
+                          "parameters": [
+                            "CardObject",
+                            "CardBehavior",
+                            "Object.Behavior::LastDrawnInstanceId()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "LinkedObjects::LinkObjects"
+                          },
+                          "parameters": [
+                            "",
+                            "Object",
+                            "CardObject"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Matched id: \" + ToString(Object.Behavior::LastDrawnInstanceId())",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "decking::Card::faceUp"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "CardBehavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": true,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjet"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "StartingWidth",
+                                "=",
+                                "CardObject.Width()"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjet"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "StartingHeight",
+                                "=",
+                                "CardObject.Height()"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangeWidth"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "=",
+                                "(3/4) * Object.Width()"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangeHeight"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "=",
+                                "CardObject.Variable(StartingHeight) * (CardObject.Width() / CardObject.Variable(StartingWidth))"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangeScale"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "=",
+                                "(3/4) * Object.Width() / CardObject.Width()"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "=",
+                                "Object.ZOrder() + 1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MettreAutourPos"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "Object.X() + ((1/2) * Object.Width())",
+                                "Object.Y()",
+                                "(CardObject.Height() + 10) * Object.Behavior::Size() ",
+                                "90"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Hand",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "CardObject",
+                  "longDescription": "",
+                  "name": "CardObject",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "objectList"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "CardBehavior",
+                  "longDescription": "",
+                  "name": "CardBehavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Card",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "DeckObject",
+                  "longDescription": "",
+                  "name": "DeckObject",
+                  "optional": false,
+                  "supplementaryInformation": "Sprite",
+                  "type": "objectList"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "DeckBehavior",
+                  "longDescription": "",
+                  "name": "DeckBehavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Deck",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "handleSelection",
+              "fullName": "handleSelection",
+              "functionType": "Action",
+              "name": "handleSelection",
+              "sentence": "_PARAM0_ handleSelection _PARAM2_ (_PARAM4_)",
+              "events": [
                 {
                   "disabled": false,
                   "folded": false,
@@ -6055,34 +6948,20 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Card::IsInstance"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "CardBehavior",
-                        "Object.Behavior::LastDrawnInstanceId()",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "LinkedObjects::LinkObjects"
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
                       },
                       "parameters": [
                         "",
-                        "Object",
-                        "CardObject"
+                        "CardObject",
+                        "Object"
                       ],
                       "subInstructions": []
                     }
                   ],
+                  "actions": [],
                   "events": [
                     {
-                      "disabled": false,
+                      "disabled": true,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
@@ -6090,31 +6969,227 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ChangePlan"
+                            "value": "utils::log"
                           },
                           "parameters": [
-                            "CardObject",
-                            "=",
-                            "Object.ZOrder() + 1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "MettreAutourPos"
-                          },
-                          "parameters": [
-                            "CardObject",
-                            "Object.X()",
-                            "Object.Y() + ((1/2) * Object.Height())",
-                            "CardObject.Width() * 2 * Object.Behavior::Size()",
-                            "0"
+                            "",
+                            "\"linked cards: \" + ToString(Count(CardObject))",
+                            ""
                           ],
                           "subInstructions": []
                         }
                       ],
                       "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "MouseButtonReleased"
+                          },
+                          "parameters": [
+                            "",
+                            "Left"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::ForEach",
+                          "object": "CardObject",
+                          "conditions": [],
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"linked cards: \" + ToString(Count(CardObject))",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "CardObject.CardBehavior::Id()",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "SourisSurObjet"
+                                  },
+                                  "parameters": [
+                                    "CardObject",
+                                    "",
+                                    "",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "decking::Card::select"
+                                  },
+                                  "parameters": [
+                                    "CardObject",
+                                    "CardBehavior",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": [
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "\"selecting\"",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    },
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "CardObject.CardBehavior::Id()",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [],
+                                  "events": []
+                                }
+                              ]
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "SourisSurObjet"
+                                  },
+                                  "parameters": [
+                                    "CardObject",
+                                    "",
+                                    "",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "decking::Card::deselect"
+                                  },
+                                  "parameters": [
+                                    "CardObject",
+                                    "CardBehavior",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": [
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "\"deselecting\"",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    },
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "utils::log"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "CardObject.CardBehavior::Id()",
+                                        ""
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }

@@ -22,7 +22,7 @@
     "gridWidth": 32,
     "snap": true,
     "windowMask": false,
-    "zoomFactor": 0.472
+    "zoomFactor": 0.76
   },
   "objectsGroups": [
     {
@@ -50,8 +50,8 @@
       "locked": false,
       "name": "NPC",
       "width": 0,
-      "x": 519,
-      "y": 455,
+      "x": 902,
+      "y": 392,
       "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
@@ -65,8 +65,8 @@
       "locked": false,
       "name": "PC",
       "width": 0,
-      "x": 517,
-      "y": 552,
+      "x": 917,
+      "y": 728,
       "zOrder": 3,
       "numberProperties": [],
       "stringProperties": [],
@@ -74,30 +74,15 @@
     },
     {
       "angle": 0,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "height": 128,
       "layer": "Text",
       "locked": false,
       "name": "Mood",
-      "width": 0,
-      "x": 796,
-      "y": 367,
+      "width": 67,
+      "x": 1732,
+      "y": 101,
       "zOrder": 7,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "Text",
-      "locked": false,
-      "name": "Answers",
-      "width": 0,
-      "x": 865,
-      "y": 574,
-      "zOrder": 9,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -185,13 +170,13 @@
     {
       "angle": 0,
       "customSize": true,
-      "height": 259,
+      "height": 242,
       "layer": "Cards",
       "locked": false,
       "name": "Deck",
-      "width": 155,
-      "x": 1194,
-      "y": 697,
+      "width": 403,
+      "x": 52,
+      "y": 50,
       "zOrder": 14,
       "numberProperties": [],
       "stringProperties": [],
@@ -325,89 +310,14 @@
     {
       "angle": 0,
       "customSize": true,
-      "height": 353,
+      "height": 706,
       "layer": "Cards",
       "locked": false,
       "name": "Hand",
-      "width": 934,
-      "x": 207,
-      "y": 670,
+      "width": 408,
+      "x": 43,
+      "y": 320,
       "zOrder": 19,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "Text",
-      "locked": false,
-      "name": "CardText",
-      "width": 0,
-      "x": 306,
-      "y": -822,
-      "zOrder": 20,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "Text",
-      "locked": false,
-      "name": "CardText",
-      "width": 0,
-      "x": 68,
-      "y": -583,
-      "zOrder": 20,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "Text",
-      "locked": false,
-      "name": "CardText",
-      "width": 0,
-      "x": 56,
-      "y": -706,
-      "zOrder": 20,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "Text",
-      "locked": false,
-      "name": "CardText",
-      "width": 0,
-      "x": 73,
-      "y": -840,
-      "zOrder": 20,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "Text",
-      "locked": false,
-      "name": "CardText",
-      "width": 0,
-      "x": 207,
-      "y": -824,
-      "zOrder": 20,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -446,7 +356,7 @@
       "behaviors": [],
       "string": "Nothing said yet",
       "font": "",
-      "characterSize": 20,
+      "characterSize": 60,
       "color": {
         "b": 0,
         "g": 0,
@@ -484,7 +394,7 @@
       "behaviors": [],
       "string": "No response",
       "font": "",
-      "characterSize": 20,
+      "characterSize": 60,
       "color": {
         "b": 5,
         "g": 117,
@@ -575,11 +485,11 @@
       "behaviors": [],
       "string": "0",
       "font": "",
-      "characterSize": 20,
+      "characterSize": 60,
       "color": {
-        "b": 0,
-        "g": 0,
-        "r": 0
+        "b": 6,
+        "g": 6,
+        "r": 228
       }
     },
     {
@@ -641,7 +551,7 @@
       ],
       "animations": [
         {
-          "name": "Front",
+          "name": "Back",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -650,7 +560,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "assets\\placeholders\\card.png",
+                  "image": "assets\\placeholders\\deck.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -670,7 +580,7 @@
           ]
         },
         {
-          "name": "Back",
+          "name": "generic_compliment",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -679,7 +589,65 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "assets\\placeholders\\deck.png",
+                  "image": "assets\\placeholders\\cards\\generic_compliment.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "blue_sweater",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "assets\\placeholders\\cards\\blue_sweater.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "insult",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "assets\\placeholders\\cards\\insult.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -901,19 +869,6 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Card::manageText"
-              },
-              "parameters": [
-                "Card",
-                "Card",
-                "CardText",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
                 "value": "decking::Deck::build"
               },
               "parameters": [
@@ -926,45 +881,6 @@
               "subInstructions": []
             }
           ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "decking::Card::manageText"
-              },
-              "parameters": [
-                "Card",
-                "Card",
-                "CardText",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": true,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Card",
-          "conditions": [],
-          "actions": [],
           "events": []
         },
         {
@@ -1002,6 +918,31 @@
               "type": {
                 "inverted": false,
                 "value": "decking::Hand::drawFrom"
+              },
+              "parameters": [
+                "Hand",
+                "Hand",
+                "Card",
+                "Card",
+                "Deck",
+                "Deck",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::Hand::handleSelection"
               },
               "parameters": [
                 "Hand",
