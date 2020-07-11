@@ -1,0 +1,102 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Hey! I'm Amy.\nIt's awesome to meet you.\n\n[[give_compliment|Hello.give_compliment]]\n[[respond_emotionally|Hello.respond_emotionally]]\n[[learn_more|Hello.learn_more]]\n[[indicate_agreement|Hello.indicate_agreement]]\n[[provide_information|Hello.provide_information]]",
+		"position": {
+			"x": 955,
+			"y": 559
+		},
+		"colorID": 1
+	},
+	{
+		"title": "Hello.give_compliment",
+		"tags": "",
+		"body": "Hey, Amy.\nWow you're pretty.\n\n[[ answer: |Haha_thanks]] ]]",
+		"position": {
+			"x": 266,
+			"y": 845
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hello.respond_emotionally",
+		"tags": "",
+		"body": "Hey, Amy.\nI'm really happy you matched with me.\nWe're going to have a great night, I'm sure.\n\n[[coming_on_strong]]",
+		"position": {
+			"x": 616,
+			"y": 842
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hello.learn_more",
+		"tags": "",
+		"body": "Amy from Planet Ameobulon?\nI'm not sure you look like the picture from their profile...\n\n[[appearance_sad]]",
+		"position": {
+			"x": 1001,
+			"y": 838
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hello.indicate_agreement",
+		"tags": "",
+		"body": "Hey, Amy!\nI knew it was you from across the room.\nYou look just like your profile.\n\n[[Haha_thanks]]",
+		"position": {
+			"x": 1285,
+			"y": 832
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hello.provide_information",
+		"tags": "",
+		"body": "Cool thanks for meeting up with me.\nThis restaurant is my favorite for first dates.\n\n[[um_okay]]",
+		"position": {
+			"x": 1564,
+			"y": 838
+		},
+		"colorID": 0
+	},
+	{
+		"title": "coming_on_strong",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 608,
+			"y": 1093
+		},
+		"colorID": 1
+	},
+	{
+		"title": "appearance_sad",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1001,
+			"y": 1090
+		},
+		"colorID": 1
+	},
+	{
+		"title": "um_okay",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1562,
+			"y": 1092
+		},
+		"colorID": 1
+	},
+	{
+		"title": "Haha_thanks",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 261,
+			"y": 1089
+		},
+		"colorID": 1
+	}
+]
