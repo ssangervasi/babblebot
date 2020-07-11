@@ -1,8 +1,8 @@
 {
   "b": 209,
   "disableInputWhenNotFocused": true,
-  "mangledName": "New_32scene",
-  "name": "New scene",
+  "mangledName": "ArtScene",
+  "name": "ArtScene",
   "oglFOV": 90,
   "oglZFar": 500,
   "oglZNear": 1,
@@ -22,7 +22,7 @@
     "gridWidth": 32,
     "snap": true,
     "windowMask": false,
-    "zoomFactor": 0.652
+    "zoomFactor": 0.688
   },
   "objectsGroups": [
     {
