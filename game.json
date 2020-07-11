@@ -115,7 +115,7 @@
         "kind": "json",
         "metadata": "",
         "name": "NewFile.json",
-        "userAdded": false
+        "userAdded": true
       }
     ],
     "resourceFolders": []

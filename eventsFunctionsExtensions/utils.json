@@ -45,6 +45,44 @@
         }
       ],
       "objectGroups": []
+    },
+    {
+      "description": "trim _PARAM1_",
+      "fullName": "trim",
+      "functionType": "StringExpression",
+      "name": "trim",
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = eventsFunctionContext.getArgument(\"ToTrim\").toString().trim()",
+          "parameterObjects": "",
+          "useStrict": true
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ToTrim",
+          "longDescription": "",
+          "name": "ToTrim",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
     }
   ],
   "eventsBasedBehaviors": []

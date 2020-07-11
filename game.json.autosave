@@ -148,9 +148,24 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.904
+        "zoomFactor": 1.024
       },
-      "objectsGroups": [],
+      "objectsGroups": [
+        {
+          "name": "CardsAvailable",
+          "objects": [
+            {
+              "name": "GenericCompliment"
+            },
+            {
+              "name": "Insult"
+            },
+            {
+              "name": "BlueSweater"
+            }
+          ]
+        }
+      ],
       "variables": [],
       "instances": [
         {
@@ -159,7 +174,7 @@
           "height": 0,
           "layer": "",
           "locked": false,
-          "name": "Dialogue",
+          "name": "NPC",
           "width": 0,
           "x": 279,
           "y": 222,
@@ -174,11 +189,86 @@
           "height": 0,
           "layer": "",
           "locked": false,
+          "name": "PC",
+          "width": 0,
+          "x": 277,
+          "y": 319,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "GenericCompliment",
+          "width": 0,
+          "x": 169,
+          "y": 453,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Insult",
+          "width": 0,
+          "x": 452,
+          "y": 455,
+          "zOrder": 6,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Mood",
+          "width": 0,
+          "x": 556,
+          "y": 134,
+          "zOrder": 7,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "BlueSweater",
+          "width": 0,
+          "x": 590,
+          "y": 458,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
           "name": "Answers",
           "width": 0,
-          "x": 308,
-          "y": 313,
-          "zOrder": 2,
+          "x": 625,
+          "y": 341,
+          "zOrder": 9,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -188,7 +278,7 @@
         {
           "bold": false,
           "italic": false,
-          "name": "Dialogue",
+          "name": "NPC",
           "smoothed": true,
           "tags": "",
           "type": "TextObject::Text",
@@ -214,7 +304,117 @@
           "underlined": false,
           "variables": [],
           "behaviors": [],
-          "string": "___",
+          "string": "No options",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "PC",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "No response",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 5,
+            "g": 117,
+            "r": 65
+          }
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "GenericCompliment",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [
+            {
+              "name": "Id",
+              "value": "generic_compliment"
+            }
+          ],
+          "behaviors": [],
+          "string": "GenericCompliment",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "Insult",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [
+            {
+              "name": "Id",
+              "value": "insult"
+            }
+          ],
+          "behaviors": [],
+          "string": "Insult",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "BlueSweater",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [
+            {
+              "name": "Id",
+              "value": "blue_sweater"
+            }
+          ],
+          "behaviors": [],
+          "string": "BlueSweater",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "Mood",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "0",
           "font": "",
           "characterSize": 20,
           "color": {
@@ -267,7 +467,7 @@
                     "value": "DialogueTree::StartDialogueFromBranch"
                   },
                   "parameters": [
-                    "\"hello\""
+                    "\"Hello\""
                   ],
                   "subInstructions": []
                 }
@@ -312,6 +512,217 @@
                     "0"
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "ChosenCardId",
+                    "=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SelectionState",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "PC"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::IsDialogueLineType"
+              },
+              "parameters": [
+                "\"command\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "utils::log"
+              },
+              "parameters": [
+                "",
+                "\"command\"",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::IsDialogueLineType"
+              },
+              "parameters": [
+                "\"text\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "utils::log"
+              },
+              "parameters": [
+                "",
+                "\"text\"",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "DialogueTree::CurrentBranchContainsTag"
+                  },
+                  "parameters": [
+                    "\"pc\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "NPC",
+                    "=",
+                    "DialogueTree::LineText()"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "PC"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::CurrentBranchContainsTag"
+                  },
+                  "parameters": [
+                    "\"pc\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "PC",
+                    "=",
+                    "DialogueTree::LineText()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "KeyReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "Space"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::GoToNextLine"
+                  },
+                  "parameters": [],
+                  "subInstructions": []
                 }
               ],
               "events": []
@@ -338,15 +749,35 @@
             {
               "type": {
                 "inverted": false,
-                "value": "TextObject::String"
+                "value": "ModVarSceneTxt"
               },
               "parameters": [
-                "Dialogue",
+                "SelectionState",
                 "=",
-                "DialogueTree::LineText()"
+                "\"init\""
               ],
               "subInstructions": []
-            },
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::IsDialogueLineType"
+              },
+              "parameters": [
+                "\"options\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
             {
               "type": {
                 "inverted": false,
@@ -354,7 +785,7 @@
               },
               "parameters": [
                 "",
-                "DialogueTree::VisitedBranchTitles()",
+                "\"options\"",
                 ""
               ],
               "subInstructions": []
@@ -369,11 +800,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "KeyReleased"
+                    "value": "VarSceneTxt"
                   },
                   "parameters": [
-                    "",
-                    "Space"
+                    "SelectionState",
+                    "=",
+                    "\"init\""
                   ],
                   "subInstructions": []
                 }
@@ -382,11 +814,45 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "DialogueTree::GoToNextLine"
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SelectionState",
+                    "=",
+                    "\"waiting\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "SelectionState",
+                    "=",
+                    "\"selected\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::HasSelectedOptionChanged"
                   },
                   "parameters": [],
                   "subInstructions": []
-                },
+                }
+              ],
+              "actions": [
                 {
                   "type": {
                     "inverted": false,
@@ -394,19 +860,583 @@
                   },
                   "parameters": [
                     "",
-                    "\"line\"",
+                    "\"Option: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex())",
                     ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::ConfirmSelectOption"
+                  },
+                  "parameters": [],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SelectionState",
+                    "=",
+                    "\"confirmed\""
                   ],
                   "subInstructions": []
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "SelectionState",
+                    "=",
+                    "\"waiting\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "ChosenCardId",
+                    "=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MouseButtonReleased"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"touch\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SourisSurObjet"
+                          },
+                          "parameters": [
+                            "CardsAvailable",
+                            "",
+                            "",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "utils::log"
+                          },
+                          "parameters": [
+                            "",
+                            "\"CardsAvailable.VariableString(Id): \" + CardsAvailable.VariableString(Id)",
+                            ""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "ChosenCardId",
+                            "=",
+                            "CardsAvailable.VariableString(Id)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "ChosenCardId",
+                        "!=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "RepeatIndex",
+                        "=",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "FoundIndex",
+                        "=",
+                        "-1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Repeat",
+                      "repeatExpression": "DialogueTree::OptionsCount()",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "FoundIndex",
+                            "=",
+                            "-1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "DialogueTree::Option(Variable(RepeatIndex)) + \"=?\" + VariableString(ChosenCardId)",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "IdToCompare",
+                                "=",
+                                "utils::trim(DialogueTree::Option(Variable(RepeatIndex)))"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"trimmed: '\"  + VariableString(IdToCompare) +\"'\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "StrEqual"
+                              },
+                              "parameters": [
+                                "VariableString(IdToCompare)",
+                                "=",
+                                "VariableString(ChosenCardId)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "FoundIndex",
+                                "=",
+                                "Variable(RepeatIndex)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "RepeatIndex",
+                                "+",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "FoundIndex",
+                            ">=",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"found stuff\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Variable(FoundIndex): \" + ToString(Variable(FoundIndex))",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "DialogueTree::SelectOption"
+                              },
+                              "parameters": [
+                                "Variable(FoundIndex)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Montre"
+                              },
+                              "parameters": [
+                                "PC",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "SelectionState",
+                                "=",
+                                "\"selected\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": true,
+                          "folded": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"Option: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex())",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"line text before: \" + DialogueTree::LineText()",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "DialogueTree::GoToNextLine"
+                                  },
+                                  "parameters": [],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "utils::log"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"line text after: \" + DialogueTree::LineText()",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "TextObject::String"
+                                  },
+                                  "parameters": [
+                                    "PC",
+                                    "=",
+                                    "\"Response: \" + DialogueTree::LineText()"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "FoundIndex",
+                            "=",
+                            "-1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "utils::log"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Messed up finding option: \" + VariableString(IdToCompare)",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "disabled": false,
-          "folded": false,
+          "disabled": true,
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -426,6 +1456,113 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "KeyReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "z"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": []
+            }
+          ]
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": true,
+          "folded": false,
+          "name": "Mood",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::IsCommandCalled"
+                  },
+                  "parameters": [
+                    "\"mood\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"mood: \" + DialogueTree::CommandParameter(0)",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "Mood",
+                        "+",
+                        "ToNumber(DialogueTree::CommandParameter(0))"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "Mood",
+                        "+",
+                        "ToNumber(DialogueTree::CommandParameter(1))"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
                 {
@@ -434,9 +1571,9 @@
                     "value": "TextObject::String"
                   },
                   "parameters": [
-                    "Answers",
+                    "Mood",
                     "=",
-                    "DialogueTree::VerticalOptionsList(\"->\")"
+                    "ToString(Variable(Mood))"
                   ],
                   "subInstructions": []
                 }
@@ -451,11 +1588,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "KeyReleased"
+                    "value": "VarScene"
                   },
                   "parameters": [
-                    "",
-                    "Up"
+                    "Mood",
+                    "<",
+                    "0"
                   ],
                   "subInstructions": []
                 }
@@ -464,9 +1602,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "DialogueTree::SelectPreviousOption"
+                    "value": "SceneBackground"
                   },
-                  "parameters": [],
+                  "parameters": [
+                    "",
+                    "\"206;17;17\""
+                  ],
                   "subInstructions": []
                 }
               ],
@@ -480,11 +1621,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "KeyReleased"
+                    "value": "VarScene"
                   },
                   "parameters": [
-                    "",
-                    "Down"
+                    "Mood",
+                    ">",
+                    "0"
                   ],
                   "subInstructions": []
                 }
@@ -493,225 +1635,26 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "DialogueTree::SelectNextOption"
-                  },
-                  "parameters": [],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "KeyReleased"
+                    "value": "SceneBackground"
                   },
                   "parameters": [
                     "",
-                    "Space"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "DialogueTree::ConfirmSelectOption"
-                  },
-                  "parameters": [],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "utils::log"
-                  },
-                  "parameters": [
-                    "",
-                    "\"opt: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex())",
-                    ""
+                    "\"219;172;255\""
                   ],
                   "subInstructions": []
                 }
               ],
               "events": []
             }
-          ]
+          ],
+          "parameters": []
         },
         {
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "DialogueTree::HasSelectedOptionChanged"
-              },
-              "parameters": [],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "utils::log"
-              },
-              "parameters": [
-                "",
-                "\"option changed\"",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "DialogueTree::IsCommandCalled"
-              },
-              "parameters": [
-                "\"mood\""
-              ],
-              "subInstructions": []
-            }
-          ],
+          "conditions": [],
           "actions": [],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "utils::log"
-                  },
-                  "parameters": [
-                    "",
-                    "\"mood: \" + DialogueTree::CommandParameter(0)",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "Mood",
-                    "+",
-                    "ToNumber(DialogueTree::CommandParameter(0))"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": true,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "Mood",
-                    "+",
-                    "ToNumber(DialogueTree::CommandParameter(1))"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ]
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "VarScene"
-              },
-              "parameters": [
-                "Mood",
-                "<",
-                "0"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "SceneBackground"
-              },
-              "parameters": [
-                "",
-                "\"206;17;17\""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "VarScene"
-              },
-              "parameters": [
-                "Mood",
-                ">",
-                "0"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "SceneBackground"
-              },
-              "parameters": [
-                "",
-                "\"219;172;255\""
-              ],
-              "subInstructions": []
-            }
-          ],
           "events": []
         }
       ],
@@ -780,6 +1723,44 @@
               "description": "message",
               "longDescription": "",
               "name": "Message",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "trim _PARAM1_",
+          "fullName": "trim",
+          "functionType": "StringExpression",
+          "name": "trim",
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = eventsFunctionContext.getArgument(\"ToTrim\").toString().trim()",
+              "parameterObjects": "",
+              "useStrict": true
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "ToTrim",
+              "longDescription": "",
+              "name": "ToTrim",
               "optional": false,
               "supplementaryInformation": "",
               "type": "string"
