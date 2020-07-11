@@ -22,7 +22,7 @@
     "gridWidth": 32,
     "snap": true,
     "windowMask": false,
-    "zoomFactor": 1.024
+    "zoomFactor": 0.472
   },
   "objectsGroups": [
     {
@@ -46,12 +46,12 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "NPC",
       "width": 0,
-      "x": 279,
-      "y": 222,
+      "x": 519,
+      "y": 455,
       "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
@@ -61,12 +61,12 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "PC",
       "width": 0,
-      "x": 277,
-      "y": 319,
+      "x": 517,
+      "y": 552,
       "zOrder": 3,
       "numberProperties": [],
       "stringProperties": [],
@@ -76,12 +76,12 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "GenericCompliment",
       "width": 0,
-      "x": 169,
-      "y": 453,
+      "x": 409,
+      "y": 686,
       "zOrder": 4,
       "numberProperties": [],
       "stringProperties": [],
@@ -91,12 +91,12 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "Insult",
       "width": 0,
-      "x": 452,
-      "y": 455,
+      "x": 692,
+      "y": 688,
       "zOrder": 6,
       "numberProperties": [],
       "stringProperties": [],
@@ -106,12 +106,12 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "Mood",
       "width": 0,
-      "x": 556,
-      "y": 134,
+      "x": 796,
+      "y": 367,
       "zOrder": 7,
       "numberProperties": [],
       "stringProperties": [],
@@ -121,12 +121,12 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "BlueSweater",
       "width": 0,
-      "x": 590,
-      "y": 458,
+      "x": 830,
+      "y": 691,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -136,13 +136,43 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "",
+      "layer": "Text",
       "locked": false,
       "name": "Answers",
       "width": 0,
-      "x": 625,
-      "y": 341,
+      "x": 865,
+      "y": 574,
       "zOrder": 9,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1080,
+      "layer": "Text",
+      "locked": false,
+      "name": "Res",
+      "width": 1440,
+      "x": 0,
+      "y": 0,
+      "zOrder": 10,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1080,
+      "layer": "",
+      "locked": false,
+      "name": "Res",
+      "width": 1440,
+      "x": 0,
+      "y": 0,
+      "zOrder": 10,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -296,6 +326,45 @@
         "g": 0,
         "r": 0
       }
+    },
+    {
+      "name": "Res",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "assets\\res.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "events": [
@@ -438,6 +507,71 @@
     {
       "disabled": false,
       "folded": false,
+      "type": "BuiltinCommonInstructions::ForEach",
+      "object": "Res",
+      "conditions": [],
+      "actions": [],
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "CameraX"
+              },
+              "parameters": [
+                "",
+                "=",
+                "Res.PointX(\"Center\")",
+                "Res.Layer()",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "CameraY"
+              },
+              "parameters": [
+                "",
+                "=",
+                "Res.PointY(\"Center\")",
+                "Res.Layer()",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Cache"
+              },
+              "parameters": [
+                "Res"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [],
+      "events": []
+    },
+    {
+      "disabled": false,
+      "folded": false,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -566,6 +700,17 @@
                 "PC",
                 "=",
                 "DialogueTree::LineText()"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Montre"
+              },
+              "parameters": [
+                "PC",
+                ""
               ],
               "subInstructions": []
             }
@@ -764,7 +909,7 @@
         },
         {
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -878,7 +1023,7 @@
             },
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -1128,26 +1273,6 @@
                           },
                           "parameters": [
                             "Variable(FoundIndex)"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Montre"
-                          },
-                          "parameters": [
-                            "PC",
-                            ""
                           ],
                           "subInstructions": []
                         }
@@ -1548,6 +1673,12 @@
           "width": 0
         }
       ],
+      "effects": []
+    },
+    {
+      "name": "Text",
+      "visibility": true,
+      "cameras": [],
       "effects": []
     }
   ],

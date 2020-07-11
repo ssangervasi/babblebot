@@ -15,7 +15,7 @@
     "orientation": "landscape",
     "packageName": "com.example.gamename",
     "projectFile": "C:\\Users\\Sebastian\\workspace\\gmtk-2020\\game.json",
-    "scaleMode": "nearest",
+    "scaleMode": "linear",
     "sizeOnStartupMode": "adaptWidth",
     "useExternalSourceFiles": false,
     "version": "1.0.0",
@@ -23,8 +23,8 @@
     "winExecutableIconFile": "",
     "name": "GMTK-2020",
     "author": "Sebastian Sangervasi & Nicole Van Meter",
-    "windowWidth": 800,
-    "windowHeight": 600,
+    "windowWidth": 1440,
+    "windowHeight": 1080,
     "latestCompilationDirectory": "",
     "maxFPS": 60,
     "minFPS": 20,
@@ -115,6 +115,15 @@
         "kind": "json",
         "metadata": "",
         "name": "NewFile.json",
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/res.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\res.png",
+        "smoothed": true,
         "userAdded": true
       }
     ],
