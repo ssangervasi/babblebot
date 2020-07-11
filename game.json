@@ -268,6 +268,42 @@
         "name": "assets\\placeholders\\deck.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/BadHeart.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\BadHeart.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/ConfidenceMeter.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\ConfidenceMeter.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/ConfidenceMeterFill.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\ConfidenceMeterFill.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/ui_elements/PlaySlot.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\ui_elements\\PlaySlot.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -285,7 +321,12 @@
       "referenceTo": "/layouts/new-scene"
     }
   ],
-  "externalEvents": [],
+  "externalEvents": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalEvents/__workaround__"
+    }
+  ],
   "eventsFunctionsExtensions": [
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
