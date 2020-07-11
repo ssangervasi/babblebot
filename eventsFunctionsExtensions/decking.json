@@ -40,6 +40,19 @@
                     "-1"
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "HasText",
+                    "=",
+                    "\"false\""
+                  ],
+                  "subInstructions": []
                 }
               ],
               "events": []
@@ -158,7 +171,7 @@
           "fullName": "SetInstanceId",
           "functionType": "Action",
           "name": "SetInstanceId",
-          "sentence": "_PARAM0_ SetInstanceId_PARAM2_",
+          "sentence": "_PARAM0_ SetInstanceId _PARAM2_",
           "events": [
             {
               "disabled": false,
@@ -172,7 +185,7 @@
                   },
                   "parameters": [
                     "Object",
-                    "SetInstanceId",
+                    "InstanceId",
                     "!=",
                     "-1"
                   ],
@@ -187,7 +200,7 @@
                   },
                   "parameters": [
                     "",
-                    "\"SetInstanceId to \" + ToString(GetArgumentAsNumber(\"InstanceId\")) + \" but index was already \" + ToString(Object.Variable(InstanceId))",
+                    "\"SetInstanceId to \" + ToString(GetArgumentAsNumber(\"InstanceId\")) + \" but id was already \" + ToString(Object.Variable(InstanceId))",
                     ""
                   ],
                   "subInstructions": []
@@ -215,7 +228,29 @@
                   "subInstructions": []
                 }
               ],
-              "events": []
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"SetInstanceId to \" + ToString(GetArgumentAsNumber(\"InstanceId\")) + \" and it became \" + ToString(Object.Variable(InstanceId))",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
             }
           ],
           "parameters": [
@@ -268,10 +303,10 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "SetReturnString"
+                    "value": "SetReturnNumber"
                   },
                   "parameters": [
-                    "Object.VariableString(InstanceId)"
+                    "Object.Variable(InstanceId)"
                   ],
                   "subInstructions": []
                 }
@@ -392,6 +427,290 @@
               "optional": false,
               "supplementaryInformation": "",
               "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "manageText",
+          "functionType": "Action",
+          "name": "manageText",
+          "sentence": "_PARAM0_ manageText _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "HasText",
+                    "=",
+                    "\"false\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "CollisionNP"
+                      },
+                      "parameters": [
+                        "Object",
+                        "CardText",
+                        "",
+                        "",
+                        "yes"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "LinkedObjects::LinkObjects"
+                          },
+                          "parameters": [
+                            "",
+                            "Object",
+                            "CardText"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "HasText",
+                            "=",
+                            "\"true\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "HasText",
+                    "=",
+                    "\"true\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                  },
+                  "parameters": [
+                    "",
+                    "CardText",
+                    "Object"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CollisionNP"
+                      },
+                      "parameters": [
+                        "Object",
+                        "CardText",
+                        "",
+                        "",
+                        "yes"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "CardText",
+                        "=",
+                        "Object.X()",
+                        "=",
+                        "Object.Y()"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ChangePlan"
+                      },
+                      "parameters": [
+                        "CardText",
+                        "=",
+                        "Object.ZOrder() + 100"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "ToString(CardText.X()) + \", \" + ToString(CardText.Y())",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CollisionNP"
+                      },
+                      "parameters": [
+                        "Object",
+                        "CardText",
+                        "",
+                        "",
+                        "yes"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Behave: \" + Object.Behavior::Id() + ToString(Object.Behavior::InstanceId())",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "CardText",
+                        "=",
+                        "Object.Behavior::Id() + ToString(Object.Behavior::InstanceId)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "decking::Card",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "CardText",
+              "longDescription": "",
+              "name": "CardText",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "objectList"
             }
           ],
           "objectGroups": []
@@ -529,7 +848,7 @@
                   "parameters": [
                     "CardObject",
                     "CardBehavior",
-                    "Variable(BuildIndex)",
+                    "Object.Variable(BuildIndex)",
                     ""
                   ],
                   "subInstructions": []
@@ -573,6 +892,27 @@
                   "events": []
                 }
               ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "decking::Deck::shuffle"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ],
           "parameters": [
@@ -620,11 +960,11 @@
           "objectGroups": []
         },
         {
-          "description": "drawCard",
-          "fullName": "drawCard",
+          "description": "stackCard",
+          "fullName": "stackCard",
           "functionType": "Action",
           "name": "stackCard",
-          "sentence": "_PARAM0_ drawCard _PARAM2_",
+          "sentence": "_PARAM0_ stackCard _PARAM2_",
           "events": [
             {
               "disabled": false,
@@ -707,7 +1047,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [deck] = objects\nconst instanceId = deck.getVariableNumber(\"CardInstanceId\")\nif (deck.cardInstanceIds.include(instanceId)) {\n    console.warn(\"Deck already includes card\", { instanceId })\n}\ndeck.cardInstancesIds.push(instanceId)",
+              "inlineCode": "const [deck] = objects\nconst instanceIdVar = deck.getVariables().get('CardInstanceId')\nconst instanceId = instanceIdVar.getAsNumber()\nif (deck.cardInstanceIds.includes(instanceId)) {\n    console.warn(\"Deck already includes card\", { instanceId })\n}\ndeck.cardInstanceIds.push(instanceId)",
               "parameterObjects": "Object",
               "useStrict": true
             }
@@ -757,17 +1097,17 @@
           "objectGroups": []
         },
         {
-          "description": "stackCard",
-          "fullName": "stackCard",
+          "description": "drawCard",
+          "fullName": "drawCard",
           "functionType": "Action",
           "name": "drawCard",
-          "sentence": "_PARAM0_ stackCard _PARAM2_",
+          "sentence": "_PARAM0_ drawCard _PARAM2_",
           "events": [
             {
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [deck] = objects\nif (deck.cardInstanceIds.length === 0) {\n    console.warn(\"Tried to draw card from empty deck\")\n    deck.setVariableNumber(\"LastDrawnInstanceId\", -1)\n    return\n}\nconst instanceId = deck.cardInstanceIds.pop()\ndeck.setVariableNumber(\"LastDrawnInstanceId\", instanceId)",
+              "inlineCode": "const [deck] = objects\nconst lastDrawnVar = deck.getVariables().get('LastDrawnInstanceId')\nif (deck.cardInstanceIds.length === 0) {\n    console.warn('Tried to draw card from empty deck')\n    lastDrawnVar.setNumber(-1)\n    return\n}\nconst instanceId = deck.cardInstanceIds.pop()\nlastDrawnVar.setNumber(instanceId)",
               "parameterObjects": "Object",
               "useStrict": true
             },
@@ -1167,7 +1507,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::Deck::stackCard"
+                    "value": "decking::Deck::drawCard"
                   },
                   "parameters": [
                     "DeckObject",
@@ -1198,7 +1538,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [hand] = objects\nconst instanceId = hand.getVariableNumber(\"LastDrawnInstanceId\")\nconsole.log(\"Hand drew card\", { instanceId })\nhand.cardInstanceIds.push(instanceId)",
+              "inlineCode": "const [hand] = objects\nconst instanceIdVar = hand.getVariables().get('LastDrawnInstanceId')\nconst instanceId = instanceIdVar.getAsNumber()\nconsole.log(\"Hand drew card\", { instanceId })\nhand.cardInstanceIds.push(instanceId)",
               "parameterObjects": "Object",
               "useStrict": true
             },
@@ -1263,7 +1603,7 @@
                         "CardObject",
                         "Object.X()",
                         "Object.Y() + ((1/2) * Object.Height())",
-                        "CardObject.Width() * Object.Behavior::Size()",
+                        "CardObject.Width() * 2 * Object.Behavior::Size()",
                         "0"
                       ],
                       "subInstructions": []

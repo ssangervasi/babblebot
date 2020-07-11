@@ -22,7 +22,7 @@
     "gridWidth": 32,
     "snap": true,
     "windowMask": false,
-    "zoomFactor": 0.52
+    "zoomFactor": 0.472
   },
   "objectsGroups": [
     {
@@ -109,7 +109,7 @@
       "layer": "Text",
       "locked": true,
       "name": "Res",
-      "width": 1440,
+      "width": 1920,
       "x": 0,
       "y": 0,
       "zOrder": 10,
@@ -124,7 +124,7 @@
       "layer": "",
       "locked": true,
       "name": "Res",
-      "width": 1440,
+      "width": 1920,
       "x": 0,
       "y": 0,
       "zOrder": 10,
@@ -140,7 +140,7 @@
       "locked": false,
       "name": "CardPool",
       "width": 1398,
-      "x": -41,
+      "x": -45,
       "y": -961,
       "zOrder": 0,
       "numberProperties": [],
@@ -155,8 +155,8 @@
       "locked": false,
       "name": "CardPoolTitle",
       "width": 0,
-      "x": -24,
-      "y": -987,
+      "x": -18,
+      "y": -1002,
       "zOrder": 12,
       "numberProperties": [],
       "stringProperties": [],
@@ -220,8 +220,8 @@
       "locked": false,
       "name": "Card",
       "width": 0,
-      "x": 73,
-      "y": -847,
+      "x": 69,
+      "y": -741,
       "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
@@ -240,8 +240,8 @@
       "locked": false,
       "name": "Card",
       "width": 0,
-      "x": 65,
-      "y": -827,
+      "x": 80,
+      "y": -620,
       "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
@@ -334,6 +334,101 @@
       "y": 670,
       "zOrder": 19,
       "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "CardText",
+      "width": 0,
+      "x": 306,
+      "y": -822,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "CardText",
+      "width": 0,
+      "x": 68,
+      "y": -583,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "CardText",
+      "width": 0,
+      "x": 56,
+      "y": -706,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "CardText",
+      "width": 0,
+      "x": 73,
+      "y": -840,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "CardText",
+      "width": 0,
+      "x": 207,
+      "y": -824,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1080,
+      "layer": "Cards",
+      "locked": true,
+      "name": "Res",
+      "width": 1920,
+      "x": 0,
+      "y": 0,
+      "zOrder": 21,
+      "numberProperties": [
+        {
+          "name": "animation",
+          "value": 0
+        }
+      ],
       "stringProperties": [],
       "initialVariables": []
     }
@@ -493,7 +588,12 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "Deck",
+          "type": "decking::Deck"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -580,6 +680,50 @@
                 {
                   "hasCustomCollisionMask": false,
                   "image": "assets\\placeholders\\deck.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hand",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "behaviors": [
+        {
+          "name": "Hand",
+          "type": "decking::Hand"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "assets\\placeholders\\hand.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -698,46 +842,34 @@
       }
     },
     {
-      "name": "Hand",
+      "bold": false,
+      "italic": false,
+      "name": "CardText",
+      "smoothed": true,
       "tags": "",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
+      "type": "TextObject::Text",
+      "underlined": false,
       "variables": [],
       "behaviors": [],
-      "animations": [
-        {
-          "name": "",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\placeholders\\hand.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "string": "CardText",
+      "font": "",
+      "characterSize": 20,
+      "color": {
+        "b": 0,
+        "g": 0,
+        "r": 0
+      }
     }
   ],
   "events": [
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [],
+      "events": []
+    },
     {
       "colorB": 228,
       "colorG": 176,
@@ -769,10 +901,115 @@
             {
               "type": {
                 "inverted": false,
-                "value": "utils::shuffle"
+                "value": "decking::Card::manageText"
+              },
+              "parameters": [
+                "Card",
+                "Card",
+                "CardText",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::Deck::build"
+              },
+              "parameters": [
+                "Deck",
+                "Deck",
+                "Card",
+                "Card",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::Card::manageText"
+              },
+              "parameters": [
+                "Card",
+                "Card",
+                "CardText",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": true,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Card",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SourisSurObjet"
+              },
+              "parameters": [
+                "Deck",
+                "",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "MouseButtonReleased"
               },
               "parameters": [
                 "",
+                "Left"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::Hand::drawFrom"
+              },
+              "parameters": [
+                "Hand",
+                "Hand",
+                "Card",
+                "Card",
+                "Deck",
+                "Deck",
                 ""
               ],
               "subInstructions": []
@@ -789,6 +1026,77 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
+      "folded": false,
+      "name": "Res",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Res",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "CameraX"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Res.PointX(\"Center\")",
+                    "Res.Layer()",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "CameraY"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Res.PointY(\"Center\")",
+                    "Res.Layer()",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "Res"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": true,
       "folded": false,
       "name": "Dialog",
       "source": "",
@@ -934,63 +1242,6 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [],
-              "events": []
-            }
-          ]
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Res",
-          "conditions": [],
-          "actions": [],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "CameraX"
-                  },
-                  "parameters": [
-                    "",
-                    "=",
-                    "Res.PointX(\"Center\")",
-                    "Res.Layer()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "CameraY"
-                  },
-                  "parameters": [
-                    "",
-                    "=",
-                    "Res.PointY(\"Center\")",
-                    "Res.Layer()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Cache"
-                  },
-                  "parameters": [
-                    "Res"
-                  ],
-                  "subInstructions": []
-                }
-              ],
               "events": []
             }
           ]
@@ -2071,13 +2322,13 @@
       "effects": []
     },
     {
-      "name": "Text",
+      "name": "Cards",
       "visibility": true,
       "cameras": [],
       "effects": []
     },
     {
-      "name": "Cards",
+      "name": "Text",
       "visibility": true,
       "cameras": [],
       "effects": []
@@ -2087,6 +2338,14 @@
     {
       "name": "Card",
       "type": "decking::Card"
+    },
+    {
+      "name": "Deck",
+      "type": "decking::Deck"
+    },
+    {
+      "name": "Hand",
+      "type": "decking::Hand"
     }
   ]
 }
