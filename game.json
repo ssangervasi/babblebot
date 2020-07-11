@@ -14,7 +14,7 @@
     "macExecutableFilename": "",
     "orientation": "landscape",
     "packageName": "com.example.gamename",
-    "projectFile": "C:\\Users\\nvanm\\Documents\\gmtk-2020\\game.json",
+    "projectFile": "C:\\Users\\Sebastian\\workspace\\gmtk-2020\\game.json",
     "scaleMode": "linear",
     "sizeOnStartupMode": "adaptWidth",
     "useExternalSourceFiles": false,
@@ -23,7 +23,7 @@
     "winExecutableIconFile": "",
     "name": "GMTK-2020",
     "author": "Sebastian Sangervasi & Nicole Van Meter",
-    "windowWidth": 1440,
+    "windowWidth": 1920,
     "windowHeight": 1080,
     "latestCompilationDirectory": "",
     "maxFPS": 60,
@@ -125,6 +125,41 @@
         "name": "assets\\res.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/deck.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\deck.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/card.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\card.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "disablePreload": false,
+        "file": "dialogues/decking.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "dialogues\\decking.json",
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/hand.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\hand.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -135,7 +170,7 @@
   "layouts": [
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/artscene"
+      "referenceTo": "/layouts/decking"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
@@ -147,6 +182,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/utils"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/decking"
     }
   ],
   "externalLayouts": [],
