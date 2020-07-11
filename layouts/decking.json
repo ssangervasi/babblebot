@@ -12,7 +12,7 @@
   "title": "",
   "v": 209,
   "uiSettings": {
-    "grid": true,
+    "grid": false,
     "gridB": 255,
     "gridG": 180,
     "gridHeight": 10,
@@ -20,9 +20,9 @@
     "gridOffsetY": 0,
     "gridR": 158,
     "gridWidth": 10,
-    "snap": true,
+    "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.64
+    "zoomFactor": 0.496
   },
   "objectsGroups": [
     {
@@ -50,8 +50,8 @@
       "locked": false,
       "name": "NPC",
       "width": 0,
-      "x": 902,
-      "y": 392,
+      "x": 780,
+      "y": 400,
       "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
@@ -80,8 +80,8 @@
       "locked": false,
       "name": "Mood",
       "width": 67,
-      "x": 1732,
-      "y": 101,
+      "x": 2140,
+      "y": 159,
       "zOrder": 7,
       "numberProperties": [],
       "stringProperties": [],
@@ -368,6 +368,231 @@
       "x": 0,
       "y": 0,
       "zOrder": 23,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 251,
+      "layer": "Cards",
+      "locked": false,
+      "name": "HandSlot",
+      "width": 374,
+      "x": 85,
+      "y": 282,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 230,
+      "layer": "Cards",
+      "locked": false,
+      "name": "HandSlot",
+      "width": 360,
+      "x": 90,
+      "y": 550,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 230,
+      "layer": "Cards",
+      "locked": false,
+      "name": "HandSlot",
+      "width": 360,
+      "x": 90,
+      "y": 800,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeter",
+      "width": 0,
+      "x": 1786,
+      "y": 13,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 968,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 60,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 156,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 253,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 349,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 446,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 543,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 639,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 777,
+      "zOrder": 25,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "Text",
+      "locked": false,
+      "name": "Heart",
+      "width": 0,
+      "x": 1944,
+      "y": 77,
+      "zOrder": 26,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 67,
+      "layer": "Text",
+      "locked": false,
+      "name": "MoodMeterSlot",
+      "width": 72,
+      "x": 1800,
+      "y": 872,
+      "zOrder": 25,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -743,6 +968,123 @@
       ]
     },
     {
+      "name": "HandSlot",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "Inactive",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "assets\\res.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MoodMeterSlot",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "Inactive",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "assets\\res.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MoodMeter",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\ui_elements\\MoodMeter.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "CardPool",
       "tags": "",
       "type": "Sprite",
@@ -787,7 +1129,12 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "HiddenAtRuntime",
+          "type": "utils::HiddenAtRuntime"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -935,6 +1282,45 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Heart",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "Good",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\ui_elements\\GoodHeart.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "events": [
@@ -952,7 +1338,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Res",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -996,16 +1382,6 @@
                     "Res.PointY(\"Center\")",
                     "Res.Layer()",
                     ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Cache"
-                  },
-                  "parameters": [
-                    "Res"
                   ],
                   "subInstructions": []
                 }
@@ -2764,13 +3140,13 @@
   "layers": [
     {
       "name": "OffScreen",
-      "visibility": true,
+      "visibility": false,
       "cameras": [],
       "effects": []
     },
     {
       "name": "",
-      "visibility": true,
+      "visibility": false,
       "cameras": [
         {
           "defaultSize": true,
@@ -2787,7 +3163,7 @@
     },
     {
       "name": "Cards",
-      "visibility": true,
+      "visibility": false,
       "cameras": [],
       "effects": []
     },
@@ -2810,6 +3186,10 @@
     {
       "name": "Hand",
       "type": "decking::Hand"
+    },
+    {
+      "name": "HiddenAtRuntime",
+      "type": "utils::HiddenAtRuntime"
     }
   ]
 }
