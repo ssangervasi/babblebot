@@ -4700,7 +4700,7 @@
                       "colorR": 74,
                       "creationTime": 0,
                       "disabled": false,
-                      "folded": true,
+                      "folded": false,
                       "name": "Calculate score",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -4913,7 +4913,7 @@
                               "parameters": [
                                 "Score",
                                 "+",
-                                "abs(0.25 * Variable(Score)) * Variable(Confidence) "
+                                "(0.25 * Variable(Score)) * Variable(Confidence) "
                               ],
                               "subInstructions": []
                             }
@@ -6057,7 +6057,7 @@
     },
     {
       "name": "Text",
-      "visibility": false,
+      "visibility": true,
       "cameras": [],
       "effects": []
     }

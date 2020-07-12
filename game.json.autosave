@@ -623,45 +623,10 @@
         "userAdded": true
       },
       {
-        "file": "assets/fonts/AmazingMother-z89Pa.ttf",
-        "kind": "font",
-        "metadata": "",
-        "name": "assets\\fonts\\AmazingMother-z89Pa.ttf",
-        "userAdded": true
-      },
-      {
-        "file": "assets/fonts/AwareBold-qZo3x.ttf",
-        "kind": "font",
-        "metadata": "",
-        "name": "assets\\fonts\\AwareBold-qZo3x.ttf",
-        "userAdded": false
-      },
-      {
-        "file": "assets/fonts/ProcrastinatingPixie-WyVOO.ttf",
-        "kind": "font",
-        "metadata": "",
-        "name": "assets\\fonts\\ProcrastinatingPixie-WyVOO.ttf",
-        "userAdded": false
-      },
-      {
-        "file": "assets/fonts/AmazingMother-jEVll.otf",
-        "kind": "font",
-        "metadata": "",
-        "name": "assets\\fonts\\AmazingMother-jEVll.otf",
-        "userAdded": true
-      },
-      {
         "file": "assets/fonts/really-font/ReallyFree-ALwl7.ttf",
         "kind": "font",
         "metadata": "",
         "name": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
-        "userAdded": true
-      },
-      {
-        "file": "assets/fonts/aware-font/AwareBold-qZo3x.ttf",
-        "kind": "font",
-        "metadata": "",
-        "name": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
         "userAdded": true
       },
       {
@@ -771,6 +736,34 @@
         "name": "art\\backdrops\\Endings\\1_neutral_ending.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "file": "assets/fonts/a-amazing-mother-font/AmazingMother-jEVll.otf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\a-amazing-mother-font\\AmazingMother-jEVll.otf",
+        "userAdded": true
+      },
+      {
+        "file": "assets/fonts/a-amazing-mother-font/AmazingMother-z89Pa.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\a-amazing-mother-font\\AmazingMother-z89Pa.ttf",
+        "userAdded": true
+      },
+      {
+        "file": "assets/fonts/aware-font/AwareBold-qZo3x.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
+        "userAdded": true
+      },
+      {
+        "file": "assets/fonts/pro-pixie-font/ProcrastinatingPixie-WyVOO.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\pro-pixie-font\\ProcrastinatingPixie-WyVOO.ttf",
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -7767,7 +7760,7 @@
         },
         {
           "name": "Text",
-          "visibility": false,
+          "visibility": true,
           "cameras": [],
           "effects": []
         }
@@ -10084,7 +10077,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "// const rawScoreTable = runtimeScene.getVariables().get(\"RawScoreTable\").getAsString()\nconst cardTags = eventsFunctionContext.getArgument('CardTags')\nconst characterTags = eventsFunctionContext.getArgument('CharacterTags')\nconst nodeTags = eventsFunctionContext.getArgument('NodeTags')\n\nconsole.log('calculating score', {\n    cardTags,\n    characterTags,\n    nodeTags\n})\n\neventsFunctionContext.returnValue = (() => {\n    const CS = global.ssangervasi.cardScores\n    const scoreTable = global.ssangervasi.scoreTable\n    if (!(CS && scoreTable)) {\n        console.error(\"Oh no no libs or data!\", {CS, scoreTable})\n        return 0\n    }\n    return CS.calculateScore(\n        cardTags,\n        characterTags,\n        nodeTags,\n        scoreTable\n    )\n})()\n",
+              "inlineCode": "// const rawScoreTable = runtimeScene.getVariables().get(\"RawScoreTable\").getAsString()\nconst cardTags = eventsFunctionContext.getArgument('CardTags')\nconst characterTags = eventsFunctionContext.getArgument('CharacterTags')\nlet nodeTags = eventsFunctionContext.getArgument('NodeTags')\n\nnodeTags = nodeTags.split(/,+/).join(' ')\n\nconsole.log('calculating score', {\n    cardTags,\n    characterTags,\n    nodeTags\n})\n\neventsFunctionContext.returnValue = (() => {\n    const CS = global.ssangervasi.cardScores\n    const scoreTable = global.ssangervasi.scoreTable\n    if (!(CS && scoreTable)) {\n        console.error(\"Oh no no libs or data!\", {CS, scoreTable})\n        return 0\n    }\n    return CS.calculateScore(\n        cardTags,\n        characterTags,\n        nodeTags,\n        scoreTable\n    )\n})()\n",
               "parameterObjects": "",
               "useStrict": true
             },
