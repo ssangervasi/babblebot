@@ -4182,7 +4182,7 @@
                           "parameters": [
                             "PC",
                             "=",
-                            "VariableString(ChosenCardText)"
+                            "decking::botText(VariableString(ChosenCardText), Variable(Confidence))"
                           ],
                           "subInstructions": []
                         },
@@ -4260,7 +4260,7 @@
                           "parameters": [
                             "PC",
                             "=",
-                            "\"wat\""
+                            "\"\""
                           ],
                           "subInstructions": []
                         }

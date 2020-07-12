@@ -299,6 +299,66 @@
       ],
       "parameters": [],
       "objectGroups": []
+    },
+    {
+      "description": "botText _PARAM0_ ",
+      "fullName": "botText",
+      "functionType": "StringExpression",
+      "name": "botText",
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "utils::importLodash"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const text = eventsFunctionContext.getArgument('Text') || ''\nconst characterTags = eventsFunctionContext.getArgument('Confidence') || 0\n\nconst words = text.split(/\\s+/)\nconst digitWords = (\n    words\n    .map(\n        w => w.split(/./).map(_ => Math.random() < .5 ? '0' : '1').join('')\n    )\n)\neventsFunctionContext.returnValue = digitWords.join(' ')",
+          "parameterObjects": "",
+          "useStrict": true
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Text",
+          "longDescription": "",
+          "name": "Text",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Confidence",
+          "longDescription": "",
+          "name": "Confidence",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
     }
   ],
   "eventsBasedBehaviors": [
