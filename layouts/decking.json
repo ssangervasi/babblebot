@@ -1150,7 +1150,7 @@
           ]
         },
         {
-          "name": "describe_family",
+          "name": "provide_information_family",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1179,7 +1179,7 @@
           ]
         },
         {
-          "name": "describe_hobbies",
+          "name": "provide_information_hobbies",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1208,7 +1208,7 @@
           ]
         },
         {
-          "name": "describe_job",
+          "name": "provide_information_job",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1440,7 +1440,7 @@
           ]
         },
         {
-          "name": "icebreaker_hobbies",
+          "name": "break_ice_hobbies",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1469,7 +1469,7 @@
           ]
         },
         {
-          "name": "icebreaker_politics",
+          "name": "break_ice_politics",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1498,7 +1498,7 @@
           ]
         },
         {
-          "name": "icebreaker_sports",
+          "name": "break_ice_sports",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1527,36 +1527,7 @@
           ]
         },
         {
-          "name": "icebreaker_sports",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "art\\cards\\icebreaker_sports.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "icebreaker_weather",
+          "name": "break_ice_weather",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -1798,6 +1769,64 @@
                 {
                   "hasCustomCollisionMask": false,
                   "image": "art\\cards\\talk_about_self.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "compliment_style",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\cards\\compliment_appearance.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "learn_more_education",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\cards\\learn_more.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2433,7 +2462,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\Characters\\Amy_neutral.png",
+                  "image": "art\\Characters\\Amy_happy.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2462,7 +2491,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\Characters\\Amy_neutral.png",
+                  "image": "art\\Characters\\Amy_angry.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",

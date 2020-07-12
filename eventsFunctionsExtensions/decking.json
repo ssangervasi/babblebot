@@ -1094,6 +1094,19 @@
                     "\"give_compliment\""
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "utils::log"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Failed animation: \" + Object.Behavior::Id()",
+                    "1",
+                    ""
+                  ],
+                  "subInstructions": []
                 }
               ],
               "events": []

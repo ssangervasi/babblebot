@@ -764,6 +764,24 @@
         "metadata": "",
         "name": "assets\\fonts\\pro-pixie-font\\ProcrastinatingPixie-WyVOO.ttf",
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Characters/Amy_angry.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Characters\\Amy_angry.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Characters/Amy_happy.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Characters\\Amy_happy.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -4136,7 +4154,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "art\\Characters\\Amy_neutral.png",
+                      "image": "art\\Characters\\Amy_happy.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -4165,7 +4183,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "art\\Characters\\Amy_neutral.png",
+                      "image": "art\\Characters\\Amy_angry.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -9470,7 +9488,7 @@
                   "events": []
                 },
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -9495,6 +9513,40 @@
                       "parameters": [
                         "Object",
                         "\"give_compliment\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "AnimationName"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Object.Behavior::Id()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Failed animation: \" + Object.Behavior::Id()",
+                        "1",
+                        ""
                       ],
                       "subInstructions": []
                     }

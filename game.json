@@ -764,6 +764,24 @@
         "metadata": "",
         "name": "assets\\fonts\\pro-pixie-font\\ProcrastinatingPixie-WyVOO.ttf",
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Characters/Amy_angry.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Characters\\Amy_angry.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Characters/Amy_happy.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Characters\\Amy_happy.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
