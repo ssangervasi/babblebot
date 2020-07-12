@@ -136,33 +136,6 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "assets/placeholders/cards/generic_compliment.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\cards\\generic_compliment.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/cards/blue_sweater.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\cards\\blue_sweater.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/cards/insult.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\cards\\insult.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
         "file": "art/ui_elements/CardBack.png",
         "kind": "image",
         "metadata": "",
@@ -199,33 +172,6 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "art/backdrops/Outside.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\backdrops\\Outside.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "art/backdrops/Restaurant.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\backdrops\\Restaurant.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "art/test_layouts.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\test_layouts.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
         "file": "art/ui_elements/GoodHeart.png",
         "kind": "image",
         "metadata": "",
@@ -248,24 +194,6 @@
         "kind": "image",
         "metadata": "",
         "name": "art\\ui_elements\\TextBox.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/card.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\card.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/deck.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\deck.png",
         "smoothed": true,
         "userAdded": false
       },
@@ -333,6 +261,438 @@
         "metadata": "",
         "name": "sound\\Basic_Encounter_Sketch.wav",
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Outside.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Outside.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Restaurant.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Restaurant.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/agree_neutral.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\agree_neutral.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/agree_softly.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\agree_softly.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/agree_strongly.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\agree_strongly.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/change_subject.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\change_subject.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/clarifying_question.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\clarifying_question.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/compliment_appearance.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\compliment_appearance.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/compliment_behavior.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\compliment_behavior.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/compliment_intellect.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\compliment_intellect.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/compliment_social_standing.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\compliment_social_standing.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/describe_family.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\describe_family.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/describe_hobbies.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\describe_hobbies.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/describe_job.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\describe_job.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/disagree_neutral.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\disagree_neutral.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/disagree_strongly.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\disagree_strongly.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/Express_disdain.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\Express_disdain.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/express_empathy.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\express_empathy.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/Express_Gratitude.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\Express_Gratitude.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/express_sympathy.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\express_sympathy.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/give_compliment.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\give_compliment.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/icebreaker_hobbies.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\icebreaker_hobbies.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/icebreaker_politics.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\icebreaker_politics.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/icebreaker_sports.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\icebreaker_sports.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/icebreaker_weather.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\icebreaker_weather.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/indicate_agreement.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\indicate_agreement.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/learn_more_family.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\learn_more_family.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/learn_more_hobbies.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\learn_more_hobbies.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/learn_more_job.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\learn_more_job.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/learn_more_personal.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\learn_more_personal.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/learn_more.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\learn_more.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/respond_emotionally.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\respond_emotionally.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/talk_about_self.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\talk_about_self.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/full_layout.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\full_layout.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/test_layouts.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\test_layouts.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/card.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\card.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/blue_sweater.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\blue_sweater.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/generic_compliment.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\generic_compliment.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/cards/insult.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\cards\\insult.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/deck.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\deck.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/hand.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\hand.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/@jest/core/build/assets/jest_logo.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\@jest\\core\\build\\assets\\jest_logo.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/growly/example/cake.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\growly\\example\\cake.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/growly/example/muffin.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\growly\\example\\muffin.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/istanbul-reports/lib/html-spa/assets/sort-arrow-sprite.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\istanbul-reports\\lib\\html-spa\\assets\\sort-arrow-sprite.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/istanbul-reports/lib/html/assets/favicon.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\istanbul-reports\\lib\\html\\assets\\favicon.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/istanbul-reports/lib/html/assets/sort-arrow-sprite.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\istanbul-reports\\lib\\html\\assets\\sort-arrow-sprite.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "ts/node_modules/ndb/front_end/favicon.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "ts\\node_modules\\ndb\\front_end\\favicon.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []

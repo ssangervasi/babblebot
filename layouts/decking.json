@@ -22,7 +22,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.568
+    "zoomFactor": 0.616
   },
   "objectsGroups": [],
   "variables": [],
@@ -774,29 +774,12 @@
           "useMultipleDirections": false,
           "directions": [
             {
-              "looping": true,
+              "looping": false,
               "timeBetweenFrames": 0.335,
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\CardFront.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\CardBack.png",
+                  "image": "art\\cards\\give_compliment.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -820,7 +803,7 @@
           "useMultipleDirections": false,
           "directions": [
             {
-              "looping": true,
+              "looping": false,
               "timeBetweenFrames": 0.22,
               "sprites": [
                 {
@@ -866,7 +849,7 @@
           "useMultipleDirections": false,
           "directions": [
             {
-              "looping": true,
+              "looping": false,
               "timeBetweenFrames": 0.12,
               "sprites": [
                 {
