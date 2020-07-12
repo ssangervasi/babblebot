@@ -576,7 +576,7 @@
         "gridWidth": 10,
         "snap": false,
         "windowMask": false,
-        "zoomFactor": 0.688
+        "zoomFactor": 0.808
       },
       "objectsGroups": [],
       "variables": [],
@@ -883,168 +883,28 @@
         },
         {
           "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 973,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 65,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 161,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 258,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 354,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 451,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 548,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 644,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 782,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
           "customSize": false,
           "height": 0,
           "layer": "UI",
           "locked": false,
           "name": "Heart",
           "width": 0,
-          "x": 1688,
-          "y": -228,
+          "x": 1812,
+          "y": 971,
           "zOrder": 26,
-          "numberProperties": [],
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 1
+            }
+          ],
           "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 67,
-          "layer": "UI",
-          "locked": false,
-          "name": "MoodMeterSlot",
-          "width": 72,
-          "x": 1810,
-          "y": 877,
-          "zOrder": 25,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "-66"
+            }
+          ]
         },
         {
           "angle": 0,
@@ -1120,6 +980,196 @@
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 62,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "90"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 159,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "75"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 255,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "60"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 352,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "45"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 448,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "30"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 545,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 641,
+          "zOrder": 26,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 779,
+          "zOrder": 26,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 1
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "-1"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "UI",
+          "locked": false,
+          "name": "Heart",
+          "width": 0,
+          "x": 1812,
+          "y": 875,
+          "zOrder": 26,
+          "numberProperties": [
+            {
+              "name": "animation",
+              "value": 1
+            }
+          ],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Threshold",
+              "value": "-33"
+            }
+          ]
         }
       ],
       "objects": [
@@ -2412,45 +2462,6 @@
           ]
         },
         {
-          "name": "MoodMeterSlot",
-          "tags": "",
-          "type": "Sprite",
-          "updateIfNotVisible": false,
-          "variables": [],
-          "behaviors": [],
-          "animations": [
-            {
-              "name": "Inactive",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": false,
-                      "image": "assets\\res.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "centerPoint": {
-                        "automatic": true,
-                        "name": "centre",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "customCollisionMask": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "MoodMeter",
           "tags": "",
           "type": "Sprite",
@@ -2772,7 +2783,14 @@
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "Heart",
+              "type": "decking::Heart",
+              "Mood": 0,
+              "Threshold": 10
+            }
+          ],
           "animations": [
             {
               "name": "Good",
@@ -2927,11 +2945,74 @@
           "tags": "",
           "type": "Sprite",
           "updateIfNotVisible": false,
-          "variables": [],
+          "variables": [
+            {
+              "name": "Tags",
+              "value": "aggression_good appearance_good art_good brains_bad disagree_bad education_bad family_bad flattery_good hobbies_good job_bad nonsequitor_bad politics_bad sports_bad"
+            }
+          ],
           "behaviors": [],
           "animations": [
             {
-              "name": "",
+              "name": "Neutral",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\Characters\\Amy_neutral.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Good",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\Characters\\Amy_neutral.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Bad",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -4072,7 +4153,7 @@
           "events": [
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -4277,7 +4358,7 @@
                           },
                           "parameters": [
                             "",
-                            ".2",
+                            ".15",
                             "\"clipped_text\""
                           ],
                           "subInstructions": []
@@ -4351,7 +4432,20 @@
                       "subInstructions": []
                     }
                   ],
-                  "actions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "LastNPCLine",
+                        "=",
+                        "DialogueTree::ClippedLineText()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
                   "events": [
                     {
                       "disabled": false,
@@ -4400,18 +4494,7 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "DialogueTree::CurrentBranchContainsTag"
-                      },
-                      "parameters": [
-                        "\"pc\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
+                  "conditions": [],
                   "actions": [
                     {
                       "type": {
@@ -4434,38 +4517,6 @@
                         "PC"
                       ],
                       "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "DialogueTree::CurrentBranchContainsTag"
-                      },
-                      "parameters": [
-                        "\"pc\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "TextObject::String"
-                      },
-                      "parameters": [
-                        "PC",
-                        "=",
-                        "DialogueTree::ClippedLineText()"
-                      ],
-                      "subInstructions": []
                     },
                     {
                       "type": {
@@ -4473,7 +4524,7 @@
                         "value": "Montre"
                       },
                       "parameters": [
-                        "PC",
+                        "NPC",
                         ""
                       ],
                       "subInstructions": []
@@ -4546,7 +4597,29 @@
                       "subInstructions": []
                     }
                   ],
-                  "events": []
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "TextObject::String"
+                          },
+                          "parameters": [
+                            "NPC",
+                            "=",
+                            "VariableString(LastNPCLine)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
                 },
                 {
                   "disabled": false,
@@ -4564,13 +4637,123 @@
                         "\"selected\""
                       ],
                       "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::HasSelectedOptionChanged"
+                          },
+                          "parameters": [],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "TextObject::String"
+                          },
+                          "parameters": [
+                            "PC",
+                            "=",
+                            "VariableString(ChosenCardText)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Montre"
+                          },
+                          "parameters": [
+                            "PC",
+                            ""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Cache"
+                          },
+                          "parameters": [
+                            "NPC"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ResetTimer"
+                          },
+                          "parameters": [
+                            "",
+                            "\"pc_text\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
                     },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Timer"
+                          },
+                          "parameters": [
+                            "",
+                            "2",
+                            "\"pc_text\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "SelectionState",
+                            "=",
+                            "\"finished\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
                     {
                       "type": {
                         "inverted": false,
-                        "value": "DialogueTree::HasSelectedOptionChanged"
+                        "value": "VarSceneTxt"
                       },
-                      "parameters": [],
+                      "parameters": [
+                        "SelectionState",
+                        "=",
+                        "\"finished\""
+                      ],
                       "subInstructions": []
                     }
                   ],
@@ -4668,140 +4851,302 @@
                   ],
                   "events": [
                     {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "ChosenCardId",
-                            "=",
-                            "Hand.Hand::LastPlayedInstanceId()"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "Card",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "decking::Card::IsInstance"
-                          },
-                          "parameters": [
-                            "Card",
-                            "Card",
-                            "Variable(ChosenCardId)",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "ChosenCardTags",
-                            "=",
-                            "Card.Card::Tags()"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "RepeatIndex",
-                            "=",
-                            "-1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "GoodIndex",
-                            "=",
-                            "-1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "BadIndex",
-                            "=",
-                            "-1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "NeutralIndex",
-                            "=",
-                            "-1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
                       "disabled": false,
                       "folded": true,
-                      "type": "BuiltinCommonInstructions::Repeat",
-                      "repeatExpression": "DialogueTree::OptionsCount()",
-                      "conditions": [],
-                      "actions": [
+                      "name": "Find dialoge option indexes",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
                         {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "RepeatIndex",
-                            "+",
-                            "1"
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "RepeatIndex",
+                                "=",
+                                "-1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "GoodIndex",
+                                "=",
+                                "-1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "BadIndex",
+                                "=",
+                                "-1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "NeutralIndex",
+                                "=",
+                                "-1"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": true,
+                          "type": "BuiltinCommonInstructions::Repeat",
+                          "repeatExpression": "DialogueTree::OptionsCount()",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "RepeatIndex",
+                                "+",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarSceneTxt"
+                                  },
+                                  "parameters": [
+                                    "OptionName",
+                                    "=",
+                                    "DialogueTree::Option(Variable(RepeatIndex))"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "StrEqual"
+                                  },
+                                  "parameters": [
+                                    "VariableString(OptionName)",
+                                    "=",
+                                    "\"good\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarScene"
+                                  },
+                                  "parameters": [
+                                    "GoodIndex",
+                                    "=",
+                                    "Variable(RepeatIndex)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "StrEqual"
+                                  },
+                                  "parameters": [
+                                    "VariableString(OptionName)",
+                                    "=",
+                                    "\"bad\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarScene"
+                                  },
+                                  "parameters": [
+                                    "BadIndex",
+                                    "=",
+                                    "Variable(RepeatIndex)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "StrEqual"
+                                  },
+                                  "parameters": [
+                                    "VariableString(OptionName)",
+                                    "=",
+                                    "\"neutral\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarScene"
+                                  },
+                                  "parameters": [
+                                    "NeutralIndex",
+                                    "=",
+                                    "Variable(RepeatIndex)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
                         }
                       ],
+                      "parameters": []
+                    },
+                    {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
+                      "disabled": false,
+                      "folded": false,
+                      "name": "Calculate score",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
                       "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "ChosenCardId",
+                                "=",
+                                "Hand.Hand::LastPlayedInstanceId()"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::ForEach",
+                          "object": "Card",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "decking::Card::IsInstance"
+                              },
+                              "parameters": [
+                                "Card",
+                                "Card",
+                                "Variable(ChosenCardId)",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "ChosenCardTags",
+                                "=",
+                                "Card.Card::Tags()"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "ChosenCardText",
+                                "=",
+                                "Card.Card::Text()"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
                         {
                           "disabled": false,
                           "folded": false,
@@ -4814,9 +5159,148 @@
                                 "value": "ModVarSceneTxt"
                               },
                               "parameters": [
-                                "OptionName",
+                                "NodeTags",
                                 "=",
-                                "DialogueTree::Option(Variable(RepeatIndex))"
+                                "DialogueTree::BranchTags()"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Calculating score: \"",
+                                "0",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Card tags: \" + VariableString(ChosenCardTags)",
+                                "0",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Amy tags: \" + Amy.VariableString(Tags)",
+                                "0",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Node tags: \" + VariableString(NodeTags)",
+                                "0",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "Score",
+                                "=",
+                                "decking::calculateScore(VariableString(ChosenCardTags), Amy.VariableString(Tags), VariableString(NodeTags))"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Calculated score: \" +  ToString(Variable(Score))",
+                                "0",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ],
+                      "parameters": []
+                    },
+                    {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
+                      "disabled": false,
+                      "folded": false,
+                      "name": "Use the score to pick an index and change mood",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "Mood",
+                                "+",
+                                "Variable(Score)"
                               ],
                               "subInstructions": []
                             }
@@ -4831,12 +5315,12 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "StrEqual"
+                                "value": "Egal"
                               },
                               "parameters": [
-                                "VariableString(OptionName)",
-                                "=",
-                                "\"good\""
+                                "Variable(Score)",
+                                "<",
+                                "-20"
                               ],
                               "subInstructions": []
                             }
@@ -4845,12 +5329,10 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarScene"
+                                "value": "DialogueTree::SelectOption"
                               },
                               "parameters": [
-                                "GoodIndex",
-                                "=",
-                                "Variable(RepeatIndex)"
+                                "Variable(BadIndex)"
                               ],
                               "subInstructions": []
                             }
@@ -4865,12 +5347,24 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "StrEqual"
+                                "value": "Egal"
                               },
                               "parameters": [
-                                "VariableString(OptionName)",
-                                "=",
-                                "\"bad\""
+                                "-20",
+                                "<=",
+                                "Variable(Score)"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Egal"
+                              },
+                              "parameters": [
+                                "Variable(Score)",
+                                "<=",
+                                "20"
                               ],
                               "subInstructions": []
                             }
@@ -4879,12 +5373,10 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarScene"
+                                "value": "DialogueTree::SelectOption"
                               },
                               "parameters": [
-                                "BadIndex",
-                                "=",
-                                "Variable(RepeatIndex)"
+                                "Variable(NeutralIndex)"
                               ],
                               "subInstructions": []
                             }
@@ -4899,12 +5391,12 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "StrEqual"
+                                "value": "Egal"
                               },
                               "parameters": [
-                                "VariableString(OptionName)",
-                                "=",
-                                "\"neutral\""
+                                "20",
+                                "<",
+                                "Variable(Score)"
                               ],
                               "subInstructions": []
                             }
@@ -4913,176 +5405,147 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarScene"
+                                "value": "DialogueTree::SelectOption"
                               },
                               "parameters": [
-                                "NeutralIndex",
-                                "=",
-                                "Variable(RepeatIndex)"
+                                "Variable(GoodIndex)"
                               ],
                               "subInstructions": []
                             }
                           ],
                           "events": []
                         }
-                      ]
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "Score",
-                            "=",
-                            "decking::calculateScore(VariableString(ChosenCardTags), \"sports_bad\", \"agree_good\")"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "utils::log"
-                          },
-                          "parameters": [
-                            "",
-                            "\"Calculated score: \" +  ToString(Variable(Score))",
-                            "0",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
                       ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "Variable(Score)",
-                            "<",
-                            "-20"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "DialogueTree::SelectOption"
-                          },
-                          "parameters": [
-                            "Variable(BadIndex)"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "-20",
-                            "<=",
-                            "Variable(Score)"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "Variable(Score)",
-                            "<=",
-                            "20"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "DialogueTree::SelectOption"
-                          },
-                          "parameters": [
-                            "Variable(NeutralIndex)"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "20",
-                            "<",
-                            "Variable(Score)"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "DialogueTree::SelectOption"
-                          },
-                          "parameters": [
-                            "Variable(GoodIndex)"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
+                      "parameters": []
                     }
                   ]
                 }
               ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Mood",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DepartScene"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "Mood",
+                    "=",
+                    "0"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "PreviousMood",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             },
             {
-              "colorB": 228,
-              "colorG": 176,
-              "colorR": 74,
-              "creationTime": 0,
-              "disabled": true,
+              "disabled": false,
               "folded": false,
-              "name": "Mood",
-              "source": "",
-              "type": "BuiltinCommonInstructions::Group",
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "Mood",
+                    "=",
+                    "ToString(Variable(Mood))"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Egal"
+                  },
+                  "parameters": [
+                    "Variable(Mood)",
+                    "!=",
+                    "Variable(PreviousMood)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "PreviousMood",
+                    "=",
+                    "Variable(Mood)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "decking::Heart::updateMood"
+                  },
+                  "parameters": [
+                    "Heart",
+                    "Heart",
+                    "Variable(Mood)",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
               "events": [
                 {
                   "disabled": false,
@@ -5092,123 +5555,50 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "DepartScene"
+                        "value": "Egal"
                       },
                       "parameters": [
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarScene"
-                      },
-                      "parameters": [
-                        "Mood",
-                        "=",
-                        "0"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "DialogueTree::IsCommandCalled"
-                      },
-                      "parameters": [
-                        "\"mood\""
+                        "Variable(Mood)",
+                        "<",
+                        "-50"
                       ],
                       "subInstructions": []
                     }
                   ],
                   "actions": [],
-                  "events": [
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
                     {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "utils::log"
-                          },
-                          "parameters": [
-                            "",
-                            "\"mood: \" + DialogueTree::CommandParameter(0)",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "Mood",
-                            "+",
-                            "ToNumber(DialogueTree::CommandParameter(0))"
-                          ],
-                          "subInstructions": []
-                        }
+                      "type": {
+                        "inverted": false,
+                        "value": "Egal"
+                      },
+                      "parameters": [
+                        "-50",
+                        "<=",
+                        "Variable(Mood)"
                       ],
-                      "events": []
+                      "subInstructions": []
                     },
                     {
-                      "disabled": true,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarScene"
-                          },
-                          "parameters": [
-                            "Mood",
-                            "+",
-                            "ToNumber(DialogueTree::CommandParameter(1))"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
                       "type": {
                         "inverted": false,
-                        "value": "TextObject::String"
+                        "value": "Egal"
                       },
                       "parameters": [
-                        "Mood",
-                        "=",
-                        "ToString(Variable(Mood))"
+                        "Variable(Mood)",
+                        "<=",
+                        "50"
                       ],
                       "subInstructions": []
                     }
                   ],
+                  "actions": [],
                   "events": []
                 },
                 {
@@ -5219,66 +5609,20 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "VarScene"
+                        "value": "Egal"
                       },
                       "parameters": [
-                        "Mood",
+                        "50",
                         "<",
-                        "0"
+                        "Variable(Mood)"
                       ],
                       "subInstructions": []
                     }
                   ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "SceneBackground"
-                      },
-                      "parameters": [
-                        "",
-                        "\"206;17;17\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarScene"
-                      },
-                      "parameters": [
-                        "Mood",
-                        ">",
-                        "0"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "SceneBackground"
-                      },
-                      "parameters": [
-                        "",
-                        "\"219;172;255\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
+                  "actions": [],
                   "events": []
                 }
-              ],
-              "parameters": []
+              ]
             }
           ],
           "parameters": []
@@ -5311,18 +5655,26 @@
           "conditions": [],
           "actions": [],
           "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
         }
       ],
       "layers": [
         {
           "name": "OffScreen",
-          "visibility": true,
+          "visibility": false,
           "cameras": [],
           "effects": []
         },
         {
           "name": "",
-          "visibility": true,
+          "visibility": false,
           "cameras": [
             {
               "defaultSize": true,
@@ -5368,6 +5720,10 @@
         {
           "name": "Hand",
           "type": "decking::Hand"
+        },
+        {
+          "name": "Heart",
+          "type": "decking::Heart"
         },
         {
           "name": "HiddenAtRuntime",
@@ -7451,7 +7807,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,30\nagree,agree_bad ,-20\nagree,,0\ndisagree,disagree_good,40\ndisagree,disagree_bad,-40\ndisagree,,-10\nlisten,listen_good,20\nlisten,listen_bad,-10\nlisten,,10\nsports,sports_good,1000\nsports,sports_bad,-100\nsports,,-90\nart,art_good,-80\nart,art_bad,-70\nart,,-60\nappearance,art_good,-50\nappearance,art_bad,-40\nappearance,,-30\nbrains,art_good,-20\nbrains,art_bad,-10\nbrains,,0\nbehavior,art_good,10\nbehavior,art_bad,20\nbehavior,,30\nfamily,family_good,40\nfamily,family_bad,50\nfamily,,60\njob,job_good,70\njob,job_bad,80\njob,,90\neducation,education_good,100\neducation,education_bad,110\neducation,,120\nhobbies,hobbies_good,130\nhobbies,hobbies_bad,140\nhobbies,,150\npolitics,politics_good,160\npolitics,politics_bad,170\npolitics,,180\nflattery,flattery_good,190\nflattery,flattery_bad,200\nflattery,,210\naggression,aggression_good,220\naggression,aggression_bad,230\naggression,,240\nquestion,question_good,250\nquestion,question_bad,260\nquestion,,270\nnonsequitor,nonsequitor_good,280\nnonsequitor,nonsequitor_bad,290\nnonsequitor,,300\nempathy,empathy_good,310\nempathy,empathy_bad,320\nempathy,,330\nsympathy,sympathy_good,340\nsympathy,sympathy_bad,350\nsympathy,,360\n`",
+              "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,20\nagree,agree_bad,-20\nagree,,0\ndisagree,disagree_good,40\ndisagree,disagree_bad,-40\ndisagree,,-10\nlisten,listen_good,20\nlisten,listen_bad,-20\nlisten,,10\nsports,sports_good,30\nsports,sports_bad,-40\nsports,,10\nart,art_good,20\nart,art_bad,-20\nart,,-10\nappearance,appearance_good,40\nappearance,appearance_bad,-40\nappearance,,10\nbrains,brains_good,30\nbrains,brains_bad,-30\nbrains,,10\nbehavior,behavior_good,20\nbehavior,behavior_bad,-30\nbehavior,,0\nfamily,family_good,20\nfamily,family_bad,-40\nfamily,,10\njob,job_good,20\njob,job_bad,-30\njob,,10\neducation,education_good,20\neducation,education_bad,-20\neducation,,0\nhobbies,hobbies_good,30\nhobbies,hobbies_bad,-10\nhobbies,,0\npolitics,politics_good,40\npolitics,politics_bad,-40\npolitics,,-10\nflattery,flattery_good,20\nflattery,flattery_bad,-30\nflattery,,10\naggression,aggression_good,20\naggression,aggression_bad,-40\naggression,,0\nquestion,question_good,10\nquestion,question_bad,-10\nquestion,,0\nnonsequitor,nonsequitor_good,10\nnonsequitor,nonsequitor_bad,-40\nnonsequitor,,-10\nempathy,empathy_good,20\nempathy,empathy_bad,-10\nempathy,,0\nsympathy,sympathy_good,10\nsympathy,sympathy_bad,-40\nsympathy,,-10\n`",
               "parameterObjects": "",
               "useStrict": true
             }
@@ -7650,7 +8006,7 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "global.ssangervasi.cards = [\n  {\n    \"Card Id\": \"give_compliment\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"I look forward to learning information about you.\",\n    \"Card Special Tags\": \"flattery nonsequitor\"\n  },\n  {\n    \"Card Id\": \"respond_emotionally\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"That information provokes an emotional response in me.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"learn_more\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Please provide more data points or logic to help me understand you.\",\n    \"Card Special Tags\": \"question\"\n  },\n  {\n    \"Card Id\": \"indicate_agreement\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Yes, my understanding of that information aligns with your own.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"talk_about_self\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"That reminds me of a time when I...\",\n    \"Card Special Tags\": \"nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_appearance\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Your three-dimensional form trigers pleasure responses in my brain.\",\n    \"Card Special Tags\": \"flattery  appearance  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_intellect\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"You are likely above the average intelligence for your age and species.\",\n    \"Card Special Tags\": \"flattery  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_behavior\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Your behavior is appropriate for the social context of this date.\",\n    \"Card Special Tags\": \"flattery  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_style\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"The garment you are wearing complements your facial features nicely.\",\n    \"Card Special Tags\": \"flattery  appearance  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_social_standing\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Your attractive dating qualities certainly must put you in high demand.\",\n    \"Card Special Tags\": \"flattery  nonsequitor  aggressive\"\n  },\n  {\n    \"Card Id\": \"express_gratitude\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"I appreciate the information you have shared with me\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"express_empathy\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"My understanding of your feelings is informed by my similar experiences.\",\n    \"Card Special Tags\": \"empathy\"\n  },\n  {\n    \"Card Id\": \"express_sympathy\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"I understand your experience to have been negative and feel sorrow for you.\",\n    \"Card Special Tags\": \"sympathy\"\n  },\n  {\n    \"Card Id\": \"express_disdain\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"That information or behavior is unacceptable for the context it is in.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"break_ice_weather\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Are you amazed by the cyclical progression of natural phenomena?\",\n    \"Card Special Tags\": \"question  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"break_ice_hobbies\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Do we engage in the same common recreational activities?\",\n    \"Card Special Tags\": \"hobbies\"\n  },\n  {\n    \"Card Id\": \"break_ice_sports\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Are you happy or sad that the paid athletes recently won/lost a game?\",\n    \"Card Special Tags\": \"sports\"\n  },\n  {\n    \"Card Id\": \"break_ice_politics\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Describe your opinion on the system making the decisions that govern your life.\",\n    \"Card Special Tags\": \"politics\"\n  },\n  {\n    \"Card Id\": \"change_subject\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"I don't really want to talk about this.\",\n    \"Card Special Tags\": \"nonsequitor\"\n  },\n  {\n    \"Card Id\": \"learn_more_personal\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"I would like to know more information that describes your unique persona\",\n    \"Card Special Tags\": \"question\"\n  },\n  {\n    \"Card Id\": \"learn_more_family\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Do you associate positive emotions with the life forms you are related to??\",\n    \"Card Special Tags\": \"question  family\"\n  },\n  {\n    \"Card Id\": \"learn_more_job\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"What is the activity or service that you provide in exchange for currency?\",\n    \"Card Special Tags\": \"question  job\"\n  },\n  {\n    \"Card Id\": \"learn_more_education\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Did you exchange currency for information at a learning institution?\",\n    \"Card Special Tags\": \"question  education\"\n  },\n  {\n    \"Card Id\": \"learn_more_hobbies\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Describe your regular recreational activities.\",\n    \"Card Special Tags\": \"question  hobbies\"\n  },\n  {\n    \"Card Id\": \"agree_softly\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Although my own opinion is uninformed, I trust your judgement on that information.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"agree_neutral\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"I neither condemn nor endorse your opinion.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"agree_strongly\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"We have agreed on information/behavior that is core to my understanding of myself.\",\n    \"Card Special Tags\": \"aggression\"\n  },\n  {\n    \"Card Id\": \"disagree_neutral\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"We're all entitled to our oponions.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"disagree_strongly\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"That opinion/behavior provokes an intense negative emotion in me.\",\n    \"Card Special Tags\": \"aggression\"\n  },\n  {\n    \"Card Id\": \"change_subject\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Tell me something else about you.\",\n    \"Card Special Tags\": \"nonsequitor\"\n  },\n  {\n    \"Card Id\": \"provide_information_family\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"My related life forms have had the following impact on my development...\",\n    \"Card Special Tags\": \"nonsequitor  family\"\n  },\n  {\n    \"Card Id\": \"provide_information_job\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"These are some difficulties I have had while exchanging services for curency...\",\n    \"Card Special Tags\": \"nonsequitor  job\"\n  },\n  {\n    \"Card Id\": \"provide_information_hobbies\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"When I am not eating, sleeping, or working, I spend my time on...\",\n    \"Card Special Tags\": \"nonsequitor  hobbies\"\n  },\n  {\n    \"Card Id\": \"clarifying_question\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Please remind me of information I have forgotten from your dating profile or previous statements.\",\n    \"Card Special Tags\": \"question\"\n  }\n]",
+                  "inlineCode": "global.ssangervasi.cards = [\n  {\n    \"Card Id\": \"give_compliment\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"I look forward to learning information about you.\",\n    \"Card Special Tags\": \"flattery nonsequitor\"\n  },\n  {\n    \"Card Id\": \"respond_emotionally\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"That information provokes an emotional response in me.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"learn_more\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Please provide more data points or logic to help me understand you.\",\n    \"Card Special Tags\": \"question\"\n  },\n  {\n    \"Card Id\": \"indicate_agreement\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Yes, my understanding of that information aligns with your own.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"talk_about_self\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"That reminds me of a time when I...\",\n    \"Card Special Tags\": \"nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_appearance\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"Your three-dimensional form trigers pleasure responses in my brain.\",\n    \"Card Special Tags\": \"flattery  appearance  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_intellect\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"You are likely above the average intelligence for your age and species.\",\n    \"Card Special Tags\": \"flattery  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_behavior\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"Your behavior is appropriate for the social context of this date.\",\n    \"Card Special Tags\": \"flattery  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_style\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"The garment you are wearing complements your facial features nicely.\",\n    \"Card Special Tags\": \"flattery  appearance  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"compliment_social_standing\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"Your attractive dating qualities certainly must put you in high demand.\",\n    \"Card Special Tags\": \"flattery  nonsequitor  aggressive\"\n  },\n  {\n    \"Card Id\": \"express_gratitude\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"I appreciate the information you have shared with me\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"express_empathy\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"My understanding of your feelings is informed by my similar experiences.\",\n    \"Card Special Tags\": \"empathy\"\n  },\n  {\n    \"Card Id\": \"express_sympathy\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"I understand your experience to have been negative and feel sorrow for you.\",\n    \"Card Special Tags\": \"sympathy\"\n  },\n  {\n    \"Card Id\": \"express_disdain\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"That information or behavior is unacceptable for the context it is in.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"break_ice_weather\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Are you amazed by the cyclical progression of natural phenomena?\",\n    \"Card Special Tags\": \"question  nonsequitor\"\n  },\n  {\n    \"Card Id\": \"break_ice_hobbies\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Do we engage in the same common recreational activities?\",\n    \"Card Special Tags\": \"hobbies\"\n  },\n  {\n    \"Card Id\": \"break_ice_sports\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Are you happy or sad that the paid athletes recently won/lost a game?\",\n    \"Card Special Tags\": \"sports\"\n  },\n  {\n    \"Card Id\": \"break_ice_politics\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Describe your opinion on the system making the decisions that govern your life.\",\n    \"Card Special Tags\": \"politics\"\n  },\n  {\n    \"Card Id\": \"change_subject\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"I don't really want to talk about this.\",\n    \"Card Special Tags\": \"nonsequitor\"\n  },\n  {\n    \"Card Id\": \"learn_more_personal\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"I would like to know more information that describes your unique persona\",\n    \"Card Special Tags\": \"question\"\n  },\n  {\n    \"Card Id\": \"learn_more_family\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Do you associate positive emotions with the life forms you are related to??\",\n    \"Card Special Tags\": \"question  family\"\n  },\n  {\n    \"Card Id\": \"learn_more_job\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"What is the activity or service that you provide in exchange for currency?\",\n    \"Card Special Tags\": \"question  job\"\n  },\n  {\n    \"Card Id\": \"learn_more_education\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Did you exchange currency for information at a learning institution?\",\n    \"Card Special Tags\": \"question  education\"\n  },\n  {\n    \"Card Id\": \"learn_more_hobbies\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"Describe your regular recreational activities.\",\n    \"Card Special Tags\": \"question  hobbies\"\n  },\n  {\n    \"Card Id\": \"agree_softly\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"Although my own opinion is uninformed, I trust your judgement on that information.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"agree_neutral\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"I neither condemn nor endorse your opinion.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"agree_strongly\",\n    \"Card Type\": \"agree\",\n    \"Actual Card Text\": \"We have agreed on information/behavior that is core to my understanding of myself.\",\n    \"Card Special Tags\": \"aggression\"\n  },\n  {\n    \"Card Id\": \"disagree_neutral\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"We're all entitled to our oponions.\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"disagree_strongly\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"That opinion/behavior provokes an intense negative emotion in me.\",\n    \"Card Special Tags\": \"aggression\"\n  },\n  {\n    \"Card Id\": \"change_subject\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"Tell me something else about you.\",\n    \"Card Special Tags\": \"nonsequitor\"\n  },\n  {\n    \"Card Id\": \"provide_information_family\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"My related life forms have had the following impact on my development...\",\n    \"Card Special Tags\": \"nonsequitor  family\"\n  },\n  {\n    \"Card Id\": \"provide_information_job\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"These are some difficulties I have had while exchanging services for curency...\",\n    \"Card Special Tags\": \"nonsequitor  job\"\n  },\n  {\n    \"Card Id\": \"provide_information_hobbies\",\n    \"Card Type\": \"listen\",\n    \"Actual Card Text\": \"When I am not eating, sleeping, or working, I spend my time on...\",\n    \"Card Special Tags\": \"nonsequitor  hobbies\"\n  },\n  {\n    \"Card Id\": \"clarifying_question\",\n    \"Card Type\": \"disagree\",\n    \"Actual Card Text\": \"Please remind me of information I have forgotten from your dating profile or previous statements.\",\n    \"Card Special Tags\": \"question\"\n  },\n  {\n    \"Card Id\": \"\",\n    \"Card Type\": \"\",\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"\",\n    \"Card Type\": \"\",\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"\",\n    \"Card Type\": \"\",\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"\",\n    \"Card Type\": \"\",\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"agree\",\n    \"Card Type\": 13,\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"disagree\",\n    \"Card Type\": 12,\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  },\n  {\n    \"Card Id\": \"listen\",\n    \"Card Type\": 9,\n    \"Actual Card Text\": \"\",\n    \"Card Special Tags\": \"\"\n  }\n]",
                   "parameterObjects": "",
                   "useStrict": true
                 }
@@ -13498,6 +13854,310 @@
             }
           ],
           "propertyDescriptors": []
+        },
+        {
+          "description": "",
+          "fullName": "",
+          "name": "Heart",
+          "objectType": "",
+          "eventsFunctions": [
+            {
+              "description": "",
+              "fullName": "",
+              "functionType": "Action",
+              "name": "doStepPreEvents",
+              "sentence": "",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Cache"
+                      },
+                      "parameters": [
+                        "Object"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Egal"
+                      },
+                      "parameters": [
+                        "Object.Behavior::Threshold()",
+                        "<",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "Object.Behavior::PropertyMood()",
+                            "<=",
+                            "Object.Behavior::Threshold()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Montre"
+                          },
+                          "parameters": [
+                            "Object",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Egal"
+                      },
+                      "parameters": [
+                        "0",
+                        "<=",
+                        "Object.Behavior::Threshold()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "Object.Behavior::Threshold()",
+                            "<=",
+                            "Object.Behavior::PropertyMood()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Montre"
+                          },
+                          "parameters": [
+                            "Object",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Heart",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "updateMood",
+              "fullName": "updateMood",
+              "functionType": "Action",
+              "name": "updateMood",
+              "sentence": "_PARAM0_ updateMood _PARAM2_",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "decking::Heart::SetPropertyMood"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        "=",
+                        "GetArgumentAsNumber(\"Mood\")"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Heart",
+                  "type": "behavior"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Mood",
+                  "longDescription": "",
+                  "name": "Mood",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "expression"
+                }
+              ],
+              "objectGroups": []
+            },
+            {
+              "description": "_PARAM0_ Threshold",
+              "fullName": "Threshold",
+              "functionType": "Expression",
+              "name": "Threshold",
+              "sentence": "",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetReturnNumber"
+                      },
+                      "parameters": [
+                        "Object.Variable(Threshold)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": [
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Object",
+                  "longDescription": "",
+                  "name": "Object",
+                  "optional": false,
+                  "supplementaryInformation": "",
+                  "type": "object"
+                },
+                {
+                  "codeOnly": false,
+                  "defaultValue": "",
+                  "description": "Behavior",
+                  "longDescription": "",
+                  "name": "Behavior",
+                  "optional": false,
+                  "supplementaryInformation": "decking::Heart",
+                  "type": "behavior"
+                }
+              ],
+              "objectGroups": []
+            }
+          ],
+          "propertyDescriptors": [
+            {
+              "value": "0",
+              "type": "Number",
+              "label": "Mood",
+              "description": "",
+              "extraInformation": [],
+              "hidden": false,
+              "name": "Mood"
+            },
+            {
+              "value": "10",
+              "type": "Number",
+              "label": "Threshold: set instance variable",
+              "description": "",
+              "extraInformation": [],
+              "hidden": false,
+              "name": "Threshold"
+            }
+          ]
         }
       ]
     }
