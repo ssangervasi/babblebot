@@ -21,7 +21,7 @@
     "version": "1.0.0",
     "winExecutableFilename": "",
     "winExecutableIconFile": "",
-    "name": "GMTK-2020",
+    "name": "Babblebot",
     "author": "Sebastian Sangervasi & Nicole Van Meter",
     "windowWidth": 1920,
     "windowHeight": 1080,
@@ -163,15 +163,6 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/CardFront.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\ui_elements\\CardFront.png",
-        "smoothed": true,
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
         "file": "art/ui_elements/GoodHeart.png",
         "kind": "image",
         "metadata": "",
@@ -230,45 +221,6 @@
         "kind": "image",
         "metadata": "",
         "name": "art\\ui_elements\\PlaySlot.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "file": "sound/Cards 4-Draw 2.wav",
-        "kind": "audio",
-        "metadata": "",
-        "name": "sound\\Cards 4-Draw 2.wav",
-        "userAdded": true
-      },
-      {
-        "file": "sound/Cards 2-Shuffle 2.wav",
-        "kind": "audio",
-        "metadata": "",
-        "name": "sound\\Cards 2-Shuffle 2.wav",
-        "userAdded": true
-      },
-      {
-        "file": "sound/Basic_Encounter_Sketch.wav",
-        "kind": "audio",
-        "metadata": "",
-        "name": "sound\\Basic_Encounter_Sketch.wav",
-        "userAdded": false
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "art/backdrops/Outside.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\backdrops\\Outside.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "art/backdrops/Restaurant.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\backdrops\\Restaurant.png",
         "smoothed": true,
         "userAdded": true
       },
@@ -400,28 +352,10 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "art/cards/Express_disdain.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\cards\\Express_disdain.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
         "file": "art/cards/express_empathy.png",
         "kind": "image",
         "metadata": "",
         "name": "art\\cards\\express_empathy.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "art/cards/Express_Gratitude.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\cards\\Express_Gratitude.png",
         "smoothed": true,
         "userAdded": true
       },
@@ -553,141 +487,6 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "art/full_layout.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\full_layout.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "art/test_layouts.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "art\\test_layouts.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/card.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\card.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/cards/blue_sweater.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\cards\\blue_sweater.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/cards/generic_compliment.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\cards\\generic_compliment.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/cards/insult.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\cards\\insult.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/deck.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\deck.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "assets/placeholders/hand.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\placeholders\\hand.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/@jest/core/build/assets/jest_logo.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\@jest\\core\\build\\assets\\jest_logo.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/growly/example/cake.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\growly\\example\\cake.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/growly/example/muffin.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\growly\\example\\muffin.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/istanbul-reports/lib/html-spa/assets/sort-arrow-sprite.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\istanbul-reports\\lib\\html-spa\\assets\\sort-arrow-sprite.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/istanbul-reports/lib/html/assets/favicon.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\istanbul-reports\\lib\\html\\assets\\favicon.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/istanbul-reports/lib/html/assets/sort-arrow-sprite.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\istanbul-reports\\lib\\html\\assets\\sort-arrow-sprite.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
-        "file": "ts/node_modules/ndb/front_end/favicon.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "ts\\node_modules\\ndb\\front_end\\favicon.png",
-        "smoothed": true,
-        "userAdded": true
-      },
-      {
-        "alwaysLoaded": false,
         "file": "assets/placeholders/background.png",
         "kind": "image",
         "metadata": "",
@@ -784,14 +583,14 @@
       "instances": [
         {
           "angle": 0,
-          "customSize": false,
-          "height": 0,
+          "customSize": true,
+          "height": 220,
           "layer": "Text",
           "locked": false,
           "name": "NPC",
-          "width": 0,
-          "x": 868,
-          "y": 850,
+          "width": 1134,
+          "x": 578,
+          "y": 823,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -799,14 +598,14 @@
         },
         {
           "angle": 0,
-          "customSize": false,
-          "height": 0,
+          "customSize": true,
+          "height": 206,
           "layer": "Text",
           "locked": false,
           "name": "PC",
-          "width": 0,
-          "x": 891,
-          "y": 947,
+          "width": 1054,
+          "x": 586,
+          "y": 822,
           "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
@@ -1297,7 +1096,7 @@
           "customSize": true,
           "height": 1549,
           "layer": "OffScreen",
-          "locked": false,
+          "locked": true,
           "name": "BgTiles",
           "width": 4173,
           "x": -1088,
