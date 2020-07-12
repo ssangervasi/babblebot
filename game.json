@@ -234,14 +234,6 @@
         "userAdded": true
       },
       {
-        "disablePreload": false,
-        "file": "dialogues/amyDialogue.json",
-        "kind": "json",
-        "metadata": "",
-        "name": "dialogues\\amyDialogue.json",
-        "userAdded": true
-      },
-      {
         "file": "sound/Cards 4-Draw 2.wav",
         "kind": "audio",
         "metadata": "",
@@ -719,6 +711,14 @@
         "metadata": "",
         "name": "art\\cards\\express_gratitude.png",
         "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "disablePreload": false,
+        "file": "dialogues/amyDialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "dialogues\\amyDialogue.json",
         "userAdded": true
       }
     ],

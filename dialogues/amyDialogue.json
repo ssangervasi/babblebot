@@ -2,250 +2,250 @@
 	{
 		"title": "t0",
 		"tags": "agree_good listen_bad disagree_bad appearance_good brains_bad flattery_good aggression_good",
-		"body": "Hey! I'm Amy.\nIt's really nice to meet you.\n\n[[t1_good]]\n[[t1_neutral]] \n[[t1_bad]]",
+		"body": "Hey! I'm Amy.\nIt's really nice to meet you.\n\n[[good|t1_good]]\n[[neutral|t1_neutral]] \n[[bad|t1_bad]]",
 		"position": {
-			"x": -1954,
-			"y": -4990
+			"x": -2117,
+			"y": -4065
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t1_good",
 		"tags": "agree_good disagree_bad question_good",
-		"body": "Thanks for picking this restaurant.\nI don't know if you knew this but they're really well known for their Amebulon vitamin mixes.\nNothing makes me feel more like I'm back in the old Petri dish.\n\n[[t2_good]]\n[[t2_neutral]]",
+		"body": "Thanks for picking this restaurant.\nI don't know if you knew this but they're really well known for their Amebulon vitamin mixes.\nNothing makes me feel more like I'm back in the old Petri dish.\n\n[[good|t2_good]]\n[[neutral|t2_neutral]]",
 		"position": {
-			"x": -2252,
-			"y": -4700
+			"x": -2415,
+			"y": -3775
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t1_bad",
 		"tags": "",
-		"body": "[[t2_neutral]] \n[[t2_bad]]",
+		"body": "[[neutral|t2_neutral]] \n[[bad|t2_bad]]",
 		"position": {
-			"x": -1647,
-			"y": -4700
+			"x": -1810,
+			"y": -3775
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t1_neutral",
 		"tags": "",
-		"body": "[[t2_good]]\n[[t2_neutral]] \n[[t2_bad]]",
+		"body": "[[good|t2_good]]\n[[neutral|t2_neutral]] \n[[bad|t2_bad]]",
 		"position": {
-			"x": -1962,
-			"y": -4699
+			"x": -2125,
+			"y": -3774
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t2_good",
 		"tags": "agree_good disagree_bad listen_bad question_good nonsequitor_bad appearance_good behavior_good hobbies_bad question_good",
-		"body": "I'll have to workout extra hard tomorrow though.\nI'm supposed to travel out of orbit for a photo-shoot in a few days.\nHave to make sure I keep these organelles in shape.\n\n[[t3_good]]\n[[t3_neutral]]",
+		"body": "I'll have to workout extra hard tomorrow though.\nI'm supposed to travel out of orbit for a photo-shoot in a few days.\nHave to make sure I keep these organelles in shape.\n\n[[good|t3_good]]\n[[neutral|t3_neutral]]",
 		"position": {
-			"x": -2264,
-			"y": -4410
+			"x": -2427,
+			"y": -3485
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t2_neutral",
 		"tags": "",
-		"body": "[[t3_good]]\n[[t3_neutral]] \n[[t3_bad]]",
+		"body": "[[good|t3_good]]\n[[neutral|t3_neutral]] \n[[bad|t3_bad]]",
 		"position": {
-			"x": -1962,
-			"y": -4408
+			"x": -2125,
+			"y": -3483
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t2_bad",
 		"tags": "",
-		"body": "[[t3_neutral]] \n[[t3_bad]]",
+		"body": "[[neutral|t3_neutral]] \n[[bad|t3_bad]]",
 		"position": {
-			"x": -1631,
-			"y": -4414
+			"x": -1794,
+			"y": -3489
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t3_good",
 		"tags": "agree_good disagree_bad listen_bad question_good nonsequitor_good",
-		"body": "I really love traveling, especially out of my solar system.\nHave you been anywhere interesting lately?\n\n[[t4_good]]\n[[t4_neutral]]",
+		"body": "I really love traveling, especially out of my solar system.\nHave you been anywhere interesting lately?\n\n[[good|t4_good]]\n[[bad|t4_good]]\n[[neutral|t4_neutral]",
 		"position": {
-			"x": -2266,
-			"y": -4154
+			"x": -2429,
+			"y": -3229
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t3_neutral",
 		"tags": "",
-		"body": "[[t4_good]]\n[[t4_neutral]] \n[[t4_bad]]",
+		"body": "[[good|t4_good]]\n[[neutral|t4_neutral]] \n[[bad|t4_bad]]",
 		"position": {
-			"x": -1970,
-			"y": -4156
+			"x": -2133,
+			"y": -3231
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t3_bad",
 		"tags": "",
-		"body": "[[t4_neutral]] \n[[t4_bad]]",
+		"body": "[[neutral|t4_neutral]] \n[[bad|t4_bad]]",
 		"position": {
-			"x": -1639,
-			"y": -4156
+			"x": -1802,
+			"y": -3231
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t4_good",
 		"tags": "agree_good listen_good disagree_good hobbies_good flattery_bad nonsequitor_bad",
-		"body": "It's so important to me to like really live life.\nYou know a lot of people think that on AMebulon we're like afraid of change, but that's just not true.\nWhat's something that people get wrong about you a lot?\n\n[[t5_good]]\n[[t5_neutral]]",
+		"body": "It's so important to me to like really live life.\nYou know a lot of people think that on AMebulon we're like afraid of change, but that's just not true.\nWhat's something that people get wrong about you a lot?\n\n[[good|t5_good]]\n[[neutral|t5_neutral]]",
 		"position": {
-			"x": -2272,
-			"y": -3841
+			"x": -2435,
+			"y": -2916
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t4_neutral",
 		"tags": "",
-		"body": "[[t5_good]]\n[[t5_neutral]] \n[[t5_bad]]",
+		"body": "[[good|t5_good]]\n[[neutral|t5_neutral]] \n[[bad|t5_bad]]",
 		"position": {
-			"x": -1970,
-			"y": -3845
+			"x": -2133,
+			"y": -2920
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t4_bad",
 		"tags": "",
-		"body": "[[t5_neutral]] \n[[t5_bad]]",
+		"body": "[[neutral|t5_neutral]] \n[[bad|t5_bad]]",
 		"position": {
-			"x": -1657,
-			"y": -3845
+			"x": -1820,
+			"y": -2920
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t5_good",
 		"tags": "agree_good disagree_bad listen_bad question_good nonsequitor_good flattery_good",
-		"body": "WOw, it really feels like we have so much in common!\nI'm so glad we met up tonight.\n\n\n[[t6_good]]\n[[t6_neutral]]",
+		"body": "WOw, it really feels like we have so much in common!\nI'm so glad we met up tonight.\n\n\n[[good|t6_good]]\n[[neutral|t6_neutral]]",
 		"position": {
-			"x": -2275,
-			"y": -3577
+			"x": -2438,
+			"y": -2652
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t5_neutral",
 		"tags": "",
-		"body": "[[t6_good]]\n[[t6_neutral]]\n[[t6_bad]]",
+		"body": "[[good|t6_good]]\n[[neutral|t6_neutral]]\n[[bad|t6_bad]]",
 		"position": {
-			"x": -1984,
-			"y": -3569
+			"x": -2147,
+			"y": -2644
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t5_bad",
 		"tags": "",
-		"body": "[[t6_neutral]]\n[[t6_bad]]",
+		"body": "[[neutral|t6_neutral]]\n[[bad|t6_bad]]",
 		"position": {
-			"x": -1651,
-			"y": -3561
+			"x": -1814,
+			"y": -2636
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t6_good",
 		"tags": "agree_bad disagree_bad listen_good question_bad nonsequitor_bad family_good empathy_good sympathy_bad",
-		"body": "I don't really tell a lot of people about this...\nBut I really feel like I can open up to you.\nI have a hard time really getting close to people, I think it's because I didn't have a nuclear family.\n\n[[t7_good]]\n[[t7_neutral]]",
+		"body": "I don't really tell a lot of people about this...\nBut I really feel like I can open up to you.\nI have a hard time really getting close to people, I think it's because I didn't have a nuclear family.\n\n[[good|t7_good]]\n[[neutral|t7_neutral]]",
 		"position": {
-			"x": -2286,
-			"y": -3323
+			"x": -2449,
+			"y": -2398
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t6_neutral",
 		"tags": "",
-		"body": "[[t7_good]]\n[[t7_neutral]] \n[[t7_bad]]",
+		"body": "[[good|t7_good]]\n[[neutral|t7_neutral]] \n[[bad|t7_bad]]",
 		"position": {
-			"x": -1983,
-			"y": -3323
+			"x": -2146,
+			"y": -2398
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t7_good",
 		"tags": "",
-		"body": "[[t8_good]]\n[[t8_neutral]]",
+		"body": "[[good|t8_good]]\n[[neutral|t8_neutral]]",
 		"position": {
-			"x": -2288,
-			"y": -3062
+			"x": -2451,
+			"y": -2137
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t7_neutral",
 		"tags": "",
-		"body": "[[t8_good]]\n[[t8_neutral]] \n[[t8_bad]]",
+		"body": "[[good|t8_good]]\n[[neutral|t8_neutral]] \n[[bad|t8_bad]]",
 		"position": {
-			"x": -2004,
-			"y": -3066
+			"x": -2167,
+			"y": -2141
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t7_bad",
 		"tags": "",
-		"body": "[[t8_neutral]] \n[[t8_bad]]",
+		"body": "[[neutral|t8_neutral]] \n[[bad|t8_bad]]",
 		"position": {
-			"x": -1702,
-			"y": -3073
+			"x": -1865,
+			"y": -2148
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t6_bad",
 		"tags": "",
-		"body": "[[t7_neutral]] \n[[t7_bad]]",
+		"body": "[[neutral|t7_neutral]] \n[[bad|t7_bad]]",
 		"position": {
-			"x": -1662,
-			"y": -3327
+			"x": -1825,
+			"y": -2402
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t8_good",
 		"tags": "",
-		"body": "[[t9_good]]\n[[t9_neutral]]",
+		"body": "[[good|t9_good]]\n[[neutral|t9_neutral]]",
 		"position": {
-			"x": -2292,
-			"y": -2823
+			"x": -2455,
+			"y": -1898
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t8_neutral",
 		"tags": "",
-		"body": "[[t9_good]]\n[[t9_neutral]] \n[[t9_bad]]",
+		"body": "[[good|t9_good]]\n[[neutral|t9_neutral]] \n[[bad|t9_bad]]",
 		"position": {
-			"x": -2009,
-			"y": -2801
+			"x": -2172,
+			"y": -1876
 		},
 		"colorID": 0
 	},
 	{
 		"title": "t8_bad",
 		"tags": "",
-		"body": "[[t9_neutral]] \n[[t9_bad]]",
+		"body": "[[neutral|t9_neutral]] \n[[bad|t9_bad]]",
 		"position": {
-			"x": -1711,
-			"y": -2812
+			"x": -1874,
+			"y": -1887
 		},
 		"colorID": 0
 	},
@@ -254,8 +254,8 @@
 		"tags": "",
 		"body": "Empty Text",
 		"position": {
-			"x": -2300,
-			"y": -2566
+			"x": -2463,
+			"y": -1641
 		},
 		"colorID": 0
 	},
@@ -264,8 +264,8 @@
 		"tags": "",
 		"body": "Empty Text",
 		"position": {
-			"x": -2004,
-			"y": -2566
+			"x": -2167,
+			"y": -1641
 		},
 		"colorID": 0
 	},
@@ -274,8 +274,8 @@
 		"tags": "",
 		"body": "Empty Text",
 		"position": {
-			"x": -1734,
-			"y": -2570
+			"x": -1897,
+			"y": -1645
 		},
 		"colorID": 0
 	}

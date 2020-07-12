@@ -3464,7 +3464,7 @@
                   },
                   "parameters": [
                     "",
-                    "dialogues\\decking.json"
+                    "dialogues\\amyDialogue.json"
                   ],
                   "subInstructions": []
                 },
@@ -3474,7 +3474,7 @@
                     "value": "DialogueTree::StartDialogueFromBranch"
                   },
                   "parameters": [
-                    "\"Hello\""
+                    "\"t0\""
                   ],
                   "subInstructions": []
                 }
