@@ -22,7 +22,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.688
+    "zoomFactor": 0.904
   },
   "objectsGroups": [],
   "variables": [],
@@ -2343,7 +2343,12 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -2496,7 +2501,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "JS",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2753,7 +2758,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Res",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2814,7 +2819,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Deck",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3616,7 +3621,7 @@
           "actions": [],
           "events": [
             {
-              "disabled": true,
+              "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
@@ -3646,7 +3651,7 @@
               "events": []
             },
             {
-              "disabled": false,
+              "disabled": true,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
@@ -3740,6 +3745,41 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "ConfidenceFill",
+                    "LeftX",
+                    "=",
+                    "ConfidenceFill.PointX(\"Origin\")"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "ConfidenceFill",
+                    "RightX",
+                    "=",
+                    "ConfidenceFill.PointX(\"UpperRight\")"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -3793,7 +3833,7 @@
             },
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -4087,29 +4127,71 @@
                         "\"waiting\""
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "NPC",
+                        "=",
+                        "VariableString(LastNPCLine)"
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": [
                     {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
                       "disabled": false,
                       "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
+                      "name": "Conf Meter Empty",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
                         {
-                          "type": {
-                            "inverted": false,
-                            "value": "TextObject::String"
-                          },
-                          "parameters": [
-                            "NPC",
-                            "=",
-                            "VariableString(LastNPCLine)"
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Tween::AddObjectScaleXTween"
+                              },
+                              "parameters": [
+                                "ConfidenceFill",
+                                "Tween",
+                                "\"confidence\"",
+                                "0",
+                                "\"linear\"",
+                                "5000",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "Confidence",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "events": []
                         }
                       ],
-                      "events": []
+                      "parameters": []
                     }
                   ]
                 },
@@ -4354,6 +4436,103 @@
                     }
                   ],
                   "events": [
+                    {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
+                      "disabled": false,
+                      "folded": false,
+                      "name": "Conf Meter Pause",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Tween::IsPlaying"
+                              },
+                              "parameters": [
+                                "ConfidenceFill",
+                                "Tween",
+                                "\"confidence\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Tween::PauseTween"
+                              },
+                              "parameters": [
+                                "ConfidenceFill",
+                                "Tween",
+                                "\"confidence\""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "Confidence",
+                                "=",
+                                "1 - ConfidenceFill.Tween::Progress(\"confidence\")"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Tween::StopTween"
+                              },
+                              "parameters": [
+                                "ConfidenceFill",
+                                "Tween",
+                                "\"confidence\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Tween::RemoveTween"
+                              },
+                              "parameters": [
+                                "ConfidenceFill",
+                                "Tween",
+                                "\"confidence\""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangeScaleWidth"
+                              },
+                              "parameters": [
+                                "ConfidenceFill",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ],
+                      "parameters": []
+                    },
                     {
                       "colorB": 228,
                       "colorG": 176,
@@ -4768,6 +4947,49 @@
                               "parameters": [
                                 "",
                                 "\"Calculated score: \" +  ToString(Variable(Score))",
+                                "0",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "Score",
+                                "+",
+                                "abs(0.25 * Variable(Score)) * Variable(Confidence) "
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "utils::log"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Applied confidence: \" +  ToString(Variable(Score))",
                                 "0",
                                 ""
                               ],
