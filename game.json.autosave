@@ -621,6 +621,48 @@
         "metadata": "",
         "name": "sound\\Romantic_Encounter.wav",
         "userAdded": true
+      },
+      {
+        "file": "assets/fonts/AmazingMother-z89Pa.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\AmazingMother-z89Pa.ttf",
+        "userAdded": true
+      },
+      {
+        "file": "assets/fonts/AwareBold-qZo3x.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\AwareBold-qZo3x.ttf",
+        "userAdded": false
+      },
+      {
+        "file": "assets/fonts/ProcrastinatingPixie-WyVOO.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\ProcrastinatingPixie-WyVOO.ttf",
+        "userAdded": false
+      },
+      {
+        "file": "assets/fonts/AmazingMother-jEVll.otf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\AmazingMother-jEVll.otf",
+        "userAdded": true
+      },
+      {
+        "file": "assets/fonts/really-font/ReallyFree-ALwl7.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+        "userAdded": true
+      },
+      {
+        "file": "assets/fonts/aware-font/AwareBold-qZo3x.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -757,7 +799,7 @@
         "gridWidth": 10,
         "snap": false,
         "windowMask": false,
-        "zoomFactor": 0.904
+        "zoomFactor": 0.784
       },
       "objectsGroups": [],
       "variables": [],
@@ -765,13 +807,13 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 220,
+          "height": 207,
           "layer": "Text",
           "locked": false,
           "name": "NPC",
-          "width": 1134,
-          "x": 578,
-          "y": 823,
+          "width": 736,
+          "x": 766,
+          "y": 840,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -780,14 +822,14 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 206,
+          "height": 207,
           "layer": "Text",
           "locked": false,
           "name": "PC",
-          "width": 1054,
-          "x": 586,
-          "y": 822,
-          "zOrder": 3,
+          "width": 736,
+          "x": 766,
+          "y": 840,
+          "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -977,7 +1019,7 @@
           "customSize": false,
           "height": 263,
           "layer": "UI",
-          "locked": false,
+          "locked": true,
           "name": "DialogueBox",
           "width": 745,
           "x": 465,
@@ -1370,12 +1412,12 @@
             }
           ],
           "string": "Nothing said yet",
-          "font": "",
-          "characterSize": 60,
+          "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+          "characterSize": 70,
           "color": {
-            "b": 0,
-            "g": 0,
-            "r": 0
+            "b": 48,
+            "g": 5,
+            "r": 34
           }
         },
         {
@@ -1408,12 +1450,12 @@
           "variables": [],
           "behaviors": [],
           "string": "No response",
-          "font": "",
-          "characterSize": 60,
+          "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+          "characterSize": 70,
           "color": {
-            "b": 5,
-            "g": 117,
-            "r": 65
+            "b": 255,
+            "g": 255,
+            "r": 255
           }
         },
         {
@@ -4515,6 +4557,37 @@
                     }
                   ],
                   "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::SetWrapping"
+                      },
+                      "parameters": [
+                        "PC",
+                        "yes"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::SetWrapping"
+                      },
+                      "parameters": [
+                        "PC",
+                        "yes"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
                 }
               ]
             },
@@ -6225,7 +6298,7 @@
       "layers": [
         {
           "name": "OffScreen",
-          "visibility": true,
+          "visibility": false,
           "cameras": [],
           "effects": []
         },
