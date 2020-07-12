@@ -304,6 +304,14 @@
         "name": "art\\ui_elements\\PlaySlot.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "disablePreload": false,
+        "file": "dialogues/amyDialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "dialogues\\amyDialogue.json",
+        "userAdded": true
       }
     ],
     "resourceFolders": []

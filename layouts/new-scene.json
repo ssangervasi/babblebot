@@ -392,7 +392,7 @@
           },
           "parameters": [
             "",
-            "NewFile.json"
+            "dialogues\\amyDialogue.json"
           ],
           "subInstructions": []
         }
