@@ -744,6 +744,33 @@
         "name": "art\\backdrops\\Intro\\8_mood.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Endings/1_bad_ending.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Endings\\1_bad_ending.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Endings/1_good_ending.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Endings\\1_good_ending.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Endings/1_neutral_ending.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Endings\\1_neutral_ending.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []

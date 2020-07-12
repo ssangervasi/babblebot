@@ -744,6 +744,33 @@
         "name": "art\\backdrops\\Intro\\8_mood.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Endings/1_bad_ending.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Endings\\1_bad_ending.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Endings/1_good_ending.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Endings\\1_good_ending.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Endings/1_neutral_ending.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Endings\\1_neutral_ending.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -773,7 +800,7 @@
       "oglZNear": 1,
       "r": 0,
       "standardSortMethod": true,
-      "stopSoundsOnStartup": true,
+      "stopSoundsOnStartup": false,
       "title": "",
       "v": 0,
       "uiSettings": {
@@ -955,7 +982,7 @@
       "oglZNear": 1,
       "r": 209,
       "standardSortMethod": true,
-      "stopSoundsOnStartup": true,
+      "stopSoundsOnStartup": false,
       "title": "",
       "v": 209,
       "uiSettings": {
@@ -1691,7 +1718,7 @@
       "oglZNear": 1,
       "r": 209,
       "standardSortMethod": true,
-      "stopSoundsOnStartup": true,
+      "stopSoundsOnStartup": false,
       "title": "",
       "v": 209,
       "uiSettings": {
@@ -2284,6 +2311,21 @@
               "value": "-33"
             }
           ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "Text",
+          "locked": false,
+          "name": "Endings",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 1000,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
         }
       ],
       "objects": [
@@ -4150,6 +4192,108 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Endings",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [
+            {
+              "name": "HiddenAtRuntime",
+              "type": "utils::HiddenAtRuntime"
+            }
+          ],
+          "animations": [
+            {
+              "name": "Neutral",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Endings\\1_neutral_ending.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Bad",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Endings\\1_bad_ending.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Good",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Endings\\1_good_ending.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -4226,185 +4370,6 @@
                   "subInstructions": []
                 }
               ],
-              "events": []
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "colorB": 228,
-          "colorG": 176,
-          "colorR": 74,
-          "creationTime": 0,
-          "disabled": false,
-          "folded": false,
-          "name": "Sound",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "DepartScene"
-                  },
-                  "parameters": [
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "SoundState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "MouseStart",
-                    "=",
-                    "MouseX(\"\", 0)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "SoundState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SourisX"
-                  },
-                  "parameters": [
-                    "",
-                    "!=",
-                    "Variable(MouseStart)",
-                    "",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "SoundState",
-                    "=",
-                    "\"playing\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "PlayMusicCanal"
-                  },
-                  "parameters": [
-                    "",
-                    "sound\\Romantic_Encounter.wav",
-                    "0",
-                    "60",
-                    "60",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "SoundState",
-                    "=",
-                    "\"playing\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "MusicChannelPlayingOffset"
-                  },
-                  "parameters": [
-                    "",
-                    "0",
-                    ">",
-                    "26"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "PlayMusicCanal"
-                  },
-                  "parameters": [
-                    "",
-                    "sound\\Basic_Encounter.wav",
-                    "0",
-                    "60",
-                    "60",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
               "events": []
             }
           ],
@@ -6445,7 +6410,7 @@
                           "colorR": 74,
                           "creationTime": 0,
                           "disabled": false,
-                          "folded": false,
+                          "folded": true,
                           "name": "Calculate score",
                           "source": "",
                           "type": "BuiltinCommonInstructions::Group",
@@ -6848,7 +6813,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Mood",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -6977,7 +6942,7 @@
                       "parameters": [
                         "Variable(Mood)",
                         "<",
-                        "-50"
+                        "-33"
                       ],
                       "subInstructions": []
                     }
@@ -6990,6 +6955,29 @@
                       },
                       "parameters": [
                         "Amy",
+                        "\"Bad\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetAnimationName"
+                      },
+                      "parameters": [
+                        "Endings",
+                        "\"Bad\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
                         "\"Bad\""
                       ],
                       "subInstructions": []
@@ -7008,7 +6996,7 @@
                         "value": "Egal"
                       },
                       "parameters": [
-                        "-50",
+                        "-33",
                         "<=",
                         "Variable(Mood)"
                       ],
@@ -7022,7 +7010,7 @@
                       "parameters": [
                         "Variable(Mood)",
                         "<=",
-                        "50"
+                        "30"
                       ],
                       "subInstructions": []
                     }
@@ -7035,6 +7023,29 @@
                       },
                       "parameters": [
                         "Amy",
+                        "\"Neutral\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetAnimationName"
+                      },
+                      "parameters": [
+                        "Endings",
+                        "\"Neutral\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
                         "\"Neutral\""
                       ],
                       "subInstructions": []
@@ -7053,7 +7064,7 @@
                         "value": "Egal"
                       },
                       "parameters": [
-                        "50",
+                        "30",
                         "<",
                         "Variable(Mood)"
                       ],
@@ -7069,6 +7080,465 @@
                       "parameters": [
                         "Amy",
                         "\"Good\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetAnimationName"
+                      },
+                      "parameters": [
+                        "Endings",
+                        "\"Good\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
+                        "\"Good\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Sound",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DepartScene"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
+                        "\"Neutral\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "PreviousTrack",
+                        "=",
+                        "\"Neutral\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "MusicPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "SoundState",
+                        "=",
+                        "\"init\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MusicPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "SoundState",
+                        "=",
+                        "\"playing\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"playing\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlayMusicCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "sound\\Romantic_Encounter.wav",
+                    "0",
+                    "60",
+                    "60",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"playing\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MusicChannelPlayingOffset"
+                  },
+                  "parameters": [
+                    "",
+                    "0",
+                    ">",
+                    "26"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlayMusicCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "sound\\Basic_Encounter.wav",
+                    "0",
+                    "60",
+                    "60",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"playing\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "StrEqual"
+                  },
+                  "parameters": [
+                    "VariableString(Track)",
+                    "!=",
+                    "VariableString(PreviousTrack)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "PreviousTrack",
+                    "=",
+                    "VariableString(Track)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"change\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"change\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SoundState",
+                    "=",
+                    "\"playing\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
+                        "\"Bad\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "sound\\Bad_Encounter.wav",
+                        "0",
+                        "60",
+                        "60",
+                        "1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
+                        "\"Neutral\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "sound\\Basic_Encounter.wav",
+                        "0",
+                        "60",
+                        "60",
+                        "1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Track",
+                        "=",
+                        "\"Good\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "sound\\Romantic_Encounter.wav",
+                        "0",
+                        "60",
+                        "60",
+                        "1"
                       ],
                       "subInstructions": []
                     }
@@ -7129,17 +7599,92 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "Scene"
+                        "value": "Cache"
                       },
                       "parameters": [
-                        "",
-                        "\"End\"",
-                        "yes"
+                        "DialogueBox"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Cache"
+                      },
+                      "parameters": [
+                        "NPC"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Montre"
+                      },
+                      "parameters": [
+                        "Endings",
+                        ""
                       ],
                       "subInstructions": []
                     }
                   ],
-                  "events": []
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Timer"
+                          },
+                          "parameters": [
+                            "",
+                            "10",
+                            "\"read_ending\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Scene"
+                          },
+                          "parameters": [
+                            "",
+                            "\"End\"",
+                            "yes"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Scene"
+                          },
+                          "parameters": [
+                            "",
+                            "\"End\"",
+                            "yes"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
                 }
               ]
             },
@@ -7166,6 +7711,14 @@
           "type": "BuiltinCommonInstructions::Group",
           "events": [],
           "parameters": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
         },
         {
           "disabled": false,
@@ -7214,7 +7767,7 @@
         },
         {
           "name": "Text",
-          "visibility": true,
+          "visibility": false,
           "cameras": [],
           "effects": []
         }
@@ -7264,7 +7817,7 @@
       "oglZNear": 1,
       "r": 209,
       "standardSortMethod": true,
-      "stopSoundsOnStartup": true,
+      "stopSoundsOnStartup": false,
       "title": "",
       "v": 209,
       "uiSettings": {
@@ -9406,7 +9959,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,6\nagree,agree_bad,-7\nagree,,0\ndisagree,disagree_good,13\ndisagree,disagree_bad,-14\ndisagree,,-4\nlisten,listen_good,6\nlisten,listen_bad,-7\nlisten,,3\nsports,sports_good,10\nsports,sports_bad,-14\nsports,,3\nart,art_good,6\nart,art_bad,-7\nart,,-4\nappearance,appearance_good,13\nappearance,appearance_bad,-14\nappearance,,3\nbrains,brains_good,10\nbrains,brains_bad,-10\nbrains,,3\nbehavior,behavior_good,6\nbehavior,behavior_bad,-10\nbehavior,,0\nfamily,family_good,6\nfamily,family_bad,-14\nfamily,,3\njob,job_good,6\njob,job_bad,-10\njob,,3\neducation,education_good,6\neducation,education_bad,-7\neducation,,0\nhobbies,hobbies_good,10\nhobbies,hobbies_bad,-4\nhobbies,,0\npolitics,politics_good,13\npolitics,politics_bad,-14\npolitics,,-4\nflattery,flattery_good,6\nflattery,flattery_bad,-10\nflattery,,3\naggression,aggression_good,6\naggression,aggression_bad,-14\naggression,,0\nquestion,question_good,3\nquestion,question_bad,-4\nquestion,,0\nnonsequitor,nonsequitor_good,3\nnonsequitor,nonsequitor_bad,-14\nnonsequitor,,-4\nempathy,empathy_good,6\nempathy,empathy_bad,-4\nempathy,,0\nsympathy,sympathy_good,3\nsympathy,sympathy_bad,-14\nsympathy,,-4\n`",
+              "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,20\nagree,agree_bad,-7\nagree,,2\ndisagree,disagree_good,20\ndisagree,disagree_bad,-14\ndisagree,,-4\nlisten,listen_good,10\nlisten,listen_bad,-7\nlisten,,3\nsports,sports_good,10\nsports,sports_bad,-14\nsports,,3\nart,art_good,10\nart,art_bad,-7\nart,,-4\nappearance,appearance_good,14\nappearance,appearance_bad,-14\nappearance,,3\nbrains,brains_good,20\nbrains,brains_bad,-10\nbrains,,3\nbehavior,behavior_good,10\nbehavior,behavior_bad,-10\nbehavior,,1\nfamily,family_good,6\nfamily,family_bad,-14\nfamily,,3\njob,job_good,6\njob,job_bad,-10\njob,,3\neducation,education_good,6\neducation,education_bad,-7\neducation,,0\nhobbies,hobbies_good,10\nhobbies,hobbies_bad,-4\nhobbies,,0\npolitics,politics_good,13\npolitics,politics_bad,-14\npolitics,,-4\nflattery,flattery_good,6\nflattery,flattery_bad,-10\nflattery,,3\naggression,aggression_good,6\naggression,aggression_bad,-14\naggression,,0\nquestion,question_good,8\nquestion,question_bad,-4\nquestion,,0\nnonsequitor,nonsequitor_good,3\nnonsequitor,nonsequitor_bad,-14\nnonsequitor,,-4\nempathy,empathy_good,6\nempathy,empathy_bad,-4\nempathy,,0\nsympathy,sympathy_good,10\nsympathy,sympathy_bad,-14\nsympathy,,-4\n`",
               "parameterObjects": "",
               "useStrict": true
             }
