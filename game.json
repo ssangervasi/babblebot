@@ -663,17 +663,109 @@
         "metadata": "",
         "name": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/0_intro_splash.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\0_intro_splash.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/1_waiting_for_date.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\1_waiting_for_date.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/2_pull_up_profile.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\2_pull_up_profile.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/3_read_profile.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\3_read_profile.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/4_universal_translator.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\4_universal_translator.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/5_how_work.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\5_how_work.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/6_commands.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\6_commands.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/7_drag_cards.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\7_drag_cards.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/8_mood.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\8_mood.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
   },
-  "objects": [],
+  "objects": [
+    {
+      "height": 100,
+      "name": "BgTiles",
+      "tags": "",
+      "texture": "assets\\placeholders\\background.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 100,
+      "variables": [],
+      "behaviors": []
+    }
+  ],
   "objectsGroups": [],
   "variables": [],
   "layouts": [
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/start"
+      "referenceTo": "/layouts/splash"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,

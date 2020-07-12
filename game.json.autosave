@@ -663,11 +663,103 @@
         "metadata": "",
         "name": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/0_intro_splash.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\0_intro_splash.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/1_waiting_for_date.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\1_waiting_for_date.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/2_pull_up_profile.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\2_pull_up_profile.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/3_read_profile.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\3_read_profile.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/4_universal_translator.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\4_universal_translator.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/5_how_work.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\5_how_work.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/6_commands.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\6_commands.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/7_drag_cards.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\7_drag_cards.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/Intro/8_mood.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\Intro\\8_mood.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
   },
-  "objects": [],
+  "objects": [
+    {
+      "height": 100,
+      "name": "BgTiles",
+      "tags": "",
+      "texture": "assets\\placeholders\\background.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 100,
+      "variables": [],
+      "behaviors": []
+    }
+  ],
   "objectsGroups": [],
   "variables": [],
   "layouts": [
@@ -695,12 +787,226 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 1
+        "zoomFactor": 0.472
       },
       "objectsGroups": [],
       "variables": [],
-      "instances": [],
-      "objects": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "Slides",
+          "locked": false,
+          "name": "Slides",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 1630,
+          "layer": "",
+          "locked": false,
+          "name": "BgTiles",
+          "width": 3655,
+          "x": -767,
+          "y": -197,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "objects": [
+        {
+          "name": "Slides",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "BeforeProfile",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 5,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\1_waiting_for_date.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    },
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\2_pull_up_profile.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Profile",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 20,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\3_read_profile.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    },
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\4_universal_translator.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "AfterProfile",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 10,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\5_how_work.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    },
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\6_commands.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    },
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\7_drag_cards.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    },
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\Intro\\8_mood.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "events": [],
       "layers": [
         {
@@ -718,6 +1024,12 @@
               "width": 0
             }
           ],
+          "effects": []
+        },
+        {
+          "name": "Slides",
+          "visibility": true,
+          "cameras": [],
           "effects": []
         }
       ],
@@ -3157,16 +3469,6 @@
               ]
             }
           ]
-        },
-        {
-          "height": 100,
-          "name": "BgTiles",
-          "tags": "",
-          "texture": "assets\\placeholders\\background.png",
-          "type": "TiledSpriteObject::TiledSprite",
-          "width": 100,
-          "variables": [],
-          "behaviors": []
         },
         {
           "name": "Amy",

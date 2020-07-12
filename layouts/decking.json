@@ -2382,16 +2382,6 @@
       ]
     },
     {
-      "height": 100,
-      "name": "BgTiles",
-      "tags": "",
-      "texture": "assets\\placeholders\\background.png",
-      "type": "TiledSpriteObject::TiledSprite",
-      "width": 100,
-      "variables": [],
-      "behaviors": []
-    },
-    {
       "name": "Amy",
       "tags": "",
       "type": "Sprite",
