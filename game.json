@@ -312,6 +312,27 @@
         "metadata": "",
         "name": "dialogues\\amyDialogue.json",
         "userAdded": true
+      },
+      {
+        "file": "sound/Cards 4-Draw 2.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "sound\\Cards 4-Draw 2.wav",
+        "userAdded": true
+      },
+      {
+        "file": "sound/Cards 2-Shuffle 2.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "sound\\Cards 2-Shuffle 2.wav",
+        "userAdded": true
+      },
+      {
+        "file": "sound/Basic_Encounter_Sketch.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "sound\\Basic_Encounter_Sketch.wav",
+        "userAdded": false
       }
     ],
     "resourceFolders": []

@@ -59,5 +59,12 @@ describe('parseCsv', () => {
 		const result = parseCsv(raw)
 		expect(result).toEqual(exampleTable)
 	})
+})
+
+describe('parseCsv', () => {
+	test('parseCsv', () => {
+		const result = parseCsv(raw)
+		expect(result).toEqual(exampleTable)
+	})
 
 })

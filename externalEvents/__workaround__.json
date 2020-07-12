@@ -34,6 +34,28 @@
             ""
           ],
           "subInstructions": []
+        },
+        {
+          "type": {
+            "inverted": false,
+            "value": "decking::parseScoreTable"
+          },
+          "parameters": [
+            "",
+            ""
+          ],
+          "subInstructions": []
+        },
+        {
+          "type": {
+            "inverted": false,
+            "value": "decking::importCardScoresJs"
+          },
+          "parameters": [
+            "",
+            ""
+          ],
+          "subInstructions": []
         }
       ],
       "events": []

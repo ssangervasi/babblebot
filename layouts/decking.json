@@ -22,7 +22,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.64
+    "zoomFactor": 0.568
   },
   "objectsGroups": [],
   "variables": [],
@@ -134,26 +134,6 @@
     },
     {
       "angle": 0,
-      "customSize": true,
-      "height": 225,
-      "layer": "Cards",
-      "locked": false,
-      "name": "Card",
-      "width": 351,
-      "x": 80,
-      "y": -868,
-      "zOrder": 13,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "Id",
-          "value": "generic_compliment"
-        }
-      ]
-    },
-    {
-      "angle": 0,
       "customSize": false,
       "height": 225,
       "layer": "Cards",
@@ -184,46 +164,6 @@
     },
     {
       "angle": 0,
-      "customSize": true,
-      "height": 225,
-      "layer": "Cards",
-      "locked": false,
-      "name": "Card",
-      "width": 351,
-      "x": 69,
-      "y": -741,
-      "zOrder": 13,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "Id",
-          "value": "generic_compliment"
-        }
-      ]
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "height": 225,
-      "layer": "Cards",
-      "locked": false,
-      "name": "Card",
-      "width": 351,
-      "x": 720,
-      "y": -700,
-      "zOrder": 13,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "Id",
-          "value": "generic_compliment"
-        }
-      ]
-    },
-    {
-      "angle": 0,
       "customSize": false,
       "height": 0,
       "layer": "",
@@ -251,46 +191,6 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "height": 225,
-      "layer": "Cards",
-      "locked": false,
-      "name": "Card",
-      "width": 351,
-      "x": 610,
-      "y": -870,
-      "zOrder": 18,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "Id",
-          "value": "insult"
-        }
-      ]
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "height": 225,
-      "layer": "Cards",
-      "locked": false,
-      "name": "Card",
-      "width": 351,
-      "x": 650,
-      "y": -810,
-      "zOrder": 18,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "Id",
-          "value": "blue_sweater"
-        }
-      ]
     },
     {
       "angle": 0,
@@ -850,7 +750,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\CardFront.png",
+                  "image": "art\\ui_elements\\CardBack.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -870,16 +770,33 @@
           ]
         },
         {
-          "name": "generic_compliment",
+          "name": "give_compliment",
           "useMultipleDirections": false,
           "directions": [
             {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
+              "looping": true,
+              "timeBetweenFrames": 0.335,
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
                   "image": "art\\ui_elements\\CardFront.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                },
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\ui_elements\\CardBack.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -899,16 +816,33 @@
           ]
         },
         {
-          "name": "blue_sweater",
+          "name": "respond_emotionally",
           "useMultipleDirections": false,
           "directions": [
             {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
+              "looping": true,
+              "timeBetweenFrames": 0.22,
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
                   "image": "art\\ui_elements\\CardFront.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                },
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\ui_elements\\CardBack.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -928,16 +862,33 @@
           ]
         },
         {
-          "name": "insult",
+          "name": "compliment_style",
           "useMultipleDirections": false,
           "directions": [
             {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
+              "looping": true,
+              "timeBetweenFrames": 0.12,
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
                   "image": "art\\ui_elements\\CardFront.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                },
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\ui_elements\\CardBack.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -1522,12 +1473,261 @@
   ],
   "events": [
     {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
       "disabled": false,
       "folded": false,
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [],
-      "events": []
+      "name": "JS",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::importCardScoresJs"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::parseScoreTable"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::importCards"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "decking::createCards"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": true,
+      "folded": true,
+      "name": "Sound",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "SoundState",
+                "=",
+                "\"init\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "MouseStart",
+                "=",
+                "MouseX(\"\", 0)"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarSceneTxt"
+              },
+              "parameters": [
+                "SoundState",
+                "=",
+                "\"init\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "SourisX"
+              },
+              "parameters": [
+                "",
+                "!=",
+                "Variable(MouseStart)",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "SoundState",
+                "=",
+                "\"playing\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "PlayMusicCanal"
+              },
+              "parameters": [
+                "",
+                "sound\\Basic_Encounter_Sketch.wav",
+                "0",
+                "60",
+                "60",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarSceneTxt"
+              },
+              "parameters": [
+                "SoundState",
+                "=",
+                "\"playing\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "MusicChannelPlayingOffset"
+              },
+              "parameters": [
+                "",
+                "0",
+                ">",
+                "26"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PlayMusicCanal"
+              },
+              "parameters": [
+                "",
+                "sound\\Basic_Encounter_Sketch.wav",
+                "0",
+                "60",
+                "60",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        }
+      ],
+      "parameters": []
     },
     {
       "colorB": 228,
@@ -1605,6 +1805,14 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
               "type": {
@@ -1617,23 +1825,31 @@
               "subInstructions": []
             }
           ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "decking::Deck::build"
-              },
-              "parameters": [
-                "Deck",
-                "Deck",
-                "Card",
-                "Card",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
+          "actions": [],
           "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "decking::Deck::build"
+                  },
+                  "parameters": [
+                    "Deck",
+                    "Deck",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
             {
               "disabled": false,
               "folded": false,
@@ -2964,7 +3180,50 @@
                         "Hand.Hand::LastPlayedId()"
                       ],
                       "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "Score",
+                        "=",
+                        "decking::calculateScore(\"agree\", \"\", \"agree_good\")"
+                      ],
+                      "subInstructions": []
                     },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "utils::log"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Calculated score: \" +  ToString(Variable(Score))",
+                        "0",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
                     {
                       "type": {
                         "inverted": false,
@@ -3222,7 +3481,7 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "disabled": false,
+          "disabled": true,
           "folded": false,
           "name": "Mood",
           "source": "",

@@ -74,8 +74,8 @@ const spaceSplit = (str: string): string[] => str.split(/\s+/)
 declare var global: {
 	exports: {}
 	ssangervasi?: {
-		parser?: {}
+		cardScores?: {}
 	}
 }
 global.ssangervasi = global.ssangervasi || {}
-global.ssangervasi.parser = global.ssangervasi.parser || exports
+global.ssangervasi.cardScores = global.ssangervasi.cardScores || exports
