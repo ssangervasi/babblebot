@@ -3606,7 +3606,7 @@
                     "Object",
                     "State",
                     "=",
-                    "\"play_started\""
+                    "\"init\""
                   ],
                   "subInstructions": []
                 },

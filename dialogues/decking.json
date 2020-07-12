@@ -1,132 +1,262 @@
 [
 	{
-		"title": "Hello",
-		"tags": "npc",
-		"body": "Hello\nLet's talk\n\n[[generic_compliment|Hello.generic_compliment]]\n[[insult|Hello.insult]]\n[[blue_sweater|Hello.blue_sweater]]\n\nVery good",
+		"title": "t0",
+		"tags": "agree_good listen_bad disagree_bad appearance_good brains_bad flattery_good aggression_good",
+		"body": "Hey! I'm Amy.\nIt's really nice to meet you.\n\n[[good|t1_good]]\n[[neutral|t1_neutral]] \n[[bad|t1_bad]]",
 		"position": {
-			"x": -1382,
-			"y": 2817
+			"x": -2869,
+			"y": -2437
 		},
 		"colorID": 0
 	},
 	{
-		"title": "Node3",
+		"title": "t1_good",
+		"tags": "agree_good disagree_bad question_good",
+		"body": "Thanks for picking this restaurant.\nI don't know if you knew this but they're really well known for their Amebulon vitamin mixes.\nNothing makes me feel more like I'm back in the old Petri dish.\n\n[[good|end]]\n[[neutral|end]]\n[[bad|end]]",
+		"position": {
+			"x": -3167,
+			"y": -2146
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t1_bad",
+		"tags": "",
+		"body": "Wow, you're on shaky ground!\n[[good|end]]\n[[neutral|end]]\n[[bad|end]]",
+		"position": {
+			"x": -2562,
+			"y": -2147
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t1_neutral",
+		"tags": "",
+		"body": "Huh, no sure what you mean...\n[[good|end]]\n[[neutral|end]]\n[[bad|end]]",
+		"position": {
+			"x": -2877,
+			"y": -2146
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t3_good",
+		"tags": "agree_good disagree_bad listen_bad question_good nonsequitor_good",
+		"body": "I really love traveling, especially out of my solar system.\nHave you been anywhere interesting lately?\n\n[[good|t4_good]]\n[[bad|t4_good]]\n[[neutral|t4_neutral]",
+		"position": {
+			"x": -3181,
+			"y": -1601
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t3_neutral",
+		"tags": "",
+		"body": "[[good|t4_good]]\n[[neutral|t4_neutral]] \n[[bad|t4_bad]]",
+		"position": {
+			"x": -2885,
+			"y": -1603
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t3_bad",
+		"tags": "",
+		"body": "[[neutral|t4_neutral]] \n[[bad|t4_bad]]",
+		"position": {
+			"x": -2554,
+			"y": -1603
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t4_good",
+		"tags": "agree_good listen_good disagree_good hobbies_good flattery_bad nonsequitor_bad",
+		"body": "It's so important to me to like really live life.\nYou know a lot of people think that on AMebulon we're like afraid of change, but that's just not true.\nWhat's something that people get wrong about you a lot?\n\n[[good|t5_good]]\n[[neutral|t5_neutral]]",
+		"position": {
+			"x": -3187,
+			"y": -1288
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t4_neutral",
+		"tags": "",
+		"body": "[[good|t5_good]]\n[[neutral|t5_neutral]] \n[[bad|t5_bad]]",
+		"position": {
+			"x": -2885,
+			"y": -1292
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t4_bad",
+		"tags": "",
+		"body": "[[neutral|t5_neutral]] \n[[bad|t5_bad]]",
+		"position": {
+			"x": -2572,
+			"y": -1292
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t5_good",
+		"tags": "agree_good disagree_bad listen_bad question_good nonsequitor_good flattery_good",
+		"body": "WOw, it really feels like we have so much in common!\nI'm so glad we met up tonight.\n\n\n[[good|t6_good]]\n[[neutral|t6_neutral]]",
+		"position": {
+			"x": -3190,
+			"y": -1024
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t5_neutral",
+		"tags": "",
+		"body": "[[good|t6_good]]\n[[neutral|t6_neutral]]\n[[bad|t6_bad]]",
+		"position": {
+			"x": -2899,
+			"y": -1016
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t5_bad",
+		"tags": "",
+		"body": "[[neutral|t6_neutral]]\n[[bad|t6_bad]]",
+		"position": {
+			"x": -2566,
+			"y": -1008
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t6_good",
+		"tags": "agree_bad disagree_bad listen_good question_bad nonsequitor_bad family_good empathy_good sympathy_bad",
+		"body": "I don't really tell a lot of people about this...\nBut I really feel like I can open up to you.\nI have a hard time really getting close to people, I think it's because I didn't have a nuclear family.\n\n[[good|t7_good]]\n[[neutral|t7_neutral]]",
+		"position": {
+			"x": -3201,
+			"y": -770
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t6_neutral",
+		"tags": "",
+		"body": "[[good|t7_good]]\n[[neutral|t7_neutral]] \n[[bad|t7_bad]]",
+		"position": {
+			"x": -2898,
+			"y": -770
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t7_good",
+		"tags": "",
+		"body": "[[good|t8_good]]\n[[neutral|t8_neutral]]",
+		"position": {
+			"x": -3203,
+			"y": -509
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t7_neutral",
+		"tags": "",
+		"body": "[[good|t8_good]]\n[[neutral|t8_neutral]] \n[[bad|t8_bad]]",
+		"position": {
+			"x": -2919,
+			"y": -513
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t7_bad",
+		"tags": "",
+		"body": "[[neutral|t8_neutral]] \n[[bad|t8_bad]]",
+		"position": {
+			"x": -2617,
+			"y": -520
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t6_bad",
+		"tags": "",
+		"body": "[[neutral|t7_neutral]] \n[[bad|t7_bad]]",
+		"position": {
+			"x": -2577,
+			"y": -774
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t8_good",
+		"tags": "",
+		"body": "[[good|t9_good]]\n[[neutral|t9_neutral]]",
+		"position": {
+			"x": -3207,
+			"y": -270
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t8_neutral",
+		"tags": "",
+		"body": "[[good|t9_good]]\n[[neutral|t9_neutral]] \n[[bad|t9_bad]]",
+		"position": {
+			"x": -2924,
+			"y": -248
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t8_bad",
+		"tags": "",
+		"body": "[[neutral|t9_neutral]] \n[[bad|t9_bad]]",
+		"position": {
+			"x": -2626,
+			"y": -259
+		},
+		"colorID": 0
+	},
+	{
+		"title": "t9_good",
 		"tags": "",
 		"body": "Empty Text",
 		"position": {
-			"x": -941,
-			"y": 4301
+			"x": -3215,
+			"y": -13
 		},
 		"colorID": 0
 	},
 	{
-		"title": "laugh",
-		"tags": "",
-		"body": "Hahahhahaa",
-		"position": {
-			"x": -2236,
-			"y": 4246
-		},
-		"colorID": 0
-	},
-	{
-		"title": "thanks",
-		"tags": "",
-		"body": "<< mood 1 >>\nAww thanks 💗",
-		"position": {
-			"x": -2073,
-			"y": 4287
-		},
-		"colorID": 6
-	},
-	{
-		"title": "Thanks",
-		"tags": "",
-		"body": "<< mood 1 >>\nAww thanks 💗\nI'm going to take off my sweater. It's so hot in here.\n<<set $blue_sweater_text to \"That is a beautiful blue sweater you're wearing.\" >>\n[[ generic_compliment_option | TakeOff ]]\n[[ insult | FuckYou ]]\n[[ blue_sweater | StillTakingItOff ]]\n",
-		"position": {
-			"x": -1717,
-			"y": 3404
-		},
-		"colorID": 0
-	},
-	{
-		"title": "FuckYou",
-		"tags": "",
-		"body": "<< mood -100 >> \nGet bent, meatbag!",
-		"position": {
-			"x": -2107,
-			"y": 3449
-		},
-		"colorID": 0
-	},
-	{
-		"title": "ComplimentedWhileWearingSweater",
-		"tags": "",
-		"body": "<< mood 100 >>\nOh I'm so glad you like it.",
-		"position": {
-			"x": -1131,
-			"y": 3372
-		},
-		"colorID": 0
-	},
-	{
-		"title": "TakeOff",
-		"tags": "",
-		"body": "<< mood 10 >> \nAh that's better",
-		"position": {
-			"x": -1548,
-			"y": 3779
-		},
-		"colorID": 0
-	},
-	{
-		"title": "StillTakingItOff",
-		"tags": "",
-		"body": "<< mood -10 >>\nOk, but I'm still taking it off.",
-		"position": {
-			"x": -2071,
-			"y": 3785
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Node11",
+		"title": "t9_neutral",
 		"tags": "",
 		"body": "Empty Text",
 		"position": {
-			"x": -922,
-			"y": 3599
+			"x": -2919,
+			"y": -13
 		},
 		"colorID": 0
 	},
 	{
-		"title": "Hello.generic_compliment",
-		"tags": "pc",
-		"body": "You're pretty.\n[[Thanks]]",
+		"title": "t9_bad",
+		"tags": "",
+		"body": "Empty Text",
 		"position": {
-			"x": -1437,
-			"y": 3086
+			"x": -2649,
+			"y": -17
 		},
-		"colorID": 1
+		"colorID": 0
 	},
 	{
-		"title": "Hello.insult",
-		"tags": "pc",
-		"body": "You're ugly.\n[[FuckYou]]",
+		"title": "end",
+		"tags": "",
+		"body": "Goodbye",
 		"position": {
-			"x": -1712,
-			"y": 3087
+			"x": -2921,
+			"y": -1861
 		},
-		"colorID": 1
-	},
-	{
-		"title": "Hello.blue_sweater",
-		"tags": "pc",
-		"body": "That's a lovely blue sweater.\n[[ComplimentedWhileWearingSweater]] ",
-		"position": {
-			"x": -1185,
-			"y": 3080
-		},
-		"colorID": 1
+		"colorID": 0
 	}
 ]
