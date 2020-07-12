@@ -1,2 +1,1 @@
-# gmtk-2020
-https://itch.io/jam/gmtk-2020
+Babblebot: https://ssangervasi.itch.io/babblebot
