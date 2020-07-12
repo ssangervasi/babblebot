@@ -22,7 +22,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.784
+    "zoomFactor": 0.664
   },
   "objectsGroups": [],
   "variables": [],
@@ -53,21 +53,6 @@
       "x": 766,
       "y": 840,
       "zOrder": 1,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "height": 128,
-      "layer": "Text",
-      "locked": false,
-      "name": "Mood",
-      "width": 67,
-      "x": 1845,
-      "y": -226,
-      "zOrder": 7,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -2670,7 +2655,7 @@
               },
               "parameters": [
                 "",
-                "sound\\Basic_Encounter.wav",
+                "sound\\Romantic_Encounter.wav",
                 "0",
                 "60",
                 "60",
@@ -4777,7 +4762,7 @@
                       "colorR": 74,
                       "creationTime": 0,
                       "disabled": false,
-                      "folded": false,
+                      "folded": true,
                       "name": "Calculate score",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -5511,7 +5496,7 @@
   "layers": [
     {
       "name": "OffScreen",
-      "visibility": false,
+      "visibility": true,
       "cameras": [],
       "effects": []
     },
