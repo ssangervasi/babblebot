@@ -234,14 +234,6 @@
         "userAdded": true
       },
       {
-        "disablePreload": false,
-        "file": "dialogues/amyDialogue.json",
-        "kind": "json",
-        "metadata": "",
-        "name": "dialogues\\amyDialogue.json",
-        "userAdded": true
-      },
-      {
         "file": "sound/Cards 4-Draw 2.wav",
         "kind": "audio",
         "metadata": "",
@@ -720,6 +712,39 @@
         "name": "art\\cards\\express_gratitude.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "disablePreload": false,
+        "file": "dialogues/amyDialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "dialogues\\amyDialogue.json",
+        "userAdded": true
+      },
+      {
+        "file": "sound/Basic_Encounter.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "sound\\Basic_Encounter.wav",
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\background.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Characters/Amy_neutral.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Characters\\Amy_neutral.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -752,7 +777,7 @@
         "gridWidth": 10,
         "snap": false,
         "windowMask": false,
-        "zoomFactor": 0.472
+        "zoomFactor": 0.688
       },
       "objectsGroups": [],
       "variables": [],
@@ -1278,6 +1303,21 @@
           "x": -1088,
           "y": -231,
           "zOrder": 29,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Amy",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 25,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -2877,6 +2917,35 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
+                      "image": "art\\backdrops\\background.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
                       "image": "art\\backdrops\\Bar.png",
                       "points": [],
                       "originPoint": {
@@ -3053,6 +3122,45 @@
           "width": 100,
           "variables": [],
           "behaviors": []
+        },
+        {
+          "name": "Amy",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "art\\Characters\\Amy_neutral.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -3139,8 +3247,8 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "disabled": true,
-          "folded": true,
+          "disabled": false,
+          "folded": false,
           "name": "Sound",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3241,7 +3349,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Basic_Encounter_Sketch.wav",
+                    "sound\\Basic_Encounter.wav",
                     "0",
                     "60",
                     "60",
@@ -3291,7 +3399,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Basic_Encounter_Sketch.wav",
+                    "sound\\Basic_Encounter.wav",
                     "0",
                     "60",
                     "60",
@@ -4745,29 +4853,21 @@
                       "subInstructions": []
                     }
                   ],
-                  "actions": [],
-                  "events": [
+                  "actions": [
                     {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "ChosenCardId",
-                            "=",
-                            "Hand.Hand::LastPlayedId()"
-                          ],
-                          "subInstructions": []
-                        }
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarSceneTxt"
+                      },
+                      "parameters": [
+                        "SelectionState",
+                        "=",
+                        "\"selected\""
                       ],
-                      "events": []
-                    },
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
                     {
                       "disabled": false,
                       "folded": false,
@@ -4780,22 +4880,45 @@
                             "value": "ModVarScene"
                           },
                           "parameters": [
-                            "Score",
+                            "ChosenCardId",
                             "=",
-                            "decking::calculateScore(\"agree\", \"\", \"agree_good\")"
+                            "Hand.Hand::LastPlayedInstanceId()"
                           ],
                           "subInstructions": []
-                        },
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "Card",
+                      "conditions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "utils::log"
+                            "value": "decking::Card::IsInstance"
                           },
                           "parameters": [
-                            "",
-                            "\"Calculated score: \" +  ToString(Variable(Score))",
-                            "0",
+                            "Card",
+                            "Card",
+                            "Variable(ChosenCardId)",
                             ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "ChosenCardTags",
+                            "=",
+                            "Card.Card::Tags()"
                           ],
                           "subInstructions": []
                         }
@@ -4826,9 +4949,55 @@
                             "value": "ModVarScene"
                           },
                           "parameters": [
-                            "FoundIndex",
+                            "GoodIndex",
                             "=",
                             "-1"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarScene"
+                          },
+                          "parameters": [
+                            "BadIndex",
+                            "=",
+                            "-1"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarScene"
+                          },
+                          "parameters": [
+                            "NeutralIndex",
+                            "=",
+                            "-1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": true,
+                      "type": "BuiltinCommonInstructions::Repeat",
+                      "repeatExpression": "DialogueTree::OptionsCount()",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarScene"
+                          },
+                          "parameters": [
+                            "RepeatIndex",
+                            "+",
+                            "1"
                           ],
                           "subInstructions": []
                         }
@@ -4837,18 +5006,38 @@
                         {
                           "disabled": false,
                           "folded": false,
-                          "type": "BuiltinCommonInstructions::Repeat",
-                          "repeatExpression": "DialogueTree::OptionsCount()",
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "OptionName",
+                                "=",
+                                "DialogueTree::Option(Variable(RepeatIndex))"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "VarScene"
+                                "value": "StrEqual"
                               },
                               "parameters": [
-                                "FoundIndex",
+                                "VariableString(OptionName)",
                                 "=",
-                                "-1"
+                                "\"good\""
                               ],
                               "subInstructions": []
                             }
@@ -4860,180 +5049,29 @@
                                 "value": "ModVarScene"
                               },
                               "parameters": [
-                                "RepeatIndex",
-                                "+",
-                                "1"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": [
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "ModVarSceneTxt"
-                                  },
-                                  "parameters": [
-                                    "IdToCompare",
-                                    "=",
-                                    "DialogueTree::Option(Variable(RepeatIndex))"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "utils::log"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "VariableString(IdToCompare) + \" =? \" + VariableString(ChosenCardId)",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "StrEqual"
-                                  },
-                                  "parameters": [
-                                    "VariableString(IdToCompare)",
-                                    "=",
-                                    "VariableString(ChosenCardId)"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "ModVarScene"
-                                  },
-                                  "parameters": [
-                                    "FoundIndex",
-                                    "=",
-                                    "Variable(RepeatIndex)"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            }
-                          ]
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "VarScene"
-                              },
-                              "parameters": [
-                                "FoundIndex",
-                                ">=",
-                                "0"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [],
-                          "events": [
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "utils::log"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "\"Variable(FoundIndex): \" + ToString(Variable(FoundIndex))",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "ModVarSceneTxt"
-                                  },
-                                  "parameters": [
-                                    "SelectionState",
-                                    "=",
-                                    "\"selected\""
-                                  ],
-                                  "subInstructions": []
-                                },
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "DialogueTree::SelectOption"
-                                  },
-                                  "parameters": [
-                                    "Variable(FoundIndex)"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            }
-                          ]
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "VarScene"
-                              },
-                              "parameters": [
-                                "FoundIndex",
+                                "GoodIndex",
                                 "=",
-                                "-1"
+                                "Variable(RepeatIndex)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "StrEqual"
+                              },
+                              "parameters": [
+                                "VariableString(OptionName)",
+                                "=",
+                                "\"bad\""
                               ],
                               "subInstructions": []
                             }
@@ -5042,12 +5080,46 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "utils::log"
+                                "value": "ModVarScene"
                               },
                               "parameters": [
-                                "",
-                                "\"Messed up finding option: \" + VariableString(IdToCompare)",
-                                ""
+                                "BadIndex",
+                                "=",
+                                "Variable(RepeatIndex)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "StrEqual"
+                              },
+                              "parameters": [
+                                "VariableString(OptionName)",
+                                "=",
+                                "\"neutral\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "NeutralIndex",
+                                "=",
+                                "Variable(RepeatIndex)"
                               ],
                               "subInstructions": []
                             }
@@ -5055,6 +5127,148 @@
                           "events": []
                         }
                       ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarScene"
+                          },
+                          "parameters": [
+                            "Score",
+                            "=",
+                            "decking::calculateScore(VariableString(ChosenCardTags), \"sports_bad\", \"agree_good\")"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "utils::log"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Calculated score: \" +  ToString(Variable(Score))",
+                            "0",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "Variable(Score)",
+                            "<",
+                            "-20"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::SelectOption"
+                          },
+                          "parameters": [
+                            "Variable(BadIndex)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "-20",
+                            "<=",
+                            "Variable(Score)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "Variable(Score)",
+                            "<=",
+                            "20"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::SelectOption"
+                          },
+                          "parameters": [
+                            "Variable(NeutralIndex)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "20",
+                            "<",
+                            "Variable(Score)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::SelectOption"
+                          },
+                          "parameters": [
+                            "Variable(GoodIndex)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
                     }
                   ]
                 }
@@ -7438,7 +7652,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,30\nagree,agree_bad ,-20\nagree,,0\n,,\ndisagree,disagree_good,40\ndisagree,disagree_bad,-40\ndisagree,,-10\n,,\nlisten,listen_good,20\nlisten,listen_bad,-10\nlisten,,10\n,,\nbutt,butt_good,1000\n`",
+              "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,30\nagree,agree_bad ,-20\nagree,,0\ndisagree,disagree_good,40\ndisagree,disagree_bad,-40\ndisagree,,-10\nlisten,listen_good,20\nlisten,listen_bad,-10\nlisten,,10\nsports,sports_good,1000\nsports,sports_bad,-100\nsports,,-90\nart,art_good,-80\nart,art_bad,-70\nart,,-60\nappearance,art_good,-50\nappearance,art_bad,-40\nappearance,,-30\nbrains,art_good,-20\nbrains,art_bad,-10\nbrains,,0\nbehavior,art_good,10\nbehavior,art_bad,20\nbehavior,,30\nfamily,family_good,40\nfamily,family_bad,50\nfamily,,60\njob,job_good,70\njob,job_bad,80\njob,,90\neducation,education_good,100\neducation,education_bad,110\neducation,,120\nhobbies,hobbies_good,130\nhobbies,hobbies_bad,140\nhobbies,,150\npolitics,politics_good,160\npolitics,politics_bad,170\npolitics,,180\nflattery,flattery_good,190\nflattery,flattery_bad,200\nflattery,,210\naggression,aggression_good,220\naggression,aggression_bad,230\naggression,,240\nquestion,question_good,250\nquestion,question_bad,260\nquestion,,270\nnonsequitor,nonsequitor_good,280\nnonsequitor,nonsequitor_bad,290\nnonsequitor,,300\nempathy,empathy_good,310\nempathy,empathy_bad,320\nempathy,,330\nsympathy,sympathy_good,340\nsympathy,sympathy_bad,350\nsympathy,,360\n`",
               "parameterObjects": "",
               "useStrict": true
             }

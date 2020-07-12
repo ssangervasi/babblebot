@@ -720,6 +720,31 @@
         "metadata": "",
         "name": "dialogues\\amyDialogue.json",
         "userAdded": true
+      },
+      {
+        "file": "sound/Basic_Encounter.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "sound\\Basic_Encounter.wav",
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/backdrops/background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\backdrops\\background.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Characters/Amy_neutral.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Characters\\Amy_neutral.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
