@@ -693,6 +693,33 @@
         "name": "ts\\node_modules\\ndb\\front_end\\favicon.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\background.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/express_disdain.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\express_disdain.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/cards/express_gratitude.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\cards\\express_gratitude.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []

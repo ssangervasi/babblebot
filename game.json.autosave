@@ -693,6 +693,15 @@
         "name": "ts\\node_modules\\ndb\\front_end\\favicon.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/placeholders/background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\placeholders\\background.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -725,7 +734,7 @@
         "gridWidth": 10,
         "snap": false,
         "windowMask": false,
-        "zoomFactor": 0.616
+        "zoomFactor": 0.256
       },
       "objectsGroups": [],
       "variables": [],
@@ -768,8 +777,8 @@
           "locked": false,
           "name": "Mood",
           "width": 67,
-          "x": 2140,
-          "y": 159,
+          "x": 1845,
+          "y": -226,
           "zOrder": 7,
           "numberProperties": [],
           "stringProperties": [],
@@ -785,7 +794,7 @@
           "width": 1920,
           "x": 0,
           "y": 0,
-          "zOrder": 10,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -800,7 +809,37 @@
           "width": 1920,
           "x": 0,
           "y": 0,
-          "zOrder": 10,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 1080,
+          "layer": "Cards",
+          "locked": true,
+          "name": "Res",
+          "width": 1920,
+          "x": 0,
+          "y": 0,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 1080,
+          "layer": "UI",
+          "locked": true,
+          "name": "Res",
+          "width": 1920,
+          "x": 0,
+          "y": 0,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -907,26 +946,6 @@
           "y": 10,
           "zOrder": 0,
           "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 1080,
-          "layer": "Cards",
-          "locked": true,
-          "name": "Res",
-          "width": 1920,
-          "x": 0,
-          "y": 0,
-          "zOrder": 21,
-          "numberProperties": [
-            {
-              "name": "animation",
-              "value": 0
-            }
-          ],
           "stringProperties": [],
           "initialVariables": []
         },
@@ -1163,8 +1182,8 @@
           "locked": false,
           "name": "Heart",
           "width": 0,
-          "x": 1944,
-          "y": 77,
+          "x": 1688,
+          "y": -228,
           "zOrder": 26,
           "numberProperties": [],
           "stringProperties": [],
@@ -1226,6 +1245,21 @@
           "x": 600,
           "y": 29,
           "zOrder": 28,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 1549,
+          "layer": "OffScreen",
+          "locked": false,
+          "name": "BgTiles",
+          "width": 4173,
+          "x": -1088,
+          "y": -231,
+          "zOrder": 29,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -2155,6 +2189,16 @@
               ]
             }
           ]
+        },
+        {
+          "height": 100,
+          "name": "BgTiles",
+          "tags": "",
+          "texture": "assets\\placeholders\\background.png",
+          "type": "TiledSpriteObject::TiledSprite",
+          "width": 100,
+          "variables": [],
+          "behaviors": []
         }
       ],
       "events": [
