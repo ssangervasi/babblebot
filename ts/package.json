@@ -1,0 +1,43 @@
+{
+	"name": "unbound-ts-events",
+	"version": "0.0.1",
+	"description": "unbound-ts-events",
+	"main": "dist/main.js",
+	"scripts": {
+		"build": "rimraf dist && tsc && bash ./bin/post-process",
+		"lint": "eslint --fix --cache src/**",
+		"ndb": "ndb ./dist/cli.js",
+		"shell": "ts-node",
+		"test": "jest",
+		"test-watch": "jest --watch",
+		"watch": "tsc-watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ssangervasi/unbound.git"
+	},
+	"author": "Sebastian Sangervasi",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/types": "^7.10",
+		"@types/jest": "^24.9.1",
+		"@types/node": "^12.12",
+		"@typescript-eslint/eslint-plugin": "^2.34",
+		"@typescript-eslint/parser": "^2.34",
+		"acorn": "^7",
+		"acorn-jsx": "^5",
+		"eslint": "^6.7",
+		"jest": "^26.1.0",
+		"jest-diff": "^26.1.0",
+		"ndb": "^1.1",
+		"rimraf": "^2.7",
+		"ts-jest": "^26.1",
+		"ts-loader": "^6.2",
+		"ts-node": "^8.10.2",
+		"tsc-watch": "^2.4.0",
+		"tsconfig-paths": "^3.9.0",
+		"tslint": "^5.20.1",
+		"typescript": "^3.9.6"
+	}
+}

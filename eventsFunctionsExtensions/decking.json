@@ -7,7 +7,75 @@
   "shortDescription": "",
   "tags": "",
   "version": "",
-  "eventsFunctions": [],
+  "eventsFunctions": [
+    {
+      "description": "rawScoreTable",
+      "fullName": "rawScoreTable",
+      "functionType": "StringExpression",
+      "name": "rawScoreTable",
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = `\nCard Tag,Tag,Result\nagree,agree_good,30\nagree,agree_bad ,-20\nagree,,0\n,,\ndisagree,disagree_good,40\ndisagree,disagree_bad,-40\ndisagree,,-10\n,,\nlisten,listen_good,20\nlisten,listen_bad,-10\nlisten,,10\n,,\nbutt,butt_good,1000\n`",
+          "parameterObjects": "",
+          "useStrict": true
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "parseScoreTable",
+      "fullName": "parseScoreTable",
+      "functionType": "Action",
+      "name": "parseScoreTable",
+      "sentence": "parseScoreTable",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "RawScoreTable",
+                "=",
+                "decking::rawScoreTable()"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const rawScoreTable = runtimeScene.getVariables().get(\"RawScoreTable\").getAsString()\nif (!rawScoreTable) {\n    console.error(\"Oh no no score table!\")\n    return\n}\n",
+          "parameterObjects": "",
+          "useStrict": true
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    }
+  ],
   "eventsBasedBehaviors": [
     {
       "description": "",

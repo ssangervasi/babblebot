@@ -1,0 +1,14 @@
+Card Tag,Tag,Result
+agree,agree_good,30
+agree,agree_bad ,-20
+agree,,0
+,,
+disagree,disagree_good,40
+disagree,disagree_bad,-40
+disagree,,-10
+,,
+listen,listen_good,20
+listen,listen_bad,-10
+listen,,10
+,,
+butt,butt_good,1000

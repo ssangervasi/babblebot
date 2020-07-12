@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# I'm not actually exporting modules, I'm dumping the scripts
+# into GDevelop events. This means the `exports` object taht a
+# module system provides doesn't actually exist!
+for jspath in $(ls ./dist/*.js); do
+	sed -i '1s/^/var exports = exports || {};\n/' "$jspath"
+done  
