@@ -1,3 +1,5 @@
+import csvParse from 'csv-parse/lib/sync'
+
 type ScoreTable = ScoreRow[]
 interface ScoreRow {
 	cardTag: string
@@ -6,6 +8,11 @@ interface ScoreRow {
 }
 
 export const parseCsv = (raw: string): ScoreTable => {
+	if (csvParse) {
+		return csvParse(raw)
+	}
+	console.warn('no csv-parse')
+
 	const lines = raw.split(/\n+/)
 	const cleanLines = lines
 		.map(line => line.trim())

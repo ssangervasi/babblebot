@@ -34,6 +34,7 @@
       "layer": "",
       "locked": false,
       "name": "Title",
+      "persistentUuid": "7ece0491-08f8-474f-9acc-851765876225",
       "width": 0,
       "x": 0,
       "y": 0,
@@ -155,6 +156,11 @@
   ],
   "layers": [
     {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
       "name": "",
       "visibility": true,
       "cameras": [
@@ -172,6 +178,11 @@
       "effects": []
     },
     {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
       "name": "Slides",
       "visibility": true,
       "cameras": [],

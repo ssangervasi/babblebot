@@ -22,7 +22,7 @@
     "gridWidth": 32,
     "snap": true,
     "windowMask": false,
-    "zoomFactor": 0.544
+    "zoomFactor": 0.472
   },
   "objectsGroups": [],
   "variables": [],
@@ -34,6 +34,7 @@
       "layer": "Slides",
       "locked": false,
       "name": "Slides",
+      "persistentUuid": "6f9394c1-6658-4729-b729-5d4da57158f3",
       "width": 0,
       "x": 0,
       "y": 0,
@@ -49,6 +50,7 @@
       "layer": "",
       "locked": false,
       "name": "BgTiles",
+      "persistentUuid": "11551675-1ecc-444d-bd89-17a73e2b91bd",
       "width": 3223,
       "x": -767,
       "y": -197,
@@ -709,6 +711,11 @@
   ],
   "layers": [
     {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
       "name": "",
       "visibility": true,
       "cameras": [
@@ -726,6 +733,11 @@
       "effects": []
     },
     {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
       "name": "Slides",
       "visibility": true,
       "cameras": [],
