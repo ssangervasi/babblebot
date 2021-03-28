@@ -6,34 +6,34 @@ interface ScoreRow {
 	scoreTag: string
 	score: number
 }
+interface CsvRow {
+	"Card Tag"?: string
+	"Tag"?: string
+	"Result"?: number
+}
 
 export const parseCsv = (raw: string): ScoreTable => {
-	if (csvParse) {
-		return csvParse(raw)
-	}
-	console.warn('no csv-parse')
-
-	const lines = raw.split(/\n+/)
-	const cleanLines = lines
-		.map(line => line.trim())
-		.filter(line => line.length > 0)
-		.filter(line => !line.startsWith('Card'))
+	const parsed: CsvRow[] = csvParse(raw, { cast: true, columns: true });
 
 	const rows: ScoreRow[] = []
+	parsed.forEach(csvRow => {
+		const {
+			"Card Tag": cardTag,
+			"Tag": scoreTag,
+			"Result": score,
+		} = csvRow
 
-	cleanLines.forEach(line => {
-		const splitted = line.split(',')
-		if (splitted.length !== 3) {
-			throw new Error(`Invalid score row: "${line}"`)
-		}
-		const [cardTag, scoreTag, scoreStr] = splitted
-		if (cardTag === '') {
+		if (!(
+			typeof cardTag === 'string' &&
+			cardTag.length > 0 &&
+			typeof scoreTag === 'string' &&
+			typeof score === 'number'
+		)) {
 			return
 		}
-		const score = Number(scoreStr) || 0
+
 		rows.push({ cardTag, scoreTag, score })
 	})
-
 	return rows
 }
 
@@ -44,8 +44,6 @@ export const calculateScore = (
 	scoreTable: ScoreTable,
 ): number => {
 	const cardTags = spaceSplit(cardTagsStr)
-	console.log(cardTags)
-
 	const characterTags = spaceSplit(characterTagsStr)
 	const nodeTags = spaceSplit(nodeTagsStr)
 	const effectTags = [...characterTags, ...nodeTags]
@@ -77,12 +75,3 @@ export const calculateScore = (
 }
 
 const spaceSplit = (str: string): string[] => str.split(/\s+/)
-
-declare var global: {
-	exports: {}
-	ssangervasi?: {
-		cardScores?: {}
-	}
-}
-global.ssangervasi = global.ssangervasi || {}
-global.ssangervasi.cardScores = global.ssangervasi.cardScores || exports

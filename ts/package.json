@@ -1,11 +1,9 @@
 {
 	"name": "babblebot",
-	"version": "0.0.1",
-	"description": "babblebot",
-	"main": "dist/main.js",
-	"source": "src/cardScores.ts",
+	"main": "dist/babblebot.js",
+	"source": "src/babblebot.ts",
 	"scripts": {
-		"build": "microbundle",
+		"build": "microbundle --format=cjs",
 		"old-build": "rimraf dist && tsc && bash ./bin/post-process",
 		"lint": "eslint --fix --cache src/**",
 		"ndb": "ndb ./dist/cli.js",
@@ -14,12 +12,6 @@
 		"test-watch": "jest --watch",
 		"watch": "tsc-watch"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ssangervasi/babblebot.git"
-	},
-	"author": "Sebastian Sangervasi",
-	"license": "Copyright (c) 2021 Sebastian Sangervasi",
 	"dependencies": {},
 	"devDependencies": {
 		"@babel/types": "^7.10",
@@ -46,5 +38,13 @@
 	},
 	"engines": {
 		"node": "12.13.0"
+	},
+	"description": "babblebot",
+	"author": "Sebastian Sangervasi",
+	"license": "Copyright (c) 2021 Sebastian Sangervasi",
+	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ssangervasi/babblebot.git"
 	}
 }
