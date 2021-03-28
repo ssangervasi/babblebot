@@ -1,12 +1,12 @@
 {
-	"name": "unbound-ts-events",
+	"name": "babblebot",
 	"version": "0.0.1",
-	"description": "unbound-ts-events",
+	"description": "babblebot",
 	"main": "dist/main.js",
 	"source": "src/cardScores.ts",
 	"scripts": {
-		"micro": "microbundle",
-		"build": "rimraf dist && tsc && bash ./bin/post-process",
+		"build": "microbundle",
+		"old-build": "rimraf dist && tsc && bash ./bin/post-process",
 		"lint": "eslint --fix --cache src/**",
 		"ndb": "ndb ./dist/cli.js",
 		"shell": "ts-node",
@@ -16,10 +16,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ssangervasi/unbound.git"
+		"url": "git+https://github.com/ssangervasi/babblebot.git"
 	},
 	"author": "Sebastian Sangervasi",
-	"license": "MIT",
+	"license": "Copyright (c) 2021 Sebastian Sangervasi",
 	"dependencies": {},
 	"devDependencies": {
 		"@babel/types": "^7.10",
@@ -43,5 +43,8 @@
 		"tsconfig-paths": "^3.9.0",
 		"tslint": "^5.20.1",
 		"typescript": "^3.9.6"
+	},
+	"engines": {
+		"node": "12.13.0"
 	}
 }
