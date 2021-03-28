@@ -12,7 +12,10 @@
 		"test-watch": "jest --watch",
 		"watch": "tsc-watch"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@types/json-stable-stringify": "^1.0.32",
+		"json-stable-stringify": "^1.0.1"
+	},
 	"devDependencies": {
 		"@babel/types": "^7.10",
 		"@types/jest": "^24.9.1",
