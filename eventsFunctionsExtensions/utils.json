@@ -12,12 +12,14 @@
   "tags": [
     ""
   ],
+  "dependencies": [],
   "eventsFunctions": [
     {
       "description": "",
       "fullName": "log",
       "functionType": "Action",
       "name": "log",
+      "private": false,
       "sentence": "log _PARAM1_",
       "events": [
         {
@@ -67,6 +69,7 @@
       "fullName": "trim",
       "functionType": "StringExpression",
       "name": "trim",
+      "private": false,
       "sentence": "",
       "events": [
         {
@@ -114,6 +117,7 @@
           "fullName": "",
           "functionType": "Action",
           "name": "onCreated",
+          "private": false,
           "sentence": "",
           "events": [
             {

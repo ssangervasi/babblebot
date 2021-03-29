@@ -46,11 +46,11 @@ if (f?.events) {
 	const events = findEvents(f.events, (event) => {
 		return event.type === 'BuiltinCommonInstructions::JsCode' &&
 			event.inlineCode !== undefined &&
-			event.inlineCode.startsWith(`var exports`)
+			event.inlineCode.startsWith(`// inject`)
 	})
 	const [event] = events
 	if (event) {
-		event.inlineCode = fs.readFileSync(babblebotJsPath).toString()
+		event.inlineCode = `// inject\nvar exports = exports || {};\n` + fs.readFileSync(babblebotJsPath).toString()
 	}
 } else {
 	console.log('No Events', {

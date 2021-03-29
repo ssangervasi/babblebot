@@ -19,6 +19,7 @@
     "gridOffsetX": 0,
     "gridOffsetY": 0,
     "gridR": 158,
+    "gridType": "rectangular",
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
@@ -353,6 +354,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "-66"
         }
       ]
@@ -454,6 +456,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "90"
         }
       ]
@@ -475,6 +478,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "75"
         }
       ]
@@ -496,6 +500,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "60"
         }
       ]
@@ -517,6 +522,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "45"
         }
       ]
@@ -538,6 +544,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "30"
         }
       ]
@@ -559,6 +566,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "15"
         }
       ]
@@ -580,6 +588,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "0"
         }
       ]
@@ -606,6 +615,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "-1"
         }
       ]
@@ -632,6 +642,7 @@
       "initialVariables": [
         {
           "name": "Threshold",
+          "type": "string",
           "value": "-33"
         }
       ]
@@ -727,6 +738,7 @@
       "variables": [
         {
           "name": "Id",
+          "type": "string",
           "value": "generic_compliment"
         }
       ],
@@ -751,6 +763,7 @@
       "variables": [
         {
           "name": "Id",
+          "type": "string",
           "value": "insult"
         }
       ],
@@ -775,6 +788,7 @@
       "variables": [
         {
           "name": "Id",
+          "type": "string",
           "value": "blue_sweater"
         }
       ],
@@ -2453,6 +2467,7 @@
       "variables": [
         {
           "name": "Tags",
+          "type": "string",
           "value": "aggression_good appearance_good art_good brains_bad disagree_bad education_bad family_bad flattery_good hobbies_good job_bad nonsequitor_bad politics_bad sports_bad"
         }
       ],

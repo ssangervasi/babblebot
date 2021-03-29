@@ -522,6 +522,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Basic_Encounter.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": false
       },
       {
@@ -547,6 +549,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Bad_Encounter.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -554,6 +558,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Basic_Encounter_Sketch.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -561,6 +567,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 1-Shuffle 1.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -568,6 +576,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 2-Shuffle 2.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -575,6 +585,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 3-Draw 1.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -582,6 +594,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 4-Draw 2.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -589,6 +603,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 5-Draw 3.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -596,6 +612,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 6-Draw 4.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -603,6 +621,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 7-Draw 5.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -610,6 +630,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 8-Draw 6.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
@@ -617,6 +639,8 @@
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Romantic_Encounter.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
         "userAdded": true
       },
       {
