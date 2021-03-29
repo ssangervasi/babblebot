@@ -19,6 +19,7 @@
 	"devDependencies": {
 		"@babel/types": "^7.10",
 		"@types/jest": "^24.9.1",
+		"@types/lodash": "^4.14.168",
 		"@types/node": "^12.12",
 		"@typescript-eslint/eslint-plugin": "^2.34",
 		"@typescript-eslint/parser": "^2.34",
@@ -28,6 +29,7 @@
 		"eslint": "^6.7",
 		"jest": "^26.1.0",
 		"jest-diff": "^26.1.0",
+		"lodash": "^4.17.21",
 		"microbundle": "^0.13.0",
 		"ndb": "^1.1",
 		"rimraf": "^2.7",
