@@ -1,10 +1,23 @@
 {
 	"name": "babblebot",
+	"description": "babblebot",
+	"author": "Sebastian Sangervasi",
+	"license": "Copyright (c) 2021 Sebastian Sangervasi",
+	"version": "0.1.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ssangervasi/babblebot.git"
+	},
 	"main": "dist/babblebot.js",
 	"source": "src/babblebot.ts",
+	"engines": {
+		"node": "16.1.0",
+		"npm": "7.13.0"
+	},
 	"scripts": {
-		"build": "microbundle --format=cjs",
-		"old-build": "rimraf dist && tsc && bash ./bin/post-process",
+		"build": "rm -rf dist/* && npm run build-modern && npm run inject",
+		"build-modern": "microbundle --target=web --format=modern",
+		"inject": "ts-node --project=./bin/tsconfig.json bin/inject.ts",
 		"lint": "eslint --fix --cache src/**",
 		"ndb": "ndb ./dist/cli.js",
 		"shell": "ts-node",
@@ -40,16 +53,5 @@
 		"tsconfig-paths": "^3.9.0",
 		"tslint": "^5.20.1",
 		"typescript": "^3.9.6"
-	},
-	"engines": {
-		"node": "12.13.0"
-	},
-	"description": "babblebot",
-	"author": "Sebastian Sangervasi",
-	"license": "Copyright (c) 2021 Sebastian Sangervasi",
-	"version": "0.0.1",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ssangervasi/babblebot.git"
 	}
 }

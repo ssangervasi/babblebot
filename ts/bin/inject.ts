@@ -1,14 +1,56 @@
-#!/usr/bin/env ts-node
 import path from 'path'
 import fs from 'fs'
 import jsonStringify from 'json-stable-stringify'
 
+const ROOT = path.resolve(__dirname, '../..')
+const EXTENSIONS = path.resolve(ROOT, 'eventsFunctionsExtensions')
+
+const main = () => {
+	const extPath = path.resolve(EXTENSIONS, 'decking.json')
+	const extJson = fs.readFileSync(extPath)
+	const extData: {
+		eventsFunctions: Array<{
+			name: string
+			events: Array<Rec<GdEvent>>
+		}>
+	} | null = JSON.parse(extJson.toString())
+
+	if (!extData) {
+		console.warn('No ext data')
+		return
+	}
+
+	console.info(`Searching ${extData.eventsFunctions.length} functions`)
+	extData.eventsFunctions.forEach(eventsFunc => {
+		const events = findEvents(eventsFunc.events, event => {
+			return (
+				event.type === 'BuiltinCommonInstructions::JsCode' &&
+				event.inlineCode !== undefined
+			)
+		})
+
+		for (const event of events) {
+			injectEvent(event)
+		}
+	})
+
+	console.info(`Writing file ${extPath}`)
+	fs.writeFileSync(extPath, jsonStringify(extData, { space: 2 }))
+}
+
+type GdEvent = {
+	type: string
+	inlineCode?: string
+}
 
 type Rec<E> = E & {
 	events?: Array<Rec<E>>
 }
 
-function* findEvents<E>(parents: Iterable<Rec<E>>, matcher: (event: Rec<E>) => boolean): Generator<Rec<E>> {
+function* findEvents<E>(
+	parents: Iterable<Rec<E>>,
+	matcher: (event: Rec<E>) => boolean,
+): Generator<Rec<E>> {
 	for (const parent of parents) {
 		if (matcher(parent)) {
 			yield parent
@@ -21,41 +63,33 @@ function* findEvents<E>(parents: Iterable<Rec<E>>, matcher: (event: Rec<E>) => b
 	}
 }
 
-
-const tsPath = path.resolve(__dirname, '..')
-const deckingPath = path.resolve(tsPath, '../eventsFunctionsExtensions/decking.json')
-const babblebotJsPath = path.resolve(tsPath, 'dist/babblebot.js')
-
-const deckingJson = fs.readFileSync(deckingPath)
-const deckingData: {
-	eventsFunctions: Array<{
-		name: string,
-		events: Array<Rec<{
-			type: string
-			inlineCode?: string
-		}>>
-	}>
-} = JSON.parse(deckingJson.toString())
-
-const f = deckingData?.eventsFunctions.find((eFunc) =>
-	eFunc.name === 'importCardScoresJs'
-)
-
-if (f?.events) {
-	console.log('Events')
-	const events = findEvents(f.events, (event) => {
-		return event.type === 'BuiltinCommonInstructions::JsCode' &&
-			event.inlineCode !== undefined &&
-			event.inlineCode.startsWith(`// inject`)
-	})
-	const [event] = events
-	if (event) {
-		event.inlineCode = `// inject\nvar exports = exports || {};\n` + fs.readFileSync(babblebotJsPath).toString()
+const injectEvent = (event: GdEvent) => {
+	const { inlineCode } = event
+	if (!inlineCode) {
+		return
 	}
-} else {
-	console.log('No Events', {
-		fcount: deckingData.eventsFunctions.length
-	})
+
+	const matches = inlineCode.match(/^\/\/\s*inject (["'])([^"']*)\1\s*$/m)
+	if (!matches) {
+		return
+	}
+
+	const pathMatch = matches[2]
+	const jsPath = path.resolve(ROOT, pathMatch)
+
+	if (!fs.existsSync(jsPath)) {
+		console.warn(
+			`Cannot inject "${pathMatch}" - path does not exist: ${jsPath}`,
+		)
+		return
+	}
+
+	const jsCode = fs.readFileSync(jsPath).toString()
+	console.info(
+		`Injecting "${pathMatch}" - found: ${jsPath} (${jsCode.length} characters)`,
+	)
+
+	event.inlineCode = `// inject "${pathMatch}"\n\n` + jsCode
 }
 
-fs.writeFileSync(deckingPath, jsonStringify(deckingData, {space: 2}))
+main()

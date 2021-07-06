@@ -1,0 +1,12 @@
+{
+	"extends": "../base.tsconfig.json",
+	"compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": "node",
+
+		"strictNullChecks": true
+	},
+	"files": [
+		"inject.ts",
+	]
+}
