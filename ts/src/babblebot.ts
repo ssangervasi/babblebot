@@ -2,11 +2,16 @@ import Lodash from 'lodash'
 
 import * as CardScores from './cardScores'
 
-export const Babblebot = {
+const BabblebotC = {
 	CardScores,
 	Lodash
 }
 
-Object.assign(global, {
-	Babblebot,
+
+Object.assign(globalThis, {
+	Babblebot: BabblebotC,
 })
+
+declare global {
+	const Babblebot: typeof BabblebotC
+}

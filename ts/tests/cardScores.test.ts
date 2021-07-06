@@ -1,7 +1,8 @@
 import {
 	parseCsv,
 	calculateScore,
-} from './cardScores'
+} from '../src/cardScores'
+
 const raw = `
 Card Tag,Tag,Result
 agree,agree_good,30
