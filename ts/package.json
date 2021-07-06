@@ -16,7 +16,7 @@
 	},
 	"scripts": {
 		"build": "rm -rf dist/* && npm run build-modern && npm run inject",
-		"build-modern": "microbundle --target=web --format=modern",
+		"build-modern": "microbundle --target=node --format=modern",
 		"inject": "ts-node --project=./bin/tsconfig.json bin/inject.ts",
 		"lint": "eslint --fix --cache src/**",
 		"ndb": "ndb ./dist/cli.js",
@@ -43,7 +43,7 @@
 		"jest": "^26.1.0",
 		"jest-diff": "^26.1.0",
 		"lodash": "^4.17.21",
-		"microbundle": "^0.13.3",
+		"microbundle": "^0.13.0",
 		"ndb": "^1.1",
 		"rimraf": "^2.7",
 		"ts-jest": "^26.1",
