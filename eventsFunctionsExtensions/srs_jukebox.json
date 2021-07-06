@@ -1,0 +1,3890 @@
+{
+  "author": "",
+  "description": "",
+  "extensionNamespace": "",
+  "fullName": "",
+  "helpPath": "",
+  "iconUrl": "",
+  "name": "srs_jukebox",
+  "previewIconUrl": "",
+  "shortDescription": "",
+  "version": "",
+  "tags": [
+    ""
+  ],
+  "dependencies": [],
+  "eventsFunctions": [
+    {
+      "description": "",
+      "fullName": "",
+      "functionType": "Action",
+      "name": "onFirstSceneLoaded",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Channels",
+          "comment2": ""
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Queue.Music.Track",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Queue.Music.State",
+                "=",
+                "\"empty\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Channels.Music.Track",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Channels.Music.State",
+                "=",
+                "\"stopped\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Channels.Music.PlayState",
+                "=",
+                "\"stopped\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Music.Id",
+                "=",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Music.Volume",
+                "=",
+                "100"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Queue.Effects.State",
+                "=",
+                "\"empty\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Queue.Effects.Track",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Channels.Effects.Track",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Channels.Effects.State",
+                "=",
+                "\"stopped\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Effects.Id",
+                "=",
+                "2"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Effects.AlternateId",
+                "=",
+                "3"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Effects.Volume",
+                "=",
+                "100"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Voices.Id",
+                "=",
+                "4"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Jukebox.Channels.Voices.Volume",
+                "=",
+                "100"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "functionType": "Action",
+      "name": "onScenePreEvents",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "GlobalVariableChildExists"
+              },
+              "parameters": [
+                "Jukebox",
+                "\"Init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "AnyKeyPressed"
+                      },
+                      "parameters": [
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SourisBouton"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SourisBouton"
+                      },
+                      "parameters": [
+                        "",
+                        "Right"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SourisBouton"
+                      },
+                      "parameters": [
+                        "",
+                        "Middle"
+                      ],
+                      "subInstructions": []
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Init",
+                    "=",
+                    "\"true\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "GlobalVariableChildExists"
+              },
+              "parameters": [
+                "Jukebox",
+                "\"Init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Mutations",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarGlobal"
+                      },
+                      "parameters": [
+                        "Options.musicVolume",
+                        "!=",
+                        "GlobalVariable(Jukebox.Channels.Music.Volume)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarGlobal"
+                      },
+                      "parameters": [
+                        "Jukebox.Channels.Music.Volume",
+                        "=",
+                        "GlobalVariable(Options.musicVolume)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVolumeMusicCanal"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Music.Id)",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Music.Volume)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarGlobal"
+                      },
+                      "parameters": [
+                        "Options.effectsVolume",
+                        "!=",
+                        "GlobalVariable(Jukebox.Channels.Effects.Volume)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarGlobal"
+                      },
+                      "parameters": [
+                        "Jukebox.Channels.Effects.Volume",
+                        "=",
+                        "GlobalVariable(Options.effectsVolume)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarGlobal"
+                      },
+                      "parameters": [
+                        "Jukebox.Channels.Voices.Volume",
+                        "=",
+                        "GlobalVariable(Options.effectsVolume)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVolumeSoundCanal"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Effects.Id)",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Effects.Volume)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVolumeSoundCanal"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Effects.AlternateId)",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Effects.Volume)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVolumeSoundCanal"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Voices.Id)",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Voices.Volume)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Music",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Loops by default",
+                  "comment2": ""
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "MusicPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GlobalVariable(Jukebox.Channels.Music.Id)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 109,
+                        "g": 230,
+                        "r": 255,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "On Mac there is a delay between the playing the music on the channel and the \"is being played\" condition returning true. To work around this, we don't leave the State \"playing\" unless PlayState is also \"playing\". So PlayState goes: stopped -> requested -> playing -> stopped",
+                      "comment2": ""
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.PlayState",
+                            "=",
+                            "\"playing\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarGlobalTxt"
+                              },
+                              "parameters": [
+                                "Jukebox.Channels.Music.State",
+                                "=",
+                                "\"stopped\""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarGlobalTxt"
+                              },
+                              "parameters": [
+                                "Jukebox.Channels.Music.PlayState",
+                                "=",
+                                "\"stopped\""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarGlobalTxt"
+                              },
+                              "parameters": [
+                                "Jukebox.Channels.Music.Track",
+                                "=",
+                                "\"\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.State",
+                            "=",
+                            "\"stopped\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.PlayState",
+                            "=",
+                            "\"stopped\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarGlobalTxt"
+                              },
+                              "parameters": [
+                                "Jukebox.Queue.Music.State",
+                                "=",
+                                "\"queued\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "colorB": 228,
+                              "colorG": 176,
+                              "colorR": 74,
+                              "creationTime": 0,
+                              "disabled": true,
+                              "folded": true,
+                              "name": "Gotta enumerate every track because the \"Play music\" action requires a file",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.C2)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\C2.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.C3)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\C3.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.C4)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\C4.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.Dark)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\Dark.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.Intro)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\Intro.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.Menu)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\Menu.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                },
+                                {
+                                  "disabled": false,
+                                  "folded": false,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "VarGlobalTxt"
+                                      },
+                                      "parameters": [
+                                        "Jukebox.Queue.Music.Track",
+                                        "=",
+                                        "GlobalVariableString(Jukebox.Tracks.Sunset)"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "inverted": false,
+                                        "value": "PlayMusicCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "Assets\\Music\\Sunset.wav",
+                                        "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                        "yes",
+                                        "GlobalVariable(Jukebox.Channels.Music.Volume)",
+                                        "1"
+                                      ],
+                                      "subInstructions": []
+                                    }
+                                  ],
+                                  "events": []
+                                }
+                              ],
+                              "parameters": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.State",
+                                    "=",
+                                    "\"playing\""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.PlayState",
+                                    "=",
+                                    "\"requested\""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Queue.Music.Track)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Music.State",
+                                    "=",
+                                    "\"empty\""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Music.Track",
+                                    "=",
+                                    "\"\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVolumeMusicCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                    "=",
+                                    "GlobalVariable(Jukebox.Channels.Music.Volume)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MusicPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GlobalVariable(Jukebox.Channels.Music.Id)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.State",
+                            "=",
+                            "\"fading\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MusicCanalVolume"
+                              },
+                              "parameters": [
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                "<",
+                                "0.01"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "StopMusicCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Music.Id)"
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVolumeMusicCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                    "=",
+                                    "GlobalVariable(Jukebox.Channels.Music.Volume)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.State",
+                                    "=",
+                                    "\"stopped\""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.PlayState",
+                                    "=",
+                                    "\"stopped\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        },
+                        {
+                          "disabled": false,
+                          "folded": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MusicCanalVolume"
+                              },
+                              "parameters": [
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                ">=",
+                                "0.01"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "StopMusicCanal"
+                              },
+                              "parameters": [
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Music.Id)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobal"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.FadeMs",
+                                    "=",
+                                    "250"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobal"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.FadeElapsedMs",
+                                    "=",
+                                    "srs_utils::TimeMs() - GlobalVariable(Jukebox.Channels.Music.FadeStartMs)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobal"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.FadeFraction",
+                                    "=",
+                                    "min(1, max(0, GlobalVariable(Jukebox.Channels.Music.FadeElapsedMs) /  GlobalVariable(Jukebox.Channels.Music.FadeMs)))"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVolumeMusicCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                    "=",
+                                    "GlobalVariable(Jukebox.Channels.Music.Volume) * (1 - GlobalVariable(Jukebox.Channels.Music.FadeFraction))"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 109,
+                        "g": 230,
+                        "r": 255,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "This kicks off the PlayState to indicate the loading has finished.",
+                      "comment2": ""
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.State",
+                            "!=",
+                            "\"fading\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MusicCanalVolume"
+                              },
+                              "parameters": [
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                "<",
+                                "0.01"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "StopMusicCanal"
+                              },
+                              "parameters": [
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Music.Id)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.State",
+                                    "=",
+                                    "\"stopped\""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Channels.Music.PlayState",
+                                    "=",
+                                    "\"stopped\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MusicCanalVolume"
+                              },
+                              "parameters": [
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Music.Id)",
+                                ">=",
+                                "0.01"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarGlobalTxt"
+                              },
+                              "parameters": [
+                                "Jukebox.Channels.Music.PlayState",
+                                "=",
+                                "\"playing\""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarGlobalTxt"
+                              },
+                              "parameters": [
+                                "Jukebox.Channels.Music.State",
+                                "=",
+                                "\"playing\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": true,
+              "name": "Effects",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Do not loop",
+                  "comment2": ""
+                },
+                {
+                  "disabled": false,
+                  "folded": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarGlobalTxt"
+                      },
+                      "parameters": [
+                        "Jukebox.Queue.Effects.State",
+                        "=",
+                        "\"queued\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobal"
+                          },
+                          "parameters": [
+                            "EffectsId",
+                            "=",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "SoundPlaying"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Effects.AlternateId)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobal"
+                          },
+                          "parameters": [
+                            "EffectsId",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Effects.AlternateId)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "SoundPlaying"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Effects.Id)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobal"
+                          },
+                          "parameters": [
+                            "EffectsId",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Effects.Id)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarGlobal"
+                          },
+                          "parameters": [
+                            "EffectsId",
+                            "!=",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "colorB": 228,
+                          "colorG": 176,
+                          "colorR": 74,
+                          "creationTime": 0,
+                          "disabled": false,
+                          "folded": false,
+                          "name": "Gotta enumerate every track",
+                          "source": "",
+                          "type": "BuiltinCommonInstructions::Group",
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.Bump)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Bump.wav",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Id)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.Bind)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Bind.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.Ack)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Ack.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.Unbind)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Unbind.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.Walk)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Walk.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.WalkStart)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Walk-start.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.WalkStop)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Walk-stop.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarGlobalTxt"
+                                  },
+                                  "parameters": [
+                                    "Jukebox.Queue.Effects.Track",
+                                    "=",
+                                    "GlobalVariableString(Jukebox.Tracks.Reset)"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Assets\\Audio\\Reset.wav",
+                                    "GlobalVariable(EffectsId)",
+                                    "",
+                                    "GlobalVariable(Jukebox.Channels.Effects.Volume)",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ],
+                          "parameters": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Effects.State",
+                            "=",
+                            "\"playing\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Effects.Track",
+                            "=",
+                            "GlobalVariableString(Jukebox.Queue.Effects.Track)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Queue.Effects.State",
+                            "=",
+                            "\"empty\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Queue.Effects.Track",
+                            "=",
+                            "\"\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "SoundPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GlobalVariable(Jukebox.Channels.Effects.Id)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "SoundPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GlobalVariable(Jukebox.Channels.Effects.Id)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarGlobalTxt"
+                      },
+                      "parameters": [
+                        "Jukebox.Channels.Effects.State",
+                        "=",
+                        "\"stopped\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SoundPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GlobalVariable(Jukebox.Channels.Effects.Id)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": []
+                }
+              ],
+              "parameters": []
+            }
+          ]
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "play",
+      "fullName": "play",
+      "functionType": "Action",
+      "name": "play",
+      "private": false,
+      "sentence": "play _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "GlobalVariableChildExists"
+              },
+              "parameters": [
+                "Jukebox",
+                "\"Init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_jukebox::IsPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "\"\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "If the music is to switch, then fade out the current track",
+                  "comment2": ""
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "srs_jukebox::IsPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GetArgumentAsString(\"Track\")",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_jukebox::enqueue"
+                      },
+                      "parameters": [
+                        "",
+                        "GetArgumentAsString(\"Track\")",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_jukebox::fade"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "srs_jukebox::IsPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "\"\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_jukebox::enqueue"
+                  },
+                  "parameters": [
+                    "",
+                    "GetArgumentAsString(\"Track\")",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Track",
+          "longDescription": "",
+          "name": "Track",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "enqueue",
+      "fullName": "enqueue",
+      "functionType": "Action",
+      "name": "enqueue",
+      "private": false,
+      "sentence": "enqueue _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "GlobalVariableChildExists"
+              },
+              "parameters": [
+                "Jukebox",
+                "\"Init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Queue.Music.Track",
+                    "=",
+                    "GetArgumentAsString(\"Track\")"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Queue.Music.Track",
+                    "!=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Queue.Music.State",
+                    "=",
+                    "\"queued\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Track",
+          "longDescription": "",
+          "name": "Track",
+          "optional": false,
+          "supplementaryInformation": "[\"Basic\",\"Bad\"]",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Jukebox \"hit\" an short sound effect",
+      "fullName": "hit",
+      "functionType": "Action",
+      "name": "hit",
+      "private": false,
+      "sentence": "hit _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "GlobalVariableChildExists"
+              },
+              "parameters": [
+                "Jukebox",
+                "\"Init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Queue.Effects.Track",
+                    "=",
+                    "GetArgumentAsString(\"Track\")"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Queue.Effects.State",
+                    "=",
+                    "\"queued\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Track",
+          "longDescription": "",
+          "name": "Track",
+          "optional": false,
+          "supplementaryInformation": "[\"Bump\",\"Bind\",\"Unbind\",\"Ack\",\"WalkStart\",\"WalkStop\",\"Walk\",\"Reset\"]",
+          "type": "stringWithSelector"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "fade",
+      "fullName": "fade",
+      "functionType": "Action",
+      "name": "fade",
+      "private": false,
+      "sentence": "fade",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "GlobalVariableChildExists"
+              },
+              "parameters": [
+                "Jukebox",
+                "\"Init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::consoleLog"
+                  },
+                  "parameters": [
+                    "",
+                    "GlobalVariableString(Jukebox.Channels.Music.State)",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Channels.Music.State",
+                    "=",
+                    "\"playing\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Channels.Music.State",
+                    "=",
+                    "\"fading\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarGlobal"
+                      },
+                      "parameters": [
+                        "Jukebox.Channels.Music.FadeStartMs",
+                        "=",
+                        "srs_utils::TimeMs()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Whether a track is queued. If \"\" is passed as the track, just whether anything is queued.",
+      "fullName": "IsQueued",
+      "functionType": "Condition",
+      "name": "IsQueued",
+      "private": false,
+      "sentence": "IsQueued _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "False"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Queue.Music.State",
+                "=",
+                "\"queued\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "StrEqual"
+                      },
+                      "parameters": [
+                        "GetArgumentAsString(\"Track\")",
+                        "=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarGlobalTxt"
+                      },
+                      "parameters": [
+                        "Jukebox.Queue.Music.Track",
+                        "!=",
+                        "GetArgumentAsString(\"Track\")"
+                      ],
+                      "subInstructions": []
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Track",
+          "longDescription": "",
+          "name": "Track",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Whether a track is playing. If \"\" is passed as the track, just whether anything is playing.",
+      "fullName": "IsPlaying",
+      "functionType": "Condition",
+      "name": "IsPlaying",
+      "private": false,
+      "sentence": "IsPlaying _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "False"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarGlobalTxt"
+              },
+              "parameters": [
+                "Jukebox.Channels.Music.State",
+                "=",
+                "\"playing\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "StrEqual"
+                      },
+                      "parameters": [
+                        "GetArgumentAsString(\"Track\")",
+                        "=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarGlobalTxt"
+                      },
+                      "parameters": [
+                        "Jukebox.Channels.Music.Track",
+                        "!=",
+                        "GetArgumentAsString(\"Track\")"
+                      ],
+                      "subInstructions": []
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Track",
+          "longDescription": "",
+          "name": "Track",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "functionType": "Condition",
+      "name": "SoundArmed",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "False"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "True"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "functionType": "Condition",
+      "name": "MusicArmed",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "False"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "True"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Yikes things won't work because the condition will modify values before the thing handling the condition gets to run\n",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Channels.Music.State",
+                    "=",
+                    "\"stopped\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarGlobalTxt"
+                  },
+                  "parameters": [
+                    "Jukebox.Channels.Music.PlayState",
+                    "=",
+                    "\"stopped\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarGlobalTxt"
+                      },
+                      "parameters": [
+                        "Jukebox.Queue.Music.State",
+                        "=",
+                        "\"queued\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.State",
+                            "=",
+                            "\"playing\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.PlayState",
+                            "=",
+                            "\"requested\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Channels.Music.Track",
+                            "=",
+                            "GlobalVariableString(Jukebox.Queue.Music.Track)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Queue.Music.State",
+                            "=",
+                            "\"empty\""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarGlobalTxt"
+                          },
+                          "parameters": [
+                            "Jukebox.Queue.Music.Track",
+                            "=",
+                            "\"\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVolumeMusicCanal"
+                          },
+                          "parameters": [
+                            "",
+                            "GlobalVariable(Jukebox.Channels.Music.Id)",
+                            "=",
+                            "GlobalVariable(Jukebox.Channels.Music.Volume)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [
+    {
+      "description": "",
+      "fullName": "",
+      "name": "TalkText",
+      "objectType": "TextObject::Text",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "\"initialized\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "LastText",
+                    "=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "LetterType",
+                    "=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Pitch",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "Object",
+                    "!=",
+                    "Object.VariableString(LastText)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "LastText",
+                    "=",
+                    "Object.String()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::Throttle"
+                      },
+                      "parameters": [
+                        "",
+                        "Object",
+                        "\"noclip\"",
+                        "srs_utils::ms(1)",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "SoundPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "GlobalVariable(Jukebox.Channels.Voices.Id)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 109,
+                        "g": 230,
+                        "r": 255,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Pick betwen vowel/consonant Track and determine Pitch shift",
+                      "comment2": ""
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::JsCode",
+                      "inlineCode": "const object = objects[0]\nconst vars = object.getVariables()\nconst text = vars.get('LastText').getAsString()\nconst letterTypeVar = vars.get('LetterType')\nconst pitchVar = vars.get('Pitch')\n\nletterTypeVar.setString('')\npitchVar.setNumber(1)\n\nconst lastLetter = (text[text.length - 1] || '').toLowerCase()\nlet pitchFactor = 1\nif (/[aeiou]/.test(lastLetter)) {\n    letterTypeVar.setString('vowel')       \n    pitchFactor = 0.5\n} else if (/[a-z]/.test(lastLetter)) {\n    letterTypeVar.setString('consonant')\n    pitchFactor = 0.1\n} else {\n    return\n}\n\nconst dist = (\n    (1 + lastLetter.charCodeAt(0) - 'a'.charCodeAt(0)) /\n    (1 + 'z'.charCodeAt(0) - 'a'.charCodeAt(0)) \n)\npitchVar.setNumber(0.75 + (pitchFactor * dist))\n",
+                      "parameterObjects": "Object",
+                      "useStrict": true,
+                      "eventsSheetExpanded": false
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_jukebox::TalkText::PropertyVoice"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Behavior",
+                            "=",
+                            "\"friend\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Letter",
+                                "=",
+                                "\"vowel\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PlaySoundCanal"
+                              },
+                              "parameters": [
+                                "",
+                                "Assets\\Audio\\Friend-vowel.wav",
+                                "GlobalVariable(Jukebox.Channels.Voices.Id)",
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Voices.Volume)",
+                                "Object.Variable(Pitch)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Letter",
+                                "=",
+                                "\"consonant\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PlaySoundCanal"
+                              },
+                              "parameters": [
+                                "",
+                                "Assets\\Audio\\Friend-consonant.wav",
+                                "GlobalVariable(Jukebox.Channels.Voices.Id)",
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Voices.Volume)",
+                                "Object.Variable(Pitch)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_jukebox::TalkText::PropertyVoice"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Behavior",
+                            "=",
+                            "\"meany\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Letter",
+                                "=",
+                                "\"vowel\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PlaySoundCanal"
+                              },
+                              "parameters": [
+                                "",
+                                "Assets\\Audio\\Meany-vowel.wav",
+                                "GlobalVariable(Jukebox.Channels.Voices.Id)",
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Voices.Volume)",
+                                "Object.Variable(Pitch)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Letter",
+                                "=",
+                                "\"consonant\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PlaySoundCanal"
+                              },
+                              "parameters": [
+                                "",
+                                "Assets\\Audio\\Meany-consonant.wav",
+                                "GlobalVariable(Jukebox.Channels.Voices.Id)",
+                                "",
+                                "GlobalVariable(Jukebox.Channels.Voices.Volume)",
+                                "Object.Variable(Pitch)"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "SoundReady",
+          "functionType": "Action",
+          "name": "SoundArmed",
+          "private": false,
+          "sentence": "_PARAM0_ SoundReady",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "LetterType",
+                    "!=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "LetterType",
+                        "=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Either \"vowel\" or \"consonant\"",
+          "fullName": "",
+          "functionType": "StringExpression",
+          "name": "LetterType",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Object.VariableString(LetterType)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "ChannelId",
+          "functionType": "Expression",
+          "name": "ChannelId",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "GlobalVariable(Jukebox.Channels.Voices.Id)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "Pitch",
+          "functionType": "Expression",
+          "name": "Pitch",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Object.VariableString(Pitch)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "Volume",
+          "functionType": "Expression",
+          "name": "Volume",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "GlobalVariable(Jukebox.Channels.Voices.Volume)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_jukebox::TalkText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "String",
+          "label": "An name for the voice",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "Voice"
+        }
+      ]
+    }
+  ]
+}

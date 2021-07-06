@@ -1,0 +1,2085 @@
+{
+  "author": "ssangervasi",
+  "description": "",
+  "extensionNamespace": "",
+  "fullName": "SRS Utils",
+  "helpPath": "",
+  "iconUrl": "",
+  "name": "srs_utils",
+  "previewIconUrl": "",
+  "shortDescription": "",
+  "version": "",
+  "tags": [
+    ""
+  ],
+  "dependencies": [],
+  "eventsFunctions": [
+    {
+      "description": "",
+      "fullName": "",
+      "functionType": "Action",
+      "name": "onFirstSceneLoaded",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "if (!global.ssangervasi) { global.ssangervasi = {} }\nconst ssangervasi = global.ssangervasi;\n\nssangervasi.isDebuggingEnabled = false\nif (!ssangervasi.isDebuggingEnabled) {\n    try {\n        ssangervasi.isDebuggingEnabled = runtimeScene.getGame().isPreview()\n    } catch {}\n}\n\n// SetupScene history\n;(() => {\n    /**\n     * @typedef SceneHistoryItem\n     * @property {string} sceneName \n     * @property {number} [startedAt]\n     */\n\n    /** @param {string} sceneName*/\n    const pushScene = (sceneName) => {\n        if (!sceneName) {\n            return\n        }\n        const newItem = {\n            sceneName,\n            startedAt: Date.now()\n        }\n        getSceneHistory().push(newItem)\n\n        return newItem\n    }\n\n    /**\n     * @param {string} defaultVal\n     * @param {number} depth\n     * @returns {string} Scene name\n     */\n    const peekScene = (defaultVal, depth) => {\n        defaultVal = defaultVal || \"\"\n        depth = depth || 0\n\n        const hist = getSceneHistory()\n        const index = hist.length - 1 - depth\n        if (index < 0) {\n            return defaultVal\n        }\n        const item = hist[index]\n        return item.sceneName\n    }\n\n    /** @returns {SceneHistoryItem[]} */\n    const getSceneHistory = () => {\n        if (!ssangervasi.sceneHistory) {\n            ssangervasi.sceneHistory = []\n            pushScene(runtimeScene.getName())\n        }\n        return ssangervasi.sceneHistory\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getSceneHistory,\n            pushScene,\n            peekScene \n        }\n    )\n})();\n\n(() => {\n    const getTimestamp = () => (new Date()).toISOString()\n    const parseTimestamp = (timestamp, defaultVal) => {\n        const d = new Date(timestamp)\n        if (isNaN(d)) { return defaultVal || 0; }\n        return d.valueOf()\n    }\n\n    const getLogCtx = () => {\n        let ctx = '(Unknown)'\n        try {\n            const stack = (new Error().stack)\n            const match = stack.match(/([a-zA-Z.]+Context)/)\n            ctx = (match && match.length && match[0]) || ctx\n        } catch (e) {\n            // Not using ssangervasi.error b/c that would recurse back to here :D\n            console.error('Context failure', e)\n        }\n        return ctx\n    }\n\n    const log = (...msgs) => ssangervasi.isDebuggingEnabled && console.log(getTimestamp(), getLogCtx(), ...msgs)\n    const warn = (...msgs) => ssangervasi.isDebuggingEnabled && console.warn(getTimestamp(), getLogCtx(), ...msgs)\n    const info = (...msgs) => ssangervasi.isDebuggingEnabled && console.info(getTimestamp(), getLogCtx(), ...msgs)\n    const error = (...msgs) => ssangervasi.isDebuggingEnabled && console.error(getTimestamp(), getLogCtx(), ...msgs)\n\n    Object.assign(\n        ssangervasi,\n        {\n            getTimestamp,\n            log,\n            warn,\n            info,\n            error,\n        }\n    )\n})();\n\n(() => {\n    const countLines = (str) => {\n        return 1 + str.split('').filter(c => c === '\\n').length\n    }\n\n    const parseArray = (arrayJson) => {\n        try {\n            const arr = JSON.parse(arrayJson)\n            if (Array.isArray(arr)) {\n                return arr\n            }\n        } catch {}\n        return []\n    } \n\n    Object.assign(\n        ssangervasi,\n        {\n            countLines,\n            parseArray\n        }\n    )\n})();\n\n(() => {\n    const getPlaylist = (aRuntimeScene, playlistName, fresh) => {\n        if (!(aRuntimeScene && playlistName)) {\n            ssangervasi.error(\"Cannot getPlaylist\", { playlistName })\n            return\n        }\n        const nameToPlaylist = ssangervasi.setupPlaylists(runtimeScene)\n        if (!nameToPlaylist.has(playlistName) || fresh) {\n            nameToPlaylist.set(playlistName, new ssangervasi.Playlist())\n        }\n        return nameToPlaylist.get(playlistName)\n    }\n\n    const setupPlaylists = (aRuntimeScene) => {\n        if (!runtimeScene._srsUtils) {\n            runtimeScene._srsUtils = {};\n        }\n        if (!runtimeScene._srsUtils.nameToPlaylist) {\n            runtimeScene._srsUtils.nameToPlaylist = new Map();\n        }\n\n        return runtimeScene._srsUtils.nameToPlaylist;\n    }\n\n    class Playlist {\n        constructor() {\n            this.items = []\n            this.current = null\n        }\n\n        getCurrent() {\n            if (this.current === null) {\n                return null\n            }\n            return this.items[this.current]\n        }\n\n        add(item) {\n            this.items.push(item)\n            if (this.current === null) {\n                this.current = 0\n            }\n        }\n\n        skipTo(targetItem) {\n            const foundIndex = this.items.findIndex(item => item === targetItem)\n            if (foundIndex === -1) { return null }\n\n            this.current = foundIndex\n            return this.getCurrent()\n        }\n\n        next() {\n            if (this.current === null) { return null }\n\n            this.current = (this.current + 1) % this.items.length\n            return this.getCurrent()\n        }\n\n        previous() {\n            if (this.current === null) { return null }\n\n            this.current = this.current - 1\n            if (this.current < 0) {\n                this.current = this.items.length + this.current\n            }\n            return this.getCurrent()\n        }\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getPlaylist,\n            setupPlaylists,\n            Playlist\n        }\n    )       \n})();\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": true
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Log a message to the debug console",
+      "fullName": "Console Log",
+      "functionType": "Action",
+      "name": "consoleLog",
+      "private": false,
+      "sentence": "Log _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "global.ssangervasi.log(\n    eventsFunctionContext.getArgument('Message')\n)\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Message",
+          "longDescription": "",
+          "name": "Message",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Get milliseconds from seconds",
+      "fullName": "ms",
+      "functionType": "Expression",
+      "name": "ms",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "GetArgumentAsNumber(\"Seconds\") * 1000"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Seconds",
+          "longDescription": "",
+          "name": "Seconds",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Counts the number of words in a string.",
+      "fullName": "Word Count",
+      "functionType": "Expression",
+      "name": "wordCount",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const stringToCount = eventsFunctionContext.getArgument('StringToCount')\r\nif (!stringToCount) {\r\n    return 0\r\n}\r\n\r\nconst words = stringToCount.match(/\\w+|\\.{3}/g)\r\n// console.log({\r\n//     stringToCount,\r\n//     words,\r\n// })\r\neventsFunctionContext.returnValue = words.length",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "StringToCount",
+          "longDescription": "",
+          "name": "StringToCount",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "StrToRepl, Pattern, Replacement",
+      "fullName": "String replace",
+      "functionType": "StringExpression",
+      "name": "strReplace",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const patternArg = eventsFunctionContext.getArgument('Pattern')\n    let pattern = patternArg\n    const reMatch = patternArg.match(new RegExp('^/(.*)/.*$'))\n\n    if (reMatch) {\n        pattern = new RegExp(reMatch[1], reMatch[2])\n    }\n\n    const strToRepl = eventsFunctionContext.getArgument('StrToRepl')\n    const replacement = eventsFunctionContext.getArgument('Replacement')\n    return strToRepl.replace(pattern, replacement)\n})()\n",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "String to replace",
+          "longDescription": "",
+          "name": "StrToRepl",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "String or RegExp",
+          "longDescription": "",
+          "name": "Pattern",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Replacement string",
+          "longDescription": "",
+          "name": "Replacement",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Current playlist item",
+      "fullName": "Current playlist item",
+      "functionType": "StringExpression",
+      "name": "playlistCurrent",
+      "private": false,
+      "sentence": "Current item  in playlist _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\n    if (!(playlistName)) {\r\n        global.ssangervasi.error('Cannot get current item in playlist', { playlistName })\r\n        return \"\"\r\n    }\r\n\r\n    const playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\n    return playlist.getCurrent() || \"\"\r\n})()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "PlaylistName",
+          "longDescription": "",
+          "name": "PlaylistName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Add to playlist",
+      "fullName": "Add to playlist",
+      "functionType": "Action",
+      "name": "playlistAdd",
+      "private": false,
+      "sentence": "Add _PARAM2_ to playlist _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nconst item = eventsFunctionContext.getArgument('Item')\r\nif (!(playlistName && item)) {\r\n    global.ssangervasi.error('Cannot add item to playlist', { playlistName, item })\r\n    return\r\n}\r\n\r\n\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.add(item)\r\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "PlaylistName",
+          "longDescription": "",
+          "name": "PlaylistName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Item",
+          "longDescription": "",
+          "name": "Item",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Previous playlist item",
+      "fullName": "Previous playlist item",
+      "functionType": "Action",
+      "name": "playlistPrevious",
+      "private": false,
+      "sentence": "Skip to previous item in playlist _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nif (!playlistName) {\r\n    global.ssangervasi.error('Cannot skip to next item in playlist', { playlistName })\r\n    return\r\n}\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.previous()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "PlaylistName",
+          "longDescription": "",
+          "name": "PlaylistName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Next playlist item",
+      "fullName": "Next playlist item",
+      "functionType": "Action",
+      "name": "playlistNext",
+      "private": false,
+      "sentence": "Skip to next item in playlist _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nif (!playlistName) {\r\n    global.ssangervasi.error('Cannot skip to next item in playlist', { playlistName })\r\n    return\r\n}\r\n\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.next()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "PlaylistName",
+          "longDescription": "",
+          "name": "PlaylistName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Skip to item",
+      "fullName": "Skip to item",
+      "functionType": "Action",
+      "name": "playlistSkipTo",
+      "private": false,
+      "sentence": "Skip to item _PARAM2_ in playlist _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nconst item = eventsFunctionContext.getArgument('Item')\r\nif (!(playlistName && item)) {\r\n    global.ssangervasi.error('Cannot add skip to playlist item', { playlistName, item })\r\n    return\r\n}\r\n\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nconst result = playlist.skipTo(item)\r\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "PlaylistName",
+          "longDescription": "",
+          "name": "PlaylistName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Item",
+          "longDescription": "",
+          "name": "Item",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Throttle",
+      "fullName": "Throttle",
+      "functionType": "Condition",
+      "name": "Throttle",
+      "private": false,
+      "sentence": "_PARAM1_ Throttle invoke _PARAM2_ every _PARAM3_ ms ",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "srs_utils::HasLimitedTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "Object",
+                    "GetArgumentAsString(\"TimerName\")",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Egal"
+                  },
+                  "parameters": [
+                    "srs_utils::getLimitedTimerFraction(Object, GetArgumentAsString(\"TimerName\"))",
+                    ">=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::startLimitedTimer"
+              },
+              "parameters": [
+                "",
+                "Object",
+                "GetArgumentAsString(\"TimerName\")",
+                "GetArgumentAsNumber(\"FrequencyMs\")",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "True"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Object",
+          "longDescription": "",
+          "name": "Object",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "FrequencyMs",
+          "longDescription": "",
+          "name": "FrequencyMs",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "HasLimitedTimer",
+      "fullName": "HasLimitedTimer",
+      "functionType": "Condition",
+      "name": "HasLimitedTimer",
+      "private": false,
+      "sentence": "HasLimitedTimer _PARAM2_ on _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ObjectVariableChildExists"
+              },
+              "parameters": [
+                "Object",
+                "TimerNameToLimitMs",
+                "GetArgumentAsString(\"TimerName\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "True"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Object",
+          "longDescription": "",
+          "name": "Object",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "startLimitedTimer",
+      "fullName": "startLimitedTimer",
+      "functionType": "Action",
+      "name": "startLimitedTimer",
+      "private": false,
+      "sentence": "Start timer _PARAM2_ on _PARAM1_ with limit _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarObjet"
+              },
+              "parameters": [
+                "Object",
+                "TimerNameToLimitMs[GetArgumentAsString(\"TimerName\")]",
+                "=",
+                "GetArgumentAsNumber(\"LimitMs\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ResetObjectTimer"
+              },
+              "parameters": [
+                "Object",
+                "GetArgumentAsString(\"TimerName\")"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "UnPauseObjectTimer"
+              },
+              "parameters": [
+                "Object",
+                "GetArgumentAsString(\"TimerName\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Object",
+          "longDescription": "",
+          "name": "Object",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "LimitMs",
+          "longDescription": "",
+          "name": "LimitMs",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "getLimitedTimerLimit",
+      "fullName": "getLimitedTimerLimit",
+      "functionType": "Expression",
+      "name": "getLimitedTimerLimit",
+      "private": false,
+      "sentence": "Start timer _PARAM2_ on _PARAM1_ with limit _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "Object.Variable(TimerNameToLimitMs[GetArgumentAsString(\"TimerName\")])"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Object",
+          "longDescription": "",
+          "name": "Object",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "getLimitedTimerElapsed",
+      "fullName": "getLimitedTimerElapsed",
+      "functionType": "Expression",
+      "name": "getLimitedTimerElapsed",
+      "private": false,
+      "sentence": "Start timer _PARAM2_ on _PARAM1_ with limit _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))",
+                "<=",
+                "srs_utils::ms(Object.ObjectTimerElapsedTime(GetArgumentAsString(\"TimerName\")))"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PauseObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "GetArgumentAsString(\"TimerName\")"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::ms(Object.ObjectTimerElapsedTime(GetArgumentAsString(\"TimerName\")) )",
+                "<",
+                "srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "srs_utils::ms(Object.ObjectTimerElapsedTime(GetArgumentAsString(\"TimerName\")))"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Object",
+          "longDescription": "",
+          "name": "Object",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "getLimitedTimerFraction",
+      "fullName": "getLimitedTimerFraction",
+      "functionType": "Expression",
+      "name": "getLimitedTimerFraction",
+      "private": false,
+      "sentence": "Start timer _PARAM2_ on _PARAM1_ with limit _PARAM3_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::HasLimitedTimer"
+              },
+              "parameters": [
+                "",
+                "Object",
+                "GetArgumentAsString(\"TimerName\")",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerElapsed(Object, GetArgumentAsString(\"TimerName\")) / srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Object",
+          "longDescription": "",
+          "name": "Object",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "startAnimation",
+      "fullName": "startAnimation",
+      "functionType": "Action",
+      "name": "startAnimation",
+      "private": false,
+      "sentence": "_PARAM1_ startAnimation _PARAM2_ ",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetAnimationName"
+              },
+              "parameters": [
+                "Sprite",
+                "GetArgumentAsString(\"AnimationName\")"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ChangeSprite"
+              },
+              "parameters": [
+                "Sprite",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "PlayAnimation"
+              },
+              "parameters": [
+                "Sprite"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Sprite",
+          "longDescription": "",
+          "name": "Sprite",
+          "optional": false,
+          "supplementaryInformation": "Sprite",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "AnimationName",
+          "longDescription": "",
+          "name": "AnimationName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "AngleBetweeen _PARAM1_ and _PARAM2_",
+      "fullName": "AngleBetweeen",
+      "functionType": "Expression",
+      "name": "AngleBetweeen",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": true,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::consoleLog"
+              },
+              "parameters": [
+                "",
+                "\"Y dif \" + ToString(ObjTo.PointY(\"Center\") - ObjFrom.PointY(\"Center\"))",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::consoleLog"
+              },
+              "parameters": [
+                "",
+                "\"X diff \" + ToString(ObjTo.PointX(\"Center\") - ObjFrom.PointX(\"Center\"))",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::consoleLog"
+              },
+              "parameters": [
+                "",
+                "\"Atan \" + ToString(atan((ObjTo.PointY(\"Center\") - ObjFrom.PointY(\"Center\")) / (ObjTo.PointX(\"Center\") - ObjFrom.PointX(\"Center\"))))",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::consoleLog"
+              },
+              "parameters": [
+                "",
+                "\"Deg \" + ToString(ToDeg(atan((ObjTo.PointY(\"Center\") - ObjFrom.PointY(\"Center\")) / (ObjTo.PointX(\"Center\") - ObjFrom.PointX(\"Center\")))))",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": true,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "ObjFrom.PointX(\"Center\")",
+                "=",
+                "ObjTo.PointX(\"Center\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "-1 * ToDeg(atan((ObjTo.PointY(\"Center\") - ObjFrom.PointY(\"Center\")) / (ObjTo.PointX(\"Center\") - ObjFrom.PointX(\"Center\"))))"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ObjFrom",
+          "longDescription": "",
+          "name": "ObjFrom",
+          "optional": false,
+          "supplementaryInformation": "Sprite",
+          "type": "objectList"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ObjTo",
+          "longDescription": "",
+          "name": "ObjTo",
+          "optional": false,
+          "supplementaryInformation": "Sprite",
+          "type": "objectList"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Uid",
+      "fullName": "Uid",
+      "functionType": "Expression",
+      "name": "Uid",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarGlobal"
+              },
+              "parameters": [
+                "LastUid",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "LastUid",
+                "=",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "LastUid",
+                "+",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "GlobalVariable(LastUid)"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "enableDebugging",
+      "fullName": "enableDebugging",
+      "functionType": "Action",
+      "name": "enableDebugging",
+      "private": false,
+      "sentence": "enableDebugging",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "global.ssangervasi.isDebuggingEnabled = true",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "IsDebuggingEnabled",
+      "fullName": "IsDebuggingEnabled",
+      "functionType": "Condition",
+      "name": "IsDebuggingEnabled",
+      "private": false,
+      "sentence": "IsDebuggingEnabled",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = global.ssangervasi.isDebuggingEnabled",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Returns true while there are items left in the JSON array, setting a scene variable at each step ",
+      "fullName": "ArrayForEach",
+      "functionType": "Condition",
+      "name": "ArrayForEach",
+      "private": false,
+      "sentence": "ArrayForEach _PARAM1_  as _PARAM2_ ",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "global.ssangervasi.forEachContext = global.ssangervasi.forEachContext || {}\nconst { log, parseArray, forEachContext } = global.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    if (forEachContext.array === undefined) {\n        forEachContext.array = parseArray(\n            eventsFunctionContext.getArgument('ArrayJSON')\n        )\n    }\n\n    if (forEachContext.array.length === 0) {\n        forEachContext.array = undefined\n        return false\n    }\n\n    const currentItem = forEachContext.array.shift()\n\n    const vars = runtimeScene.getVariables()\n    const itemVar = vars.get(eventsFunctionContext.getArgument('ItemVariableName'))\n    \n    if (typeof currentItem === 'number') {\n        itemVar.setNumber(currentItem)\n    } else if (typeof currentItem === 'string') {\n        itemVar.setString(currentItem)\n    } else {\n        itemVar.setString(JSON.stringify(currentItem))\n    }\n\n    return true\n})()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ArrayJSON",
+          "longDescription": "",
+          "name": "ArrayJSON",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Name of the scene variable that will be filled with the current item",
+          "longDescription": "",
+          "name": "ItemVariableName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "ArrayItem _PARAM1_[_PARAM2_] ",
+      "fullName": "ArrayItem",
+      "functionType": "StringExpression",
+      "name": "ArrayItem",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const { parseArray } = global.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    const arr = parseArray(\n        eventsFunctionContext.getArgument('ArrayJSON')\n    )\n    if (arr.length === 0 ) {\n        return ''\n    }\n\n    let index = Math.floor(\n        eventsFunctionContext.getArgument('Index')\n    )\n    if (index < 0) {\n        index = arr.length + index\n    }\n    \n    const item = arr[index]\n    if (typeof item === 'string') {\n        return item\n    } else if (item === undefined) {\n        return ''\n    } else  {\n        return JSON.stringify(item)\n    }\n})()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ArrayJSON",
+          "longDescription": "",
+          "name": "ArrayJSON",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Index",
+          "longDescription": "",
+          "name": "Index",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "ArrayLength _PARAM1_",
+      "fullName": "ArrayLength",
+      "functionType": "Expression",
+      "name": "ArrayLength",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const { parseArray } = global.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    return parseArray(\n        eventsFunctionContext.getArgument('ArrayJSON')\n    ).length\n})()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ArrayJSON",
+          "longDescription": "",
+          "name": "ArrayJSON",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "StrMatches",
+      "fullName": "StrMatches",
+      "functionType": "Condition",
+      "name": "StrMatches",
+      "private": false,
+      "sentence": "_PARAM1_ StrMatches _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const patternArg = eventsFunctionContext.getArgument('Pattern')\n    let pattern = new RegExp(patternArg)\n    const reMatch = patternArg.match(new RegExp('^/(.*)/.*$'))\n\n    if (reMatch) {\n        pattern = new RegExp(reMatch[1], reMatch[2])\n    }\n\n    const strToMatch = eventsFunctionContext.getArgument('StrToMatch')\n    return pattern.test(strToMatch)\n})()\n",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": true
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ToMatch",
+          "longDescription": "",
+          "name": "StrToMatch",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Pattern",
+          "longDescription": "",
+          "name": "Pattern",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "TimeMs",
+      "fullName": "TimeMs",
+      "functionType": "Expression",
+      "name": "TimeMs",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = Date.now()\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [
+    {
+      "description": "",
+      "fullName": "TextMarquee",
+      "name": "TextMarquee",
+      "objectType": "TextObject::Text",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DepartScene"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "const { countLines } = global.ssangervasi\nconst [textObj] = objects\nconst vars = textObj.getVariables()\nconst originalTextVar = vars.get('OriginalText')\nconst maxCharsVar = vars.get('MaxChars')\nconst maxLinesVar = vars.get('MaxLines')\n\nconst originalText = textObj.getString()\n\nmaxCharsVar.setNumber(originalText.split(/\\s+/).join(' ').length)\nmaxLinesVar.setNumber(countLines(originalText))\n\noriginalTextVar.setString(originalText)\ntextObj.setString('')\n\n",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": false
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Message",
+                        "=",
+                        "\"0\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Message",
+                        "=",
+                        "Object.Behavior::PropertyMessage()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::TextMarquee",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "marquee",
+          "fullName": "marquee",
+          "functionType": "Action",
+          "name": "marquee",
+          "private": false,
+          "sentence": "_PARAM0_ marquee",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Throttle"
+                  },
+                  "parameters": [
+                    "",
+                    "Object",
+                    "\"text_throttle\"",
+                    "Object.Behavior::ThrottleMs()",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "const { countLines, log } = global.ssangervasi\n\nconst [textObj] = objects\nconst vars = textObj.getVariables()\nconst endIndexVar = vars.get('EndIndex')\nconst maxLines = vars.get('MaxLines').getAsNumber()\nconst message = vars.get('Message').getAsString()\nconst maxChars = vars.get('MaxChars').getAsNumber()\n\nconst endIndex = endIndexVar.getAsNumber() + 1\nconst startIndex = Math.max(0, endIndex - maxChars)\nconst characterLimitedMessage = message.slice(startIndex, endIndex + 1)\n\nconst excessLines = Math.max(0, countLines(characterLimitedMessage) - maxLines)\nconst lineLimitedMessage = characterLimitedMessage.split('\\n').slice(excessLines).join('\\n')\n\nendIndexVar.setNumber(endIndex)\ntextObj.setString(lineLimitedMessage)\n",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": false
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::TextMarquee",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "ThrottleMs",
+          "fullName": "ThrottleMs",
+          "functionType": "Expression",
+          "name": "ThrottleMs",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "srs_utils::ms(Object.Behavior::PropertyTotalSeconds()) / StrLength(Object.VariableString(Message))"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::TextMarquee",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "IsFinished",
+          "fullName": "IsFinished",
+          "functionType": "Condition",
+          "name": "IsFinished",
+          "private": false,
+          "sentence": "_PARAM0_ IsFinished",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const [textObj] = objects\n    const vars = textObj.getVariables()\n    const endIndex = vars.get('EndIndex').getAsNumber()\n    const message = vars.get('Message').getAsString()\n\n    return message.length <= endIndex \n})()\n",
+              "parameterObjects": "Object",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::TextMarquee",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "5",
+          "type": "Number",
+          "label": "TotalSeconds",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "TotalSeconds"
+        },
+        {
+          "value": "Marquee de Sade",
+          "type": "String",
+          "label": "Message - Set instance variable to override",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "Message"
+        }
+      ]
+    },
+    {
+      "description": "https://github.com/4ian/GDevelop/issues/1449",
+      "fullName": "",
+      "name": "RescaledText",
+      "objectType": "TextObject::Text",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DepartScene"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "TextScaleFactor",
+                        "=",
+                        "Object.Behavior::PropertyScaleFactor()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::SetPadding"
+                      },
+                      "parameters": [
+                        "Object",
+                        "=",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "OriginalWidth",
+                        "=",
+                        "Object.Width()"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::WrappingWidth"
+                      },
+                      "parameters": [
+                        "Object",
+                        "*",
+                        "Object.Variable(TextScaleFactor)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::Size"
+                      },
+                      "parameters": [
+                        "Object",
+                        "*",
+                        "Object.Variable(TextScaleFactor)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::Scale"
+                      },
+                      "parameters": [
+                        "Object",
+                        "=",
+                        "Object.Variable(OriginalWidth)/Object.Width()"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "Object",
+                        "=",
+                        "Object.X()",
+                        "=",
+                        "Object.Y()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::RescaledText",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "10",
+          "type": "Number",
+          "label": "ScaleFactor",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "ScaleFactor"
+        }
+      ]
+    }
+  ]
+}
