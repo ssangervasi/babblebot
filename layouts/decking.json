@@ -2672,7 +2672,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "JS",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2698,17 +2698,6 @@
               "type": {
                 "inverted": false,
                 "value": "decking::importCardScoresJs"
-              },
-              "parameters": [
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "decking::parseScoreTable"
               },
               "parameters": [
                 "",
@@ -3589,7 +3578,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Dialog",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5182,7 +5171,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Mood",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5489,7 +5478,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Sound",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5925,7 +5914,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "End state",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",

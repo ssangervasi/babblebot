@@ -15,8 +15,9 @@
 		"npm": "7.13.0"
 	},
 	"scripts": {
-		"build": "rm -rf dist/* && npm run csvToScoreTable && npm run build-modern && npm run inject",
+		"build": "rm -rf dist/* && npm run csvToScoreTable && npm run build-node && npm run inject",
 		"build-modern": "microbundle --target=node --format=modern",
+		"build-node": "microbundle --target=node --format=cjs",
 		"bin": "ts-node --project=./bin/tsconfig.json",
 		"inject": "npm run bin bin/inject.ts",
 		"csvToScoreTable": "npm run bin bin/csvToScoreTable.ts",
