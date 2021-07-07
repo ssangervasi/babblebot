@@ -15,9 +15,11 @@
 		"npm": "7.13.0"
 	},
 	"scripts": {
-		"build": "rm -rf dist/* && npm run build-modern && npm run inject",
+		"build": "rm -rf dist/* && npm run csvToScoreTable && npm run build-modern && npm run inject",
 		"build-modern": "microbundle --target=node --format=modern",
-		"inject": "ts-node --project=./bin/tsconfig.json bin/inject.ts",
+		"bin": "ts-node --project=./bin/tsconfig.json",
+		"inject": "npm run bin bin/inject.ts",
+		"csvToScoreTable": "npm run bin bin/csvToScoreTable.ts",
 		"lint": "eslint --fix --cache src/**",
 		"ndb": "ndb ./dist/cli.js",
 		"shell": "ts-node",

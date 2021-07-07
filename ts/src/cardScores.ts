@@ -1,5 +1,7 @@
 import csvParse from 'csv-parse/lib/sync'
 
+import SCORE_TABLE from './scoreTable.json'
+
 type ScoreTable = ScoreRow[]
 interface ScoreRow {
 	cardTag: string
@@ -41,7 +43,7 @@ export const calculateScore = (
 	cardTagsStr: string,
 	characterTagsStr: string,
 	nodeTagsStr: string,
-	scoreTable: ScoreTable,
+	scoreTable: ScoreTable = SCORE_TABLE,
 ): number => {
 	const cardTags = spaceSplit(cardTagsStr)
 	const characterTags = spaceSplit(characterTagsStr)

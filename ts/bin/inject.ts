@@ -2,11 +2,10 @@ import path from 'path'
 import fs from 'fs'
 import jsonStringify from 'json-stable-stringify'
 
-const ROOT = path.resolve(__dirname, '../..')
-const EXTENSIONS = path.resolve(ROOT, 'eventsFunctionsExtensions')
+import { PATHS } from './config'
 
 const main = () => {
-	const extPath = path.resolve(EXTENSIONS, 'decking.json')
+	const extPath = PATHS.DECKING
 	const extJson = fs.readFileSync(extPath)
 	const extData: {
 		eventsFunctions: Array<{
@@ -75,7 +74,7 @@ const injectEvent = (event: GdEvent) => {
 	}
 
 	const pathMatch = matches[2]
-	const jsPath = path.resolve(ROOT, pathMatch)
+	const jsPath = path.resolve(PATHS.ROOT, pathMatch)
 
 	if (!fs.existsSync(jsPath)) {
 		console.warn(

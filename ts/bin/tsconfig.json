@@ -6,7 +6,7 @@
 
 		"strictNullChecks": true
 	},
-	"files": [
-		"inject.ts",
-	]
+	"include": [
+		"."
+	],
 }
