@@ -1,79 +1,68 @@
-import csvParse from 'csv-parse/lib/sync'
+import csvParse from "csv-parse/lib/sync";
 
-import SCORE_TABLE from './scoreTable.json'
+import SCORE_TABLE from "./scoreTable.json";
 
-type ScoreTable = ScoreRow[]
+const HEADINGS = {
+	// Card
+	ID: "Id",
+	TEXT: "Text",
+	TAGS: "Tags",
+	// Scores
+	TAG: "Tag",
+	SCORE: "Score",
+} as const;
+
+type ScoreTable = ScoreRow[];
 interface ScoreRow {
-	cardTag: string
-	scoreTag: string
-	score: number
+	tag: string;
+	score: number;
 }
-interface CsvRow {
-	"Card Tag"?: string
-	"Tag"?: string
-	"Result"?: number
+
+interface CardScoresCsvRow {
+	[HEADINGS.TAG]?: string;
+	[HEADINGS.SCORE]?: number;
 }
 
 export const parseCsv = (raw: string): ScoreTable => {
-	const parsed: CsvRow[] = csvParse(raw, { cast: true, columns: true });
+	const parsed: CardScoresCsvRow[] = csvParse(raw, {
+		cast: true,
+		columns: true,
+	});
 
-	const rows: ScoreRow[] = []
-	parsed.forEach(csvRow => {
-		const {
-			"Card Tag": cardTag,
-			"Tag": scoreTag,
-			"Result": score,
-		} = csvRow
+	const rows: ScoreRow[] = [];
+	parsed.forEach((csvRow) => {
+		const { [HEADINGS.TAG]: tag, [HEADINGS.SCORE]: score } = csvRow;
 
-		if (!(
-			typeof cardTag === 'string' &&
-			cardTag.length > 0 &&
-			typeof scoreTag === 'string' &&
-			typeof score === 'number'
-		)) {
-			return
+		if (
+			!(typeof tag === "string" && tag.length > 0 && typeof score === "number")
+		) {
+			return;
 		}
 
-		rows.push({ cardTag, scoreTag, score })
-	})
-	return rows
-}
+		rows.push({ tag, score });
+	});
+
+	return rows;
+};
 
 export const calculateScore = (
 	cardTagsStr: string,
 	characterTagsStr: string,
 	nodeTagsStr: string,
-	scoreTable: ScoreTable = SCORE_TABLE,
+	scoreTable: ScoreTable = SCORE_TABLE
 ): number => {
-	const cardTags = spaceSplit(cardTagsStr)
-	const characterTags = spaceSplit(characterTagsStr)
-	const nodeTags = spaceSplit(nodeTagsStr)
-	const effectTags = [...characterTags, ...nodeTags]
+	const cardTags = spaceSplit(cardTagsStr);
+	const characterTags = spaceSplit(characterTagsStr);
+	const nodeTags = spaceSplit(nodeTagsStr);
+	const effectTags = new Set([...characterTags, ...nodeTags]);
 
-	// Build the default map for all card tags
-	const cardTagToEffectTag = new Map<string, string>(
-		cardTags.map(cardTag => [cardTag, '']),
-	)
-	effectTags.forEach(effectTag => {
-		const effectTagPrefix = effectTag.split('_')[0]
-		if (!effectTagPrefix) {
-			console.warn(`ignoring tag "${effectTag}" because it has no prefix`)
-			return
+	let scoreSum = 0;
+	scoreTable.forEach(({ tag, score }) => {
+		if (effectTags.has(tag)) {
+			scoreSum += score;
 		}
-		if (cardTagToEffectTag.has(effectTagPrefix)) {
-			cardTagToEffectTag.set(effectTagPrefix, effectTag)
-		}
-	})
-	let scoreSum = 0
-	scoreTable.forEach(({ cardTag, scoreTag, score }) => {
-		if (!cardTagToEffectTag.has(cardTag)) {
-			return
-		}
-		if (cardTagToEffectTag.get(cardTag) === scoreTag) {
-			scoreSum += score
-		}
-	})
-	return scoreSum
-}
+	});
+	return scoreSum;
+};
 
-const spaceSplit = (str: string): string[] => str.split(/\s+/)
+const spaceSplit = (str: string): string[] => str.split(/\s+/);
