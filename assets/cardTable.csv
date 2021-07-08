@@ -1,0 +1,35 @@
+Id,Type,Text,Extra Features,Features
+agree_neutral,agree,I neither condemn nor endorse your opinion.,,agree 
+agree_softly,listen,"Although my own opinion is uninformed, I trust your judgement on that information.",,listen 
+agree_strongly,agree,We have agreed on information/behavior that is core to my understanding of myself.,aggression,agree aggression
+break_ice_hobbies,listen,Do we engage in the same common recreational activities?,hobbies,listen hobbies
+break_ice_politics,listen,Describe your opinion on the system making the decisions that govern your life.,politics,listen politics
+break_ice_sports,listen,Are you happy or sad that the paid athletes recently won/lost a game?,sports,listen sports
+break_ice_weather,listen,Are you amazed by the cyclical progression of natural phenomena?,question  nonsequitor,listen question  nonsequitor
+change_subject,disagree,I don't really want to talk about this.,nonsequitor,disagree nonsequitor
+change_subject,disagree,Tell me something else about you.,nonsequitor,disagree nonsequitor
+clarifying_question,disagree,Please remind me of information I have forgotten from your dating profile or previous statements.,question,disagree question
+compliment_appearance,disagree,Your three-dimensional form trigers pleasure responses in my brain.,flattery  appearance  nonsequitor,disagree flattery  appearance  nonsequitor
+compliment_behavior,disagree,Your behavior is appropriate for the social context of this date.,flattery  nonsequitor,disagree flattery  nonsequitor
+compliment_intellect,disagree,You are likely above the average intelligence for your age and species.,flattery  nonsequitor,disagree flattery  nonsequitor
+compliment_social_standing,disagree,Your attractive dating qualities certainly must put you in high demand.,flattery  nonsequitor  aggressive,disagree flattery  nonsequitor  aggressive
+compliment_style,disagree,The garment you are wearing complements your facial features nicely.,flattery  appearance  nonsequitor,disagree flattery  appearance  nonsequitor
+disagree_neutral,disagree,We're all entitled to our oponions.,,disagree 
+disagree_strongly,disagree,That opinion/behavior provokes an intense negative emotion in me.,aggression,disagree aggression
+express_disdain,disagree,That information or behavior is unacceptable for the context it is in.,,disagree 
+express_empathy,agree,My understanding of your feelings is informed by my similar experiences.,empathy,agree empathy
+express_gratitude,agree,I appreciate the information you have shared with me,,agree 
+express_sympathy,agree,I understand your experience to have been negative and feel sorrow for you.,sympathy,agree sympathy
+give_compliment,agree,I look forward to learning information about you.,flattery nonsequitor,agree flattery nonsequitor
+indicate_agreement,agree,"Yes, my understanding of that information aligns with your own.",,agree 
+learn_more,listen,Please provide more data points or logic to help me understand you.,question,listen question
+learn_more_education,agree,Did you exchange currency for information at a learning institution?,question  education,agree question  education
+learn_more_family,agree,Do you associate positive emotions with the life forms you are related to??,question  family,agree question  family
+learn_more_hobbies,agree,Describe your regular recreational activities.,question  hobbies,agree question  hobbies
+learn_more_job,agree,What is the activity or service that you provide in exchange for currency?,question  job,agree question  job
+learn_more_personal,agree,I would like to know more information that describes your unique persona,question,agree question
+provide_information_family,listen,My related life forms have had the following impact on my development...,nonsequitor  family,listen nonsequitor  family
+provide_information_hobbies,listen,"When I am not eating, sleeping, or working, I spend my time on...",nonsequitor  hobbies,listen nonsequitor  hobbies
+provide_information_job,listen,These are some difficulties I have had while exchanging services for curency...,nonsequitor  job,listen nonsequitor  job
+respond_emotionally,agree,That information provokes an emotional response in me.,,agree 
+talk_about_self,disagree,That reminds me of a time when I...,nonsequitor,disagree nonsequitor

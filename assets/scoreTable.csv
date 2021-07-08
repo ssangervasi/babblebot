@@ -1,4 +1,4 @@
-Feature,Modifier,Tag,Score
+Feature,Reaction,Feature_Reaction,Score
 agree,good,agree_good,20
 agree,bad,agree_bad,-7
 agree,,agree,2

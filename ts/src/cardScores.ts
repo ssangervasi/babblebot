@@ -2,28 +2,33 @@ import csvParse from "csv-parse/lib/sync";
 
 import SCORE_TABLE from "./scoreTable.json";
 
-const HEADINGS = {
-	// Card
+export const HEADINGS = {
+	// Cards
 	ID: "Id",
 	TEXT: "Text",
-	TAGS: "Tags",
+	FEATURES: "Features",
 	// Scores
-	TAG: "Tag",
+	FEATURE: "Feature",
+	REACTION: "Reaction",
 	SCORE: "Score",
 } as const;
 
-type ScoreTable = ScoreRow[];
-interface ScoreRow {
-	tag: string;
+export type ScoreTable = ScoreRow[];
+export interface FeatureReaction {
+	feature: string;
+	reaction: string;
+}
+export interface ScoreRow extends FeatureReaction {
 	score: number;
 }
 
-interface CardScoresCsvRow {
-	[HEADINGS.TAG]?: string;
+export interface CardScoresCsvRow {
+	[HEADINGS.FEATURE]?: string;
+	[HEADINGS.REACTION]?: string;
 	[HEADINGS.SCORE]?: number;
 }
 
-export const parseCsv = (raw: string): ScoreTable => {
+export const parseScoresCsv = (raw: string): ScoreTable => {
 	const parsed: CardScoresCsvRow[] = csvParse(raw, {
 		cast: true,
 		columns: true,
@@ -31,38 +36,70 @@ export const parseCsv = (raw: string): ScoreTable => {
 
 	const rows: ScoreRow[] = [];
 	parsed.forEach((csvRow) => {
-		const { [HEADINGS.TAG]: tag, [HEADINGS.SCORE]: score } = csvRow;
+		const {
+			[HEADINGS.FEATURE]: feature,
+			[HEADINGS.REACTION]: reaction,
+			[HEADINGS.SCORE]: score,
+		} = csvRow;
 
 		if (
-			!(typeof tag === "string" && tag.length > 0 && typeof score === "number")
+			!(
+				typeof feature === "string" &&
+				feature.length > 0 &&
+				typeof reaction === "string" &&
+				typeof score === "number"
+			)
 		) {
 			return;
 		}
 
-		rows.push({ tag, score });
+		rows.push({ feature, reaction, score });
 	});
 
 	return rows;
 };
 
 export const calculateScore = (
-	cardTagsStr: string,
-	characterTagsStr: string,
-	nodeTagsStr: string,
+	cardFeaturesStr: string,
+	nodeFeatureReactionsStr: string,
 	scoreTable: ScoreTable = SCORE_TABLE
 ): number => {
-	const cardTags = spaceSplit(cardTagsStr);
-	const characterTags = spaceSplit(characterTagsStr);
-	const nodeTags = spaceSplit(nodeTagsStr);
-	const effectTags = new Set([...characterTags, ...nodeTags]);
+	const cardFeatures = spaceSplit(cardFeaturesStr);
+
+	const nodeFeatureReactions = spaceSplit(nodeFeatureReactionsStr).map(
+		reactionSplit
+	);
+
+	const effectiveFeatureToReaction = new Map<string, string>();
+	cardFeatures.forEach((feature) => {
+		// Assign an empty reaction for each card as a default
+		effectiveFeatureToReaction.set(feature, "");
+	});
+
+	nodeFeatureReactions.forEach(({ feature, reaction }) => {
+		// Override any node reactions for features that were on the cards.
+		if (effectiveFeatureToReaction.has(feature)) {
+			effectiveFeatureToReaction.set(feature, reaction);
+		}
+	});
 
 	let scoreSum = 0;
-	scoreTable.forEach(({ tag, score }) => {
-		if (effectTags.has(tag)) {
+	scoreTable.forEach(({ feature, reaction, score }) => {
+		if (effectiveFeatureToReaction.get(feature) === reaction) {
 			scoreSum += score;
 		}
 	});
 	return scoreSum;
 };
 
-const spaceSplit = (str: string): string[] => str.split(/\s+/);
+export const spaceSplit = (str: string): string[] => str.split(/\s+/);
+
+export const reactionSplit = (joined: string): FeatureReaction => {
+	const pair = joined.split("_");
+	const feature = pair[0] || "";
+	const reaction = pair[1] || "";
+	return {
+		feature,
+		reaction,
+	};
+};

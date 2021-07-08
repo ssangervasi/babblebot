@@ -21,6 +21,7 @@
 		"bin": "ts-node --project=./bin/tsconfig.json",
 		"inject": "npm run bin bin/inject.ts",
 		"csvToScoreTable": "npm run bin bin/csvToScoreTable.ts",
+		"gen": "npm run csvToScoreTable",
 		"lint": "eslint --fix --cache src/**",
 		"ndb": "ndb ./dist/cli.js",
 		"shell": "ts-node",
