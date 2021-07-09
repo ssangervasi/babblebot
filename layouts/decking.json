@@ -2708,17 +2708,6 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::importCards"
-              },
-              "parameters": [
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
                 "value": "decking::createCards"
               },
               "parameters": [

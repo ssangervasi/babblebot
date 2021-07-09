@@ -33,16 +33,35 @@ const exampleTable: ScoreTable = [
 
 describe("calculateScore", () => {
 	test("agree is bad, listen is good", () => {
-		const cardTagsStr = "agree listen";
-		const nodeTagsStr = "agree_bad listen_good";
-		const result = calculateScore(cardTagsStr, nodeTagsStr, exampleTable);
+		const cardFeatures = "agree listen";
+		const nodeFeatureReactions = "agree_bad listen_good";
+		const result = calculateScore(
+			cardFeatures,
+			nodeFeatureReactions,
+			exampleTable
+		);
 		expect(result).toEqual(-10 + 20);
 	});
 
 	test("agree is good, butt is good, listen is neutral", () => {
-		const cardTagsStr = "agree butt listen";
-		const nodeTagsStr = "agree_good butt_good";
-		const result = calculateScore(cardTagsStr, nodeTagsStr, exampleTable);
+		const cardFeatures = "agree butt listen";
+		const nodeFeatureReactions = "agree_good butt_good";
+		const result = calculateScore(
+			cardFeatures,
+			nodeFeatureReactions,
+			exampleTable
+		);
+		expect(result).toEqual(30 + 2 + 1000.1);
+	});
+
+	test("with messsy string lists", () => {
+		const cardFeatures = "agree    butt,listen";
+		const nodeFeatureReactions = "agree_good,,   butt_good,,  ,  ";
+		const result = calculateScore(
+			cardFeatures,
+			nodeFeatureReactions,
+			exampleTable
+		);
 		expect(result).toEqual(30 + 2 + 1000.1);
 	});
 });

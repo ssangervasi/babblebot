@@ -110,9 +110,9 @@ export const calculateScore = (
 	nodeFeatureReactionsStr: string,
 	scoreTable: ScoreTable = SCORE_TABLE
 ): number => {
-	const cardFeatures = spaceSplit(cardFeaturesStr);
+	const cardFeatures = splitList(cardFeaturesStr);
 
-	const nodeFeatureReactions = spaceSplit(nodeFeatureReactionsStr).map(
+	const nodeFeatureReactions = splitList(nodeFeatureReactionsStr).map(
 		reactionSplit
 	);
 
@@ -138,8 +138,8 @@ export const calculateScore = (
 	return scoreSum;
 };
 
-export const spaceSplit = (str: string): string[] =>
-	str.split(/\s+/).filter((s) => s.length > 0);
+export const splitList = (str: string): string[] =>
+	str.split(/(\s+|\s*,\s*)/).filter((s) => s.length > 0);
 
 export const reactionSplit = (joined: string): FeatureReaction => {
 	const pair = joined.split("_");
