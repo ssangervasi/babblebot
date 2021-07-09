@@ -1,59 +1,287 @@
 [
-	{ "feature": "agree", "reaction": "good", "score": 20 },
-	{ "feature": "agree", "reaction": "bad", "score": -7 },
-	{ "feature": "agree", "reaction": "", "score": 2 },
-	{ "feature": "disagree", "reaction": "good", "score": 20 },
-	{ "feature": "disagree", "reaction": "bad", "score": -14 },
-	{ "feature": "disagree", "reaction": "", "score": -4 },
-	{ "feature": "listen", "reaction": "good", "score": 10 },
-	{ "feature": "listen", "reaction": "bad", "score": -7 },
-	{ "feature": "listen", "reaction": "", "score": 3 },
-	{ "feature": "sports", "reaction": "good", "score": 10 },
-	{ "feature": "sports", "reaction": "bad", "score": -14 },
-	{ "feature": "sports", "reaction": "", "score": 3 },
-	{ "feature": "art", "reaction": "good", "score": 10 },
-	{ "feature": "art", "reaction": "bad", "score": -7 },
-	{ "feature": "art", "reaction": "", "score": -4 },
-	{ "feature": "appearance", "reaction": "good", "score": 14 },
-	{ "feature": "appearance", "reaction": "bad", "score": -14 },
-	{ "feature": "appearance", "reaction": "", "score": 3 },
-	{ "feature": "brains", "reaction": "good", "score": 20 },
-	{ "feature": "brains", "reaction": "bad", "score": -10 },
-	{ "feature": "brains", "reaction": "", "score": 3 },
-	{ "feature": "behavior", "reaction": "good", "score": 10 },
-	{ "feature": "behavior", "reaction": "bad", "score": -10 },
-	{ "feature": "behavior", "reaction": "", "score": 1 },
-	{ "feature": "family", "reaction": "good", "score": 6 },
-	{ "feature": "family", "reaction": "bad", "score": -14 },
-	{ "feature": "family", "reaction": "", "score": 3 },
-	{ "feature": "job", "reaction": "good", "score": 6 },
-	{ "feature": "job", "reaction": "bad", "score": -10 },
-	{ "feature": "job", "reaction": "", "score": 3 },
-	{ "feature": "education", "reaction": "good", "score": 6 },
-	{ "feature": "education", "reaction": "bad", "score": -7 },
-	{ "feature": "education", "reaction": "", "score": 0 },
-	{ "feature": "hobbies", "reaction": "good", "score": 10 },
-	{ "feature": "hobbies", "reaction": "bad", "score": -4 },
-	{ "feature": "hobbies", "reaction": "", "score": 0 },
-	{ "feature": "politics", "reaction": "good", "score": 13 },
-	{ "feature": "politics", "reaction": "bad", "score": -14 },
-	{ "feature": "politics", "reaction": "", "score": -4 },
-	{ "feature": "flattery", "reaction": "good", "score": 6 },
-	{ "feature": "flattery", "reaction": "bad", "score": -10 },
-	{ "feature": "flattery", "reaction": "", "score": 3 },
-	{ "feature": "aggression", "reaction": "good", "score": 6 },
-	{ "feature": "aggression", "reaction": "bad", "score": -14 },
-	{ "feature": "aggression", "reaction": "", "score": 0 },
-	{ "feature": "question", "reaction": "good", "score": 8 },
-	{ "feature": "question", "reaction": "bad", "score": -4 },
-	{ "feature": "question", "reaction": "", "score": 0 },
-	{ "feature": "nonsequitor", "reaction": "good", "score": 3 },
-	{ "feature": "nonsequitor", "reaction": "bad", "score": -14 },
-	{ "feature": "nonsequitor", "reaction": "", "score": -4 },
-	{ "feature": "empathy", "reaction": "good", "score": 6 },
-	{ "feature": "empathy", "reaction": "bad", "score": -4 },
-	{ "feature": "empathy", "reaction": "", "score": 0 },
-	{ "feature": "sympathy", "reaction": "good", "score": 10 },
-	{ "feature": "sympathy", "reaction": "bad", "score": -14 },
-	{ "feature": "sympathy", "reaction": "", "score": -4 }
+	{
+		"feature": "agree",
+		"reaction": "good",
+		"score": 20
+	},
+	{
+		"feature": "agree",
+		"reaction": "bad",
+		"score": -7
+	},
+	{
+		"feature": "agree",
+		"reaction": "",
+		"score": 2
+	},
+	{
+		"feature": "disagree",
+		"reaction": "good",
+		"score": 20
+	},
+	{
+		"feature": "disagree",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "disagree",
+		"reaction": "",
+		"score": -4
+	},
+	{
+		"feature": "listen",
+		"reaction": "good",
+		"score": 10
+	},
+	{
+		"feature": "listen",
+		"reaction": "bad",
+		"score": -7
+	},
+	{
+		"feature": "listen",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "sports",
+		"reaction": "good",
+		"score": 10
+	},
+	{
+		"feature": "sports",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "sports",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "art",
+		"reaction": "good",
+		"score": 10
+	},
+	{
+		"feature": "art",
+		"reaction": "bad",
+		"score": -7
+	},
+	{
+		"feature": "art",
+		"reaction": "",
+		"score": -4
+	},
+	{
+		"feature": "appearance",
+		"reaction": "good",
+		"score": 14
+	},
+	{
+		"feature": "appearance",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "appearance",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "brains",
+		"reaction": "good",
+		"score": 20
+	},
+	{
+		"feature": "brains",
+		"reaction": "bad",
+		"score": -10
+	},
+	{
+		"feature": "brains",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "behavior",
+		"reaction": "good",
+		"score": 10
+	},
+	{
+		"feature": "behavior",
+		"reaction": "bad",
+		"score": -10
+	},
+	{
+		"feature": "behavior",
+		"reaction": "",
+		"score": 1
+	},
+	{
+		"feature": "family",
+		"reaction": "good",
+		"score": 6
+	},
+	{
+		"feature": "family",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "family",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "job",
+		"reaction": "good",
+		"score": 6
+	},
+	{
+		"feature": "job",
+		"reaction": "bad",
+		"score": -10
+	},
+	{
+		"feature": "job",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "education",
+		"reaction": "good",
+		"score": 6
+	},
+	{
+		"feature": "education",
+		"reaction": "bad",
+		"score": -7
+	},
+	{
+		"feature": "education",
+		"reaction": "",
+		"score": 0
+	},
+	{
+		"feature": "hobbies",
+		"reaction": "good",
+		"score": 10
+	},
+	{
+		"feature": "hobbies",
+		"reaction": "bad",
+		"score": -4
+	},
+	{
+		"feature": "hobbies",
+		"reaction": "",
+		"score": 0
+	},
+	{
+		"feature": "politics",
+		"reaction": "good",
+		"score": 13
+	},
+	{
+		"feature": "politics",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "politics",
+		"reaction": "",
+		"score": -4
+	},
+	{
+		"feature": "flattery",
+		"reaction": "good",
+		"score": 6
+	},
+	{
+		"feature": "flattery",
+		"reaction": "bad",
+		"score": -10
+	},
+	{
+		"feature": "flattery",
+		"reaction": "",
+		"score": 3
+	},
+	{
+		"feature": "aggression",
+		"reaction": "good",
+		"score": 6
+	},
+	{
+		"feature": "aggression",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "aggression",
+		"reaction": "",
+		"score": 0
+	},
+	{
+		"feature": "question",
+		"reaction": "good",
+		"score": 8
+	},
+	{
+		"feature": "question",
+		"reaction": "bad",
+		"score": -4
+	},
+	{
+		"feature": "question",
+		"reaction": "",
+		"score": 0
+	},
+	{
+		"feature": "nonsequitor",
+		"reaction": "good",
+		"score": 3
+	},
+	{
+		"feature": "nonsequitor",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "nonsequitor",
+		"reaction": "",
+		"score": -4
+	},
+	{
+		"feature": "empathy",
+		"reaction": "good",
+		"score": 6
+	},
+	{
+		"feature": "empathy",
+		"reaction": "bad",
+		"score": -4
+	},
+	{
+		"feature": "empathy",
+		"reaction": "",
+		"score": 0
+	},
+	{
+		"feature": "sympathy",
+		"reaction": "good",
+		"score": 10
+	},
+	{
+		"feature": "sympathy",
+		"reaction": "bad",
+		"score": -14
+	},
+	{
+		"feature": "sympathy",
+		"reaction": "",
+		"score": -4
+	}
 ]

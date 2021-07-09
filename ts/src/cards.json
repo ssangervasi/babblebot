@@ -1,0 +1,172 @@
+[
+	{
+		"features": "agree ",
+		"id": "agree_neutral",
+		"text": "I neither condemn nor endorse your opinion."
+	},
+	{
+		"features": "listen ",
+		"id": "agree_softly",
+		"text": "Although my own opinion is uninformed, I trust your judgement on that information."
+	},
+	{
+		"features": "agree aggression",
+		"id": "agree_strongly",
+		"text": "We have agreed on information/behavior that is core to my understanding of myself."
+	},
+	{
+		"features": "listen hobbies",
+		"id": "break_ice_hobbies",
+		"text": "Do we engage in the same common recreational activities?"
+	},
+	{
+		"features": "listen politics",
+		"id": "break_ice_politics",
+		"text": "Describe your opinion on the system making the decisions that govern your life."
+	},
+	{
+		"features": "listen sports",
+		"id": "break_ice_sports",
+		"text": "Are you happy or sad that the paid athletes recently won/lost a game?"
+	},
+	{
+		"features": "listen question  nonsequitor",
+		"id": "break_ice_weather",
+		"text": "Are you amazed by the cyclical progression of natural phenomena?"
+	},
+	{
+		"features": "disagree nonsequitor",
+		"id": "change_subject",
+		"text": "I don't really want to talk about this."
+	},
+	{
+		"features": "disagree nonsequitor",
+		"id": "change_subject",
+		"text": "Tell me something else about you."
+	},
+	{
+		"features": "disagree question",
+		"id": "clarifying_question",
+		"text": "Please remind me of information I have forgotten from your dating profile or previous statements."
+	},
+	{
+		"features": "disagree flattery  appearance  nonsequitor",
+		"id": "compliment_appearance",
+		"text": "Your three-dimensional form trigers pleasure responses in my brain."
+	},
+	{
+		"features": "disagree flattery  nonsequitor",
+		"id": "compliment_behavior",
+		"text": "Your behavior is appropriate for the social context of this date."
+	},
+	{
+		"features": "disagree flattery  nonsequitor",
+		"id": "compliment_intellect",
+		"text": "You are likely above the average intelligence for your age and species."
+	},
+	{
+		"features": "disagree flattery  nonsequitor  aggressive",
+		"id": "compliment_social_standing",
+		"text": "Your attractive dating qualities certainly must put you in high demand."
+	},
+	{
+		"features": "disagree flattery  appearance  nonsequitor",
+		"id": "compliment_style",
+		"text": "The garment you are wearing complements your facial features nicely."
+	},
+	{
+		"features": "disagree ",
+		"id": "disagree_neutral",
+		"text": "We're all entitled to our oponions."
+	},
+	{
+		"features": "disagree aggression",
+		"id": "disagree_strongly",
+		"text": "That opinion/behavior provokes an intense negative emotion in me."
+	},
+	{
+		"features": "disagree ",
+		"id": "express_disdain",
+		"text": "That information or behavior is unacceptable for the context it is in."
+	},
+	{
+		"features": "agree empathy",
+		"id": "express_empathy",
+		"text": "My understanding of your feelings is informed by my similar experiences."
+	},
+	{
+		"features": "agree ",
+		"id": "express_gratitude",
+		"text": "I appreciate the information you have shared with me"
+	},
+	{
+		"features": "agree sympathy",
+		"id": "express_sympathy",
+		"text": "I understand your experience to have been negative and feel sorrow for you."
+	},
+	{
+		"features": "agree flattery nonsequitor",
+		"id": "give_compliment",
+		"text": "I look forward to learning information about you."
+	},
+	{
+		"features": "agree ",
+		"id": "indicate_agreement",
+		"text": "Yes, my understanding of that information aligns with your own."
+	},
+	{
+		"features": "listen question",
+		"id": "learn_more",
+		"text": "Please provide more data points or logic to help me understand you."
+	},
+	{
+		"features": "agree question  education",
+		"id": "learn_more_education",
+		"text": "Did you exchange currency for information at a learning institution?"
+	},
+	{
+		"features": "agree question  family",
+		"id": "learn_more_family",
+		"text": "Do you associate positive emotions with the life forms you are related to??"
+	},
+	{
+		"features": "agree question  hobbies",
+		"id": "learn_more_hobbies",
+		"text": "Describe your regular recreational activities."
+	},
+	{
+		"features": "agree question  job",
+		"id": "learn_more_job",
+		"text": "What is the activity or service that you provide in exchange for currency?"
+	},
+	{
+		"features": "agree question",
+		"id": "learn_more_personal",
+		"text": "I would like to know more information that describes your unique persona"
+	},
+	{
+		"features": "listen nonsequitor  family",
+		"id": "provide_information_family",
+		"text": "My related life forms have had the following impact on my development..."
+	},
+	{
+		"features": "listen nonsequitor  hobbies",
+		"id": "provide_information_hobbies",
+		"text": "When I am not eating, sleeping, or working, I spend my time on..."
+	},
+	{
+		"features": "listen nonsequitor  job",
+		"id": "provide_information_job",
+		"text": "These are some difficulties I have had while exchanging services for curency..."
+	},
+	{
+		"features": "agree ",
+		"id": "respond_emotionally",
+		"text": "That information provokes an emotional response in me."
+	},
+	{
+		"features": "disagree nonsequitor",
+		"id": "talk_about_self",
+		"text": "That reminds me of a time when I..."
+	}
+]
