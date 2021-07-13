@@ -3567,7 +3567,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Dialog",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4810,9 +4810,9 @@
                                 "value": "ModVarSceneTxt"
                               },
                               "parameters": [
-                                "ChosenCardTags",
+                                "ChosenCardFeatures",
                                 "=",
-                                "Card.Card::Tags()"
+                                "Card.Card::Features()"
                               ],
                               "subInstructions": []
                             },
@@ -4878,20 +4878,7 @@
                               },
                               "parameters": [
                                 "",
-                                "\"Card tags: \" + VariableString(ChosenCardTags)",
-                                "0",
-                                ""
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "utils::log"
-                              },
-                              "parameters": [
-                                "",
-                                "\"Amy tags: \" + Amy.VariableString(Tags)",
+                                "\"Card features: \" + VariableString(ChosenCardFeatures)",
                                 "0",
                                 ""
                               ],
@@ -4927,7 +4914,7 @@
                               "parameters": [
                                 "Score",
                                 "=",
-                                "decking::calculateScore(VariableString(ChosenCardTags), Amy.VariableString(Tags), VariableString(NodeTags))"
+                                "decking::calculateScore(VariableString(ChosenCardFeatures), VariableString(NodeTags))"
                               ],
                               "subInstructions": []
                             }
