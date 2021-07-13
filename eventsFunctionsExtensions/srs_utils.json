@@ -34,7 +34,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "if (!global.ssangervasi) { global.ssangervasi = {} }\nconst ssangervasi = global.ssangervasi;\n\nssangervasi.isDebuggingEnabled = false\nif (!ssangervasi.isDebuggingEnabled) {\n    try {\n        ssangervasi.isDebuggingEnabled = runtimeScene.getGame().isPreview()\n    } catch {}\n}\n\n// SetupScene history\n;(() => {\n    /**\n     * @typedef SceneHistoryItem\n     * @property {string} sceneName \n     * @property {number} [startedAt]\n     */\n\n    /** @param {string} sceneName*/\n    const pushScene = (sceneName) => {\n        if (!sceneName) {\n            return\n        }\n        const newItem = {\n            sceneName,\n            startedAt: Date.now()\n        }\n        getSceneHistory().push(newItem)\n\n        return newItem\n    }\n\n    /**\n     * @param {string} defaultVal\n     * @param {number} depth\n     * @returns {string} Scene name\n     */\n    const peekScene = (defaultVal, depth) => {\n        defaultVal = defaultVal || \"\"\n        depth = depth || 0\n\n        const hist = getSceneHistory()\n        const index = hist.length - 1 - depth\n        if (index < 0) {\n            return defaultVal\n        }\n        const item = hist[index]\n        return item.sceneName\n    }\n\n    /** @returns {SceneHistoryItem[]} */\n    const getSceneHistory = () => {\n        if (!ssangervasi.sceneHistory) {\n            ssangervasi.sceneHistory = []\n            pushScene(runtimeScene.getName())\n        }\n        return ssangervasi.sceneHistory\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getSceneHistory,\n            pushScene,\n            peekScene \n        }\n    )\n})();\n\n(() => {\n    const getTimestamp = () => (new Date()).toISOString()\n    const parseTimestamp = (timestamp, defaultVal) => {\n        const d = new Date(timestamp)\n        if (isNaN(d)) { return defaultVal || 0; }\n        return d.valueOf()\n    }\n\n    const getLogCtx = () => {\n        let ctx = '(Unknown)'\n        try {\n            const stack = (new Error().stack)\n            const match = stack.match(/([a-zA-Z.]+Context)/)\n            ctx = (match && match.length && match[0]) || ctx\n        } catch (e) {\n            // Not using ssangervasi.error b/c that would recurse back to here :D\n            console.error('Context failure', e)\n        }\n        return ctx\n    }\n\n    const log = (...msgs) => ssangervasi.isDebuggingEnabled && console.log(getTimestamp(), getLogCtx(), ...msgs)\n    const warn = (...msgs) => ssangervasi.isDebuggingEnabled && console.warn(getTimestamp(), getLogCtx(), ...msgs)\n    const info = (...msgs) => ssangervasi.isDebuggingEnabled && console.info(getTimestamp(), getLogCtx(), ...msgs)\n    const error = (...msgs) => ssangervasi.isDebuggingEnabled && console.error(getTimestamp(), getLogCtx(), ...msgs)\n\n    Object.assign(\n        ssangervasi,\n        {\n            getTimestamp,\n            log,\n            warn,\n            info,\n            error,\n        }\n    )\n})();\n\n(() => {\n    const countLines = (str) => {\n        return 1 + str.split('').filter(c => c === '\\n').length\n    }\n\n    const parseArray = (arrayJson) => {\n        try {\n            const arr = JSON.parse(arrayJson)\n            if (Array.isArray(arr)) {\n                return arr\n            }\n        } catch {}\n        return []\n    } \n\n    Object.assign(\n        ssangervasi,\n        {\n            countLines,\n            parseArray\n        }\n    )\n})();\n\n(() => {\n    const getPlaylist = (aRuntimeScene, playlistName, fresh) => {\n        if (!(aRuntimeScene && playlistName)) {\n            ssangervasi.error(\"Cannot getPlaylist\", { playlistName })\n            return\n        }\n        const nameToPlaylist = ssangervasi.setupPlaylists(runtimeScene)\n        if (!nameToPlaylist.has(playlistName) || fresh) {\n            nameToPlaylist.set(playlistName, new ssangervasi.Playlist())\n        }\n        return nameToPlaylist.get(playlistName)\n    }\n\n    const setupPlaylists = (aRuntimeScene) => {\n        if (!runtimeScene._srsUtils) {\n            runtimeScene._srsUtils = {};\n        }\n        if (!runtimeScene._srsUtils.nameToPlaylist) {\n            runtimeScene._srsUtils.nameToPlaylist = new Map();\n        }\n\n        return runtimeScene._srsUtils.nameToPlaylist;\n    }\n\n    class Playlist {\n        constructor() {\n            this.items = []\n            this.current = null\n        }\n\n        getCurrent() {\n            if (this.current === null) {\n                return null\n            }\n            return this.items[this.current]\n        }\n\n        add(item) {\n            this.items.push(item)\n            if (this.current === null) {\n                this.current = 0\n            }\n        }\n\n        skipTo(targetItem) {\n            const foundIndex = this.items.findIndex(item => item === targetItem)\n            if (foundIndex === -1) { return null }\n\n            this.current = foundIndex\n            return this.getCurrent()\n        }\n\n        next() {\n            if (this.current === null) { return null }\n\n            this.current = (this.current + 1) % this.items.length\n            return this.getCurrent()\n        }\n\n        previous() {\n            if (this.current === null) { return null }\n\n            this.current = this.current - 1\n            if (this.current < 0) {\n                this.current = this.items.length + this.current\n            }\n            return this.getCurrent()\n        }\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getPlaylist,\n            setupPlaylists,\n            Playlist\n        }\n    )       \n})();\n",
+          "inlineCode": "if (!globalThis.ssangervasi) { globalThis.ssangervasi = {} }\nconst ssangervasi = globalThis.ssangervasi;\n\nssangervasi.isDebuggingEnabled = false\nif (!ssangervasi.isDebuggingEnabled) {\n    try {\n        ssangervasi.isDebuggingEnabled = runtimeScene.getGame().isPreview()\n    } catch {}\n}\n\n// SetupScene history\n;(() => {\n    /**\n     * @typedef SceneHistoryItem\n     * @property {string} sceneName \n     * @property {number} [startedAt]\n     */\n\n    /** @param {string} sceneName*/\n    const pushScene = (sceneName) => {\n        if (!sceneName) {\n            return\n        }\n        const newItem = {\n            sceneName,\n            startedAt: Date.now()\n        }\n        getSceneHistory().push(newItem)\n\n        return newItem\n    }\n\n    /**\n     * @param {string} defaultVal\n     * @param {number} depth\n     * @returns {string} Scene name\n     */\n    const peekScene = (defaultVal, depth) => {\n        defaultVal = defaultVal || \"\"\n        depth = depth || 0\n\n        const hist = getSceneHistory()\n        const index = hist.length - 1 - depth\n        if (index < 0) {\n            return defaultVal\n        }\n        const item = hist[index]\n        return item.sceneName\n    }\n\n    /** @returns {SceneHistoryItem[]} */\n    const getSceneHistory = () => {\n        if (!ssangervasi.sceneHistory) {\n            ssangervasi.sceneHistory = []\n            pushScene(runtimeScene.getName())\n        }\n        return ssangervasi.sceneHistory\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getSceneHistory,\n            pushScene,\n            peekScene \n        }\n    )\n})();\n\n(() => {\n    const getTimestamp = () => (new Date()).toISOString()\n    const parseTimestamp = (timestamp, defaultVal) => {\n        const d = new Date(timestamp)\n        if (isNaN(d)) { return defaultVal || 0; }\n        return d.valueOf()\n    }\n\n    const getLogCtx = () => {\n        let ctx = '(Unknown)'\n        try {\n            const stack = (new Error().stack)\n            const match = stack.match(/([a-zA-Z.]+Context)/)\n            ctx = (match && match.length && match[0]) || ctx\n        } catch (e) {\n            // Not using ssangervasi.error b/c that would recurse back to here :D\n            console.error('Context failure', e)\n        }\n        return ctx\n    }\n\n    const log = (...msgs) => ssangervasi.isDebuggingEnabled && console.log(getTimestamp(), getLogCtx(), ...msgs)\n    const warn = (...msgs) => ssangervasi.isDebuggingEnabled && console.warn(getTimestamp(), getLogCtx(), ...msgs)\n    const info = (...msgs) => ssangervasi.isDebuggingEnabled && console.info(getTimestamp(), getLogCtx(), ...msgs)\n    const error = (...msgs) => ssangervasi.isDebuggingEnabled && console.error(getTimestamp(), getLogCtx(), ...msgs)\n\n    Object.assign(\n        ssangervasi,\n        {\n            getTimestamp,\n            log,\n            warn,\n            info,\n            error,\n        }\n    )\n})();\n\n(() => {\n    const countLines = (str) => {\n        return 1 + str.split('').filter(c => c === '\\n').length\n    }\n\n    const parseArray = (arrayJson) => {\n        try {\n            const arr = JSON.parse(arrayJson)\n            if (Array.isArray(arr)) {\n                return arr\n            }\n        } catch {}\n        return []\n    } \n\n    Object.assign(\n        ssangervasi,\n        {\n            countLines,\n            parseArray\n        }\n    )\n})();\n\n(() => {\n    const getPlaylist = (aRuntimeScene, playlistName, fresh) => {\n        if (!(aRuntimeScene && playlistName)) {\n            ssangervasi.error(\"Cannot getPlaylist\", { playlistName })\n            return\n        }\n        const nameToPlaylist = ssangervasi.setupPlaylists(runtimeScene)\n        if (!nameToPlaylist.has(playlistName) || fresh) {\n            nameToPlaylist.set(playlistName, new ssangervasi.Playlist())\n        }\n        return nameToPlaylist.get(playlistName)\n    }\n\n    const setupPlaylists = (aRuntimeScene) => {\n        if (!runtimeScene._srsUtils) {\n            runtimeScene._srsUtils = {};\n        }\n        if (!runtimeScene._srsUtils.nameToPlaylist) {\n            runtimeScene._srsUtils.nameToPlaylist = new Map();\n        }\n\n        return runtimeScene._srsUtils.nameToPlaylist;\n    }\n\n    class Playlist {\n        constructor() {\n            this.items = []\n            this.current = null\n        }\n\n        getCurrent() {\n            if (this.current === null) {\n                return null\n            }\n            return this.items[this.current]\n        }\n\n        add(item) {\n            this.items.push(item)\n            if (this.current === null) {\n                this.current = 0\n            }\n        }\n\n        skipTo(targetItem) {\n            const foundIndex = this.items.findIndex(item => item === targetItem)\n            if (foundIndex === -1) { return null }\n\n            this.current = foundIndex\n            return this.getCurrent()\n        }\n\n        next() {\n            if (this.current === null) { return null }\n\n            this.current = (this.current + 1) % this.items.length\n            return this.getCurrent()\n        }\n\n        previous() {\n            if (this.current === null) { return null }\n\n            this.current = this.current - 1\n            if (this.current < 0) {\n                this.current = this.items.length + this.current\n            }\n            return this.getCurrent()\n        }\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getPlaylist,\n            setupPlaylists,\n            Playlist\n        }\n    )       \n})();\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": true
@@ -55,7 +55,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "global.ssangervasi.log(\n    eventsFunctionContext.getArgument('Message')\n)\n",
+          "inlineCode": "globalThis.ssangervasi.log(\n    eventsFunctionContext.getArgument('Message')\n)\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -150,6 +150,97 @@
       "objectGroups": []
     },
     {
+      "description": "StrTrim",
+      "fullName": "StrTrim",
+      "functionType": "StringExpression",
+      "name": "StrTrim",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const str = eventsFunctionContext.getArgument('Str')\neventsFunctionContext.returnValue = str.toString().trim()\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Str",
+          "longDescription": "",
+          "name": "Str",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "StrMatches",
+      "fullName": "StrMatches",
+      "functionType": "Condition",
+      "name": "StrMatches",
+      "private": false,
+      "sentence": "_PARAM1_ StrMatches _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const patternArg = eventsFunctionContext.getArgument('Pattern')\n    let pattern = new RegExp(patternArg)\n    const reMatch = patternArg.match(new RegExp('^/(.*)/.*$'))\n\n    if (reMatch) {\n        pattern = new RegExp(reMatch[1], reMatch[2])\n    }\n\n    const strToMatch = eventsFunctionContext.getArgument('StrToMatch')\n    return pattern.test(strToMatch)\n})()\n",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ToMatch",
+          "longDescription": "",
+          "name": "StrToMatch",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Pattern",
+          "longDescription": "",
+          "name": "Pattern",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "StrToRepl, Pattern, Replacement",
       "fullName": "String replace",
       "functionType": "StringExpression",
@@ -168,10 +259,10 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const patternArg = eventsFunctionContext.getArgument('Pattern')\n    let pattern = patternArg\n    const reMatch = patternArg.match(new RegExp('^/(.*)/.*$'))\n\n    if (reMatch) {\n        pattern = new RegExp(reMatch[1], reMatch[2])\n    }\n\n    const strToRepl = eventsFunctionContext.getArgument('StrToRepl')\n    const replacement = eventsFunctionContext.getArgument('Replacement')\n    return strToRepl.replace(pattern, replacement)\n})()\n",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const patternArg = eventsFunctionContext.getArgument('Pattern')\n    let pattern = patternArg\n    const reMatch = patternArg.match(new RegExp('^/(.*)/.*$'))\n\n    if (reMatch) {\n        pattern = new RegExp(reMatch[1], reMatch[2])\n    }\n\n    const strToRepl = eventsFunctionContext.getArgument('StrToRepl')\n    const replacement = eventsFunctionContext.getArgument('Replacement')\n    const result = strToRepl.replace(pattern, replacement)\n\n    // console.log(\"pattern\", pattern)\n    // console.log(\"strToRepl\", strToRepl)\n    // console.log(\"codes\", strToRepl.split('').map((s) => [s, s.charCodeAt(0)]))\n    // console.log(\"result\", result)\n\n    return result\n})()\n",
               "parameterObjects": "",
               "useStrict": true,
-              "eventsSheetExpanded": false
+              "eventsSheetExpanded": true
             }
           ]
         }
@@ -230,7 +321,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\n    if (!(playlistName)) {\r\n        global.ssangervasi.error('Cannot get current item in playlist', { playlistName })\r\n        return \"\"\r\n    }\r\n\r\n    const playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\n    return playlist.getCurrent() || \"\"\r\n})()",
+          "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\n    if (!(playlistName)) {\r\n        globalThis.ssangervasi.error('Cannot get current item in playlist', { playlistName })\r\n        return \"\"\r\n    }\r\n\r\n    const playlist = globalThis.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\n    return playlist.getCurrent() || \"\"\r\n})()",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -270,7 +361,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nconst item = eventsFunctionContext.getArgument('Item')\r\nif (!(playlistName && item)) {\r\n    global.ssangervasi.error('Cannot add item to playlist', { playlistName, item })\r\n    return\r\n}\r\n\r\n\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.add(item)\r\n",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nconst item = eventsFunctionContext.getArgument('Item')\r\nif (!(playlistName && item)) {\r\n    globalThis.ssangervasi.error('Cannot add item to playlist', { playlistName, item })\r\n    return\r\n}\r\n\r\n\r\nconst playlist = globalThis.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.add(item)\r\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -320,7 +411,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nif (!playlistName) {\r\n    global.ssangervasi.error('Cannot skip to next item in playlist', { playlistName })\r\n    return\r\n}\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.previous()",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nif (!playlistName) {\r\n    globalThis.ssangervasi.error('Cannot skip to next item in playlist', { playlistName })\r\n    return\r\n}\r\nconst playlist = globalThis.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.previous()",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -360,7 +451,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nif (!playlistName) {\r\n    global.ssangervasi.error('Cannot skip to next item in playlist', { playlistName })\r\n    return\r\n}\r\n\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.next()",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nif (!playlistName) {\r\n    globalThis.ssangervasi.error('Cannot skip to next item in playlist', { playlistName })\r\n    return\r\n}\r\n\r\nconst playlist = globalThis.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nplaylist.next()",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -400,7 +491,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nconst item = eventsFunctionContext.getArgument('Item')\r\nif (!(playlistName && item)) {\r\n    global.ssangervasi.error('Cannot add skip to playlist item', { playlistName, item })\r\n    return\r\n}\r\n\r\nconst playlist = global.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nconst result = playlist.skipTo(item)\r\n",
+          "inlineCode": "const playlistName = eventsFunctionContext.getArgument('PlaylistName')\r\nconst item = eventsFunctionContext.getArgument('Item')\r\nif (!(playlistName && item)) {\r\n    globalThis.ssangervasi.error('Cannot add skip to playlist item', { playlistName, item })\r\n    return\r\n}\r\n\r\nconst playlist = globalThis.ssangervasi.getPlaylist(runtimeScene, playlistName)\r\nconst result = playlist.skipTo(item)\r\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -436,7 +527,7 @@
       "functionType": "Condition",
       "name": "Throttle",
       "private": false,
-      "sentence": "_PARAM1_ Throttle invoke _PARAM2_ every _PARAM3_ ms ",
+      "sentence": "Throttle invoke _PARAM1_ every _PARAM2_ ms ",
       "events": [
         {
           "disabled": false,
@@ -476,9 +567,8 @@
                   },
                   "parameters": [
                     "",
-                    "Object",
                     "GetArgumentAsString(\"TimerName\")",
-                    ""
+                    "GetArgumentAsString(\"TimerName\")"
                   ],
                   "subInstructions": []
                 },
@@ -488,7 +578,7 @@
                     "value": "Egal"
                   },
                   "parameters": [
-                    "srs_utils::getLimitedTimerFraction(Object, GetArgumentAsString(\"TimerName\"))",
+                    "srs_utils::getLimitedTimerFraction(GetArgumentAsString(\"TimerName\"))",
                     ">=",
                     "1"
                   ],
@@ -501,24 +591,23 @@
             {
               "type": {
                 "inverted": false,
-                "value": "srs_utils::startLimitedTimer"
+                "value": "SetReturnBoolean"
               },
               "parameters": [
-                "",
-                "Object",
-                "GetArgumentAsString(\"TimerName\")",
-                "GetArgumentAsNumber(\"FrequencyMs\")",
-                ""
+                "True"
               ],
               "subInstructions": []
             },
             {
               "type": {
                 "inverted": false,
-                "value": "SetReturnBoolean"
+                "value": "srs_utils::startLimitedTimer"
               },
               "parameters": [
-                "True"
+                "",
+                "GetArgumentAsString(\"TimerName\")",
+                "GetArgumentAsNumber(\"FrequencyMs\")",
+                ""
               ],
               "subInstructions": []
             }
@@ -527,16 +616,6 @@
         }
       ],
       "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "Object",
-          "longDescription": "",
-          "name": "Object",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "objectList"
-        },
         {
           "codeOnly": false,
           "defaultValue": "",
@@ -566,7 +645,7 @@
       "functionType": "Condition",
       "name": "HasLimitedTimer",
       "private": false,
-      "sentence": "HasLimitedTimer _PARAM2_ on _PARAM1_",
+      "sentence": "HasLimitedTimer _PARAM1_",
       "events": [
         {
           "disabled": false,
@@ -595,10 +674,9 @@
             {
               "type": {
                 "inverted": false,
-                "value": "ObjectVariableChildExists"
+                "value": "VariableChildExists"
               },
               "parameters": [
-                "Object",
                 "TimerNameToLimitMs",
                 "GetArgumentAsString(\"TimerName\")"
               ],
@@ -624,16 +702,6 @@
         {
           "codeOnly": false,
           "defaultValue": "",
-          "description": "Object",
-          "longDescription": "",
-          "name": "Object",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "objectList"
-        },
-        {
-          "codeOnly": false,
-          "defaultValue": "",
           "description": "TimerName",
           "longDescription": "",
           "name": "TimerName",
@@ -650,7 +718,7 @@
       "functionType": "Action",
       "name": "startLimitedTimer",
       "private": false,
-      "sentence": "Start timer _PARAM2_ on _PARAM1_ with limit _PARAM3_",
+      "sentence": "Start timer _PARAM1_ with limit _PARAM2_",
       "events": [
         {
           "disabled": false,
@@ -661,10 +729,9 @@
             {
               "type": {
                 "inverted": false,
-                "value": "ModVarObjet"
+                "value": "ModVarScene"
               },
               "parameters": [
-                "Object",
                 "TimerNameToLimitMs[GetArgumentAsString(\"TimerName\")]",
                 "=",
                 "GetArgumentAsNumber(\"LimitMs\")"
@@ -683,7 +750,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "ResetObjectTimer"
+                "value": "ResetTimer"
               },
               "parameters": [
                 "Object",
@@ -694,7 +761,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "UnPauseObjectTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "Object",
@@ -707,16 +774,6 @@
         }
       ],
       "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "Object",
-          "longDescription": "",
-          "name": "Object",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "objectList"
-        },
         {
           "codeOnly": false,
           "defaultValue": "",
@@ -760,7 +817,7 @@
                 "value": "SetReturnNumber"
               },
               "parameters": [
-                "Object.Variable(TimerNameToLimitMs[GetArgumentAsString(\"TimerName\")])"
+                "Variable(TimerNameToLimitMs[GetArgumentAsString(\"TimerName\")])"
               ],
               "subInstructions": []
             }
@@ -769,16 +826,6 @@
         }
       ],
       "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "Object",
-          "longDescription": "",
-          "name": "Object",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "objectList"
-        },
         {
           "codeOnly": false,
           "defaultValue": "",
@@ -811,9 +858,9 @@
                 "value": "Egal"
               },
               "parameters": [
-                "srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))",
-                "<=",
-                "srs_utils::ms(Object.ObjectTimerElapsedTime(GetArgumentAsString(\"TimerName\")))"
+                "srs_utils::ms(TimerElapsedTime(GetArgumentAsString(\"TimerName\")))",
+                "<",
+                "srs_utils::getLimitedTimerLimit( GetArgumentAsString(\"TimerName\"))"
               ],
               "subInstructions": []
             }
@@ -829,21 +876,10 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "PauseObjectTimer"
-                  },
-                  "parameters": [
-                    "Object",
-                    "GetArgumentAsString(\"TimerName\")"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
                     "value": "SetReturnNumber"
                   },
                   "parameters": [
-                    "srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))"
+                    "srs_utils::ms(TimerElapsedTime(GetArgumentAsString(\"TimerName\")))"
                   ],
                   "subInstructions": []
                 }
@@ -863,9 +899,9 @@
                 "value": "Egal"
               },
               "parameters": [
-                "srs_utils::ms(Object.ObjectTimerElapsedTime(GetArgumentAsString(\"TimerName\")) )",
-                "<",
-                "srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))"
+                "srs_utils::getLimitedTimerLimit( GetArgumentAsString(\"TimerName\"))",
+                "<=",
+                "srs_utils::ms(TimerElapsedTime(GetArgumentAsString(\"TimerName\")))"
               ],
               "subInstructions": []
             }
@@ -884,7 +920,18 @@
                     "value": "SetReturnNumber"
                   },
                   "parameters": [
-                    "srs_utils::ms(Object.ObjectTimerElapsedTime(GetArgumentAsString(\"TimerName\")))"
+                    "srs_utils::getLimitedTimerLimit( GetArgumentAsString(\"TimerName\"))"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "GetArgumentAsString(\"TimerName\")"
                   ],
                   "subInstructions": []
                 }
@@ -895,16 +942,6 @@
         }
       ],
       "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "Object",
-          "longDescription": "",
-          "name": "Object",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "objectList"
-        },
         {
           "codeOnly": false,
           "defaultValue": "",
@@ -957,9 +994,8 @@
               },
               "parameters": [
                 "",
-                "Object",
                 "GetArgumentAsString(\"TimerName\")",
-                ""
+                "GetArgumentAsString(\"TimerName\")"
               ],
               "subInstructions": []
             }
@@ -971,7 +1007,7 @@
                 "value": "SetReturnNumber"
               },
               "parameters": [
-                "srs_utils::getLimitedTimerElapsed(Object, GetArgumentAsString(\"TimerName\")) / srs_utils::getLimitedTimerLimit(Object, GetArgumentAsString(\"TimerName\"))"
+                " srs_utils::getLimitedTimerElapsed( GetArgumentAsString(\"TimerName\")) / srs_utils::getLimitedTimerLimit( GetArgumentAsString(\"TimerName\"))"
               ],
               "subInstructions": []
             }
@@ -980,16 +1016,6 @@
         }
       ],
       "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "Object",
-          "longDescription": "",
-          "name": "Object",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "objectList"
-        },
         {
           "codeOnly": false,
           "defaultValue": "",
@@ -1220,6 +1246,66 @@
       "objectGroups": []
     },
     {
+      "description": "",
+      "fullName": "ClampAbs",
+      "functionType": "Expression",
+      "name": "ClampAbs",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const clampAbs = (val, min, max) => {\n    const sign = val < 0 ? -1 : 1\n    const mag = Math.abs(val)\n    const clamped = Math.max(min, Math.min(mag, max))\n    return sign * clamped\n}\n\neventsFunctionContext.returnValue = clampAbs(\n    eventsFunctionContext.getArgument(\"Value\"),\n    eventsFunctionContext.getArgument(\"Min\"),\n    eventsFunctionContext.getArgument(\"Max\"),    \n)\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Value",
+          "longDescription": "",
+          "name": "Value",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Min magnitude",
+          "longDescription": "",
+          "name": "Min",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Max magnitude",
+          "longDescription": "",
+          "name": "Max",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "Uid",
       "fullName": "Uid",
       "functionType": "Expression",
@@ -1325,7 +1411,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "global.ssangervasi.isDebuggingEnabled = true",
+          "inlineCode": "globalThis.ssangervasi.isDebuggingEnabled = true",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -1354,7 +1440,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "eventsFunctionContext.returnValue = global.ssangervasi.isDebuggingEnabled",
+          "inlineCode": "eventsFunctionContext.returnValue = globalThis.ssangervasi.isDebuggingEnabled",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -1383,7 +1469,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "global.ssangervasi.forEachContext = global.ssangervasi.forEachContext || {}\nconst { log, parseArray, forEachContext } = global.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    if (forEachContext.array === undefined) {\n        forEachContext.array = parseArray(\n            eventsFunctionContext.getArgument('ArrayJSON')\n        )\n    }\n\n    if (forEachContext.array.length === 0) {\n        forEachContext.array = undefined\n        return false\n    }\n\n    const currentItem = forEachContext.array.shift()\n\n    const vars = runtimeScene.getVariables()\n    const itemVar = vars.get(eventsFunctionContext.getArgument('ItemVariableName'))\n    \n    if (typeof currentItem === 'number') {\n        itemVar.setNumber(currentItem)\n    } else if (typeof currentItem === 'string') {\n        itemVar.setString(currentItem)\n    } else {\n        itemVar.setString(JSON.stringify(currentItem))\n    }\n\n    return true\n})()",
+          "inlineCode": "globalThis.ssangervasi.forEachContext = globalThis.ssangervasi.forEachContext || {}\nconst { log, parseArray, forEachContext } = globalThis.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    if (forEachContext.array === undefined) {\n        forEachContext.array = parseArray(\n            eventsFunctionContext.getArgument('ArrayJSON')\n        )\n    }\n\n    if (forEachContext.array.length === 0) {\n        forEachContext.array = undefined\n        return false\n    }\n\n    const currentItem = forEachContext.array.shift()\n\n    const vars = runtimeScene.getVariables()\n    const itemVar = vars.get(eventsFunctionContext.getArgument('ItemVariableName'))\n    \n    if (typeof currentItem === 'number') {\n        itemVar.setNumber(currentItem)\n    } else if (typeof currentItem === 'string') {\n        itemVar.setString(currentItem)\n    } else {\n        itemVar.setString(JSON.stringify(currentItem))\n    }\n\n    return true\n})()",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -1433,7 +1519,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const { parseArray } = global.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    const arr = parseArray(\n        eventsFunctionContext.getArgument('ArrayJSON')\n    )\n    if (arr.length === 0 ) {\n        return ''\n    }\n\n    let index = Math.floor(\n        eventsFunctionContext.getArgument('Index')\n    )\n    if (index < 0) {\n        index = arr.length + index\n    }\n    \n    const item = arr[index]\n    if (typeof item === 'string') {\n        return item\n    } else if (item === undefined) {\n        return ''\n    } else  {\n        return JSON.stringify(item)\n    }\n})()",
+          "inlineCode": "const { parseArray } = globalThis.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    const arr = parseArray(\n        eventsFunctionContext.getArgument('ArrayJSON')\n    )\n    if (arr.length === 0 ) {\n        return ''\n    }\n\n    let index = Math.floor(\n        eventsFunctionContext.getArgument('Index')\n    )\n    if (index < 0) {\n        index = arr.length + index\n    }\n    \n    const item = arr[index]\n    if (typeof item === 'string') {\n        return item\n    } else if (item === undefined) {\n        return ''\n    } else  {\n        return JSON.stringify(item)\n    }\n})()",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -1483,7 +1569,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const { parseArray } = global.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    return parseArray(\n        eventsFunctionContext.getArgument('ArrayJSON')\n    ).length\n})()",
+          "inlineCode": "const { parseArray } = globalThis.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    return parseArray(\n        eventsFunctionContext.getArgument('ArrayJSON')\n    ).length\n})()",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -1496,65 +1582,6 @@
           "description": "ArrayJSON",
           "longDescription": "",
           "name": "ArrayJSON",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "string"
-        }
-      ],
-      "objectGroups": []
-    },
-    {
-      "description": "StrMatches",
-      "fullName": "StrMatches",
-      "functionType": "Condition",
-      "name": "StrMatches",
-      "private": false,
-      "sentence": "_PARAM1_ StrMatches _PARAM2_",
-      "events": [
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const patternArg = eventsFunctionContext.getArgument('Pattern')\n    let pattern = new RegExp(patternArg)\n    const reMatch = patternArg.match(new RegExp('^/(.*)/.*$'))\n\n    if (reMatch) {\n        pattern = new RegExp(reMatch[1], reMatch[2])\n    }\n\n    const strToMatch = eventsFunctionContext.getArgument('StrToMatch')\n    return pattern.test(strToMatch)\n})()\n",
-              "parameterObjects": "",
-              "useStrict": true,
-              "eventsSheetExpanded": true
-            }
-          ]
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
-          "events": []
-        }
-      ],
-      "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "ToMatch",
-          "longDescription": "",
-          "name": "StrToMatch",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "string"
-        },
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "Pattern",
-          "longDescription": "",
-          "name": "Pattern",
           "optional": false,
           "supplementaryInformation": "",
           "type": "string"
@@ -1589,6 +1616,56 @@
         }
       ],
       "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "ToCoords(_PARAM1_, _PARAM2_",
+      "fullName": "ToCoords",
+      "functionType": "StringExpression",
+      "name": "ToCoords",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const toCoords = () => {\n    /** @type Number */\n    const x = eventsFunctionContext.getArgument(\"X\")\n    /** @type Number */\n    const y = eventsFunctionContext.getArgument(\"Y\")\n    return `(${x.toFixed(2)}, ${y.toFixed(2)})`\n}\n\neventsFunctionContext.returnValue = toCoords()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "X",
+          "longDescription": "",
+          "name": "X",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Y",
+          "longDescription": "",
+          "name": "Y",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "expression"
+        }
+      ],
       "objectGroups": []
     }
   ],
@@ -1629,7 +1706,7 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "const { countLines } = global.ssangervasi\nconst [textObj] = objects\nconst vars = textObj.getVariables()\nconst originalTextVar = vars.get('OriginalText')\nconst maxCharsVar = vars.get('MaxChars')\nconst maxLinesVar = vars.get('MaxLines')\n\nconst originalText = textObj.getString()\n\nmaxCharsVar.setNumber(originalText.split(/\\s+/).join(' ').length)\nmaxLinesVar.setNumber(countLines(originalText))\n\noriginalTextVar.setString(originalText)\ntextObj.setString('')\n\n",
+                  "inlineCode": "const { countLines } = globalThis.ssangervasi\nconst [textObj] = objects\nconst vars = textObj.getVariables()\nconst originalTextVar = vars.get('OriginalText')\nconst maxCharsVar = vars.get('MaxChars')\nconst maxLinesVar = vars.get('MaxLines')\n\nconst originalText = textObj.getString()\n\nmaxCharsVar.setNumber(originalText.split(/\\s+/).join(' ').length)\nmaxLinesVar.setNumber(countLines(originalText))\n\noriginalTextVar.setString(originalText)\ntextObj.setString('')\n\n",
                   "parameterObjects": "Object",
                   "useStrict": true,
                   "eventsSheetExpanded": false
@@ -1739,7 +1816,7 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "const { countLines, log } = global.ssangervasi\n\nconst [textObj] = objects\nconst vars = textObj.getVariables()\nconst endIndexVar = vars.get('EndIndex')\nconst maxLines = vars.get('MaxLines').getAsNumber()\nconst message = vars.get('Message').getAsString()\nconst maxChars = vars.get('MaxChars').getAsNumber()\n\nconst endIndex = endIndexVar.getAsNumber() + 1\nconst startIndex = Math.max(0, endIndex - maxChars)\nconst characterLimitedMessage = message.slice(startIndex, endIndex + 1)\n\nconst excessLines = Math.max(0, countLines(characterLimitedMessage) - maxLines)\nconst lineLimitedMessage = characterLimitedMessage.split('\\n').slice(excessLines).join('\\n')\n\nendIndexVar.setNumber(endIndex)\ntextObj.setString(lineLimitedMessage)\n",
+                  "inlineCode": "const { countLines, log } = globalThis.ssangervasi\n\nconst [textObj] = objects\nconst vars = textObj.getVariables()\nconst endIndexVar = vars.get('EndIndex')\nconst maxLines = vars.get('MaxLines').getAsNumber()\nconst message = vars.get('Message').getAsString()\nconst maxChars = vars.get('MaxChars').getAsNumber()\n\nconst endIndex = endIndexVar.getAsNumber() + 1\nconst startIndex = Math.max(0, endIndex - maxChars)\nconst characterLimitedMessage = message.slice(startIndex, endIndex + 1)\n\nconst excessLines = Math.max(0, countLines(characterLimitedMessage) - maxLines)\nconst lineLimitedMessage = characterLimitedMessage.split('\\n').slice(excessLines).join('\\n')\n\nendIndexVar.setNumber(endIndex)\ntextObj.setString(lineLimitedMessage)\n",
                   "parameterObjects": "Object",
                   "useStrict": true,
                   "eventsSheetExpanded": false
@@ -2078,6 +2155,887 @@
           "extraInformation": [],
           "hidden": false,
           "name": "ScaleFactor"
+        }
+      ]
+    },
+    {
+      "description": "",
+      "fullName": "Button",
+      "name": "Button",
+      "objectType": "PanelSpriteObject::PanelSprite",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "\"inactive\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "PanelSpriteObject::PanelSprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::Button",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Cleanup",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ObjectVariableAsBoolean"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Clicked",
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetObjectVariableAsBoolean"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Clicked",
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Mouse state",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "!=",
+                        "\"disabled\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SourisSurObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "",
+                            "",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "MouseButtonPressed"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarObjetTxt"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "State",
+                                    "=",
+                                    "\"inactive\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarObjetTxt"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "State",
+                                    "=",
+                                    "\"hover\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarObjetTxt"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "State",
+                                    "=",
+                                    "\"active\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "SetObjectVariableAsBoolean"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "Clicked",
+                                    "True"
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarObjetTxt"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "State",
+                                    "=",
+                                    "\"hover\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonPressed"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "VarObjetTxt"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "State",
+                                    "=",
+                                    "\"hover\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarObjetTxt"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "State",
+                                    "=",
+                                    "\"active\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "SourisSurObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "",
+                            "",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "State",
+                            "=",
+                            "\"inactive\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Colors",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"inactive\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PanelSpriteObject::SetColor"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"255;255;255\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"disabled\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PanelSpriteObject::SetColor"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Object.Behavior::PropertyDisabledTint()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"hover\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PanelSpriteObject::SetColor"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Object.Behavior::PropertyHoverTint()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"active\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PanelSpriteObject::SetColor"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Object.Behavior::PropertyActiveTint()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "PanelSpriteObject::PanelSprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::Button",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Clicked",
+          "fullName": "Clicked",
+          "functionType": "Condition",
+          "name": "Clicked",
+          "private": false,
+          "sentence": "_PARAM0_ was clicked",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Clicked",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "PanelSpriteObject::PanelSprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::Button",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "enable or disable the button",
+          "fullName": "enable",
+          "functionType": "Action",
+          "name": "enable",
+          "private": false,
+          "sentence": "_PARAM0_ enable _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "GetArgumentAsBoolean"
+                  },
+                  "parameters": [
+                    "\"Enable\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::Button::Is"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        "\"disabled\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "State",
+                        "=",
+                        "\"inactive\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "GetArgumentAsBoolean"
+                  },
+                  "parameters": [
+                    "\"Enable\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "\"disabled\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "PanelSpriteObject::PanelSprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::Button",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "",
+              "longDescription": "",
+              "name": "Enable",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "trueorfalse"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Is",
+          "fullName": "Is",
+          "functionType": "Condition",
+          "name": "Is",
+          "private": false,
+          "sentence": "_PARAM0_ is _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "GetArgumentAsString(\"State\")"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "PanelSpriteObject::PanelSprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::Button",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "",
+              "longDescription": "",
+              "name": "State",
+              "optional": false,
+              "supplementaryInformation": "[\"active\",\"disabled\",\"inactive\",\"hover\"]",
+              "type": "stringWithSelector"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "\"255;255;255\"",
+          "type": "String",
+          "label": "",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "HoverTint"
+        },
+        {
+          "value": "\"255;255;255\"",
+          "type": "String",
+          "label": "",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "ActiveTint"
+        },
+        {
+          "value": "\"255;255;255\"",
+          "type": "String",
+          "label": "",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "DisabledTint"
         }
       ]
     }
