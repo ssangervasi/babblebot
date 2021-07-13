@@ -15,56 +15,6 @@
   "dependencies": [],
   "eventsFunctions": [
     {
-      "description": "",
-      "fullName": "log",
-      "functionType": "Action",
-      "name": "log",
-      "private": false,
-      "sentence": "log _PARAM1_",
-      "events": [
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const logLevel = eventsFunctionContext.getArgument(\"Level\") || 0\r\nconst message = eventsFunctionContext.getArgument(\"Message\")\r\nif (logLevel === 1) {\r\n    console.warn(message)\r\n} else if (logLevel >= 2) {\r\n    console.error(message)\r\n} else {\r\n    console.log(message)\r\n}",
-          "parameterObjects": "",
-          "useStrict": true,
-          "eventsSheetExpanded": false
-        }
-      ],
-      "parameters": [
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "message",
-          "longDescription": "",
-          "name": "Message",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "string"
-        },
-        {
-          "codeOnly": false,
-          "defaultValue": "",
-          "description": "0 = log, 1 = warn, 2 = error",
-          "longDescription": "",
-          "name": "Level",
-          "optional": false,
-          "supplementaryInformation": "",
-          "type": "expression"
-        }
-      ],
-      "objectGroups": []
-    },
-    {
       "description": "trim _PARAM1_",
       "fullName": "trim",
       "functionType": "StringExpression",

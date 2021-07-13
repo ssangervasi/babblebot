@@ -1,8 +1,8 @@
 {
   "b": 209,
   "disableInputWhenNotFocused": true,
-  "mangledName": "Decking",
-  "name": "Decking",
+  "mangledName": "Encounter",
+  "name": "Encounter",
   "oglFOV": 90,
   "oglZFar": 500,
   "oglZNear": 1,
@@ -23,7 +23,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.564
+    "zoomFactor": 0.664
   },
   "objectsGroups": [],
   "variables": [],
@@ -3553,7 +3553,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Dialog",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",

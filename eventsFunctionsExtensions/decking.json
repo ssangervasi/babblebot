@@ -607,7 +607,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -935,7 +935,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -1304,7 +1304,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -2702,7 +2702,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -3533,7 +3533,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "utils::log"
+                        "value": "srs_utils::consoleLog"
                       },
                       "parameters": [
                         "",
@@ -3785,7 +3785,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -3922,7 +3922,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -4063,7 +4063,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "utils::log"
+                        "value": "srs_utils::consoleLog"
                       },
                       "parameters": [
                         "",
@@ -5131,7 +5131,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
@@ -5234,7 +5234,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "utils::log"
+                    "value": "srs_utils::consoleLog"
                   },
                   "parameters": [
                     "",
