@@ -459,7 +459,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Basic_Encounter.wav",
+        "file": "assets/sound/Basic_Encounter.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Basic_Encounter.wav",
@@ -486,7 +486,7 @@
         "userAdded": false
       },
       {
-        "file": "sound/Bad_Encounter.wav",
+        "file": "assets/sound/Bad_Encounter.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Bad_Encounter.wav",
@@ -495,7 +495,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Basic_Encounter_Sketch.wav",
+        "file": "assets/sound/Basic_Encounter_Sketch.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Basic_Encounter_Sketch.wav",
@@ -504,7 +504,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 1-Shuffle 1.wav",
+        "file": "assets/sound/Cards 1-Shuffle 1.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 1-Shuffle 1.wav",
@@ -513,7 +513,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 2-Shuffle 2.wav",
+        "file": "assets/sound/Cards 2-Shuffle 2.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 2-Shuffle 2.wav",
@@ -522,7 +522,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 3-Draw 1.wav",
+        "file": "assets/sound/Cards 3-Draw 1.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 3-Draw 1.wav",
@@ -531,7 +531,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 4-Draw 2.wav",
+        "file": "assets/sound/Cards 4-Draw 2.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 4-Draw 2.wav",
@@ -540,7 +540,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 5-Draw 3.wav",
+        "file": "assets/sound/Cards 5-Draw 3.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 5-Draw 3.wav",
@@ -549,7 +549,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 6-Draw 4.wav",
+        "file": "assets/sound/Cards 6-Draw 4.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 6-Draw 4.wav",
@@ -558,7 +558,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 7-Draw 5.wav",
+        "file": "assets/sound/Cards 7-Draw 5.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 7-Draw 5.wav",
@@ -567,7 +567,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Cards 8-Draw 6.wav",
+        "file": "assets/sound/Cards 8-Draw 6.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Cards 8-Draw 6.wav",
@@ -576,7 +576,7 @@
         "userAdded": true
       },
       {
-        "file": "sound/Romantic_Encounter.wav",
+        "file": "assets/sound/Romantic_Encounter.wav",
         "kind": "audio",
         "metadata": "",
         "name": "sound\\Romantic_Encounter.wav",
