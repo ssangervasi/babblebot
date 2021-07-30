@@ -6,5 +6,5 @@ Directory Structure:
 - `eventsFunctionsExtensions` - reserved for GDevelop
 - `externalEvents` - reserved for GDevelop
 - `layouts` - reserved for GDevelop
-- `dialogues` - deprecated
-- `art` - deprecated
+- `dialogues` - Deprecated/temporary. Not loaded into game.
+- `art` - Deprecated/temporary. Not loaded into game.

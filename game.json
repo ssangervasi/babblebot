@@ -74,10 +74,10 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/CardBack.png",
+        "file": "assets/card/back.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\CardBack.png",
+        "name": "assets\\card\\back.png",
         "smoothed": true,
         "userAdded": true
       },
@@ -92,73 +92,73 @@
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/Hand.png",
+        "file": "assets/ui/Hand.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\Hand.png",
+        "name": "assets\\ui\\Hand.png",
         "smoothed": true,
         "userAdded": true
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/GoodHeart.png",
+        "file": "assets/ui/GoodHeart.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\GoodHeart.png",
+        "name": "assets\\ui\\GoodHeart.png",
         "smoothed": true,
         "userAdded": false
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/MoodMeter.png",
+        "file": "assets/ui/MoodMeter.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\MoodMeter.png",
+        "name": "assets\\ui\\MoodMeter.png",
         "smoothed": true,
         "userAdded": false
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/TextBox.png",
+        "file": "assets/ui/TextBox.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\TextBox.png",
+        "name": "assets\\ui\\TextBox.png",
         "smoothed": true,
         "userAdded": false
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/BadHeart.png",
+        "file": "assets/ui/BadHeart.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\BadHeart.png",
+        "name": "assets\\ui\\BadHeart.png",
         "smoothed": true,
         "userAdded": true
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/ConfidenceMeter.png",
+        "file": "assets/ui/ConfidenceMeter.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\ConfidenceMeter.png",
+        "name": "assets\\ui\\ConfidenceMeter.png",
         "smoothed": true,
         "userAdded": true
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/ConfidenceMeterFill.png",
+        "file": "assets/ui/ConfidenceMeterFill.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\ConfidenceMeterFill.png",
+        "name": "assets\\ui\\ConfidenceMeterFill.png",
         "smoothed": true,
         "userAdded": false
       },
       {
         "alwaysLoaded": false,
-        "file": "art/ui_elements/PlaySlot.png",
+        "file": "assets/ui/PlaySlot.png",
         "kind": "image",
         "metadata": "",
-        "name": "art\\ui_elements\\PlaySlot.png",
+        "name": "assets\\ui\\PlaySlot.png",
         "smoothed": true,
         "userAdded": true
       },

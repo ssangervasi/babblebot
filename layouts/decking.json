@@ -844,7 +844,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\CardBack.png",
+                  "image": "assets\\card\\back.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -889,7 +889,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\CardBack.png",
+                  "image": "assets\\card\\back.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -1919,7 +1919,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\Hand.png",
+                  "image": "assets\\ui\\Hand.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2003,7 +2003,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\MoodMeter.png",
+                  "image": "assets\\ui\\MoodMeter.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2173,7 +2173,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\PlaySlot.png",
+                  "image": "assets\\ui\\PlaySlot.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2212,7 +2212,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\TextBox.png",
+                  "image": "assets\\ui\\TextBox.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2326,7 +2326,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\GoodHeart.png",
+                  "image": "assets\\ui\\GoodHeart.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2355,7 +2355,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\BadHeart.png",
+                  "image": "assets\\ui\\BadHeart.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2394,7 +2394,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\ConfidenceMeter.png",
+                  "image": "assets\\ui\\ConfidenceMeter.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2438,7 +2438,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\ui_elements\\ConfidenceMeterFill.png",
+                  "image": "assets\\ui\\ConfidenceMeterFill.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
