@@ -23,7 +23,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.664
+    "zoomFactor": 0.4839999999999999
   },
   "objectsGroups": [],
   "variables": [],
@@ -254,22 +254,6 @@
     },
     {
       "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "",
-      "locked": false,
-      "name": "Backdrop",
-      "persistentUuid": "62fc01c6-275d-4b15-84de-4b3b0eec1256",
-      "width": 0,
-      "x": 0,
-      "y": 0,
-      "zOrder": 23,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
       "customSize": true,
       "height": 225,
       "layer": "UI",
@@ -419,22 +403,6 @@
       "x": -1088,
       "y": -231,
       "zOrder": 29,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "",
-      "locked": false,
-      "name": "Amy",
-      "persistentUuid": "73a572e1-6330-467b-b42f-0649ed28bcbe",
-      "width": 0,
-      "x": 0,
-      "y": 0,
-      "zOrder": 25,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -674,6 +642,7 @@
       "type": "TextObject::Text",
       "underlined": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Tween",
@@ -698,6 +667,7 @@
       "type": "TextObject::Text",
       "underlined": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "string": "No options",
       "font": "",
@@ -717,6 +687,7 @@
       "type": "TextObject::Text",
       "underlined": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "string": "No response",
       "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
@@ -742,6 +713,7 @@
           "value": "generic_compliment"
         }
       ],
+      "effects": [],
       "behaviors": [],
       "string": "GenericCompliment",
       "font": "",
@@ -767,6 +739,7 @@
           "value": "insult"
         }
       ],
+      "effects": [],
       "behaviors": [],
       "string": "Insult",
       "font": "",
@@ -792,6 +765,7 @@
           "value": "blue_sweater"
         }
       ],
+      "effects": [],
       "behaviors": [],
       "string": "BlueSweater",
       "font": "",
@@ -811,6 +785,7 @@
       "type": "TextObject::Text",
       "underlined": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "string": "0",
       "font": "",
@@ -827,6 +802,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Deck",
@@ -871,6 +847,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Card",
@@ -1902,6 +1879,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Hand",
@@ -1946,6 +1924,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Slot",
@@ -1991,6 +1970,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": [
         {
@@ -2030,6 +2010,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": [
         {
@@ -2069,6 +2050,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "HiddenAtRuntime",
@@ -2116,6 +2098,7 @@
       "type": "TextObject::Text",
       "underlined": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "string": "Card Pool",
       "font": "",
@@ -2135,6 +2118,7 @@
       "type": "TextObject::Text",
       "underlined": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "string": "CardText",
       "font": "",
@@ -2151,6 +2135,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "PlayArea",
@@ -2200,6 +2185,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": [
         {
@@ -2234,79 +2220,12 @@
       ]
     },
     {
-      "name": "Backdrop",
-      "tags": "",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
-      "variables": [],
-      "behaviors": [],
-      "animations": [
-        {
-          "name": "",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "art\\backdrops\\background.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "art\\backdrops\\Bar.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Heart",
       "tags": "",
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Heart",
@@ -2382,6 +2301,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": [
         {
@@ -2421,6 +2341,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "Tween",
@@ -2460,17 +2381,12 @@
       ]
     },
     {
-      "name": "Amy",
+      "name": "Amy1",
       "tags": "",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [
-        {
-          "name": "Tags",
-          "type": "string",
-          "value": "aggression_good appearance_good art_good brains_bad disagree_bad education_bad family_bad flattery_good hobbies_good job_bad nonsequitor_bad politics_bad sports_bad"
-        }
-      ],
+      "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": [
         {
@@ -2483,7 +2399,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\Characters\\Amy_neutral.png",
+                  "image": "assets\\encounters\\Amy1\\character\\Neutral.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2512,7 +2428,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\Characters\\Amy_happy.png",
+                  "image": "assets\\encounters\\Amy1\\character\\Good.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2541,7 +2457,76 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": false,
-                  "image": "art\\Characters\\Amy_angry.png",
+                  "image": "assets\\encounters\\Amy1\\character\\Bad.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Amy1Background",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\backdrops\\background.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\backdrops\\Bar.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -2568,6 +2553,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [
         {
           "name": "HiddenAtRuntime",
@@ -2718,6 +2704,169 @@
             }
           ],
           "events": []
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": false,
+      "folded": false,
+      "name": "Character Layout",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                  },
+                  "parameters": [
+                    "",
+                    "GlobalVariableString(Encounter.Name)",
+                    "0",
+                    "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": false,
+      "folded": false,
+      "name": "Layers",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"UI\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Text\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Cards\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "HideLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"OffScreen\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
         }
       ],
       "parameters": []
@@ -3020,7 +3169,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Drag management",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3553,7 +3702,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Dialog",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3589,7 +3738,7 @@
                   },
                   "parameters": [
                     "",
-                    "dialogues\\amyDialogue.json"
+                    "assets\\encounters\\Amy1\\dialogue.json"
                   ],
                   "subInstructions": []
                 },
@@ -5109,6 +5258,21 @@
             {
               "disabled": false,
               "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Need a way to reference any character object, not just Amy1",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -5131,7 +5295,7 @@
                     "value": "SetAnimationName"
                   },
                   "parameters": [
-                    "Amy",
+                    "Amy1",
                     "\"Bad\""
                   ],
                   "subInstructions": []
@@ -5199,7 +5363,7 @@
                     "value": "SetAnimationName"
                   },
                   "parameters": [
-                    "Amy",
+                    "Amy1",
                     "\"Neutral\""
                   ],
                   "subInstructions": []
@@ -5255,7 +5419,7 @@
                     "value": "SetAnimationName"
                   },
                   "parameters": [
-                    "Amy",
+                    "Amy1",
                     "\"Good\""
                   ],
                   "subInstructions": []
@@ -5855,17 +6019,12 @@
       "parameters": []
     },
     {
-      "colorB": 228,
-      "colorG": 176,
-      "colorR": 74,
-      "creationTime": 0,
       "disabled": false,
       "folded": false,
-      "name": "",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [],
-      "parameters": []
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [],
+      "events": []
     },
     {
       "disabled": false,

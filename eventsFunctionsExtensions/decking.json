@@ -134,7 +134,7 @@
           "inlineCode": "Babblebot.CardScores.CARD_TABLE.forEach((data) => {\n    const obj = runtimeScene.createObject(\"Card\")\n    const vars = obj.getVariables()\n    vars.get(\"Id\").setString(data.id)\n    vars.get(\"Text\").setString(data.text)\n    vars.get(\"Features\").setString(data.features)\n})",
           "parameterObjects": "",
           "useStrict": true,
-          "eventsSheetExpanded": true
+          "eventsSheetExpanded": false
         }
       ],
       "parameters": [],

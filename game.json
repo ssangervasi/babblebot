@@ -27,7 +27,20 @@
     "verticalSync": false,
     "platformSpecificAssets": {},
     "loadingScreen": {
-      "showGDevelopSplash": true
+      "backgroundColor": 0,
+      "backgroundFadeInDuration": 0.2,
+      "backgroundImageResourceName": "",
+      "gdevelopLogoStyle": "light",
+      "logoAndProgressFadeInDuration": 0.2,
+      "logoAndProgressLogoFadeInDelay": 0.2,
+      "minDuration": 1.5,
+      "progressBarColor": 16777215,
+      "progressBarHeight": 20,
+      "progressBarMaxWidth": 200,
+      "progressBarMinWidth": 40,
+      "progressBarWidthPercent": 30,
+      "showGDevelopSplash": true,
+      "showProgressBar": true
     },
     "extensionProperties": [],
     "platforms": [
@@ -46,14 +59,6 @@
         "metadata": "",
         "name": "assets\\example-dialogue.json",
         "userAdded": false
-      },
-      {
-        "disablePreload": false,
-        "file": "NewFile.json",
-        "kind": "json",
-        "metadata": "",
-        "name": "NewFile.json",
-        "userAdded": true
       },
       {
         "alwaysLoaded": false,
@@ -744,6 +749,41 @@
         "name": "art\\Characters\\Amy_happy.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/encounters/Amy1/character/Neutral.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\encounters\\Amy1\\character\\Neutral.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/encounters/Amy1/character/Good.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\encounters\\Amy1\\character\\Good.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/encounters/Amy1/character/Bad.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\encounters\\Amy1\\character\\Bad.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "disablePreload": false,
+        "file": "assets/encounters/Amy1/dialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "assets\\encounters\\Amy1\\dialogue.json",
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -757,11 +797,24 @@
       "type": "TiledSpriteObject::TiledSprite",
       "width": 100,
       "variables": [],
+      "effects": [],
       "behaviors": []
     }
   ],
   "objectsGroups": [],
-  "variables": [],
+  "variables": [
+    {
+      "name": "Encounter",
+      "type": "structure",
+      "children": [
+        {
+          "name": "Name",
+          "type": "string",
+          "value": "Amy1"
+        }
+      ]
+    }
+  ],
   "layouts": [
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
@@ -808,6 +861,11 @@
       "referenceTo": "/eventsFunctionsExtensions/srs_utils"
     }
   ],
-  "externalLayouts": [],
+  "externalLayouts": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/amy1"
+    }
+  ],
   "externalSourceFiles": []
 }

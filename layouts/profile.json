@@ -68,6 +68,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": [
         {
@@ -301,6 +302,7 @@
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
+      "effects": [],
       "behaviors": [],
       "animations": []
     }
