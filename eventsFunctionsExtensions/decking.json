@@ -2135,7 +2135,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Cards 2-Shuffle 2.wav",
+                    "assets\\sound\\Cards 2-Shuffle 2.wav",
                     "2",
                     "",
                     "100",
@@ -2504,7 +2504,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Cards 3-Draw 1.wav",
+                    "assets\\sound\\Cards 3-Draw 1.wav",
                     "1",
                     "",
                     "100",

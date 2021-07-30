@@ -5459,7 +5459,7 @@
               },
               "parameters": [
                 "",
-                "sound\\Romantic_Encounter.wav",
+                "assets\\sound\\Romantic_Encounter.wav",
                 "0",
                 "60",
                 "60",
@@ -5509,7 +5509,7 @@
               },
               "parameters": [
                 "",
-                "sound\\Basic_Encounter.wav",
+                "assets\\sound\\Basic_Encounter.wav",
                 "0",
                 "60",
                 "60",
@@ -5637,7 +5637,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Bad_Encounter.wav",
+                    "assets\\sound\\Bad_Encounter.wav",
                     "0",
                     "60",
                     "60",
@@ -5674,7 +5674,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Basic_Encounter.wav",
+                    "assets\\sound\\Basic_Encounter.wav",
                     "0",
                     "60",
                     "60",
@@ -5711,7 +5711,7 @@
                   },
                   "parameters": [
                     "",
-                    "sound\\Romantic_Encounter.wav",
+                    "assets\\sound\\Romantic_Encounter.wav",
                     "0",
                     "60",
                     "60",
