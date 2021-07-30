@@ -1,4 +1,4 @@
 
 Directory Structure:
-- `encounters` - Folders of encounter-specific files.
-- `sound` - Audio files.
+- `encounters/` - Directory of encounter directories. [Details](/assets/encounters/README.md)
+- `sound/` - Audio files.
