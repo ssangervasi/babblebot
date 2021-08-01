@@ -2715,7 +2715,7 @@
       "creationTime": 0,
       "disabled": false,
       "folded": false,
-      "name": "Character Layout",
+      "name": "Encounter-specific Setup",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
@@ -2753,6 +2753,41 @@
                     "GlobalVariableString(Encounter.Name)",
                     "0",
                     "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Need a way to reference any dialogue file, not just Amy1",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "DialogueTree::LoadDialogueFromJsonFile"
+                  },
+                  "parameters": [
+                    "",
+                    "assets\\encounters\\Amy1\\dialogue.json"
                   ],
                   "subInstructions": []
                 }
@@ -3731,47 +3766,6 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "DialogueTree::LoadDialogueFromJsonFile"
-                  },
-                  "parameters": [
-                    "",
-                    "assets\\encounters\\Amy1\\dialogue.json"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "DialogueTree::StartDialogueFromBranch"
-                  },
-                  "parameters": [
-                    "\"t0\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": true,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "DialogueTree::LoadDialogueFromJsonFile"
-                  },
-                  "parameters": [
-                    "",
-                    "dialogues\\decking.json"
-                  ],
-                  "subInstructions": []
-                },
                 {
                   "type": {
                     "inverted": false,
@@ -5139,7 +5133,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Mood",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
