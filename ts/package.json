@@ -31,13 +31,15 @@
 	},
 	"dependencies": {
 		"@types/json-stable-stringify": "^1.0.32",
-		"json-stable-stringify": "^1.0.1"
+		"json-stable-stringify": "^1.0.1",
+		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
 		"@babel/types": "^7.10",
 		"@types/jest": "^24.9.1",
 		"@types/lodash": "^4.14.168",
 		"@types/node": "^12.12",
+		"@types/uuid": "^8.3.1",
 		"@typescript-eslint/eslint-plugin": "^2.34",
 		"@typescript-eslint/parser": "^2.34",
 		"acorn": "^7",

@@ -1,11 +1,11 @@
 import { Encounter } from "../src/encounter";
 
-import { exampleTable } from "./data";
+import { scoreTable } from "./data";
 
 let enc = new Encounter();
 beforeEach(() => {
 	enc = new Encounter({
-		scoreTable: exampleTable,
+		scoreTable,
 	});
 	// TODO: calculate using confidence
 	enc.confidence = 0;

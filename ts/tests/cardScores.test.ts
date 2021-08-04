@@ -2,11 +2,10 @@ import {
 	parseScoresCsv,
 	parseCardsCsv,
 	calculateScore,
-	ScoreTable,
 	CardTable,
 } from "../src/cardScores";
 
-import { raw, exampleTable } from "./data";
+import * as Data from "./data";
 
 describe("calculateScore", () => {
 	test("agree is bad, listen is good", () => {
@@ -15,7 +14,7 @@ describe("calculateScore", () => {
 		const result = calculateScore(
 			cardFeatures,
 			nodeFeatureReactions,
-			exampleTable
+			Data.scoreTable
 		);
 		expect(result).toEqual(-10 + 20);
 	});
@@ -26,7 +25,7 @@ describe("calculateScore", () => {
 		const result = calculateScore(
 			cardFeatures,
 			nodeFeatureReactions,
-			exampleTable
+			Data.scoreTable
 		);
 		expect(result).toEqual(30 + 2 + 1000.1);
 	});
@@ -37,7 +36,7 @@ describe("calculateScore", () => {
 		const result = calculateScore(
 			cardFeatures,
 			nodeFeatureReactions,
-			exampleTable
+			Data.scoreTable
 		);
 		expect(result).toEqual(30 + 2 + 1000.1);
 	});
@@ -45,32 +44,14 @@ describe("calculateScore", () => {
 
 describe("parseScoresCsv", () => {
 	test("parseScoresCsv", () => {
-		const result = parseScoresCsv(raw);
-		expect(result).toEqual(exampleTable);
+		const result = parseScoresCsv(Data.scoreTableCsv);
+		expect(result).toEqual(Data.scoreTable);
 	});
 });
 
 describe("parseCardsCsv", () => {
-	const rawCards = `
-Id,Type,Text,Extra Features,Features
-card-1,type,I condemn,,disagree butt
-card-2,type,"A, B, C",,agree listen
-`;
-	const exampleCards: CardTable = [
-		{
-			id: "card-1",
-			text: "I condemn",
-			features: "disagree butt",
-		},
-		{
-			id: "card-2",
-			text: "A, B, C",
-			features: "agree listen",
-		},
-	];
-
 	test("parseCardsCsv", () => {
-		const result = parseCardsCsv(rawCards);
-		expect(result).toEqual(exampleCards);
+		const result = parseCardsCsv(Data.cardTableCsv);
+		expect(result).toEqual(Data.cardTable);
 	});
 });
