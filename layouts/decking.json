@@ -2721,7 +2721,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "babblebot::importCardScoresJs"
+                "value": "babblebot::importBabblebotJs"
               },
               "parameters": [
                 "",

@@ -15,12 +15,12 @@
   "dependencies": [],
   "eventsFunctions": [
     {
-      "description": "importCardScoresJs",
-      "fullName": "importCardScoresJs",
+      "description": "importBabblebotJs",
+      "fullName": "importBabblebotJs",
       "functionType": "Action",
-      "name": "importCardScoresJs",
+      "name": "importBabblebotJs",
       "private": false,
-      "sentence": "importCardScoresJs",
+      "sentence": "importBabblebotJs",
       "events": [
         {
           "disabled": false,
@@ -76,7 +76,7 @@
           "inlineCode": "const calculateScore = () => {\n\n    const cardFeatures = eventsFunctionContext.getArgument('CardFeatures')\n    const nodeFeatureReactions = eventsFunctionContext.getArgument('NodeFeatureReactions')\n\n    console.log('calculating score', {\n        cardFeatures,\n        nodeFeatureReactions\n    })\n\n    const CardScores = globalThis.Babblebot.CardScores\n    if (!CardScores) {\n        console.error(\"Oh no no lib\", { CardScores })\n        return 0\n    }\n\n    return CardScores.calculateScore(\n        cardFeatures,\n        nodeFeatureReactions,\n    )\n}\n\neventsFunctionContext.returnValue = calculateScore()",
           "parameterObjects": "",
           "useStrict": true,
-          "eventsSheetExpanded": false
+          "eventsSheetExpanded": true
         },
         {
           "disabled": false,
