@@ -11,7 +11,7 @@
         {
           "type": {
             "inverted": false,
-            "value": "decking::Slot::IsFilled"
+            "value": "babblebot::Slot::IsFilled"
           },
           "parameters": [
             "HandSlot",
@@ -25,7 +25,7 @@
         {
           "type": {
             "inverted": false,
-            "value": "decking::Slot::slotCard"
+            "value": "babblebot::Slot::slotCard"
           },
           "parameters": [
             "HandSlot",
@@ -49,7 +49,7 @@
         {
           "type": {
             "inverted": false,
-            "value": "decking::importCardScoresJs"
+            "value": "babblebot::importCardScoresJs"
           },
           "parameters": [
             "",

@@ -3,7 +3,7 @@ import path from "path";
 const ROOT = path.resolve(__dirname, "../..");
 
 const EXTENSIONS = path.resolve(ROOT, "eventsFunctionsExtensions");
-const DECKING = path.resolve(EXTENSIONS, "decking.json");
+const DECKING = path.resolve(EXTENSIONS, "babblebot.json");
 
 const ASSETS = path.resolve(ROOT, "assets");
 const SCORE_TABLE_CSV = path.resolve(ASSETS, "scoreTable.csv");

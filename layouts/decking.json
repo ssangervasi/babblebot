@@ -838,7 +838,7 @@
       "behaviors": [
         {
           "name": "Deck",
-          "type": "decking::Deck"
+          "type": "babblebot::Deck"
         }
       ],
       "animations": [
@@ -883,7 +883,7 @@
       "behaviors": [
         {
           "name": "Card",
-          "type": "decking::Card",
+          "type": "babblebot::Card",
           "Id": ""
         }
       ],
@@ -1915,7 +1915,7 @@
       "behaviors": [
         {
           "name": "Hand",
-          "type": "decking::Hand"
+          "type": "babblebot::Hand"
         }
       ],
       "animations": [
@@ -1960,7 +1960,7 @@
       "behaviors": [
         {
           "name": "Slot",
-          "type": "decking::Slot",
+          "type": "babblebot::Slot",
           "LastId": 0
         }
       ],
@@ -2171,11 +2171,11 @@
       "behaviors": [
         {
           "name": "PlayArea",
-          "type": "decking::PlayArea"
+          "type": "babblebot::PlayArea"
         },
         {
           "name": "Slot",
-          "type": "decking::Slot",
+          "type": "babblebot::Slot",
           "LastId": 0
         }
       ],
@@ -2330,7 +2330,7 @@
       "behaviors": [
         {
           "name": "Heart",
-          "type": "decking::Heart",
+          "type": "babblebot::Heart",
           "Mood": 0,
           "Threshold": 10
         }
@@ -2721,7 +2721,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::importCardScoresJs"
+                "value": "babblebot::importCardScoresJs"
               },
               "parameters": [
                 "",
@@ -2732,7 +2732,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::createCards"
+                "value": "babblebot::createCards"
               },
               "parameters": [
                 "",
@@ -2853,7 +2853,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::Deck::build"
+                    "value": "babblebot::Deck::build"
                   },
                   "parameters": [
                     "Deck",
@@ -2877,7 +2877,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::Hand::drawFrom"
+                    "value": "babblebot::Hand::drawFrom"
                   },
                   "parameters": [
                     "Hand",
@@ -2902,7 +2902,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::Hand::fitIntoSlots"
+                    "value": "babblebot::Hand::fitIntoSlots"
                   },
                   "parameters": [
                     "Hand",
@@ -2942,7 +2942,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Hand::drawFrom"
+                "value": "babblebot::Hand::drawFrom"
               },
               "parameters": [
                 "Hand",
@@ -2958,7 +2958,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Hand::fitIntoSlots"
+                "value": "babblebot::Hand::fitIntoSlots"
               },
               "parameters": [
                 "Hand",
@@ -2983,7 +2983,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Hand::handleSelection"
+                "value": "babblebot::Hand::handleSelection"
               },
               "parameters": [
                 "Hand",
@@ -2997,7 +2997,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Hand::handlePlayCard"
+                "value": "babblebot::Hand::handlePlayCard"
               },
               "parameters": [
                 "Hand",
@@ -3021,7 +3021,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Slot::handleCard"
+                "value": "babblebot::Slot::handleCard"
               },
               "parameters": [
                 "HandSlot",
@@ -3098,7 +3098,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Card::handleHover"
+                        "value": "babblebot::Card::handleHover"
                       },
                       "parameters": [
                         "Card",
@@ -3142,7 +3142,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Card::IsFaceUp"
+                        "value": "babblebot::Card::IsFaceUp"
                       },
                       "parameters": [
                         "Card",
@@ -3213,7 +3213,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::PlayArea::activate"
+                    "value": "babblebot::PlayArea::activate"
                   },
                   "parameters": [
                     "PlayArea",
@@ -3233,7 +3233,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Slot::IsFilledWith"
+                        "value": "babblebot::Slot::IsFilledWith"
                       },
                       "parameters": [
                         "HandSlot",
@@ -3248,7 +3248,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Slot::removeCard"
+                        "value": "babblebot::Slot::removeCard"
                       },
                       "parameters": [
                         "HandSlot",
@@ -3269,7 +3269,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Card::IsInstance"
+                        "value": "babblebot::Card::IsInstance"
                       },
                       "parameters": [
                         "Card",
@@ -3424,7 +3424,7 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "decking::PlayArea::deactivate"
+                    "value": "babblebot::PlayArea::deactivate"
                   },
                   "parameters": [
                     "PlayArea",
@@ -3444,7 +3444,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Card::IsInstance"
+                        "value": "babblebot::Card::IsInstance"
                       },
                       "parameters": [
                         "Card",
@@ -3481,7 +3481,7 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "decking::Hand::requestPlay"
+                            "value": "babblebot::Hand::requestPlay"
                           },
                           "parameters": [
                             "Hand",
@@ -3546,7 +3546,7 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "decking::Hand::fitIntoSlots"
+                            "value": "babblebot::Hand::fitIntoSlots"
                           },
                           "parameters": [
                             "Hand",
@@ -4210,7 +4210,7 @@
                           "parameters": [
                             "PC",
                             "=",
-                            "decking::botText(VariableString(ChosenCardText), Variable(Confidence))"
+                            "babblebot::botText(VariableString(ChosenCardText), Variable(Confidence))"
                           ],
                           "subInstructions": []
                         },
@@ -4339,7 +4339,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Hand::finishPlaying"
+                        "value": "babblebot::Hand::finishPlaying"
                       },
                       "parameters": [
                         "Hand",
@@ -4371,7 +4371,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "decking::Hand::IsPlaying"
+                        "value": "babblebot::Hand::IsPlaying"
                       },
                       "parameters": [
                         "Hand",
@@ -4751,7 +4751,7 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "decking::Card::IsInstance"
+                                "value": "babblebot::Card::IsInstance"
                               },
                               "parameters": [
                                 "Card",
@@ -4825,7 +4825,7 @@
                               "parameters": [
                                 "Score",
                                 "=",
-                                "decking::calculateScore(VariableString(ChosenCardFeatures), VariableString(NodeTags))"
+                                "babblebot::calculateScore(VariableString(ChosenCardFeatures), VariableString(NodeTags))"
                               ],
                               "subInstructions": []
                             }
@@ -5118,7 +5118,7 @@
             {
               "type": {
                 "inverted": false,
-                "value": "decking::Heart::updateMood"
+                "value": "babblebot::Heart::updateMood"
               },
               "parameters": [
                 "Heart",
@@ -5979,19 +5979,19 @@
   "behaviorsSharedData": [
     {
       "name": "Card",
-      "type": "decking::Card"
+      "type": "babblebot::Card"
     },
     {
       "name": "Deck",
-      "type": "decking::Deck"
+      "type": "babblebot::Deck"
     },
     {
       "name": "Hand",
-      "type": "decking::Hand"
+      "type": "babblebot::Hand"
     },
     {
       "name": "Heart",
-      "type": "decking::Heart"
+      "type": "babblebot::Heart"
     },
     {
       "name": "HiddenAtRuntime",
@@ -5999,11 +5999,11 @@
     },
     {
       "name": "PlayArea",
-      "type": "decking::PlayArea"
+      "type": "babblebot::PlayArea"
     },
     {
       "name": "Slot",
-      "type": "decking::Slot"
+      "type": "babblebot::Slot"
     },
     {
       "name": "Tween",
