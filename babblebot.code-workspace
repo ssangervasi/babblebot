@@ -5,9 +5,12 @@
 		}
 	],
 	"settings": {
+		"search.exclude": {
+			"*/dist": true,
+			"*.js": true,
+			"*.psd": true
+		},
 		"files.exclude": {
-			// "ts/dist": true,
-
 			"**/.git": true,
 			"**/.svn": true,
 			"**/.hg": true,
