@@ -83,16 +83,14 @@ export const createDefault = (): UserData => ({
 export class Manager {
 	userData: UserData;
 
-	constructor() {
-		this.userData = createDefault();
+	constructor(userData?: UserData) {
+		this.userData = userData || createDefault();
 	}
 
 	newGame(): SavedGame {
 		const now = Date.now();
 		const savedGame = {
 			levels: [],
-			keyCounts: {},
-			disabledKeys: [],
 			createdAt: now,
 			updatedAt: now,
 		};
