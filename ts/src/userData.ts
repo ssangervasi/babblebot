@@ -17,18 +17,17 @@ export type StoredUserData = Pick<UserData, "savedGames" | "options">;
 
 export interface Session {
 	savedGame?: SavedGame;
-	levels: LevelSession[];
-	level?: LevelSession;
-	disabledKeys?: number[];
+	encounters: EncounterSession[];
+	encounter?: EncounterSession;
 }
 
 export interface SavedGame {
-	levels: LevelSession[];
+	encounters: EncounterSession[];
 	createdAt: number;
 	updatedAt: number;
 }
 
-export interface LevelSession {
+export interface EncounterSession {
 	sceneName: string;
 	startedAt: number;
 	completedAt?: number;
@@ -61,7 +60,7 @@ export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 	"savedGames" in maybeData &&
 	Array.isArray(maybeData.savedGames) &&
 	maybeData.savedGames.every((savedGame: any) =>
-		["levels", "createdAt", "updatedAt", "keyCounts", "disabledKeys"].every(
+		["encounters", "createdAt", "updatedAt" ].every(
 			(key) => typeof savedGame === "object" && key in savedGame
 		)
 	);
@@ -69,8 +68,8 @@ export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 export const createDefault = (): UserData => ({
 	savedGames: [],
 	session: {
-		levels: [],
-		level: undefined,
+		encounters: [],
+		encounter: undefined,
 		savedGame: undefined,
 	},
 	options: {
@@ -90,7 +89,7 @@ export class Manager {
 	newGame(): SavedGame {
 		const now = Date.now();
 		const savedGame = {
-			levels: [],
+			encounters: [],
 			createdAt: now,
 			updatedAt: now,
 		};
@@ -116,7 +115,7 @@ export class Manager {
 	writeSession(previousSave: SavedGame): Session {
 		this.userData.session = {
 			savedGame: previousSave,
-			levels: [...previousSave.levels],
+			encounters: [...previousSave.encounters],
 		};
 		return this.userData.session;
 	}
@@ -128,7 +127,7 @@ export class Manager {
 		}
 
 		savedGame.updatedAt = Date.now();
-		savedGame.levels = [...this.userData.session.levels];
+		savedGame.encounters = [...this.userData.session.encounters];
 
 		const index = this.userData.savedGames.findIndex(
 			(s) => s.createdAt === savedGame.createdAt
@@ -141,38 +140,34 @@ export class Manager {
 		return savedGame;
 	}
 
-	pushLevel({ session }: UserData, sceneName: string): LevelSession {
-		session.level = {
+	pushEncounter({ session }: UserData, sceneName: string): EncounterSession {
+		session.encounter = {
 			sceneName,
 			startedAt: Date.now(),
 		};
-		session.levels.push(session.level);
-		return session.level;
+		session.encounters.push(session.encounter);
+		return session.encounter;
 	}
 
-	peekLevelName = (
-		{ session: { levels } }: UserData,
+	peekEncounterName = (
+		{ session: { encounters } }: UserData,
 		defaultName = "",
 		depth = 0
 	): string => {
-		const index = levels.length - 1 - depth;
+		const index = encounters.length - 1 - depth;
 		if (index < 0) {
 			return defaultName;
 		}
-		return levels[index].sceneName;
+		return encounters[index].sceneName;
 	};
 
-	completeLevel({ session }: UserData): LevelSession | null {
-		const { level } = session;
-		if (!level) {
+	completeEncounter({ session }: UserData): EncounterSession | null {
+		const { encounter } = session;
+		if (!encounter) {
 			return null;
 		}
-		level.completedAt = Date.now();
-		session.level = undefined;
-		return level;
-	}
-
-	isLevel(sceneName: string): boolean {
-		return sceneName.startsWith("L_");
+		encounter.completedAt = Date.now();
+		session.encounter = undefined;
+		return encounter;
 	}
 }

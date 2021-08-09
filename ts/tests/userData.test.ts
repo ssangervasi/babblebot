@@ -1,14 +1,14 @@
 import * as Lodash from "lodash";
 import * as UD from "../src/userData";
 
-const mockLevels = (): UD.LevelSession[] => [
+const mockEncounters = (): UD.EncounterSession[] => [
 	{
-		sceneName: "L_some_level",
+		sceneName: "L_some_encounter",
 		startedAt: 100,
 		completedAt: 110,
 	},
 	{
-		sceneName: "L_another_level",
+		sceneName: "L_another_encounter",
 		startedAt: 110,
 		completedAt: undefined,
 	},
@@ -17,24 +17,24 @@ const mockSavedGames = (): UD.SavedGame[] => [
 	{
 		createdAt: 2,
 		updatedAt: 20,
-		levels: [mockLevels()[0]],
+		encounters: [mockEncounters()[0]],
 	},
 	{
 		createdAt: 100,
 		updatedAt: 200,
-		levels: mockLevels(),
+		encounters: mockEncounters(),
 	},
 ];
 
 const blankSaveMatcher = (resultSave?: UD.SavedGame) => ({
-	levels: [],
+	encounters: [],
 	createdAt: expect.any(Number),
 	updatedAt: resultSave?.createdAt,
 });
 
 const mockSession = (): UD.Session => ({
 	savedGame: mockSavedGames()[1],
-	levels: [],
+	encounters: [],
 });
 
 const mockOptions = (): UD.Options => ({
@@ -42,45 +42,6 @@ const mockOptions = (): UD.Options => ({
 	bindHints: "on",
 	musicVolume: 69,
 	effectsVolume: 1,
-});
-
-
-type DeepTypePrimitive = 'string' | 'number'
-type DeepTypePrimitive = 'string' | 'number'
-
-
-const typeofDeep = (obj: Object | unknown[]): DeepType<unknown> => {
-	return Lodash.transform(obj, (acc, val: any, key, cur) => {
-		let valType = typeof val
-		let newValType = valType
-		if (valType === "object") {
-			newValType = typeofDeep(val)
-		}
-
-		if (Array.isArray(acc)) {
-			acc.push(newValType)
-		} else if(typeof acc === 'object') {
-			acc[key] = newValType
-		}
-	});
-};
-
-test("lodash", () => {
-	expect(
-		typeofDeep({
-			a: { aa: "a a", ab: "a b" },
-			b: { ba: 1, bb: ["b", "b"] },
-		})
-	).toEqual({
-		a: {
-			aa: "string",
-			ab: "string",
-		},
-		b: {
-			ba: "number",
-			bb: ["string"],
-		},
-	});
 });
 
 describe("createDefault", () => {
@@ -92,8 +53,8 @@ describe("createDefault", () => {
 
 	it("has a blank session", () => {
 		expect(result.session).toMatchObject<UD.Session>({
-			levels: [],
-			level: undefined,
+			encounters: [],
+			encounter: undefined,
 			savedGame: undefined,
 		});
 	});
@@ -127,7 +88,7 @@ describe("createFromJSON", () => {
 		const result = UD.createFromJSON(JSON.stringify(validStored));
 		expect(result).not.toEqual(UD.createDefault());
 		expect(result.savedGames).toEqual(validStored.savedGames);
-		expect(result.session.levels).toEqual([]);
+		expect(result.session.encounters).toEqual([]);
 		expect(result.options).toEqual(mockOptions());
 	});
 });
@@ -148,7 +109,7 @@ describe("newGame", () => {
 			savedGames: [originalGames[0]],
 			session: {
 				savedGame: originalGames[1],
-				levels: [],
+				encounters: [],
 			},
 		});
 		const resultSave = manager.newGame();
@@ -163,7 +124,7 @@ describe("resumeGame", () => {
 		const mostRecentSave = {
 			createdAt: 1,
 			updatedAt: 30,
-			levels: mockLevels(),
+			encounters: mockEncounters(),
 		};
 		const manager = new UD.Manager({
 			options: mockOptions(),
@@ -171,22 +132,22 @@ describe("resumeGame", () => {
 				{
 					createdAt: 1,
 					updatedAt: 20,
-					levels: mockLevels(),
+					encounters: mockEncounters(),
 				},
 				mostRecentSave,
 				{
 					createdAt: 1,
 					updatedAt: 10,
-					levels: mockLevels(),
+					encounters: mockEncounters(),
 				},
 				{
 					createdAt: 1,
 					updatedAt: 1,
-					levels: mockLevels(),
+					encounters: mockEncounters(),
 				},
 			],
 			session: {
-				levels: [],
+				encounters: [],
 			},
 		});
 		const resultSave = manager.resumeGame();
@@ -196,7 +157,7 @@ describe("resumeGame", () => {
 
 	it("populates the session with save data", () => {
 		const savedGame = {
-			levels: mockLevels(),
+			encounters: mockEncounters(),
 			createdAt: 1,
 			updatedAt: 30,
 		};
@@ -204,7 +165,7 @@ describe("resumeGame", () => {
 			options: mockOptions(),
 			savedGames: [savedGame],
 			session: {
-				levels: [],
+				encounters: [],
 			},
 		});
 
@@ -212,7 +173,7 @@ describe("resumeGame", () => {
 
 		expect(manager.userData.session).toEqual({
 			savedGame,
-			levels: savedGame.levels,
+			encounters: savedGame.encounters,
 		});
 	});
 });
@@ -220,7 +181,7 @@ describe("resumeGame", () => {
 describe("newGame", () => {
 	it("populates the session with save data", () => {
 		const previousSave = {
-			levels: mockLevels(),
+			encounters: mockEncounters(),
 			createdAt: 1,
 			updatedAt: 30,
 		};
@@ -229,8 +190,8 @@ describe("newGame", () => {
 			savedGames: [],
 			session: {
 				savedGame: previousSave,
-				levels: mockLevels(),
-				level: mockLevels()[0],
+				encounters: mockEncounters(),
+				encounter: mockEncounters()[0],
 			},
 		});
 
@@ -238,13 +199,13 @@ describe("newGame", () => {
 
 		expect(manager.userData.session).toMatchObject({
 			savedGame: blankSaveMatcher(manager.userData.session.savedGame),
-			levels: [],
+			encounters: [],
 		});
 	});
 });
 
 describe("saveGame", () => {
-	it("adds the session levels to the save", () => {
+	it("adds the session encounters to the save", () => {
 		const manager = new UD.Manager({
 			options: mockOptions(),
 			savedGames: [],
@@ -252,7 +213,7 @@ describe("saveGame", () => {
 				savedGame: {
 					createdAt: 1,
 					updatedAt: 5,
-					levels: [
+					encounters: [
 						{
 							sceneName: "L_1",
 							startedAt: 1,
@@ -260,7 +221,7 @@ describe("saveGame", () => {
 						},
 					],
 				},
-				levels: [
+				encounters: [
 					{
 						sceneName: "L_1",
 						startedAt: 1,
@@ -283,7 +244,7 @@ describe("saveGame", () => {
 		expect(manager.userData.savedGames[0]).toEqual({
 			createdAt: 1,
 			updatedAt: expect.any(Number),
-			levels: [
+			encounters: [
 				{
 					sceneName: "L_1",
 					startedAt: 1,
@@ -301,51 +262,51 @@ describe("saveGame", () => {
 			],
 		});
 		expect(manager.userData.session).toEqual({
-			level: undefined,
-			levels: savedGame?.levels,
+			encounter: undefined,
+			encounters: savedGame?.encounters,
 			savedGame,
 		});
 	});
 });
 
-describe("pushLevel", () => {
-	it("handles no active level", () => {
-		const dataNoLevel = {
+describe("pushEncounter", () => {
+	it("handles no active encounter", () => {
+		const dataNoEncounter = {
 			options: mockOptions(),
 			savedGames: mockSavedGames(),
 			session: mockSession(),
 		};
-		const manager = new UD.Manager(dataNoLevel);
-		const newLevel = manager.pushLevel(dataNoLevel, "some-scene");
-		expect(dataNoLevel.session.level).toBe(newLevel);
-		expect(dataNoLevel.session.levels[0]).toBe(newLevel);
-		expect(newLevel).toMatchObject<UD.LevelSession>({
+		const manager = new UD.Manager(dataNoEncounter);
+		const newEncounter = manager.pushEncounter(dataNoEncounter, "some-scene");
+		expect(dataNoEncounter.session.encounter).toBe(newEncounter);
+		expect(dataNoEncounter.session.encounters[0]).toBe(newEncounter);
+		expect(newEncounter).toMatchObject<UD.EncounterSession>({
 			sceneName: "some-scene",
 			startedAt: expect.any(Number),
 		});
 	});
 
 	it("stores the active scene and creates the new one", () => {
-		const startingLevel: UD.LevelSession = {
+		const startingEncounter: UD.EncounterSession = {
 			sceneName: "starting-scene",
 			startedAt: 314,
 		};
-		const dataWithLevel = {
+		const dataWithEncounter = {
 			options: mockOptions(),
 			savedGames: mockSavedGames(),
 			session: {
-				levels: [startingLevel],
-				level: startingLevel,
+				encounters: [startingEncounter],
+				encounter: startingEncounter,
 			},
 		};
-		const manager = new UD.Manager(dataWithLevel);
-		const newLevel = manager.pushLevel(dataWithLevel, "some-scene");
-		expect(dataWithLevel.session.level).toBe(newLevel);
-		expect(newLevel).toMatchObject<UD.LevelSession>({
+		const manager = new UD.Manager(dataWithEncounter);
+		const newEncounter = manager.pushEncounter(dataWithEncounter, "some-scene");
+		expect(dataWithEncounter.session.encounter).toBe(newEncounter);
+		expect(newEncounter).toMatchObject<UD.EncounterSession>({
 			sceneName: "some-scene",
 			startedAt: expect.any(Number),
 		});
-		expect(dataWithLevel.session.levels[0]).toBe(startingLevel);
-		expect(dataWithLevel.session.levels[1]).toBe(newLevel);
+		expect(dataWithEncounter.session.encounters[0]).toBe(startingEncounter);
+		expect(dataWithEncounter.session.encounters[1]).toBe(newEncounter);
 	});
 });
