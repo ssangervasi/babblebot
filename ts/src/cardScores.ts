@@ -32,11 +32,14 @@ export interface CardScoresCsvRow {
 	[HEADINGS.SCORE]?: number;
 }
 
+const PARSE_OPTIONS = {
+	cast: true,
+	columns: true,
+	skip_empty_lines: true,
+};
+
 export const parseScoresCsv = (raw: string): ScoreTable => {
-	const parsed: CardScoresCsvRow[] = csvParse(raw, {
-		cast: true,
-		columns: true,
-	});
+	const parsed: CardScoresCsvRow[] = csvParse(raw, PARSE_OPTIONS);
 
 	const rows: ScoreTable = [];
 	parsed.forEach((csvRow) => {
@@ -76,10 +79,7 @@ export interface CardCsvRow {
 }
 
 export const parseCardsCsv = (raw: string): CardTable => {
-	const parsed: CardCsvRow[] = csvParse(raw, {
-		cast: true,
-		columns: true,
-	});
+	const parsed: CardCsvRow[] = csvParse(raw, PARSE_OPTIONS);
 
 	const rows: CardTable = [];
 	parsed.forEach((csvRow) => {
