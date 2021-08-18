@@ -33,7 +33,6 @@ export interface EncounterSession {
 	completedAt?: number;
 }
 
-
 export const createFromJSON = (userDataJSON: string): UserData => {
 	const userData = createDefault();
 	let parsed: any;
@@ -60,7 +59,7 @@ export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 	"savedGames" in maybeData &&
 	Array.isArray(maybeData.savedGames) &&
 	maybeData.savedGames.every((savedGame: any) =>
-		["encounters", "createdAt", "updatedAt" ].every(
+		["encounters", "createdAt", "updatedAt"].every(
 			(key) => typeof savedGame === "object" && key in savedGame
 		)
 	);
@@ -79,6 +78,18 @@ export const createDefault = (): UserData => ({
 		effectsVolume: 100,
 	},
 });
+
+// let loaded: UserData | undefined;
+let loaded: Manager | undefined;
+
+export const load = (userDataJSON: string) => {
+	loaded = new Manager(createFromJSON(userDataJSON));
+};
+
+export const getManager = () => {
+	return loaded || new Manager();
+};
+
 export class Manager {
 	userData: UserData;
 
