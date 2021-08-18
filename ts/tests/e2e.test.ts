@@ -4,12 +4,13 @@ import "../src/babblebot";
 
 describe("End-to-End", () => {
 	it("works", () => {
-		const UD = Babblebot.UserData;
+		Babblebot.load("");
 
-		UD.load("");
-		const manager = UD.getManager();
-		expect(manager.userData).toMatchObject(UD.createDefault());
+		const manager = Babblebot.getManager();
+		expect(manager.userData).toMatchObject(Babblebot.UserData.createDefault());
 
-		// manager.
+		const encounter = Babblebot.getEncounter();
+
+		expect(encounter.moodQuality).toEqual("neutral");
 	});
 });

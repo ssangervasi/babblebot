@@ -1,11 +1,8 @@
 import Lodash from "lodash";
 
 import { ScoreTable, calculateScore } from "./cardScores";
+import { EncounterSession } from "./userData";
 import { Message, guard } from "./utils/guards";
-
-interface Options {
-	scoreTable: ScoreTable;
-}
 
 const PlayCard = guard.type("PLAY_CARD").payload<{
 	cardFeatures: string;
@@ -37,19 +34,18 @@ const PLAY_RANGES = {
 const CONFIDENCE_FACTOR = 0.25;
 
 export class Encounter {
-	options: Options = {
-		scoreTable: [],
-	};
-
+	session: EncounterSession;
+	scoreTable: ScoreTable = [];
 	log: LogEntry[] = [];
-
 	mood = 1;
-
 	// TODO: Ranges from 0.0 to 1.0
 	confidence = 1;
 
-	constructor(options: Partial<Options> = {}) {
-		Object.assign(this.options, options);
+	constructor(options: { session: EncounterSession; scoreTable?: ScoreTable }) {
+		this.session = options.session;
+		if (options.scoreTable) {
+			this.scoreTable = options.scoreTable;
+		}
 	}
 
 	get moodQuality(): Quality {
@@ -105,7 +101,7 @@ export class Encounter {
 		const baseScore = calculateScore(
 			cardFeatures,
 			nodeFeatureReactions,
-			this.options.scoreTable
+			this.scoreTable
 		);
 		const confidenceBoost = CONFIDENCE_FACTOR * this.confidence * baseScore;
 		return baseScore + confidenceBoost;

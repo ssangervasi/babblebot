@@ -79,17 +79,6 @@ export const createDefault = (): UserData => ({
 	},
 });
 
-// let loaded: UserData | undefined;
-let loaded: Manager | undefined;
-
-export const load = (userDataJSON: string) => {
-	loaded = new Manager(createFromJSON(userDataJSON));
-};
-
-export const getManager = () => {
-	return loaded || new Manager();
-};
-
 export class Manager {
 	userData: UserData;
 
@@ -151,34 +140,33 @@ export class Manager {
 		return savedGame;
 	}
 
-	pushEncounter({ session }: UserData, sceneName: string): EncounterSession {
-		session.encounter = {
-			sceneName,
+	pushEncounter(
+		encounter: Omit<EncounterSession, "startedAt">
+	): EncounterSession {
+		this.userData.session.encounter = {
 			startedAt: Date.now(),
+			...encounter,
 		};
-		session.encounters.push(session.encounter);
-		return session.encounter;
+		this.userData.session.encounters.push(this.userData.session.encounter);
+		return this.userData.session.encounter;
 	}
 
-	peekEncounterName = (
-		{ session: { encounters } }: UserData,
-		defaultName = "",
-		depth = 0
-	): string => {
+	peekEncounter = (depth = 0): EncounterSession | null => {
+		const { encounters } = this.userData.session;
 		const index = encounters.length - 1 - depth;
 		if (index < 0) {
-			return defaultName;
+			return null;
 		}
-		return encounters[index].sceneName;
+		return encounters[index];
 	};
 
-	completeEncounter({ session }: UserData): EncounterSession | null {
-		const { encounter } = session;
+	completeEncounter(): EncounterSession | null {
+		const { encounter } = this.userData.session;
 		if (!encounter) {
 			return null;
 		}
 		encounter.completedAt = Date.now();
-		session.encounter = undefined;
+		this.userData.session.encounter = undefined;
 		return encounter;
 	}
 }
