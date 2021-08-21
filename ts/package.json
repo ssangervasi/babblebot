@@ -26,6 +26,7 @@
 		"ndb": "ndb ./dist/cli.js",
 		"shell": "ts-node",
 		"jest": "jest --runTestsByPath",
+		"jest-watch": "jest --watch --runTestsByPath",
 		"test": "jest tests/*",
 		"test-watch": "jest --watch tests/*",
 		"watch": "tsc-watch"

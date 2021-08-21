@@ -6,11 +6,34 @@ describe("End-to-End", () => {
 	it("works", () => {
 		Babblebot.load("");
 
-		const manager = Babblebot.getManager();
-		expect(manager.userData).toMatchObject(Babblebot.UserData.createDefault());
+		expect(Babblebot.manager.userData).toMatchObject(
+			Babblebot.UserData.createDefault()
+		);
 
-		const encounter = Babblebot.getEncounter();
+		const firstSave = Babblebot.manager.newGame();
+		Babblebot.startEncounter();
+		expect(Babblebot.encounter?.moodQuality).toEqual("neutral");
 
-		expect(encounter.moodQuality).toEqual("neutral");
+		let userDataJSON = Babblebot.save();
+		expect(JSON.parse(userDataJSON)).toMatchObject({
+			savedGames: [
+				{
+					encounters: [
+						{
+							sceneName: "Amy1",
+						},
+					],
+				},
+			],
+		});
+
+		const secondSave = Babblebot.manager.newGame();
+
+		Babblebot.manager.resumeGame(firstSave.createdAt);
+
+		userDataJSON = Babblebot.save();
+		expect(JSON.parse(userDataJSON)).toMatchObject({
+			savedGames: [firstSave, secondSave],
+		});
 	});
 });

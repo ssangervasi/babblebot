@@ -11,29 +11,35 @@ class Game {
 	Lodash = Lodash;
 
 	_manager: UserData.Manager | undefined;
+	encounter: Encounter | undefined;
 
-	load(userDataJSON: string) {
-		this._manager = new UserData.Manager(UserData.createFromJSON(userDataJSON));
-	}
-
-	getManager() {
+	get manager(): UserData.Manager {
 		if (!this._manager) {
 			this._manager = new UserData.Manager();
 		}
 		return this._manager;
 	}
 
-	getEncounter() {
-		const manager = this.getManager();
-		let encounterSession = manager.peekEncounter();
+	load(userDataJSON: string) {
+		this._manager = new UserData.Manager(UserData.createFromJSON(userDataJSON));
+	}
+
+	startEncounter() {
+		let encounterSession = this.manager.peekEncounter();
 		if (!encounterSession) {
-			encounterSession = manager.pushEncounter({
+			encounterSession = this.manager.pushEncounter({
 				sceneName: "Amy1",
 			});
 		}
-		return new Encounter({
+		this.encounter = new Encounter({
 			session: encounterSession,
 		});
+		return this.encounter;
+	}
+
+	save(): string {
+		this.manager.saveGame();
+		return JSON.stringify(this.manager.userData);
 	}
 }
 
