@@ -1,135 +1,104 @@
-type Primitive =
-	| "string"
-	| "number"
-	| "bigint"
-	| "boolean"
-	| "symbol"
-	| "undefined"
-	| "object"
-	| "function";
+import { narrow, some, Narrowable } from "../src/utils/narrow";
 
-type Arr = (Primitive | Obj)[];
-interface Obj {
-	[k: string]: Primitive | Arr | Obj;
-}
-
-type Narrowable = Primitive | Arr | Obj;
-
-const narrow = <N extends Narrowable>(n: N, u: unknown): u is N => {
-	if (typeof n === "string") {
-		if (n === typeof u) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	if (typeof u !== "object" || u === null) {
-		return false;
-	}
-
-	if (Array.isArray(n)) {
-		if (Array.isArray(u)) {
-			return u.every((v) => n.some((t) => narrow(t, v)));
-		} else {
-			return false;
-		}
-	}
-
-	const o = u as Obj;
-
-	return Object.entries(n).every(([k, t]) => {
-		if (k in o) {
-			return narrow(t, o[k]);
-		} else {
-			return false;
-		}
+describe("narrow", () => {
+	it("works on primitives", () => {
+		expect(narrow("function", () => {})).toBe(true);
+		expect(narrow("number", 1)).toBe(true);
+		expect(narrow("string", 1)).toBe(false);
 	});
-};
 
-it("works deeply", () => {
-	expect(narrow("function", () => {})).toBe(true);
-	expect(narrow("number", 1)).toBe(true);
-	expect(narrow("string", 1)).toBe(false);
-
-	const schema: Narrowable = {
-		horse: "number",
-		nest: {
-			bird: "string",
-			cool: "boolean",
-		},
-	};
-	expect(narrow(schema, {})).toBe(false);
-	expect(
-		narrow(schema, {
-			horse: 2,
+	it("works on object schemas", () => {
+		const schema: Narrowable = {
+			horse: "number",
 			nest: {
-				bird: null,
-				cool: null,
+				bird: "string",
+				cool: "boolean",
 			},
-		})
-	).toBe(false);
-	expect(
-		narrow(schema, {
-			horse: 2,
-			nest: {
-				bird: "caw",
-				cool: false,
-			},
-		})
-	).toBe(true);
-
-	expect(
-		narrow(
-			{
-				0: "number",
-			},
-			[1, 2]
-		)
-	).toBe(true);
-	expect(narrow(["number"], [1, 2])).toBe(true);
-	expect(narrow(["string"], [1, 2])).toBe(false);
-	expect(
-		narrow(
-			[
-				"number",
-				{
-					bird: "string",
+		};
+		expect(narrow(schema, {})).toBe(false);
+		expect(
+			narrow(schema, {
+				horse: 2,
+				nest: {
+					bird: null,
+					cool: null,
 				},
-			],
-			[
-				1,
-				2,
-				{
+			})
+		).toBe(false);
+		expect(
+			narrow(schema, {
+				horse: 2,
+				nest: {
 					bird: "caw",
+					cool: false,
 				},
-			]
-		)
-	).toBe(true);
+			})
+		).toBe(true);
+	});
+
+	it("works on arrays", () => {
+		expect(
+			narrow(
+				{
+					0: "number",
+				},
+				[1, 2]
+			)
+		).toBe(true);
+		expect(narrow(["number"], [1, 2])).toBe(true);
+		expect(narrow(["string"], [1, 2])).toBe(false);
+		expect(
+			narrow(
+				[
+					"number",
+					{
+						bird: "string",
+					},
+				],
+				[
+					1,
+					2,
+					{
+						bird: "caw",
+					},
+				]
+			)
+		).toBe(true);
+	});
+
+	it("works with some", () => {
+		const numOrStr = some("number", "string");
+		expect(narrow(numOrStr, 1)).toBe(true);
+		expect(narrow(numOrStr, "meow")).toBe(true);
+
+		expect(narrow(numOrStr, [])).toBe(false);
+		expect(narrow(numOrStr, {})).toBe(false);
+
+		const numOrSchema = some("number", {
+			horse: "number",
+			cows: ["string"],
+			derps1: some("number", "string"),
+			derps2: some("number", "string"),
+		});
+		expect(
+			narrow(numOrSchema, {
+				horse: 2,
+				cows: ["moo", "oink"],
+				derps1: 1,
+				derps2: "two",
+			})
+		).toBe(true);
+		expect(narrow(numOrSchema, 1)).toBe(true);
+
+		expect(narrow(numOrSchema, "zang")).toBe(false);
+		expect(narrow(numOrSchema, [])).toBe(false);
+		expect(narrow(numOrSchema, {})).toBe(false);
+
+		expect(narrow(some(some("number", "undefined")), 1)).toBe(true);
+		expect(narrow(some(some("number", "undefined")), undefined)).toBe(true);
+		expect(narrow(some(some("number"), "undefined"), undefined)).toBe(true);
+
+		expect(narrow(some(some("number", "undefined")), "nope")).toBe(false);
+		expect(narrow(some(some("number"), "undefined"), "nope")).toBe(false);
+	});
 });
-
-// if (typeof o === n) {
-// 	return true
-// }
-
-// if (typeof n !== "object") {
-// 	return false;
-// }
-
-// n
-
-// if ("a" in o && typeof o.a === "number") {
-// 	const a = o.a;
-// 	const j: { a: 1 } = o;
-// }
-// const s: Record<string, unknown> = {
-// 	...o,
-// };
-// if ("a" in s) {
-// 	const a2 = s.a;
-// }
-// return s;
-
-// let a: any;
-// let t: LiteralType = typeof a;
-// let t = typeof a;

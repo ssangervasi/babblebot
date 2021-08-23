@@ -1,4 +1,5 @@
 import Lodash from "lodash";
+import { narrow } from "./utils/narrow";
 
 export interface UserData {
 	savedGames: SavedGame[];
@@ -54,15 +55,29 @@ export const createFromJSON = (userDataJSON: string): UserData => {
 };
 
 export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
-	maybeData != null &&
-	typeof maybeData === "object" &&
-	"savedGames" in maybeData &&
-	Array.isArray(maybeData.savedGames) &&
-	maybeData.savedGames.every((savedGame: any) =>
-		["encounters", "createdAt", "updatedAt"].every(
-			(key) => typeof savedGame === "object" && key in savedGame
-		)
+	narrow(
+		{
+			savedGames: [
+				{
+					encounters: [],
+					createdAt: "number",
+					updatedAt: "number",
+				},
+			],
+		},
+		maybeData
 	);
+
+// export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
+// 	maybeData != null &&
+// 	typeof maybeData === "object" &&
+// 	"savedGames" in maybeData &&
+// 	Array.isArray(maybeData.savedGames) &&
+// 	maybeData.savedGames.every((savedGame: any) =>
+// 		["encounters", "createdAt", "updatedAt"].every(
+// 			(key) => typeof savedGame === "object" && key in savedGame
+// 		)
+// 	);
 
 export const createDefault = (): UserData => ({
 	savedGames: [],
