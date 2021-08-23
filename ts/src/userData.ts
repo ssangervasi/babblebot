@@ -59,7 +59,7 @@ export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 		{
 			savedGames: [
 				{
-					encounters: [],
+					encounters: ["object"],
 					createdAt: "number",
 					updatedAt: "number",
 				},
