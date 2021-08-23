@@ -100,5 +100,38 @@ describe("narrow", () => {
 
 		expect(narrow(some(some("number", "undefined")), "nope")).toBe(false);
 		expect(narrow(some(some("number"), "undefined"), "nope")).toBe(false);
+
+		expect(
+			narrow(
+				{
+					missing: some("number", "undefined"),
+				},
+				{
+					missing: undefined,
+					nope: 1,
+				}
+			)
+		).toBe(true);
+		expect(
+			narrow(
+				{
+					missing: some("number", "undefined"),
+				},
+				{
+					nope: 1,
+				}
+			)
+		).toBe(true);
+		expect(
+			narrow(
+				{
+					missing: some("number"),
+				},
+				{
+					missing: undefined,
+					nope: 1,
+				}
+			)
+		).toBe(false);
 	});
 });

@@ -48,11 +48,5 @@ export const narrow = <N extends Narrowable>(n: N, u: unknown): u is N => {
 
 	const o = u as NarrowableObj;
 
-	return Object.entries(n).every(([k, t]) => {
-		if (k in o) {
-			return narrow(t, o[k]);
-		} else {
-			return false;
-		}
-	});
+	return Object.entries(n).every(([k, t]) => narrow(t, o[k]));
 };
