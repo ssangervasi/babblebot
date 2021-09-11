@@ -1,52 +1,58 @@
-import csvParse from "csv-parse/lib/sync";
+import csvParse from 'csv-parse/lib/sync'
 
-import _CAMPAIGN_MAPPING from "./campaignMapping.json";
+import _CAMPAIGN_MAPPING from './campaignMapping.json'
 
-export const CAMPAIGN_MAPPING = _CAMPAIGN_MAPPING;
+export const CAMPAIGN_MAPPING = _CAMPAIGN_MAPPING
 
 export const HEADINGS = {
-	SCENE_NAME: "Scene Name",
-	PREREQ: "Prereq",
-} as const;
+	SCENE_NAME: 'Scene Name',
+	PREREQ: 'Prereq',
+} as const
 
 export type Mapping = {
-	[sceneName: string]: string[];
-};
+	[sceneName: string]: string[]
+}
 
 export type CsvRow = {
-	[HEADINGS.SCENE_NAME]?: string;
-	[HEADINGS.PREREQ]?: string;
-};
+	[HEADINGS.SCENE_NAME]?: string
+	[HEADINGS.PREREQ]?: string
+}
 
 const PARSE_OPTIONS = {
 	cast: true,
 	columns: true,
 	skip_empty_lines: true,
-};
+}
 
 export const parseCampaign = (raw: string): Mapping => {
-	const parsed: CsvRow[] = csvParse(raw, PARSE_OPTIONS);
+	const parsed: CsvRow[] = csvParse(raw, PARSE_OPTIONS)
 
-	const mapping: Mapping = {};
-	parsed.forEach((csvRow) => {
+	const mapping: Mapping = {}
+	parsed.forEach(csvRow => {
 		const { [HEADINGS.SCENE_NAME]: sceneName, [HEADINGS.PREREQ]: prereq } =
-			csvRow;
+			csvRow
 
 		if (!(sceneName && prereq)) {
-			return;
+			return
 		}
 
-		const prereqs = mapping[sceneName] || [];
-		mapping[sceneName] = prereqs;
-		prereqs.push(prereq);
-	});
+		const prereqs = mapping[sceneName] || []
+		mapping[sceneName] = prereqs
+		prereqs.push(prereq)
+	})
 
-	return mapping;
-};
+	return mapping
+}
 
 export const findAvailableEncounters = (
 	completed: string[],
-	campaignMapping: Mapping = CAMPAIGN_MAPPING
+	campaignMapping: Mapping = CAMPAIGN_MAPPING,
 ): string[] => {
-	return [];
-};
+	const completedSet = new Set(completed)
+	return Object.keys(campaignMapping).filter(sceneName => {
+		return (
+			!completed.includes(sceneName) &&
+			campaignMapping[sceneName].every(prereq => completed.includes(prereq))
+		)
+	})
+}
