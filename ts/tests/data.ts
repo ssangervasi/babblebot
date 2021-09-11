@@ -1,5 +1,5 @@
-import { CardCollection } from "../src/dealer";
-import { ScoreTable, CardTable } from "../src/cardScores";
+import { CardCollection } from '../src/dealer'
+import { ScoreTable, CardTable } from '../src/cardScores'
 
 export const scoreTableCsv = `
 Feature,Reaction,Feature_Reaction,Score
@@ -14,54 +14,61 @@ listen,good,listen_good,20
 listen,,listen,2
 ,,,
 butt,good,butt_good,1000.1
-`;
+`
 
 export const scoreTable: ScoreTable = [
-	{ feature: "agree", reaction: "good", score: 30 },
-	{ feature: "agree", reaction: "bad", score: -10 },
-	{ feature: "agree", reaction: "", score: 0 },
-	{ feature: "disagree", reaction: "bad", score: -40 },
-	{ feature: "disagree", reaction: "", score: -10 },
-	{ feature: "listen", reaction: "good", score: 20 },
-	{ feature: "listen", reaction: "", score: 2 },
-	{ feature: "butt", reaction: "good", score: 1000.1 },
-];
+	{ feature: 'agree', reaction: 'good', score: 30 },
+	{ feature: 'agree', reaction: 'bad', score: -10 },
+	{ feature: 'agree', reaction: '', score: 0 },
+	{ feature: 'disagree', reaction: 'bad', score: -40 },
+	{ feature: 'disagree', reaction: '', score: -10 },
+	{ feature: 'listen', reaction: 'good', score: 20 },
+	{ feature: 'listen', reaction: '', score: 2 },
+	{ feature: 'butt', reaction: 'good', score: 1000.1 },
+]
 
 export const cardTableCsv = `
 Id,Type,Text,Extra Features,Features
 card-1,type,I condemn,,disagree butt
 card-2,type,"A, B, C",,agree listen
 card-3,type,What's that?,,listen
-`;
+`
 
 export const cardTable: CardTable = [
 	{
-		id: "card-1",
-		text: "I condemn",
-		features: "disagree butt",
+		id: 'card-1',
+		text: 'I condemn',
+		features: 'disagree butt',
 	},
 	{
-		id: "card-2",
-		text: "A, B, C",
-		features: "agree listen",
+		id: 'card-2',
+		text: 'A, B, C',
+		features: 'agree listen',
 	},
 	{
-		id: "card-3",
+		id: 'card-3',
 		text: "What's that?",
-		features: "listen",
+		features: 'listen',
 	},
-];
+]
 
 export const deck: CardCollection = {
-	uuid: "deck-01",
+	uuid: 'deck-01',
 	cards: [
-		{ uuid: "card-00", card: cardTable[0] },
+		{ uuid: 'card-00', card: cardTable[0] },
 
-		{ uuid: "card-10", card: cardTable[1] },
-		{ uuid: "card-11", card: cardTable[1] },
+		{ uuid: 'card-10', card: cardTable[1] },
+		{ uuid: 'card-11', card: cardTable[1] },
 
-		{ uuid: "card-20", card: cardTable[2] },
-		{ uuid: "card-21", card: cardTable[2] },
-		{ uuid: "card-23", card: cardTable[2] },
+		{ uuid: 'card-20', card: cardTable[2] },
+		{ uuid: 'card-21', card: cardTable[2] },
+		{ uuid: 'card-23', card: cardTable[2] },
 	],
-};
+}
+
+export const campaignMapping = {
+	amy2: ['amy1'],
+	castille1: ['amy1', 'lally1'],
+	lally1: ['amy1'],
+	lally2: ['lally1'],
+}

@@ -1,39 +1,39 @@
-import "../src/babblebot";
+import '../src/babblebot'
 
 // import * as Data from "./data";
 
-describe("End-to-End", () => {
-	it("works", () => {
-		Babblebot.load("");
+describe('End-to-End', () => {
+	it('works', () => {
+		Babblebot.load('')
 
 		expect(Babblebot.manager.userData).toMatchObject(
-			Babblebot.UserData.createDefault()
-		);
+			Babblebot.UserData.createDefault(),
+		)
 
-		const firstSave = Babblebot.manager.newGame();
-		Babblebot.startEncounter();
-		expect(Babblebot.encounter?.moodQuality).toEqual("neutral");
+		const firstSave = Babblebot.manager.newGame()
+		Babblebot.startEncounter()
+		expect(Babblebot.encounter?.moodQuality).toEqual('neutral')
 
-		let userDataJSON = Babblebot.save();
+		let userDataJSON = Babblebot.save()
 		expect(JSON.parse(userDataJSON)).toMatchObject({
 			savedGames: [
 				{
 					encounters: [
 						{
-							sceneName: "Amy1",
+							sceneName: 'Amy1',
 						},
 					],
 				},
 			],
-		});
+		})
 
-		const secondSave = Babblebot.manager.newGame();
+		const secondSave = Babblebot.manager.newGame()
 
-		Babblebot.manager.resumeGame(firstSave.createdAt);
+		Babblebot.manager.resumeGame(firstSave.createdAt)
 
-		userDataJSON = Babblebot.save();
+		userDataJSON = Babblebot.save()
 		expect(JSON.parse(userDataJSON)).toMatchObject({
 			savedGames: [firstSave, secondSave],
-		});
-	});
-});
+		})
+	})
+})

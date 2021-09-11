@@ -1,10 +1,10 @@
 {
-	"extends": "../base.tsconfig.json",
-	"compilerOptions": {
-		"module": "commonjs",
-		"moduleResolution": "node",
+	'extends': '../base.tsconfig.json',
+	'compilerOptions': {
+		'module': 'commonjs',
+		'moduleResolution': 'node',
 	},
-	"include": [
-		"."
-	]
+	'include': [
+		'.'
+	],
 }

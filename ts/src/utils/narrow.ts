@@ -1,52 +1,52 @@
 export type Primitive =
-	| "string"
-	| "number"
-	| "bigint"
-	| "boolean"
-	| "symbol"
-	| "undefined"
-	| "object"
-	| "function";
-export type NarrowableArr = (Primitive | NarrowableObj | NarrowableArr)[];
+	| 'string'
+	| 'number'
+	| 'bigint'
+	| 'boolean'
+	| 'symbol'
+	| 'undefined'
+	| 'object'
+	| 'function'
+export type NarrowableArr = Array<Primitive | NarrowableObj | NarrowableArr>
 export interface NarrowableObj {
-	[k: string]: Primitive | NarrowableArr | NarrowableObj;
+	[k: string]: Primitive | NarrowableArr | NarrowableObj
 }
-export type Narrowable = Primitive | NarrowableArr | NarrowableObj;
+export type Narrowable = Primitive | NarrowableArr | NarrowableObj
 
-export const SOME = Symbol("SOME");
+export const SOME = Symbol('SOME')
 export const some = (...opts: NarrowableArr) => {
 	Object.assign(opts, {
 		[SOME]: true,
-	});
-	return opts;
-};
+	})
+	return opts
+}
 
 export const narrow = <N extends Narrowable>(n: N, u: unknown): u is N => {
-	if (typeof n === "string") {
+	if (typeof n === 'string') {
 		if (n === typeof u) {
-			return true;
+			return true
 		} else {
-			return false;
+			return false
 		}
 	}
 
 	if (Array.isArray(n)) {
 		if (SOME in n) {
-			return n.some((t) => narrow(t, u));
+			return n.some((t) => narrow(t, u))
 		} else {
 			if (Array.isArray(u)) {
-				return u.every((v) => n.some((t) => narrow(t, v)));
+				return u.every((v) => n.some((t) => narrow(t, v)))
 			} else {
-				return false;
+				return false
 			}
 		}
 	}
 
-	if (typeof u !== "object" || u === null) {
-		return false;
+	if (typeof u !== 'object' || u === null) {
+		return false
 	}
 
-	const o = u as NarrowableObj;
+	const o = u as NarrowableObj
 
-	return Object.entries(n).every(([k, t]) => narrow(t, o[k]));
-};
+	return Object.entries(n).every(([k, t]) => narrow(t, o[k]))
+}

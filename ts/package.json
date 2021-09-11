@@ -22,7 +22,7 @@
 		"inject": "npm run bin bin/inject.ts",
 		"csvToJson": "npm run bin bin/csvToJson.ts",
 		"gen": "npm run csvToJson",
-		"lint": "eslint --fix --cache src/**",
+		"lint": "eslint --fix --cache src/**/*.ts tests/**/*.ts bin/**/*.ts",
 		"ndb": "ndb ./dist/cli.js",
 		"shell": "ts-node",
 		"jest": "jest --runTestsByPath",
