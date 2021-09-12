@@ -2,6 +2,7 @@ import Lodash from 'lodash'
 
 import * as CardScores from './cardScores'
 import * as UserData from './userData'
+import * as Campaign from './campaign'
 import { Encounter } from './encounter'
 
 class Game {

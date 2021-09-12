@@ -1,7 +1,7 @@
 Scene Name,Prereq
-amy1,
-amy2,amy1
-lally1,amy1
-lally2,lally1
-castille1,amy1
-castille1,lally1
+Amy1,
+Amy2,Amy1
+Lally1,Amy1
+Lally2,Lally1
+Castille1,Amy1
+Castille1,Lally1

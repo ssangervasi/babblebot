@@ -3,11 +3,11 @@ import { findAvailableEncounters } from '../src/campaign'
 import * as Data from './data'
 
 describe('findAvailableEncounters', () => {
-	test('workds', () => {
+	test('works', () => {
 		const result = findAvailableEncounters(
-			['amy1', 'amy2', 'lally1'],
+			['Amy1', 'Amy2', 'Lally1'],
 			Data.campaignMapping,
 		)
-		expect(result).toEqual(['castille1', 'lally2'])
+		expect(result).toEqual(['Castille1', 'Lally2'])
 	})
 })

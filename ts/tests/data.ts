@@ -67,8 +67,8 @@ export const deck: CardCollection = {
 }
 
 export const campaignMapping = {
-	amy2: ['amy1'],
-	castille1: ['amy1', 'lally1'],
-	lally1: ['amy1'],
-	lally2: ['lally1'],
+	Amy2: ['Amy1'],
+	Castille1: ['Amy1', 'Lally1'],
+	Lally1: ['Amy1'],
+	Lally2: ['Lally1'],
 }

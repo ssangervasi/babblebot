@@ -44,6 +44,14 @@ export const parseCampaign = (raw: string): Mapping => {
 	return mapping
 }
 
+/**
+ * Picks out the encounters in the campaign that are available because their
+ * prereqs have been completed.
+ *
+ * Criteria that could be added:
+ *  - Completion requiring good/neutral/bad ending
+ *  - Including already completed encounters without the good ending
+ */
 export const findAvailableEncounters = (
 	completed: string[],
 	campaignMapping: Mapping = CAMPAIGN_MAPPING,
