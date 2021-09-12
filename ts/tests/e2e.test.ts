@@ -1,9 +1,11 @@
+import { jest } from '@jest/globals'
+
 import '../src/babblebot'
 
-// import * as Data from "./data";
+import * as Data from './data'
 
 describe('End-to-End', () => {
-	it('works', () => {
+	it('Starts and saves new games', () => {
 		Babblebot.load('')
 
 		expect(Babblebot.manager.userData).toMatchObject(
@@ -15,6 +17,8 @@ describe('End-to-End', () => {
 		expect(Babblebot.encounter?.moodQuality).toEqual('neutral')
 
 		let userDataJSON = Babblebot.save()
+		console.debug('DEBUG(ssangervasi)', userDataJSON)
+
 		expect(JSON.parse(userDataJSON)).toMatchObject({
 			savedGames: [
 				{
@@ -27,13 +31,27 @@ describe('End-to-End', () => {
 			],
 		})
 
+		jest.setSystemTime(firstSave.createdAt + 1000)
 		const secondSave = Babblebot.manager.newGame()
 
 		Babblebot.manager.resumeGame(firstSave.createdAt)
+		Babblebot.loadEncounter('Amy1')
 
 		userDataJSON = Babblebot.save()
+		console.debug('DEBUG(ssangervasi)', userDataJSON)
+
 		expect(JSON.parse(userDataJSON)).toMatchObject({
 			savedGames: [firstSave, secondSave],
 		})
+	})
+
+	it('Loads an in-progress game', () => {
+		Babblebot.load(JSON.stringify(Data.mockUserData()))
+		Babblebot.startEncounter()
+		expect(Babblebot.encounter?.moodQuality).toEqual('neutral')
+
+		Babblebot.encounter!.complete()
+		expect(Babblebot.encounter?.session.completedAt).toBeTruthy()
+		console.log('yes  ss')
 	})
 })

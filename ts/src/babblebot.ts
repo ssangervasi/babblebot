@@ -23,21 +23,47 @@ class Game {
 
 	load(userDataJSON: string) {
 		this._manager = new UserData.Manager(UserData.createFromJSON(userDataJSON))
+		this._manager.resumeGame()
+		this.encounter = undefined
+	}
+
+	loadEncounter(sceneName: string): Encounter {
+		const incompletes = this.manager.listIncompleteEncounters()
+		const resumeableSession = incompletes.find(e => e.sceneName == sceneName)
+		if (resumeableSession) {
+			this.encounter = new Encounter({
+				session: resumeableSession,
+			})
+			return this.encounter
+		}
+
+		const newSession = this.manager.pushEncounter({
+			sceneName: sceneName,
+		})
+		this.encounter = new Encounter({
+			session: newSession,
+		})
+		return this.encounter
 	}
 
 	startEncounter() {
-		let encounterSession = this.manager.peekEncounter()
-		if (!encounterSession) {
-			let available = Campaign.listAvailableEncounters(
+		const incompletes = this.manager.listIncompleteEncounters()
+		let session = incompletes[0]
+		if (!session) {
+			const available = Campaign.listAvailableEncounters(
 				this.listCompletedNames(),
 			)
-			let first = available[0]
-			encounterSession = this.manager.pushEncounter({
-				sceneName: first,
+			const sceneName = available[0]
+			if (!sceneName) {
+				throw new Error('Cannot start encounter when none are available.')
+			}
+			session = this.manager.pushEncounter({
+				sceneName,
 			})
 		}
+
 		this.encounter = new Encounter({
-			session: encounterSession,
+			session,
 		})
 		return this.encounter
 	}

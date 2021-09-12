@@ -62,7 +62,8 @@ export const listAvailableEncounters = (
 	return Object.keys(campaignMapping).filter(sceneName => {
 		return (
 			!completedSet.has(sceneName) &&
-			campaignMapping[sceneName].every(prereq => completed.includes(prereq))
+			campaignMapping[sceneName] &&
+			campaignMapping[sceneName]!.every(prereq => completed.includes(prereq))
 		)
 	})
 }

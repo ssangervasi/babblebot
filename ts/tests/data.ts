@@ -1,5 +1,6 @@
 import { CardCollection } from '../src/dealer'
 import { ScoreTable, CardTable } from '../src/cardScores'
+import { StoredUserData } from '../src/userData'
 
 export const scoreTableCsv = `
 Feature,Reaction,Feature_Reaction,Score
@@ -55,14 +56,14 @@ export const cardTable: CardTable = [
 export const deck: CardCollection = {
 	uuid: 'deck-01',
 	cards: [
-		{ uuid: 'card-00', card: cardTable[0] },
+		{ uuid: 'card-00', card: cardTable[0]! },
 
-		{ uuid: 'card-10', card: cardTable[1] },
-		{ uuid: 'card-11', card: cardTable[1] },
+		{ uuid: 'card-10', card: cardTable[1]! },
+		{ uuid: 'card-11', card: cardTable[1]! },
 
-		{ uuid: 'card-20', card: cardTable[2] },
-		{ uuid: 'card-21', card: cardTable[2] },
-		{ uuid: 'card-23', card: cardTable[2] },
+		{ uuid: 'card-20', card: cardTable[2]! },
+		{ uuid: 'card-21', card: cardTable[2]! },
+		{ uuid: 'card-23', card: cardTable[2]! },
 	],
 }
 
@@ -83,3 +84,24 @@ export const campaignMapping = {
 	Lally1: ['Amy1'],
 	Lally2: ['Lally1'],
 }
+
+export const mockUserData = (): StoredUserData => ({
+	options: {
+		bindHints: 'off',
+		effectsVolume: 100,
+		fullscreen: 'on',
+		musicVolume: 100,
+	},
+	savedGames: [
+		{
+			createdAt: 1631485277612,
+			encounters: [
+				{
+					sceneName: 'Amy1',
+					startedAt: 1631485277612,
+				},
+			],
+			updatedAt: 1631485277612,
+		},
+	],
+})

@@ -131,6 +131,7 @@ export class Manager {
 		this.userData.session = {
 			savedGame: previousSave,
 			encounters: [...previousSave.encounters],
+			encounter: undefined,
 		}
 		return this.userData.session
 	}
@@ -150,6 +151,12 @@ export class Manager {
 		if (index === -1) {
 			this.userData.savedGames.push(savedGame)
 		} else {
+			console.debug(
+				'DEBUG(ssangervasi)',
+				'found matching time',
+				savedGame.createdAt,
+			)
+
 			this.userData.savedGames[index] = savedGame
 		}
 		return savedGame
@@ -166,31 +173,20 @@ export class Manager {
 		return this.userData.session.encounter
 	}
 
-	peekEncounter = (depth = 0): EncounterSession | null => {
-		const { encounters } = this.userData.session
-		const index = encounters.length - 1 - depth
-		if (index < 0) {
-			return null
-		}
-		return encounters[index]
-	}
-
-	completeEncounter(): EncounterSession | null {
-		const { encounter } = this.userData.session
-		if (!encounter) {
-			return null
-		}
-		encounter.completedAt = Date.now()
-		this.userData.session.encounter = undefined
-		return encounter
-	}
-
-	listCompletedEncounters(): EncounterSession[] {
+	listEncounters(): EncounterSession[] {
 		const { encounters } = this.userData.session
 		if (!encounters) {
 			return []
 		}
 
-		return encounters.filter(e => Boolean(e.completedAt))
+		return encounters
+	}
+
+	listCompletedEncounters(): EncounterSession[] {
+		return this.listEncounters().filter(e => Boolean(e.completedAt))
+	}
+
+	listIncompleteEncounters(): EncounterSession[] {
+		return this.listEncounters().filter(e => !Boolean(e.completedAt))
 	}
 }

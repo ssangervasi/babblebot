@@ -2,17 +2,11 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@babblebot/*": [
-				"./src/*"
-			]
+			"@babblebot/*": ["./src/*"]
 		},
 
 		// Syntax
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
+		"lib": ["dom", "dom.iterable", "esnext"],
 
 		// Output
 		"outDir": "dist",
@@ -32,13 +26,12 @@
 		"noImplicitReturns": true,
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
+		"noUncheckedIndexedAccess": true,
 		"skipLibCheck": true,
 		"strict": true,
 		"strictNullChecks": true,
 		"target": "ES6",
 		"resolveJsonModule": true
 	},
-	"include": [
-		"src"
-	]
+	"include": ["src"]
 }

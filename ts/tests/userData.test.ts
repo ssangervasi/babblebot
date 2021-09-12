@@ -17,7 +17,7 @@ const mockSavedGames = (): UD.SavedGame[] => [
 	{
 		createdAt: 2,
 		updatedAt: 20,
-		encounters: [mockEncounters()[0]],
+		encounters: [mockEncounters()[0]!],
 	},
 	{
 		createdAt: 100,
@@ -106,7 +106,7 @@ describe('newGame', () => {
 		const originalGames = mockSavedGames()
 		const manager = new UD.Manager({
 			options: mockOptions(),
-			savedGames: [originalGames[0]],
+			savedGames: [originalGames[0]!],
 			session: {
 				savedGame: originalGames[1],
 				encounters: [],
