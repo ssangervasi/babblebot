@@ -66,7 +66,18 @@ export const deck: CardCollection = {
 	],
 }
 
+export const campaignCsv = `
+Scene Name,Prereq
+Amy1,
+Amy2,Amy1
+Lally1,Amy1
+Lally2,Lally1
+Castille1,Amy1
+Castille1,Lally1
+`
+
 export const campaignMapping = {
+	Amy1: [],
 	Amy2: ['Amy1'],
 	Castille1: ['Amy1', 'Lally1'],
 	Lally1: ['Amy1'],

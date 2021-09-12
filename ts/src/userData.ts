@@ -1,72 +1,72 @@
-import Lodash from "lodash";
-import { narrow } from "./utils/narrow";
+import Lodash from 'lodash'
+import { narrow } from './utils/narrow'
 
 export interface UserData {
-	savedGames: SavedGame[];
-	session: Session;
-	options: Options;
+	savedGames: SavedGame[]
+	session: Session
+	options: Options
 }
 
 export interface Options {
-	fullscreen: "off" | "on";
-	bindHints: "off" | "on";
-	musicVolume: number;
-	effectsVolume: number;
+	fullscreen: 'off' | 'on'
+	bindHints: 'off' | 'on'
+	musicVolume: number
+	effectsVolume: number
 }
 
-export type StoredUserData = Pick<UserData, "savedGames" | "options">;
+export type StoredUserData = Pick<UserData, 'savedGames' | 'options'>
 
 export interface Session {
-	savedGame?: SavedGame;
-	encounters: EncounterSession[];
-	encounter?: EncounterSession;
+	savedGame?: SavedGame
+	encounters: EncounterSession[]
+	encounter?: EncounterSession
 }
 
 export interface SavedGame {
-	encounters: EncounterSession[];
-	createdAt: number;
-	updatedAt: number;
+	encounters: EncounterSession[]
+	createdAt: number
+	updatedAt: number
 }
 
 export interface EncounterSession {
-	sceneName: string;
-	startedAt: number;
-	completedAt?: number;
+	sceneName: string
+	startedAt: number
+	completedAt?: number
 }
 
 export const createFromJSON = (userDataJSON: string): UserData => {
-	const userData = createDefault();
-	let parsed: any;
+	const userData = createDefault()
+	let parsed: any
 	try {
-		parsed = JSON.parse(userDataJSON);
+		parsed = JSON.parse(userDataJSON)
 	} catch (e) {
-		console.warn("createFromJSON parse error:", { userDataJSON });
+		console.warn('createFromJSON parse error:', { userDataJSON })
 	}
 	if (isStoredData(parsed)) {
-		userData.savedGames = parsed.savedGames;
-		if ("options" in parsed && typeof parsed.options === "object") {
+		userData.savedGames = parsed.savedGames
+		if ('options' in parsed && typeof parsed.options === 'object') {
 			userData.options = {
 				...userData.options,
 				...parsed.options,
-			};
+			}
 		}
 	}
-	return userData;
-};
+	return userData
+}
 
 export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 	narrow(
 		{
 			savedGames: [
 				{
-					encounters: ["object"],
-					createdAt: "number",
-					updatedAt: "number",
+					encounters: ['object'],
+					createdAt: 'number',
+					updatedAt: 'number',
 				},
 			],
 		},
-		maybeData
-	);
+		maybeData,
+	)
 
 // export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 // 	maybeData != null &&
@@ -87,101 +87,110 @@ export const createDefault = (): UserData => ({
 		savedGame: undefined,
 	},
 	options: {
-		fullscreen: "on",
-		bindHints: "off",
+		fullscreen: 'on',
+		bindHints: 'off',
 		musicVolume: 100,
 		effectsVolume: 100,
 	},
-});
+})
 
 export class Manager {
-	userData: UserData;
+	userData: UserData
 
 	constructor(userData?: UserData) {
-		this.userData = userData || createDefault();
+		this.userData = userData || createDefault()
 	}
 
 	newGame(): SavedGame {
-		const now = Date.now();
+		const now = Date.now()
 		const savedGame = {
 			encounters: [],
 			createdAt: now,
 			updatedAt: now,
-		};
+		}
 
-		this.saveGame();
-		this.writeSession(savedGame);
-		return savedGame;
+		this.saveGame()
+		this.writeSession(savedGame)
+		return savedGame
 	}
 
 	resumeGame(createdAt?: number): SavedGame | null {
-		this.saveGame();
+		this.saveGame()
 		const previousSave = createdAt
-			? this.userData.savedGames.find((s) => s.createdAt === createdAt)
-			: Lodash.maxBy(this.userData.savedGames, (s) => s.updatedAt);
+			? this.userData.savedGames.find(s => s.createdAt === createdAt)
+			: Lodash.maxBy(this.userData.savedGames, s => s.updatedAt)
 		if (!previousSave) {
-			return null;
+			return null
 		}
 
-		this.writeSession(previousSave);
-		return previousSave;
+		this.writeSession(previousSave)
+		return previousSave
 	}
 
 	writeSession(previousSave: SavedGame): Session {
 		this.userData.session = {
 			savedGame: previousSave,
 			encounters: [...previousSave.encounters],
-		};
-		return this.userData.session;
+		}
+		return this.userData.session
 	}
 
 	saveGame(): SavedGame | null {
-		const savedGame = this.userData.session.savedGame;
+		const savedGame = this.userData.session.savedGame
 		if (!savedGame) {
-			return null;
+			return null
 		}
 
-		savedGame.updatedAt = Date.now();
-		savedGame.encounters = [...this.userData.session.encounters];
+		savedGame.updatedAt = Date.now()
+		savedGame.encounters = [...this.userData.session.encounters]
 
 		const index = this.userData.savedGames.findIndex(
-			(s) => s.createdAt === savedGame.createdAt
-		);
+			s => s.createdAt === savedGame.createdAt,
+		)
 		if (index === -1) {
-			this.userData.savedGames.push(savedGame);
+			this.userData.savedGames.push(savedGame)
 		} else {
-			this.userData.savedGames[index] = savedGame;
+			this.userData.savedGames[index] = savedGame
 		}
-		return savedGame;
+		return savedGame
 	}
 
 	pushEncounter(
-		encounter: Omit<EncounterSession, "startedAt">
+		encounter: Omit<EncounterSession, 'startedAt'>,
 	): EncounterSession {
 		this.userData.session.encounter = {
 			startedAt: Date.now(),
 			...encounter,
-		};
-		this.userData.session.encounters.push(this.userData.session.encounter);
-		return this.userData.session.encounter;
+		}
+		this.userData.session.encounters.push(this.userData.session.encounter)
+		return this.userData.session.encounter
 	}
 
 	peekEncounter = (depth = 0): EncounterSession | null => {
-		const { encounters } = this.userData.session;
-		const index = encounters.length - 1 - depth;
+		const { encounters } = this.userData.session
+		const index = encounters.length - 1 - depth
 		if (index < 0) {
-			return null;
+			return null
 		}
-		return encounters[index];
-	};
+		return encounters[index]
+	}
 
 	completeEncounter(): EncounterSession | null {
-		const { encounter } = this.userData.session;
+		const { encounter } = this.userData.session
 		if (!encounter) {
-			return null;
+			return null
 		}
-		encounter.completedAt = Date.now();
-		this.userData.session.encounter = undefined;
-		return encounter;
+		encounter.completedAt = Date.now()
+		this.userData.session.encounter = undefined
+		return encounter
+	}
+
+	listCompletedEncounters(): EncounterSession[] {
+		const { encounters } = this.userData.session
+		if (!encounters) {
+			return []
+		}
+
+		return encounters.filter(e => Boolean(e.completedAt))
 	}
 }

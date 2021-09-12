@@ -28,8 +28,12 @@ class Game {
 	startEncounter() {
 		let encounterSession = this.manager.peekEncounter()
 		if (!encounterSession) {
+			let available = Campaign.listAvailableEncounters(
+				this.listCompletedNames(),
+			)
+			let first = available[0]
 			encounterSession = this.manager.pushEncounter({
-				sceneName: 'Amy1',
+				sceneName: first,
 			})
 		}
 		this.encounter = new Encounter({
@@ -41,6 +45,10 @@ class Game {
 	save(): string {
 		this.manager.saveGame()
 		return JSON.stringify(this.manager.userData)
+	}
+
+	listCompletedNames() {
+		return this.manager.listCompletedEncounters().map(e => e.sceneName)
 	}
 }
 

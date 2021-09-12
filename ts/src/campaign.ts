@@ -32,13 +32,15 @@ export const parseCampaign = (raw: string): Mapping => {
 		const { [HEADINGS.SCENE_NAME]: sceneName, [HEADINGS.PREREQ]: prereq } =
 			csvRow
 
-		if (!(sceneName && prereq)) {
+		if (!sceneName) {
 			return
 		}
 
 		const prereqs = mapping[sceneName] || []
 		mapping[sceneName] = prereqs
-		prereqs.push(prereq)
+		if (prereq) {
+			prereqs.push(prereq)
+		}
 	})
 
 	return mapping
@@ -52,14 +54,14 @@ export const parseCampaign = (raw: string): Mapping => {
  *  - Completion requiring good/neutral/bad ending
  *  - Including already completed encounters without the good ending
  */
-export const findAvailableEncounters = (
+export const listAvailableEncounters = (
 	completed: string[],
 	campaignMapping: Mapping = CAMPAIGN_MAPPING,
 ): string[] => {
 	const completedSet = new Set(completed)
 	return Object.keys(campaignMapping).filter(sceneName => {
 		return (
-			!completed.includes(sceneName) &&
+			!completedSet.has(sceneName) &&
 			campaignMapping[sceneName].every(prereq => completed.includes(prereq))
 		)
 	})
