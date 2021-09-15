@@ -32,6 +32,7 @@
 		"watch": "tsc-watch"
 	},
 	"dependencies": {
+		"narrow-minded": "git+ssh://git@github.com:ssangervasi/narrow-minded.git#build",
 		"@types/json-stable-stringify": "^1.0.33",
 		"json-stable-stringify": "^1.0.1",
 		"uuid": "^8.3.2"
