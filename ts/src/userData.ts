@@ -1,5 +1,4 @@
 import Lodash from 'lodash'
-// import { narrow } from './utils/narrow'
 import { narrow } from 'narrow-minded'
 
 export interface UserData {

@@ -41,11 +41,11 @@ describe('operations', () => {
 		it('works', () => {
 			const uuidsBefore = dealer.nameToCollection
 				.get('deck')!
-				.cards.map((c) => c.uuid)
+				.cards.map(c => c.uuid)
 			dealer.shuffle('deck')
 			const uuidsAfter = dealer.nameToCollection
 				.get('deck')!
-				.cards.map((c) => c.uuid)
+				.cards.map(c => c.uuid)
 			expect(uuidsAfter).not.toEqual(uuidsBefore)
 			expect(Lodash.sortBy(uuidsAfter)).toEqual(Lodash.sortBy(uuidsBefore))
 		})
@@ -55,7 +55,7 @@ describe('operations', () => {
 		it('works', () => {
 			const deck = dealer.nameToCollection.get('deck')!
 			const hand = dealer.nameToCollection.get('hand')!
-			const uuid = deck.cards[0].uuid
+			const uuid = deck.cards[0]!.uuid
 
 			const lengthsBefore = [deck.cards.length, hand.cards.length]
 			dealer.move({
@@ -64,14 +64,14 @@ describe('operations', () => {
 				to: 'hand',
 			})
 			expect([deck.cards.length, hand.cards.length]).not.toEqual(lengthsBefore)
-			expect(deck.cards[0].uuid).not.toEqual(uuid)
-			expect(hand.cards[0].uuid).toEqual(uuid)
+			expect(deck.cards[0]!.uuid).not.toEqual(uuid)
+			expect(hand.cards[0]!.uuid).toEqual(uuid)
 		})
 
 		it("throws for a card not in the 'from' collection", () => {
 			const deck = dealer.nameToCollection.get('deck')!
 			const hand = dealer.nameToCollection.get('hand')!
-			const uuid = deck.cards[0].uuid
+			const uuid = deck.cards[0]!.uuid
 
 			// Move it successfully first.
 			dealer.move({

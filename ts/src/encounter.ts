@@ -1,18 +1,26 @@
 import Lodash from 'lodash'
 
+import { narrow, Guard, Payload } from 'narrow-minded'
+
 import { ScoreTable, calculateScore } from './cardScores'
 import { EncounterSession } from './userData'
-import { Message, guard } from './utils/guards'
 
-const PlayCard = guard.type('PLAY_CARD').payload<{
-	cardFeatures: string
-	nodeFeatureReactions: string
-	score: number
-	moodBefore: number
-	moodAfter: number
-}>()
+const PlayCard = Guard.narrow({
+	payload: {
+		cardFeatures: 'string',
+		nodeFeatureReactions: 'string',
+		score: 'number',
+		moodBefore: 'number',
+		moodAfter: 'number',
+	},
+}).and(
+	new Guard(
+		(u): u is { type: 'PLAY_CARD' } =>
+			narrow({ type: 'string' }, u) && u.type == 'PLAY_CARD',
+	),
+)
 
-type LogEntry = typeof PlayCard['M']
+type LogEntry = Payload<typeof PlayCard>
 
 type Quality = 'good' | 'bad' | 'neutral'
 
@@ -86,6 +94,7 @@ export class Encounter {
 
 		this.log.push(
 			PlayCard.build({
+				type: 'PLAY_CARD',
 				payload: {
 					cardFeatures,
 					nodeFeatureReactions,
