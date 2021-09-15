@@ -69,13 +69,12 @@ const injectEvent = (event: GdEvent) => {
 	}
 
 	const matches = inlineCode.match(/^\/\/\s*inject (["'])([^"']*)\1\s*$/m)
-	if (!matches) {
+	if (!(matches && matches[2])) {
 		return
 	}
 
 	const pathMatch = matches[2]
 	const jsPath = path.resolve(PATHS.ROOT, pathMatch)
-
 	if (!fs.existsSync(jsPath)) {
 		console.warn(
 			`Cannot inject "${pathMatch}" - path does not exist: ${jsPath}`,
