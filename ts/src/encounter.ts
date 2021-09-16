@@ -14,10 +14,8 @@ const PlayCard = Guard.narrow({
 		moodAfter: 'number',
 	},
 }).and(
-	new Guard(
-		(u): u is { type: 'PLAY_CARD' } =>
-			narrow({ type: 'string' }, u) && u.type == 'PLAY_CARD',
-	),
+	(u): u is { type: 'PLAY_CARD' } =>
+		narrow({ type: 'string' }, u) && u.type == 'PLAY_CARD',
 )
 
 type LogEntry = Payload<typeof PlayCard>
