@@ -1,8 +1,8 @@
 import { Encounter } from '../src/encounter'
 
-import { scoreTable } from './data'
+import { scoreTable, cardTable } from './data'
 
-let makeEncounter = () =>
+const makeEncounter = () =>
 	new Encounter({
 		session: {
 			sceneName: 'L_some_encounter',
@@ -10,6 +10,7 @@ let makeEncounter = () =>
 			completedAt: 110,
 		},
 		scoreTable,
+		cardTable,
 	})
 let enc = makeEncounter()
 beforeEach(() => {

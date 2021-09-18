@@ -4,6 +4,7 @@ import * as CardScores from './cardScores'
 import * as UserData from './userData'
 import * as Campaign from './campaign'
 import { Encounter } from './encounter'
+import { Session } from 'inspector'
 
 class Game {
 	UserData = UserData
@@ -29,20 +30,16 @@ class Game {
 
 	loadEncounter(sceneName: string): Encounter {
 		const incompletes = this.manager.listIncompleteEncounters()
-		const resumeableSession = incompletes.find(e => e.sceneName == sceneName)
+		const resumeableSession = incompletes.find(e => e.sceneName === sceneName)
 		if (resumeableSession) {
-			this.encounter = new Encounter({
-				session: resumeableSession,
-			})
+			this.encounter = this.makeEncounter(resumeableSession)
 			return this.encounter
 		}
 
 		const newSession = this.manager.pushEncounter({
 			sceneName: sceneName,
 		})
-		this.encounter = new Encounter({
-			session: newSession,
-		})
+		this.encounter = this.makeEncounter(newSession)
 		return this.encounter
 	}
 
@@ -62,10 +59,16 @@ class Game {
 			})
 		}
 
-		this.encounter = new Encounter({
-			session,
-		})
+		this.encounter = this.makeEncounter(session)
 		return this.encounter
+	}
+
+	private makeEncounter(session: UserData.EncounterSession) {
+		return new Encounter({
+			session,
+			scoreTable: CardScores.SCORE_TABLE,
+			cardTable: CardScores.CARD_TABLE,
+		})
 	}
 
 	save(): string {

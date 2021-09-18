@@ -151,12 +151,6 @@ export class Manager {
 		if (index === -1) {
 			this.userData.savedGames.push(savedGame)
 		} else {
-			console.debug(
-				'DEBUG(ssangervasi)',
-				'found matching time',
-				savedGame.createdAt,
-			)
-
 			this.userData.savedGames[index] = savedGame
 		}
 		return savedGame
@@ -187,6 +181,6 @@ export class Manager {
 	}
 
 	listIncompleteEncounters(): EncounterSession[] {
-		return this.listEncounters().filter(e => !Boolean(e.completedAt))
+		return this.listEncounters().filter(e => !e.completedAt)
 	}
 }
