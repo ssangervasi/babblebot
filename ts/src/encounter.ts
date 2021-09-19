@@ -135,8 +135,13 @@ export class Encounter {
 
 		const moodBefore = this.mood
 		const moodAfter = moodBefore + score
-		this.mood = moodAfter
 
+		this.dealer.move({
+			uuid,
+			from: HAND,
+			to: PLAY,
+		})
+		this.mood = moodAfter
 		this.log.push(
 			PlayCard.build({
 				type: 'PLAY_CARD',
@@ -149,6 +154,16 @@ export class Encounter {
 				},
 			}),
 		)
+	}
+
+	resolve() {
+		this.dealer.peek(PLAY, 'all').forEach(({ uuid }) => {
+			this.dealer.move({
+				uuid,
+				from: PLAY,
+				to: DISCARD,
+			})
+		})
 	}
 
 	calculateScore(cardFeatures: string, nodeFeatureReactions: string) {

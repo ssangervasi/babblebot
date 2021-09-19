@@ -23,15 +23,15 @@ describe('setup', () => {
 		})
 
 		it('associates an existing collection', () => {
-			dealer.addCollection('deck', Data.deck)
-			expect(dealer.nameToCollection.get('deck')).toMatchObject(Data.deck)
+			dealer.addCollection('deck', Data.mockDeck())
+			expect(dealer.nameToCollection.get('deck')).toMatchObject(Data.mockDeck())
 		})
 	})
 })
 
 describe('operations', () => {
 	beforeEach(() => {
-		dealer.addCollection('deck', Data.deck)
+		dealer.addCollection('deck', Data.mockDeck())
 		dealer.addCollection('hand')
 		dealer.addCollection('play')
 		dealer.addCollection('discard')

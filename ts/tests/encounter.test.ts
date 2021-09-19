@@ -2,7 +2,7 @@ import { Encounter } from '../src/encounter'
 
 import * as Data from './data'
 
-const makeEncounter = () => {
+const mockEncounter = () => {
 	const e = new Encounter({
 		session: {
 			sceneName: 'L_some_encounter',
@@ -15,12 +15,12 @@ const makeEncounter = () => {
 	// TODO: calculate using confidence
 	e.confidence = 0
 	// TODO: have a way of loading the dealer state from the start.
-	e.dealer.nameToCollection.set('deck', Data.deck)
-	e.dealer.nameToCollection.set('hand', Data.hand)
+	e.dealer.nameToCollection.set('deck', Data.mockDeck())
+	e.dealer.nameToCollection.set('hand', Data.mockHand())
 	return e
 }
 
-let enc = makeEncounter()
+let enc = mockEncounter()
 const nodeFeatureReactions = 'agree_bad listen_good'
 const getCard = () =>
 	enc.dealer.find({
@@ -30,13 +30,12 @@ const getCard = () =>
 let card = getCard()
 
 beforeEach(() => {
-	enc = makeEncounter()
+	enc = mockEncounter()
 	card = getCard()
 })
 
 describe('Action logging', () => {
 	it('creates the first card play log', () => {
-		const nodeFeatureReactions = 'agree_bad listen_good'
 		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.log).toEqual([
@@ -68,9 +67,40 @@ describe('playCard', () => {
 			play: enc.dealer.peek('play', 'all').length,
 		}
 
+		expect(sizesBefore).toEqual({
+			hand: 3,
+			play: 0,
+		})
 		expect(sizesAfter).toEqual({
-			hand: sizesBefore.hand - 1,
-			play: sizesBefore.play + 1,
+			hand: 2,
+			play: 1,
+		})
+	})
+})
+
+describe('resolve', () => {
+	it('moves cards from play to discard', () => {
+		enc.playCard(card.uuid, nodeFeatureReactions)
+
+		const sizesBefore = {
+			play: enc.dealer.peek('play', 'all').length,
+			discard: enc.dealer.peek('discard', 'all').length,
+		}
+
+		enc.resolve()
+
+		const sizesAfter = {
+			play: enc.dealer.peek('play', 'all').length,
+			discard: enc.dealer.peek('discard', 'all').length,
+		}
+
+		expect(sizesBefore).toEqual({
+			play: 1,
+			discard: 0,
+		})
+		expect(sizesAfter).toEqual({
+			play: 0,
+			discard: 1,
 		})
 	})
 })
