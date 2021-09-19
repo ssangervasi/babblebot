@@ -13,23 +13,26 @@ const makeEncounter = () =>
 		cardTable,
 	})
 let enc = makeEncounter()
+const nodeFeatureReactions = 'agree_bad listen_good'
+const getCard = () => enc.dealer.peek('hand')[0]!
+let card = getCard()
 beforeEach(() => {
 	enc = makeEncounter()
+	card = getCard()
 	// TODO: calculate using confidence
 	enc.confidence = 0
 })
 
 describe('Action logging', () => {
 	it('creates the first card play log', () => {
-		const cardFeatures = 'agree listen'
 		const nodeFeatureReactions = 'agree_bad listen_good'
-		enc.playCard(cardFeatures, nodeFeatureReactions)
+		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.log).toEqual([
 			{
 				type: 'PLAY_CARD',
 				payload: {
-					cardFeatures,
+					cardFeatures: card.card.features,
 					nodeFeatureReactions,
 					moodBefore: 1,
 					moodAfter: 11,
@@ -37,6 +40,27 @@ describe('Action logging', () => {
 				},
 			},
 		])
+	})
+})
+
+describe('playCard', () => {
+	it('moves a card from hand to play', () => {
+		const sizesBefore = {
+			hand: enc.dealer.peek('hand', 'all').length,
+			play: enc.dealer.peek('play', 'all').length,
+		}
+
+		enc.playCard(card.uuid, nodeFeatureReactions)
+
+		const sizesAfter = {
+			hand: enc.dealer.peek('hand', 'all').length,
+			play: enc.dealer.peek('play', 'all').length,
+		}
+
+		expect(sizesAfter).toEqual({
+			hand: sizesBefore.hand - 1,
+			play: sizesBefore.play + 1,
+		})
 	})
 })
 

@@ -23,6 +23,15 @@ export const makeCollection = (cards: CardInstance[] = []): CardCollection => ({
 	cards,
 })
 
+type ee = '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+type s1 = '12345678'
+type s2 = '1234'
+type s3 = '1234'
+type s4 = '1234'
+type s5 = '123456789012'
+type so = s1 | s2
+type UID = `${s1}-${s2}-${so}`
+
 export const HAND = 'hand'
 export const DECK = 'deck'
 export const PLAY = 'play'
@@ -53,9 +62,19 @@ export class Dealer {
 		return collectionTo.cards.push(card!)
 	}
 
-	peek(name: string, n = 1) {
-		const collection = this.ensure(name)
-		return collection.cards.slice(n)
+	peek(name: string, n: number | 'all' = 1) {
+		const { cards } = this.ensure(name)
+		let start = 0
+		let end = 1
+		if (n === 'all') {
+			end = cards.length + 1
+		} else if (n < 0) {
+			start = n
+			end = cards.length + 1
+		} else {
+			end = n
+		}
+		return cards.slice(start, end)
 	}
 
 	find(options: { uuid: string; from: string }): CardInstance {

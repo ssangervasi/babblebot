@@ -1,3 +1,4 @@
+import { CardInstance } from '@babblebot/dealer'
 import { jest } from '@jest/globals'
 
 import '../src/babblebot'
@@ -57,13 +58,18 @@ describe('E2E', () => {
 
 			const encounter = Babblebot.encounter!
 			const dealer = encounter.dealer!
-			const [card] = dealer.peek('hand')
-			const fr = encounter.scoreTable[0]!
-			const frStr = Babblebot.CardScores.reactionJoin(fr)
 
-			const moodBefore = encounter.mood
-			encounter.playCard(card!.uuid, frStr)
-			expect(encounter.mood).not.toEqual(moodBefore)
+			// Play 10 cards from the hand.
+			for (let i = 0; i < 10; i++) {
+				const card = dealer.peek('hand')[0]!
+
+				const fr = encounter.scoreTable[0]!
+				const frStr = Babblebot.CardScores.reactionJoin(fr)
+
+				const moodBefore = encounter.mood
+				encounter.playCard(card.uuid, frStr)
+				expect(encounter.mood).not.toEqual(moodBefore)
+			}
 
 			Babblebot.encounter!.complete()
 			expect(Babblebot.encounter?.session.completedAt).toBeTruthy()
