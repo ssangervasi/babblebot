@@ -54,16 +54,25 @@ export const cardTable: CardTable = [
 ]
 
 export const deck: CardCollection = {
-	uuid: 'deck-01',
+	uuid: 'deck-0-0-0-01',
 	cards: [
-		{ uuid: 'card-00', card: cardTable[0]! },
+		{ uuid: 'card-0-0-0-00', card: cardTable[0]! },
 
-		{ uuid: 'card-10', card: cardTable[1]! },
-		{ uuid: 'card-11', card: cardTable[1]! },
+		{ uuid: 'card-0-0-0-10', card: cardTable[1]! },
+		{ uuid: 'card-0-0-0-11', card: cardTable[1]! },
 
-		{ uuid: 'card-20', card: cardTable[2]! },
-		{ uuid: 'card-21', card: cardTable[2]! },
-		{ uuid: 'card-23', card: cardTable[2]! },
+		{ uuid: 'card-0-0-0-20', card: cardTable[2]! },
+		{ uuid: 'card-0-0-0-21', card: cardTable[2]! },
+		{ uuid: 'card-0-0-0-23', card: cardTable[2]! },
+	],
+}
+
+export const hand: CardCollection = {
+	uuid: 'hand-0-0-0-01',
+	cards: [
+		{ uuid: 'card-1-0-0-00', card: cardTable[0]! },
+		{ uuid: 'card-2-0-0-10', card: cardTable[1]! },
+		{ uuid: 'card-3-0-0-20', card: cardTable[2]! },
 	],
 }
 

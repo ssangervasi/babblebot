@@ -22,6 +22,7 @@ module.exports = {
 	rules: {
 		'comma-dangle': ['error', 'always-multiline'],
 		indent: ['error', 'tab'],
+		'no-mixed-spaces-and-tabs': ['warn', 'smart-tabs'],
 		'max-len': [
 			'error',
 			{

@@ -1,26 +1,37 @@
 import { Encounter } from '../src/encounter'
 
-import { scoreTable, cardTable } from './data'
+import * as Data from './data'
 
-const makeEncounter = () =>
-	new Encounter({
+const makeEncounter = () => {
+	const e = new Encounter({
 		session: {
 			sceneName: 'L_some_encounter',
 			startedAt: 100,
 			completedAt: 110,
 		},
-		scoreTable,
-		cardTable,
+		scoreTable: Data.scoreTable,
+		cardTable: Data.cardTable,
 	})
+	// TODO: calculate using confidence
+	e.confidence = 0
+	// TODO: have a way of loading the dealer state from the start.
+	e.dealer.nameToCollection.set('deck', Data.deck)
+	e.dealer.nameToCollection.set('hand', Data.hand)
+	return e
+}
+
 let enc = makeEncounter()
 const nodeFeatureReactions = 'agree_bad listen_good'
-const getCard = () => enc.dealer.peek('hand')[0]!
+const getCard = () =>
+	enc.dealer.find({
+		features: 'agree listen',
+		from: 'hand',
+	})!
 let card = getCard()
+
 beforeEach(() => {
 	enc = makeEncounter()
 	card = getCard()
-	// TODO: calculate using confidence
-	enc.confidence = 0
 })
 
 describe('Action logging', () => {
@@ -70,17 +81,16 @@ describe('moodQuality', () => {
 	})
 
 	it('playing a card can increase it', () => {
-		const cardFeatures = 'agree listen'
 		const nodeFeatureReactions = 'agree_good listen'
-		enc.playCard(cardFeatures, nodeFeatureReactions)
+		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.moodQuality).toEqual('good')
 	})
 
 	it('playing a card can decrese it', () => {
-		const cardFeatures = 'disagree'
+		const card = enc.dealer.find({ features: 'disagree butt', from: 'hand' })!
 		const nodeFeatureReactions = 'disagree_bad'
-		enc.playCard(cardFeatures, nodeFeatureReactions)
+		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.moodQuality).toEqual('bad')
 	})
@@ -92,25 +102,24 @@ describe('lastPlayQuality', () => {
 	})
 
 	it('high score play is good', () => {
-		const cardFeatures = 'agree listen'
 		const nodeFeatureReactions = 'agree_good listen'
-		enc.playCard(cardFeatures, nodeFeatureReactions)
+		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.lastPlayQuality).toEqual('good')
 	})
 
 	it('low score play is neutral', () => {
-		const cardFeatures = 'disagree'
+		const card = enc.dealer.find({ features: 'disagree butt', from: 'hand' })!
 		const nodeFeatureReactions = 'disagree_good'
-		enc.playCard(cardFeatures, nodeFeatureReactions)
+		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.lastPlayQuality).toEqual('neutral')
 	})
 
 	it('very negative score play is bad', () => {
-		const cardFeatures = 'disagree'
+		const card = enc.dealer.find({ features: 'disagree butt', from: 'hand' })!
 		const nodeFeatureReactions = 'disagree_bad'
-		enc.playCard(cardFeatures, nodeFeatureReactions)
+		enc.playCard(card.uuid, nodeFeatureReactions)
 
 		expect(enc.lastPlayQuality).toEqual('bad')
 	})

@@ -14,6 +14,7 @@ import {
 	CardInstance,
 } from './dealer'
 import { EncounterSession } from './userData'
+import { UUID } from './utils'
 
 const PlayCard = Guard.narrow({
 	payload: {
@@ -122,8 +123,14 @@ export class Encounter {
 		return drawn.length
 	}
 
-	playCard(uuid: string, nodeFeatureReactions: string) {
-		const { card } = this.dealer.find({ uuid, from: HAND })
+	playCard(uuid: UUID, nodeFeatureReactions: string) {
+		const instance = this.dealer.find({ uuid, from: HAND })
+		if (!instance) {
+			console.error(`Card "${uuid}" is not in hand.`)
+			return
+		}
+
+		const { card } = instance
 		const score = this.calculateScore(card.features, nodeFeatureReactions)
 
 		const moodBefore = this.mood
