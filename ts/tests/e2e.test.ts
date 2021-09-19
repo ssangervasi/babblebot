@@ -59,8 +59,7 @@ describe('E2E', () => {
 			const encounter = Babblebot.encounter!
 			const dealer = encounter.dealer!
 
-			// Play 10 cards from the hand.
-			for (let i = 0; i < 10; i++) {
+			Babblebot.Lodash.range(10).forEach(() => {
 				const card = dealer.peek('hand')[0]!
 
 				const fr = encounter.scoreTable[0]!
@@ -69,7 +68,10 @@ describe('E2E', () => {
 				const moodBefore = encounter.mood
 				encounter.playCard(card.uuid, frStr)
 				expect(encounter.mood).not.toEqual(moodBefore)
-			}
+
+				encounter.resolve()
+				encounter.draw(1)
+			})
 
 			Babblebot.encounter!.complete()
 			expect(Babblebot.encounter?.session.completedAt).toBeTruthy()

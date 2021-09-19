@@ -4,4 +4,5 @@ module.exports = {
 	testEnvironment: 'node',
 	testPathIgnorePatterns: ['/dist/'],
 	timers: 'modern',
+	setupFiles: ['./jest.setup.js'],
 }
