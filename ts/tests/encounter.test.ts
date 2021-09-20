@@ -12,8 +12,6 @@ const mockEncounter = () => {
 		scoreTable: Data.scoreTable,
 		cardTable: Data.cardTable,
 	})
-	// TODO: calculate using confidence
-	e.confidence = 0
 	// TODO: have a way of loading the dealer state from the start.
 	e.dealer.nameToCollection.set('deck', Data.mockDeck())
 	e.dealer.nameToCollection.set('hand', Data.mockHand())
@@ -21,7 +19,8 @@ const mockEncounter = () => {
 }
 
 let enc = mockEncounter()
-const nodeFeatureReactions = 'agree_bad listen_good'
+const featureReactions = 'agree_bad listen_good'
+enc.prompt({ featureReactions, promptedMs: 1 })
 const getCard = () =>
 	enc.dealer.find({
 		features: 'agree listen',
@@ -36,14 +35,15 @@ beforeEach(() => {
 
 describe('Action logging', () => {
 	it('creates the first card play log', () => {
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		expect(enc.log).toEqual([
 			{
 				type: 'PLAY_CARD',
 				payload: {
 					cardFeatures: card.card.features,
-					nodeFeatureReactions,
+					featureReactions,
 					moodBefore: 1,
 					moodAfter: 11,
 					score: 10,
@@ -60,7 +60,8 @@ describe('playCard', () => {
 			play: enc.dealer.peek('play', 'all').length,
 		}
 
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		const sizesAfter = {
 			hand: enc.dealer.peek('hand', 'all').length,
@@ -80,7 +81,8 @@ describe('playCard', () => {
 
 describe('resolve', () => {
 	it('moves cards from play to discard', () => {
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		const sizesBefore = {
 			play: enc.dealer.peek('play', 'all').length,
@@ -111,16 +113,18 @@ describe('moodQuality', () => {
 	})
 
 	it('playing a card can increase it', () => {
-		const nodeFeatureReactions = 'agree_good listen'
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		const featureReactions = 'agree_good listen'
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		expect(enc.moodQuality).toEqual('good')
 	})
 
-	it('playing a card can decrese it', () => {
+	it('playing a card can decrease it', () => {
 		const card = enc.dealer.find({ features: 'disagree butt', from: 'hand' })!
-		const nodeFeatureReactions = 'disagree_bad'
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		const featureReactions = 'disagree_bad'
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		expect(enc.moodQuality).toEqual('bad')
 	})
@@ -132,24 +136,27 @@ describe('lastPlayQuality', () => {
 	})
 
 	it('high score play is good', () => {
-		const nodeFeatureReactions = 'agree_good listen'
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		const featureReactions = 'agree_good listen'
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		expect(enc.lastPlayQuality).toEqual('good')
 	})
 
 	it('low score play is neutral', () => {
 		const card = enc.dealer.find({ features: 'disagree butt', from: 'hand' })!
-		const nodeFeatureReactions = 'disagree_good'
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		const featureReactions = 'disagree_good'
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		expect(enc.lastPlayQuality).toEqual('neutral')
 	})
 
 	it('very negative score play is bad', () => {
 		const card = enc.dealer.find({ features: 'disagree butt', from: 'hand' })!
-		const nodeFeatureReactions = 'disagree_bad'
-		enc.playCard(card.uuid, nodeFeatureReactions)
+		const featureReactions = 'disagree_bad'
+		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.playCard(card.uuid)
 
 		expect(enc.lastPlayQuality).toEqual('bad')
 	})

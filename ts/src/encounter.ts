@@ -19,7 +19,7 @@ import { UUID } from './utils'
 const PlayCard = Guard.narrow({
 	payload: {
 		cardFeatures: 'string',
-		nodeFeatureReactions: 'string',
+		featureReactions: 'string',
 		score: 'number',
 		moodBefore: 'number',
 		moodAfter: 'number',
@@ -45,7 +45,14 @@ const PLAY_RANGES = {
 	good: [20, Infinity],
 } as const
 
-/**s
+interface Node {
+	featureReactions: string
+	promptedMs: number
+	tickedMs: number
+}
+const CONFIDENCE_DURATION_MS = 2_000
+
+/**
  * Scores are magnified by responding quickly, up to this factor of the play's score.
  */
 const CONFIDENCE_FACTOR = 0.25
@@ -56,8 +63,7 @@ export class Encounter {
 	log: LogEntry[] = []
 	dealer = new Dealer()
 	mood = 1
-	// TODO: Ranges from 0.0 to 1.0
-	confidence = 1
+	currentNode?: Node
 
 	constructor(options: {
 		session: EncounterSession
@@ -100,6 +106,13 @@ export class Encounter {
 		return 'neutral'
 	}
 
+	get confidence(): number {
+		if (!this.currentNode) {
+			return 1
+		}
+		return this.calculateConfidence(this.currentNode)
+	}
+
 	private initDealer() {
 		this.dealer.addCollection(HAND)
 		this.dealer.addCollection(PLAY)
@@ -123,7 +136,27 @@ export class Encounter {
 		return drawn.length
 	}
 
-	playCard(uuid: UUID, nodeFeatureReactions: string) {
+	prompt(node: { featureReactions: string; promptedMs: number }) {
+		this.currentNode = {
+			...node,
+			tickedMs: node.promptedMs,
+		}
+	}
+
+	tick(tickedMs: number) {
+		if (!this.currentNode) {
+			console.error(`Cannot tick at ${tickedMs} with no current node.`)
+			return
+		}
+		this.currentNode.tickedMs = tickedMs
+	}
+
+	playCard(uuid: UUID) {
+		if (!this.currentNode) {
+			console.error(`Cannot play card "${uuid}" with no current node.`)
+			return
+		}
+
 		const instance = this.dealer.find({ uuid, from: HAND })
 		if (!instance) {
 			console.error(`Card "${uuid}" is not in hand.`)
@@ -131,7 +164,7 @@ export class Encounter {
 		}
 
 		const { card } = instance
-		const score = this.calculateScore(card.features, nodeFeatureReactions)
+		const score = this.calculateScore(card.features, this.currentNode)
 
 		const moodBefore = this.mood
 		const moodAfter = moodBefore + score
@@ -147,7 +180,7 @@ export class Encounter {
 				type: 'PLAY_CARD',
 				payload: {
 					cardFeatures: card.features,
-					nodeFeatureReactions,
+					featureReactions: this.currentNode.featureReactions,
 					score,
 					moodBefore,
 					moodAfter,
@@ -164,16 +197,25 @@ export class Encounter {
 				to: DISCARD,
 			})
 		})
+		this.currentNode = undefined
 	}
 
-	calculateScore(cardFeatures: string, nodeFeatureReactions: string) {
+	calculateScore(cardFeatures: string, node: Node) {
 		const baseScore = calculateScore(
 			cardFeatures,
-			nodeFeatureReactions,
+			node.featureReactions,
 			this.scoreTable,
 		)
-		const confidenceBoost = CONFIDENCE_FACTOR * this.confidence * baseScore
+		const confidence = this.calculateConfidence(node)
+		const confidenceBoost = CONFIDENCE_FACTOR * confidence * baseScore
 		return baseScore + confidenceBoost
+	}
+
+	calculateConfidence({ promptedMs, tickedMs }: Node) {
+		return (
+			Lodash.clamp(tickedMs - promptedMs, 0, CONFIDENCE_DURATION_MS) /
+			CONFIDENCE_DURATION_MS
+		)
 	}
 
 	complete() {

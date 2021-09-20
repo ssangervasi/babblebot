@@ -63,10 +63,11 @@ describe('E2E', () => {
 				const card = dealer.peek('hand')[0]!
 
 				const fr = encounter.scoreTable[0]!
-				const frStr = Babblebot.CardScores.reactionJoin(fr)
+				const featureReactions = Babblebot.CardScores.reactionJoin(fr)
 
 				const moodBefore = encounter.mood
-				encounter.playCard(card.uuid, frStr)
+				encounter.prompt({ featureReactions, promptedMs: 1 })
+				encounter.playCard(card.uuid)
 				expect(encounter.mood).not.toEqual(moodBefore)
 
 				encounter.resolve()
