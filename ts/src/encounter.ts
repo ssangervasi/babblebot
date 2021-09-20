@@ -213,7 +213,8 @@ export class Encounter {
 
 	calculateConfidence({ promptedMs, tickedMs }: Node) {
 		return (
-			Lodash.clamp(tickedMs - promptedMs, 0, CONFIDENCE_DURATION_MS) /
+			(CONFIDENCE_DURATION_MS -
+				Lodash.clamp(tickedMs - promptedMs, 0, CONFIDENCE_DURATION_MS)) /
 			CONFIDENCE_DURATION_MS
 		)
 	}

@@ -36,6 +36,7 @@ beforeEach(() => {
 describe('Action logging', () => {
 	it('creates the first card play log', () => {
 		enc.prompt({ featureReactions, promptedMs: 1 })
+		enc.tick(5_000)
 		enc.playCard(card.uuid)
 
 		expect(enc.log).toEqual([
@@ -50,6 +51,35 @@ describe('Action logging', () => {
 				},
 			},
 		])
+	})
+})
+
+describe('confidence', () => {
+	it('starts at 1', () => {
+		expect(enc.confidence).toEqual(1)
+	})
+
+	it('decreases with ticks', () => {
+		enc.prompt({ featureReactions, promptedMs: 0 })
+
+		enc.tick(500)
+		expect(enc.confidence).toEqual(0.75)
+
+		enc.tick(1_000)
+		expect(enc.confidence).toEqual(0.5)
+
+		enc.tick(1_500)
+		expect(enc.confidence).toEqual(0.25)
+
+		enc.tick(2_000)
+		expect(enc.confidence).toEqual(0)
+	})
+
+	it('bottoms out at 0', () => {
+		enc.prompt({ featureReactions, promptedMs: 0 })
+
+		enc.tick(10_000)
+		expect(enc.confidence).toEqual(0)
 	})
 })
 
