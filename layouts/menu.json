@@ -1,0 +1,132 @@
+{
+  "b": 209,
+  "disableInputWhenNotFocused": true,
+  "mangledName": "Menu",
+  "name": "Menu",
+  "oglFOV": 90,
+  "oglZFar": 500,
+  "oglZNear": 1,
+  "r": 209,
+  "standardSortMethod": true,
+  "stopSoundsOnStartup": true,
+  "title": "",
+  "v": 209,
+  "uiSettings": {
+    "grid": true,
+    "gridB": 255,
+    "gridG": 180,
+    "gridHeight": 30,
+    "gridOffsetX": 0,
+    "gridOffsetY": 0,
+    "gridR": 158,
+    "gridType": "rectangular",
+    "gridWidth": 30,
+    "snap": true,
+    "windowMask": false,
+    "zoomFactor": 0.5599999999999996
+  },
+  "objectsGroups": [],
+  "variables": [],
+  "instances": [
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1080,
+      "layer": "",
+      "locked": false,
+      "name": "BgTiles",
+      "persistentUuid": "496b522f-5274-459b-9049-72160bb0cf7e",
+      "width": 1920,
+      "x": 0,
+      "y": 0,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "PC",
+      "persistentUuid": "d2791e95-f401-40cc-b6a8-b2ea4ec778a3",
+      "width": 0,
+      "x": 600,
+      "y": 420,
+      "zOrder": 2,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    }
+  ],
+  "objects": [
+    {
+      "bold": false,
+      "italic": false,
+      "name": "PC",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "No response",
+      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+      "characterSize": 70,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "NewObject",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Text",
+      "font": "",
+      "characterSize": 20,
+      "color": {
+        "b": 0,
+        "g": 0,
+        "r": 0
+      }
+    }
+  ],
+  "events": [],
+  "layers": [
+    {
+      "ambientLightColorB": 2,
+      "ambientLightColorG": 134217728,
+      "ambientLightColorR": 1597132097,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "name": "",
+      "visibility": true,
+      "cameras": [
+        {
+          "defaultSize": true,
+          "defaultViewport": true,
+          "height": 0,
+          "viewportBottom": 1,
+          "viewportLeft": 0,
+          "viewportRight": 1,
+          "viewportTop": 0,
+          "width": 0
+        }
+      ],
+      "effects": []
+    }
+  ],
+  "behaviorsSharedData": []
+}

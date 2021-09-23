@@ -23,7 +23,7 @@
     "gridWidth": 10,
     "snap": false,
     "windowMask": false,
-    "zoomFactor": 0.4839999999999999
+    "zoomFactor": 0.46399999999999986
   },
   "objectsGroups": [],
   "variables": [],
@@ -619,7 +619,7 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "Text",
+      "layer": "Endings",
       "locked": false,
       "name": "Endings",
       "persistentUuid": "ca059694-d3a6-41b4-936f-bab46948b3d2",
@@ -6101,6 +6101,17 @@
       "isLightingLayer": false,
       "name": "Text",
       "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 117440512,
+      "ambientLightColorG": 6025744,
+      "ambientLightColorR": 12833488,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "name": "Endings",
+      "visibility": false,
       "cameras": [],
       "effects": []
     }
