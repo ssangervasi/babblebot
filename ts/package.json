@@ -32,13 +32,12 @@
 		"test-watch": "jest --watch tests/*",
 		"watch": "tsc-watch"
 	},
-	"dependencies": {
+	"dependencies": {},
+	"devDependencies": {
 		"narrow-minded": "git+ssh://git@github.com:ssangervasi/narrow-minded.git#build",
 		"@types/json-stable-stringify": "^1.0.33",
 		"json-stable-stringify": "^1.0.1",
-		"uuid": "^8.3.2"
-	},
-	"devDependencies": {
+		"uuid": "^8.3.2",
 		"@babel/types": "^7.15.6",
 		"@types/jest": "^24.9.1",
 		"@types/lodash": "^4.14.172",

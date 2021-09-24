@@ -13,17 +13,16 @@
   "v": 209,
   "uiSettings": {
     "grid": true,
-    "gridB": 255,
-    "gridG": 180,
+    "gridType": "rectangular",
+    "gridWidth": 30,
     "gridHeight": 30,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
-    "gridR": 158,
-    "gridType": "rectangular",
-    "gridWidth": 30,
+    "gridColor": 10401023,
+    "gridAlpha": 0.1,
     "snap": true,
-    "windowMask": false,
-    "zoomFactor": 0.5599999999999996
+    "zoomFactor": 0.5199999999999996,
+    "windowMask": false
   },
   "objectsGroups": [],
   "variables": [],
@@ -32,7 +31,7 @@
       "angle": 0,
       "customSize": true,
       "height": 1080,
-      "layer": "",
+      "layer": "BG",
       "locked": false,
       "name": "BgTiles",
       "persistentUuid": "496b522f-5274-459b-9049-72160bb0cf7e",
@@ -50,22 +49,114 @@
       "height": 0,
       "layer": "",
       "locked": false,
-      "name": "PC",
+      "name": "SaveInfo",
       "persistentUuid": "d2791e95-f401-40cc-b6a8-b2ea4ec778a3",
       "width": 0,
-      "x": 600,
-      "y": 420,
+      "x": 840,
+      "y": 360,
       "zOrder": 2,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "EncounterInfo_Label",
+      "persistentUuid": "4729c86d-0ead-4900-8536-2c927d2d0906",
+      "width": 0,
+      "x": 600,
+      "y": 480,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "EncounterInfo",
+      "persistentUuid": "e28aa13d-39ec-4b36-b83d-cc22302d77c8",
+      "width": 0,
+      "x": 840,
+      "y": 480,
+      "zOrder": 4,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "SaveInfo_Label",
+      "persistentUuid": "51c5a3c3-ed9e-4114-8494-89c55df6ee19",
+      "width": 0,
+      "x": 600,
+      "y": 360,
+      "zOrder": 5,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 90,
+      "layer": "",
+      "locked": false,
+      "name": "Button",
+      "persistentUuid": "9c159588-914b-4fd4-ade8-1960473a5fe6",
+      "width": 270,
+      "x": 1110,
+      "y": 450,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "B"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 90,
+      "layer": "",
+      "locked": false,
+      "name": "Button",
+      "persistentUuid": "d41ef2e4-3c81-4a40-8f3f-6ba91dc54505",
+      "width": 270,
+      "x": 1110,
+      "y": 330,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "A"
+        }
+      ]
     }
   ],
   "objects": [
     {
       "bold": false,
       "italic": false,
-      "name": "PC",
+      "name": "EncounterInfo_Label",
       "smoothed": true,
       "tags": "",
       "type": "TextObject::Text",
@@ -73,7 +164,7 @@
       "variables": [],
       "effects": [],
       "behaviors": [],
-      "string": "No response",
+      "string": "Encounter:",
       "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
       "characterSize": 70,
       "color": {
@@ -85,7 +176,7 @@
     {
       "bold": false,
       "italic": false,
-      "name": "NewObject",
+      "name": "EncounterInfo",
       "smoothed": true,
       "tags": "",
       "type": "TextObject::Text",
@@ -93,18 +184,352 @@
       "variables": [],
       "effects": [],
       "behaviors": [],
-      "string": "Text",
-      "font": "",
-      "characterSize": 20,
+      "string": "Some Scene",
+      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+      "characterSize": 70,
       "color": {
-        "b": 0,
-        "g": 0,
-        "r": 0
+        "b": 255,
+        "g": 255,
+        "r": 255
       }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "SaveInfo_Label",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Saved At:",
+      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+      "characterSize": 70,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "SaveInfo",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "1234",
+      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+      "characterSize": 70,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
+    {
+      "bottomMargin": 20,
+      "height": 100,
+      "leftMargin": 20,
+      "name": "Button",
+      "rightMargin": 20,
+      "tags": "",
+      "texture": "assets\\ui\\PlaySlot.png",
+      "tiled": true,
+      "topMargin": 20,
+      "type": "PanelSpriteObject::PanelSprite",
+      "width": 100,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Button",
+          "type": "srs_utils::Button",
+          "HoverTint": "\"255;255;255\"",
+          "ActiveTint": "\"255;255;255\"",
+          "DisabledTint": "\"255;255;255\""
+        }
+      ]
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": false,
+            "value": "DepartScene"
+          },
+          "parameters": [
+            ""
+          ],
+          "subInstructions": []
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "inverted": false,
+            "value": "babblebot::importBabblebotJs"
+          },
+          "parameters": [
+            "",
+            ""
+          ],
+          "subInstructions": []
+        }
+      ],
+      "events": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": false,
+      "folded": false,
+      "name": "Save Info",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::String"
+              },
+              "parameters": [
+                "SaveInfo",
+                "=",
+                "babblebot::SaveInfo()"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::String"
+              },
+              "parameters": [
+                "EncounterInfo",
+                "=",
+                "babblebot::CurrentEncounter()"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": false,
+      "folded": false,
+      "name": "Load",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "Id",
+                "=",
+                "\"A\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Button::Clicked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "Button",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::resumeGame"
+                  },
+                  "parameters": [
+                    "",
+                    "0",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::consoleLog"
+                      },
+                      "parameters": [
+                        "",
+                        "\"clicked A\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "Id",
+                "=",
+                "\"B\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Button::Clicked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "Button",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::startEncounter"
+                  },
+                  "parameters": [
+                    "",
+                    "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::consoleLog"
+                      },
+                      "parameters": [
+                        "",
+                        "\"clicked B\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    }
+  ],
   "layers": [
+    {
+      "ambientLightColorB": 117440512,
+      "ambientLightColorG": 6023616,
+      "ambientLightColorR": 13035704,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "name": "BG",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
     {
       "ambientLightColorB": 2,
       "ambientLightColorG": 134217728,
@@ -128,5 +553,10 @@
       "effects": []
     }
   ],
-  "behaviorsSharedData": []
+  "behaviorsSharedData": [
+    {
+      "name": "Button",
+      "type": "srs_utils::Button"
+    }
+  ]
 }

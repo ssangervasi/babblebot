@@ -2159,7 +2159,7 @@
       ]
     },
     {
-      "description": "",
+      "description": "Panel Sprite Button",
       "fullName": "Button",
       "name": "Button",
       "objectType": "PanelSpriteObject::PanelSprite",

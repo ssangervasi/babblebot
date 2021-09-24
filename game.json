@@ -11,6 +11,7 @@
     "folderProject": true,
     "orientation": "landscape",
     "packageName": "com.example.gamename",
+    "pixelsRounding": false,
     "projectUuid": "47cf73ba-af10-4ada-a05d-d08661e31ee5",
     "scaleMode": "linear",
     "sizeOnStartupMode": "adaptWidth",
@@ -839,6 +840,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/menu"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/_experiments"
     }
   ],
   "externalEvents": [
