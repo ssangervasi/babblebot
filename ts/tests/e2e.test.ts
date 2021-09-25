@@ -16,7 +16,7 @@ describe('E2E', () => {
 			)
 
 			const firstSave = Babblebot.manager.newGame()
-			Babblebot.startEncounter()
+			Babblebot.loadEncounter(Babblebot.nextEncounter())
 			expect(Babblebot.encounter?.moodQuality).toEqual('neutral')
 
 			let userDataJSON = Babblebot.save()
@@ -46,7 +46,7 @@ describe('E2E', () => {
 
 		it('Loads an in-progress game', () => {
 			Babblebot.load(JSON.stringify(Data.mockUserData()))
-			Babblebot.startEncounter()
+			Babblebot.loadEncounter(Babblebot.nextEncounter())
 			expect(Babblebot.encounter?.session.sceneName).toEqual('Amy1')
 		})
 	})
@@ -54,7 +54,7 @@ describe('E2E', () => {
 	describe('Playing an encounter', () => {
 		it('works', () => {
 			Babblebot.load(JSON.stringify(Data.mockUserData()))
-			Babblebot.startEncounter()
+			Babblebot.loadEncounter(Babblebot.nextEncounter())
 
 			const encounter = Babblebot.encounter!
 			const dealer = encounter.dealer!

@@ -43,24 +43,17 @@ class Game {
 		return this.encounter
 	}
 
-	startEncounter() {
+	nextEncounter(): string {
 		const incompletes = this.manager.listIncompleteEncounters()
-		let session = incompletes[0]
-		if (!session) {
-			const available = Campaign.listAvailableEncounters(
-				this.listCompletedNames(),
-			)
-			const sceneName = available[0]
-			if (!sceneName) {
-				throw new Error('Cannot start encounter when none are available.')
-			}
-			session = this.manager.pushEncounter({
-				sceneName,
-			})
+		const session = incompletes[0]
+		if (session) {
+			return session.sceneName
 		}
-
-		this.encounter = this.makeEncounter(session)
-		return this.encounter
+		const availables = this.listAvailableEncounters()
+		if (availables[0]) {
+			return availables[0]
+		}
+		throw new Error('No encounters available')
 	}
 
 	private makeEncounter(session: UserData.EncounterSession) {
@@ -78,6 +71,10 @@ class Game {
 
 	listCompletedNames() {
 		return this.manager.listCompletedEncounters().map(e => e.sceneName)
+	}
+
+	listAvailableEncounters() {
+		return Campaign.listAvailableEncounters(this.listCompletedNames())
 	}
 }
 

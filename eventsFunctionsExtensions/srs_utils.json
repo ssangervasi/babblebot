@@ -1469,10 +1469,10 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "globalThis.ssangervasi.forEachContext = globalThis.ssangervasi.forEachContext || {}\nconst { log, parseArray, forEachContext } = globalThis.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    if (forEachContext.array === undefined) {\n        forEachContext.array = parseArray(\n            eventsFunctionContext.getArgument('ArrayJSON')\n        )\n    }\n\n    if (forEachContext.array.length === 0) {\n        forEachContext.array = undefined\n        return false\n    }\n\n    const currentItem = forEachContext.array.shift()\n\n    const vars = runtimeScene.getVariables()\n    const itemVar = vars.get(eventsFunctionContext.getArgument('ItemVariableName'))\n    \n    if (typeof currentItem === 'number') {\n        itemVar.setNumber(currentItem)\n    } else if (typeof currentItem === 'string') {\n        itemVar.setString(currentItem)\n    } else {\n        itemVar.setString(JSON.stringify(currentItem))\n    }\n\n    return true\n})()",
+          "inlineCode": "globalThis.ssangervasi.forEachContexts = globalThis.ssangervasi.forEachContexts || {}\nconst { log, parseArray, forEachContexts } = globalThis.ssangervasi\n\neventsFunctionContext.returnValue = (() => {\n    const vars = runtimeScene.getVariables()\n    const name = eventsFunctionContext.getArgument('ItemVariableName')\n    const itemVar = vars.get(name)\n    const indexVar = vars.get(`${name}_Index`)\n    \n    const context = forEachContexts[name] || {\n        array: parseArray(\n            eventsFunctionContext.getArgument('ArrayJSON')\n        ),\n        index: 0,\n    }\n    log('context', context)\n    forEachContexts[name] = context\n    if (context.array.length <= context.index) {\n        forEachContexts[name] = undefined\n        return false\n    }\n\n    const index = context.index\n    const currentItem = context.array[index]\n    \n    context.index += 1\n    indexVar.setNumber(index)\n\n    if (typeof currentItem === 'number') {\n        itemVar.setNumber(currentItem)\n    } else if (typeof currentItem === 'string') {\n        itemVar.setString(currentItem)\n    } else {\n        itemVar.setString(JSON.stringify(currentItem))\n    }\n\n    return true\n})()",
           "parameterObjects": "",
           "useStrict": true,
-          "eventsSheetExpanded": false
+          "eventsSheetExpanded": true
         }
       ],
       "parameters": [
@@ -1489,7 +1489,7 @@
         {
           "codeOnly": false,
           "defaultValue": "",
-          "description": "Name of the scene variable that will be filled with the current item",
+          "description": "Name of the scene variable that will be filled with the current item. The index will be assigned to \"{ItemVariableName}_Index\"",
           "longDescription": "",
           "name": "ItemVariableName",
           "optional": false,
@@ -1664,6 +1664,46 @@
           "optional": false,
           "supplementaryInformation": "",
           "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Changed",
+      "fullName": "Changed",
+      "functionType": "Condition",
+      "name": "Changed",
+      "private": false,
+      "sentence": "Changed _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = (() => {\nconst sceneVariableName = eventsFunctionContext.getArgument(\"SceneVariable\")\nconst vars = runtimeScene.getVariables()\nconst currentVar = vars.get(sceneVariableName)\nconst prevVar = vars.get(`${sceneVariableName}__PREVIOUS`)\nconst currentValue = currentVar.getValue()\nif (currentValue === prevVar.getValue()) {\n    return false\n}\nconsole.log('changed', {currentVar, prevVar})\nprevVar._type = currentVar.getType()\nprevVar.setValue(currentValue)\nreturn true\n})()\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": true
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "SceneVariable",
+          "longDescription": "",
+          "name": "SceneVariable",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
         }
       ],
       "objectGroups": []

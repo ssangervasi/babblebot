@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.1,
     "snap": true,
-    "zoomFactor": 0.5199999999999996,
+    "zoomFactor": 0.7599999999999998,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -89,7 +89,13 @@
       "zOrder": 4,
       "numberProperties": [],
       "stringProperties": [],
-      "initialVariables": []
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "Current"
+        }
+      ]
     },
     {
       "angle": 0,
@@ -305,17 +311,27 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
           "actions": [
             {
               "type": {
                 "inverted": false,
-                "value": "TextObject::String"
+                "value": "babblebot::LoadSaveInfo"
               },
               "parameters": [
-                "SaveInfo",
-                "=",
-                "babblebot::SaveInfo()"
+                "",
+                ""
               ],
               "subInstructions": []
             }
@@ -327,6 +343,41 @@
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::String"
+              },
+              "parameters": [
+                "SaveInfo",
+                "=",
+                "VariableString(SaveInfo.CreatedDate)"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "EncounterInfo",
+                "Id",
+                "=",
+                "\"Current\""
+              ],
+              "subInstructions": []
+            }
+          ],
           "actions": [
             {
               "type": {
@@ -396,20 +447,7 @@
                   "subInstructions": []
                 }
               ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::resumeGame"
-                  },
-                  "parameters": [
-                    "",
-                    "0",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
+              "actions": [],
               "events": [
                 {
                   "disabled": false,
@@ -420,11 +458,42 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "srs_utils::consoleLog"
+                        "value": "babblebot::load"
                       },
                       "parameters": [
                         "",
-                        "\"clicked A\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::LoadSaveInfo"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::resumeGame"
+                      },
+                      "parameters": [
+                        "",
+                        "Variable(SaveInfo.CreatedAt)",
                         ""
                       ],
                       "subInstructions": []
@@ -486,8 +555,80 @@
                     "0"
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SaveState",
+                    "=",
+                    "\"loaded\""
+                  ],
+                  "subInstructions": []
                 }
               ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": false,
+      "folded": false,
+      "name": "Encounters",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::Changed"
+              },
+              "parameters": [
+                "",
+                "\"SaveState\"",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "infiniteLoopWarning": true,
+              "type": "BuiltinCommonInstructions::While",
+              "whileConditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::ArrayForEach"
+                  },
+                  "parameters": [
+                    "",
+                    "babblebot::AvailableEncounters()",
+                    "\"EncounterName\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "conditions": [],
+              "actions": [],
               "events": [
                 {
                   "disabled": false,
@@ -502,8 +643,77 @@
                       },
                       "parameters": [
                         "",
-                        "\"clicked B\"",
+                        "\"Child: \" + VariableString(EncounterName) ",
                         ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "EncounterInfoY",
+                        "=",
+                        "EncounterInfo.Y() + 1.5 * EncounterInfo.Height() * Variable(EncounterName_Index)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "EncounterInfo",
+                        "EncounterInfo.X()",
+                        "Variable(EncounterInfoY)",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "EncounterInfo",
+                        "Id",
+                        "=",
+                        "VariableString(EncounterName_Index)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "EncounterInfo",
+                        "=",
+                        "VariableString(EncounterName)"
                       ],
                       "subInstructions": []
                     }
@@ -516,6 +726,28 @@
         }
       ],
       "parameters": []
+    },
+    {
+      "disabled": true,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": false,
+            "value": "srs_utils::ArrayForEach"
+          },
+          "parameters": [
+            "",
+            "\"['a', 'b', 'c']\"",
+            "\"EncounterName\"",
+            ""
+          ],
+          "subInstructions": []
+        }
+      ],
+      "actions": [],
+      "events": []
     }
   ],
   "layers": [
