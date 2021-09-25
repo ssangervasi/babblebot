@@ -1,6 +1,6 @@
 import { CardCollection } from '../src/dealer'
 import { ScoreTable, CardTable } from '../src/cardScores'
-import { StoredUserData } from '../src/userData'
+import * as UserData from '../src/userData'
 
 export const scoreTableCsv = `
 Feature,Reaction,Feature_Reaction,Score
@@ -53,27 +53,30 @@ export const cardTable: CardTable = [
 	},
 ]
 
-export const mockDeck = (): CardCollection => ({
-	uuid: 'deck-0-0-0-01',
-	cards: [
-		{ uuid: 'card-0-0-0-00', card: cardTable[0]! },
+export const mockDealer = (): UserData.Dealer => ({
+	hand: {
+		uuid: 'hand-0-0-0-01',
+		cards: [
+			{ uuid: 'card-1-0-0-00', id: cardTable[0]!.id },
+			{ uuid: 'card-2-0-0-10', id: cardTable[1]!.id },
+			{ uuid: 'card-3-0-0-20', id: cardTable[2]!.id },
+		],
+	},
+	deck: {
+		uuid: 'deck-0-0-0-01',
+		cards: [
+			{ uuid: 'card-0-0-0-00', id: cardTable[0]!.id },
 
-		{ uuid: 'card-0-0-0-10', card: cardTable[1]! },
-		{ uuid: 'card-0-0-0-11', card: cardTable[1]! },
+			{ uuid: 'card-0-0-0-10', id: cardTable[1]!.id },
+			{ uuid: 'card-0-0-0-11', id: cardTable[1]!.id },
 
-		{ uuid: 'card-0-0-0-20', card: cardTable[2]! },
-		{ uuid: 'card-0-0-0-21', card: cardTable[2]! },
-		{ uuid: 'card-0-0-0-23', card: cardTable[2]! },
-	],
-})
-
-export const mockHand = (): CardCollection => ({
-	uuid: 'hand-0-0-0-01',
-	cards: [
-		{ uuid: 'card-1-0-0-00', card: cardTable[0]! },
-		{ uuid: 'card-2-0-0-10', card: cardTable[1]! },
-		{ uuid: 'card-3-0-0-20', card: cardTable[2]! },
-	],
+			{ uuid: 'card-0-0-0-20', id: cardTable[2]!.id },
+			{ uuid: 'card-0-0-0-21', id: cardTable[2]!.id },
+			{ uuid: 'card-0-0-0-23', id: cardTable[2]!.id },
+		],
+	},
+	play: { uuid: 'play-0-0-0-01', cards: [] },
+	discard: { uuid: 'discard-0-0-0-01', cards: [] },
 })
 
 export const campaignCsv = `
@@ -94,7 +97,7 @@ export const campaignMapping = {
 	Lally2: ['Lally1'],
 }
 
-export const mockUserData = (): StoredUserData => ({
+export const mockUserData = (): UserData.StoredUserData => ({
 	options: {
 		bindHints: 'off',
 		effectsVolume: 100,

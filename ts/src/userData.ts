@@ -1,6 +1,8 @@
 import Lodash from 'lodash'
 import { narrow } from 'narrow-minded'
 
+import { UUID } from './utils'
+
 export interface UserData {
 	savedGames: SavedGame[]
 	session: Session
@@ -32,6 +34,19 @@ export interface EncounterSession {
 	sceneName: string
 	startedAt: number
 	completedAt?: number
+	dealer?: Dealer
+}
+
+export interface Dealer {
+	hand: { uuid: UUID; cards: Card[] }
+	deck: { uuid: UUID; cards: Card[] }
+	play: { uuid: UUID; cards: Card[] }
+	discard: { uuid: UUID; cards: Card[] }
+}
+
+export interface Card {
+	id: string
+	uuid: UUID
 }
 
 export const createFromJSON = (userDataJSON: string): UserData => {

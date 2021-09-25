@@ -2,7 +2,7 @@ import Lodash from 'lodash'
 
 import { narrow, Guard, Payload } from 'narrow-minded'
 
-import { ScoreTable, calculateScore, CardTable } from './cardScores'
+import { ScoreTable, calculateScore, CardTable, CardRow } from './cardScores'
 import {
 	Dealer,
 	HAND,
@@ -13,7 +13,7 @@ import {
 	makeCardInstance,
 	CardInstance,
 } from './dealer'
-import { EncounterSession } from './userData'
+import * as UserData from './userData'
 import { UUID } from './utils'
 
 const PlayCard = Guard.narrow({
@@ -57,7 +57,7 @@ const CONFIDENCE_DURATION_MS = 2_000
  */
 const CONFIDENCE_FACTOR = 0.25
 export class Encounter {
-	session: EncounterSession
+	session: UserData.EncounterSession
 	scoreTable: ScoreTable = []
 	cardTable: CardTable = []
 	log: LogEntry[] = []
@@ -65,8 +65,10 @@ export class Encounter {
 	mood = 1
 	currentNode?: Node
 
+	private _idToCard?: Map<string, CardRow>
+
 	constructor(options: {
-		session: EncounterSession
+		session: UserData.EncounterSession
 		cardTable: CardTable
 		scoreTable: ScoreTable
 	}) {
@@ -113,7 +115,20 @@ export class Encounter {
 		return this.calculateConfidence(this.currentNode)
 	}
 
+	private get idToCard(): Map<string, CardRow> {
+		if (!this._idToCard) {
+			this._idToCard = new Map(this.cardTable.map(row => [row.id, row]))
+		}
+		return this._idToCard
+	}
+
 	private initDealer() {
+		if (this.session.dealer) {
+			this.dealer = this.restoreDealer(this.session.dealer)
+			return
+		}
+
+		this.dealer = new Dealer()
 		this.dealer.addCollection(HAND)
 		this.dealer.addCollection(PLAY)
 		this.dealer.addCollection(DISCARD)
@@ -126,6 +141,19 @@ export class Encounter {
 		this.dealer.addCollection(DECK, deckCollection)
 
 		this.draw(3)
+	}
+
+	private restoreDealer(userDataDealer: UserData.Dealer): Dealer {
+		const dealer = new Dealer()
+		;([DECK, HAND, PLAY, DISCARD] as const).forEach(name => {
+			const { uuid, cards } = userDataDealer[name]
+			const collection = cards.map(card => ({
+				uuid: card.uuid,
+				card: this.idToCard.get(card.id)!,
+			}))
+			this.dealer.addCollection(name, { uuid, cards: collection })
+		})
+		return dealer
 	}
 
 	draw(n: number): number {

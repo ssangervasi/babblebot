@@ -8,13 +8,11 @@ const mockEncounter = () => {
 			sceneName: 'L_some_encounter',
 			startedAt: 100,
 			completedAt: 110,
+			dealer: Data.mockDealer(),
 		},
 		scoreTable: Data.scoreTable,
 		cardTable: Data.cardTable,
 	})
-	// TODO: have a way of loading the dealer state from the start.
-	e.dealer.nameToCollection.set('deck', Data.mockDeck())
-	e.dealer.nameToCollection.set('hand', Data.mockHand())
 	return e
 }
 
