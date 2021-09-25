@@ -4,7 +4,6 @@ import * as CardScores from './cardScores'
 import * as UserData from './userData'
 import * as Campaign from './campaign'
 import { Encounter } from './encounter'
-import { Session } from 'inspector'
 
 class Game {
 	UserData = UserData
@@ -26,6 +25,11 @@ class Game {
 		this._manager = new UserData.Manager(UserData.createFromJSON(userDataJSON))
 		this._manager.resumeGame()
 		this.encounter = undefined
+	}
+
+	save(): string {
+		this.manager.saveGame()
+		return JSON.stringify(this.manager.userData)
 	}
 
 	loadEncounter(sceneName: string): Encounter {
@@ -62,11 +66,6 @@ class Game {
 			scoreTable: CardScores.SCORE_TABLE,
 			cardTable: CardScores.CARD_TABLE,
 		})
-	}
-
-	save(): string {
-		this.manager.saveGame()
-		return JSON.stringify(this.manager.userData)
 	}
 
 	listCompletedNames() {
