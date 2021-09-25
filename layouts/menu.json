@@ -65,22 +65,6 @@
       "height": 0,
       "layer": "",
       "locked": false,
-      "name": "EncounterInfo_Label",
-      "persistentUuid": "4729c86d-0ead-4900-8536-2c927d2d0906",
-      "width": 0,
-      "x": 600,
-      "y": 480,
-      "zOrder": 3,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "layer": "",
-      "locked": false,
       "name": "EncounterInfo",
       "persistentUuid": "e28aa13d-39ec-4b36-b83d-cc22302d77c8",
       "width": 0,
@@ -123,7 +107,7 @@
       "persistentUuid": "9c159588-914b-4fd4-ade8-1960473a5fe6",
       "width": 270,
       "x": 1110,
-      "y": 450,
+      "y": 690,
       "zOrder": 6,
       "numberProperties": [],
       "stringProperties": [],
@@ -131,7 +115,7 @@
         {
           "name": "Id",
           "type": "string",
-          "value": "B"
+          "value": "Complete"
         }
       ]
     },
@@ -153,12 +137,191 @@
         {
           "name": "Id",
           "type": "string",
-          "value": "A"
+          "value": "LoadGame"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 90,
+      "layer": "",
+      "locked": false,
+      "name": "Button",
+      "persistentUuid": "22e9346a-6896-487e-8fb1-506b7ad80ad4",
+      "width": 270,
+      "x": 1110,
+      "y": 450,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "LoadEncounter"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 90,
+      "layer": "",
+      "locked": false,
+      "name": "Button",
+      "persistentUuid": "335d608b-3eb4-4e35-b9e8-f79b3722451c",
+      "width": 270,
+      "x": 1110,
+      "y": 570,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "Save"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "EncounterInfo_Label",
+      "persistentUuid": "0095be5a-1535-4fc7-8d78-363f9b98734a",
+      "width": 0,
+      "x": 600,
+      "y": 480,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "1d76998a-6b6c-44a3-9c35-cdc654652f6d",
+      "width": 0,
+      "x": 1170,
+      "y": 720,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": "Complete"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "8380a757-6dfc-487d-bde9-945a2d75d95c",
+      "width": 0,
+      "x": 1170,
+      "y": 360,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": "Load"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "497db5a1-8c6a-4a87-9ccb-a08d6d4b5fdb",
+      "width": 0,
+      "x": 1160,
+      "y": 480,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": "Choose"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "97c68973-44cb-4421-bb48-f158c8379a2a",
+      "width": 0,
+      "x": 1170,
+      "y": 600,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": "Save"
         }
       ]
     }
   ],
   "objects": [
+    {
+      "bold": false,
+      "italic": false,
+      "name": "Label",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": ""
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Label",
+          "type": "srs_utils::Label"
+        }
+      ],
+      "string": "Labelsdv",
+      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+      "characterSize": 70,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
     {
       "bold": false,
       "italic": false,
@@ -251,7 +414,13 @@
       "topMargin": 20,
       "type": "PanelSpriteObject::PanelSprite",
       "width": 100,
-      "variables": [],
+      "variables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": ""
+        }
+      ],
       "effects": [],
       "behaviors": [
         {
@@ -392,7 +561,42 @@
               "subInstructions": []
             }
           ],
-          "events": []
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "EncounterInfo",
+                    "=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "EncounterInfo",
+                    "=",
+                    "\"...\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
         }
       ],
       "parameters": []
@@ -422,7 +626,7 @@
                 "Button",
                 "Id",
                 "=",
-                "\"A\""
+                "\"LoadGame\""
               ],
               "subInstructions": []
             }
@@ -519,7 +723,7 @@
                 "Button",
                 "Id",
                 "=",
-                "\"B\""
+                "\"LoadEncounter\""
               ],
               "subInstructions": []
             }
@@ -548,11 +752,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "babblebot::startEncounter"
+                    "value": "babblebot::loadEncounter"
                   },
                   "parameters": [
                     "",
-                    "0"
+                    "babblebot::NextEncounter()",
+                    ""
                   ],
                   "subInstructions": []
                 },
@@ -565,6 +770,118 @@
                     "SaveState",
                     "=",
                     "\"loaded\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "Id",
+                "=",
+                "\"Save\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Button::Clicked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "Button",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::save"
+                  },
+                  "parameters": [
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "Id",
+                "=",
+                "\"Complete\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Button::Clicked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "Button",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::completeEncounter"
+                  },
+                  "parameters": [
+                    "",
+                    ""
                   ],
                   "subInstructions": []
                 }
@@ -789,6 +1106,10 @@
     {
       "name": "Button",
       "type": "srs_utils::Button"
+    },
+    {
+      "name": "Label",
+      "type": "srs_utils::Label"
     }
   ]
 }
