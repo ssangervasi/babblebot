@@ -7,7 +7,7 @@ const mockEncounter = () => {
 		session: {
 			sceneName: 'L_some_encounter',
 			startedAt: 100,
-			completedAt: 110,
+			completedAt: undefined,
 			dealer: Data.mockDealer(),
 		},
 		scoreTable: Data.scoreTable,
@@ -40,13 +40,12 @@ describe('Action logging', () => {
 		expect(enc.log).toEqual([
 			{
 				type: 'PLAY_CARD',
-				payload: {
-					cardFeatures: card.card.features,
-					featureReactions,
-					moodBefore: 1,
-					moodAfter: 11,
-					score: 10,
-				},
+				at: 5_000,
+				cardFeatures: card.card.features,
+				featureReactions,
+				moodBefore: 1,
+				moodAfter: 11,
+				score: 10,
 			},
 		])
 	})

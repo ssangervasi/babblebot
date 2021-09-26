@@ -2,6 +2,7 @@ import Lodash, { Collection } from 'lodash'
 
 import { makeUuid, UUID } from './utils'
 import { CardRow } from './cardScores'
+import * as UserData from './userData'
 
 export interface CardCollection {
 	uuid: UUID
@@ -37,6 +38,35 @@ export type NameToCollection = Map<CollectionName, CardCollection>
 
 export class Dealer {
 	nameToCollection: NameToCollection = new Map()
+
+	static fromUserData(
+		userDataDealer: UserData.Dealer,
+		idToCard: Map<string, CardRow>,
+	): Dealer {
+		const dealer = new Dealer()
+		;([DECK, HAND, PLAY, DISCARD] as const).forEach(name => {
+			const { uuid, cards } = userDataDealer[name]
+			const collection = cards.map(card => ({
+				uuid: card.uuid,
+				card: idToCard.get(card.id)!,
+			}))
+			dealer.addCollection(name, { uuid, cards: collection })
+		})
+		return dealer
+	}
+
+	toUserData(): UserData.Dealer {
+		const userDataDealer: Partial<UserData.Dealer> = {}
+		;([DECK, HAND, PLAY, DISCARD] as const).forEach(name => {
+			const { uuid, cards } = this.nameToCollection.get(name)!
+			const collection = cards.map(card => ({
+				uuid: card.uuid,
+				id: card.card.id,
+			}))
+			userDataDealer[name] = { uuid, cards: collection }
+		})
+		return userDataDealer as UserData.Dealer
+	}
 
 	addCollection(name: CollectionName, collection?: CardCollection) {
 		this.ensureNo(name)

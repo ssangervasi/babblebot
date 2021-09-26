@@ -16,20 +16,25 @@ import {
 import * as UserData from './userData'
 import { UUID } from './utils'
 
+const isType = <T extends string>(t: T) => {
+	return (u: unknown): u is { type: T } =>
+		narrow({ type: 'string' }, u) && u.type === t
+}
 const PlayCard = Guard.narrow({
-	payload: {
-		cardFeatures: 'string',
-		featureReactions: 'string',
-		score: 'number',
-		moodBefore: 'number',
-		moodAfter: 'number',
-	},
-}).and(
-	(u): u is { type: 'PLAY_CARD' } =>
-		narrow({ type: 'string' }, u) && u.type === 'PLAY_CARD',
-)
+	at: 'number',
+	cardFeatures: 'string',
+	featureReactions: 'string',
+	score: 'number',
+	moodBefore: 'number',
+	moodAfter: 'number',
+}).and(isType('PLAY_CARD'))
 
-type LogEntry = Payload<typeof PlayCard>
+const Complete = Guard.narrow({
+	at: 'number',
+	mood: 'number',
+}).and(isType('COMPLETE'))
+
+type LogEntry = Payload<typeof PlayCard | typeof Complete>
 
 type Quality = 'good' | 'bad' | 'neutral'
 
@@ -94,11 +99,11 @@ export class Encounter {
 			this.log,
 			entry => entry.type === 'PLAY_CARD',
 		)
-		if (!lastPlay) {
+		if (!(lastPlay && lastPlay.type === 'PLAY_CARD')) {
 			return 'neutral'
 		}
 
-		const lastScore = lastPlay.payload.score
+		const lastScore = lastPlay.score
 		if (Lodash.inRange(lastScore, ...PLAY_RANGES.bad)) {
 			return 'bad'
 		} else if (Lodash.inRange(lastScore, ...PLAY_RANGES.good)) {
@@ -124,7 +129,7 @@ export class Encounter {
 
 	private initDealer() {
 		if (this.session.dealer) {
-			this.dealer = this.restoreDealer(this.session.dealer)
+			this.dealer = Dealer.fromUserData(this.session.dealer, this.idToCard)
 			return
 		}
 
@@ -143,17 +148,16 @@ export class Encounter {
 		this.draw(3)
 	}
 
-	private restoreDealer(userDataDealer: UserData.Dealer): Dealer {
-		const dealer = new Dealer()
-		;([DECK, HAND, PLAY, DISCARD] as const).forEach(name => {
-			const { uuid, cards } = userDataDealer[name]
-			const collection = cards.map(card => ({
-				uuid: card.uuid,
-				card: this.idToCard.get(card.id)!,
-			}))
-			this.dealer.addCollection(name, { uuid, cards: collection })
-		})
-		return dealer
+	toUserData(): UserData.EncounterSession {
+		const completedAt = Lodash.findLast(
+			this.log,
+			entry => entry.type === 'COMPLETE',
+		)?.at
+		return {
+			...this.session,
+			completedAt,
+			dealer: this.dealer.toUserData(),
+		}
 	}
 
 	draw(n: number): number {
@@ -206,13 +210,12 @@ export class Encounter {
 		this.log.push(
 			PlayCard.build({
 				type: 'PLAY_CARD',
-				payload: {
-					cardFeatures: card.features,
-					featureReactions: this.currentNode.featureReactions,
-					score,
-					moodBefore,
-					moodAfter,
-				},
+				at: this.currentNode.tickedMs,
+				cardFeatures: card.features,
+				featureReactions: this.currentNode.featureReactions,
+				score,
+				moodBefore,
+				moodAfter,
 			}),
 		)
 	}
@@ -247,7 +250,11 @@ export class Encounter {
 		)
 	}
 
-	complete() {
-		this.session.completedAt = Date.now()
+	complete(completeMs: number) {
+		this.log.push({
+			type: 'COMPLETE',
+			at: completeMs,
+			mood: this.mood,
+		})
 	}
 }

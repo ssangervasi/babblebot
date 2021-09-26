@@ -277,12 +277,15 @@ describe('pushEncounter', () => {
 			session: mockSession(),
 		}
 		const manager = new UD.Manager(dataNoEncounter)
-		const newEncounter = manager.pushEncounter({ sceneName: 'some-scene' })
+		const newEncounter = manager.pushEncounter({
+			sceneName: 'some-scene',
+			startedAt: 1234,
+		})
 		expect(dataNoEncounter.session.encounter).toBe(newEncounter)
 		expect(dataNoEncounter.session.encounters[0]).toBe(newEncounter)
 		expect(newEncounter).toMatchObject<UD.EncounterSession>({
 			sceneName: 'some-scene',
-			startedAt: expect.any(Number),
+			startedAt: 1234,
 		})
 	})
 
@@ -300,11 +303,14 @@ describe('pushEncounter', () => {
 			},
 		}
 		const manager = new UD.Manager(dataWithEncounter)
-		const newEncounter = manager.pushEncounter({ sceneName: 'some-scene' })
+		const newEncounter = manager.pushEncounter({
+			sceneName: 'some-scene',
+			startedAt: 1234,
+		})
 		expect(dataWithEncounter.session.encounter).toBe(newEncounter)
 		expect(newEncounter).toMatchObject<UD.EncounterSession>({
 			sceneName: 'some-scene',
-			startedAt: expect.any(Number),
+			startedAt: 1234,
 		})
 		expect(dataWithEncounter.session.encounters[0]).toBe(startingEncounter)
 		expect(dataWithEncounter.session.encounters[1]).toBe(newEncounter)

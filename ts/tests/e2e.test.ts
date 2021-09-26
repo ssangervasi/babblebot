@@ -40,7 +40,7 @@ describe('E2E', () => {
 
 			userDataJSON = Babblebot.save()
 			expect(JSON.parse(userDataJSON)).toMatchObject({
-				savedGames: [firstSave, secondSave],
+				savedGames: [expect.objectContaining(firstSave), secondSave],
 			})
 		})
 
@@ -74,8 +74,8 @@ describe('E2E', () => {
 				encounter.draw(1)
 			})
 
-			Babblebot.encounter!.complete()
-			expect(Babblebot.encounter?.session.completedAt).toBeTruthy()
+			Babblebot.encounter!.complete(10_000)
+			expect(Babblebot.encounter?.toUserData()?.completedAt).toEqual(10_000)
 		})
 	})
 })

@@ -142,7 +142,7 @@ export class Manager {
 		return previousSave
 	}
 
-	writeSession(previousSave: SavedGame): Session {
+	private writeSession(previousSave: SavedGame): Session {
 		this.userData.session = {
 			savedGame: previousSave,
 			encounters: [...previousSave.encounters],
@@ -171,15 +171,18 @@ export class Manager {
 		return savedGame
 	}
 
-	pushEncounter(
-		encounter: Omit<EncounterSession, 'startedAt'>,
-	): EncounterSession {
-		this.userData.session.encounter = {
-			startedAt: Date.now(),
-			...encounter,
+	pushEncounter(encounter: EncounterSession): EncounterSession {
+		const { session } = this.userData
+		session.encounter = encounter
+		const index = session.encounters.findIndex(
+			e => e.startedAt === encounter.startedAt,
+		)
+		if (index === -1) {
+			session.encounters.push(encounter)
+		} else {
+			session.encounters[index] = encounter
 		}
-		this.userData.session.encounters.push(this.userData.session.encounter)
-		return this.userData.session.encounter
+		return session.encounter
 	}
 
 	listEncounters(): EncounterSession[] {

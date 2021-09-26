@@ -28,20 +28,24 @@ class Game {
 	}
 
 	save(): string {
+		if (this.encounter) {
+			this.manager.pushEncounter(this.encounter.toUserData())
+		}
 		this.manager.saveGame()
 		return JSON.stringify(this.manager.userData)
 	}
 
 	loadEncounter(sceneName: string): Encounter {
 		const incompletes = this.manager.listIncompleteEncounters()
-		const resumeableSession = incompletes.find(e => e.sceneName === sceneName)
-		if (resumeableSession) {
-			this.encounter = this.makeEncounter(resumeableSession)
+		const resumableSession = incompletes.find(e => e.sceneName === sceneName)
+		if (resumableSession) {
+			this.encounter = this.makeEncounter(resumableSession)
 			return this.encounter
 		}
 
 		const newSession = this.manager.pushEncounter({
 			sceneName: sceneName,
+			startedAt: Date.now(),
 		})
 		this.encounter = this.makeEncounter(newSession)
 		return this.encounter

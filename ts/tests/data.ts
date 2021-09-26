@@ -79,6 +79,29 @@ export const mockDealer = (): UserData.Dealer => ({
 	discard: { uuid: 'discard-0-0-0-01', cards: [] },
 })
 
+export const mockDeck = (): CardCollection => ({
+	uuid: 'deck-0-0-0-01',
+	cards: [
+		{ uuid: 'card-0-0-0-00', card: cardTable[0]! },
+
+		{ uuid: 'card-0-0-0-10', card: cardTable[1]! },
+		{ uuid: 'card-0-0-0-11', card: cardTable[1]! },
+
+		{ uuid: 'card-0-0-0-20', card: cardTable[2]! },
+		{ uuid: 'card-0-0-0-21', card: cardTable[2]! },
+		{ uuid: 'card-0-0-0-23', card: cardTable[2]! },
+	],
+})
+
+export const mockHand = (): CardCollection => ({
+	uuid: 'hand-0-0-0-01',
+	cards: [
+		{ uuid: 'card-1-0-0-00', card: cardTable[0]! },
+		{ uuid: 'card-2-0-0-10', card: cardTable[1]! },
+		{ uuid: 'card-3-0-0-20', card: cardTable[2]! },
+	],
+})
+
 export const campaignCsv = `
 Scene Name,Prereq
 Amy1,
