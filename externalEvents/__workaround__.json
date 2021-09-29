@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Decking",
+  "associatedLayout": "Menu",
   "lastChangeTimeStamp": 0,
   "name": "__workaround__",
   "events": [
@@ -11,54 +11,143 @@
         {
           "type": {
             "inverted": false,
-            "value": "babblebot::Slot::IsFilled"
+            "value": "Egal"
           },
           "parameters": [
-            "HandSlot",
-            "Slot",
-            ""
+            "0",
+            "=",
+            "1"
           ],
           "subInstructions": []
         }
       ],
-      "actions": [
+      "actions": [],
+      "events": [
         {
-          "type": {
-            "inverted": false,
-            "value": "babblebot::Slot::slotCard"
-          },
-          "parameters": [
-            "HandSlot",
-            "Slot",
-            "123",
-            ""
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::Slot::IsFilled"
+              },
+              "parameters": [
+                "HandSlot",
+                "Slot",
+                ""
+              ],
+              "subInstructions": []
+            }
           ],
-          "subInstructions": []
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::Slot::slotCard"
+              },
+              "parameters": [
+                "HandSlot",
+                "Slot",
+                "123",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::importBabblebotJs"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         },
         {
-          "type": {
-            "inverted": false,
-            "value": "decking::parseScoreTable"
-          },
-          "parameters": [
-            "",
-            ""
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerFraction(\"\")",
+                ">=",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerElapsed(\"\")",
+                ">=",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerLimit(\"\")",
+                ">=",
+                "1"
+              ],
+              "subInstructions": []
+            }
           ],
-          "subInstructions": []
+          "actions": [],
+          "events": []
         },
         {
-          "type": {
-            "inverted": false,
-            "value": "babblebot::importBabblebotJs"
-          },
-          "parameters": [
-            "",
-            ""
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "srs_utils::HasLimitedTimer"
+              },
+              "parameters": [
+                "",
+                "\"\"",
+                "GetArgumentAsString(\"TimerName\")"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerFraction(\"\")",
+                ">=",
+                "1"
+              ],
+              "subInstructions": []
+            }
           ],
-          "subInstructions": []
+          "actions": [],
+          "events": []
         }
-      ],
-      "events": []
+      ]
     }
   ]
 }

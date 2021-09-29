@@ -3,6 +3,7 @@ import Lodash from 'lodash'
 import * as CardScores from './cardScores'
 import * as UserData from './userData'
 import * as Campaign from './campaign'
+import * as Utils from './utils'
 import { Encounter } from './encounter'
 
 class Game {
@@ -10,6 +11,7 @@ class Game {
 	CardScores = CardScores
 	Encounter = Encounter
 	Lodash = Lodash
+	Utils = Utils
 
 	_manager: UserData.Manager | undefined
 	encounter: Encounter | undefined
