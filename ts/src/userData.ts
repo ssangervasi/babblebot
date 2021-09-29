@@ -1,5 +1,5 @@
 import Lodash from 'lodash'
-import { narrow } from 'narrow-minded'
+import { narrow, some } from 'narrow-minded'
 
 import { UUID } from './utils'
 
@@ -74,9 +74,16 @@ export const isStoredData = (maybeData: any): maybeData is StoredUserData =>
 		{
 			savedGames: [
 				{
-					encounters: ['object'],
 					createdAt: 'number',
 					updatedAt: 'number',
+					encounters: [
+						{
+							sceneName: 'string',
+							startedAt: 'number',
+							completedAt: some('undefined', 'number'),
+							dealer: some('undefined', 'object'),
+						},
+					],
 				},
 			],
 		},

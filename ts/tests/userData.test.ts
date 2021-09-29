@@ -1,6 +1,8 @@
 import * as Lodash from 'lodash'
 import * as UD from '../src/userData'
 
+import * as Data from './data'
+
 const mockEncounters = (): UD.EncounterSession[] => [
 	{
 		sceneName: 'L_some_encounter',
@@ -76,7 +78,29 @@ describe('createFromJSON', () => {
 	})
 
 	it('handles valid JSON with invalid structure', () => {
-		const result = UD.createFromJSON('0')
+		const result = UD.createFromJSON(JSON.stringify({ key: 'value' }))
+		expect(result).toEqual(UD.createDefault())
+	})
+
+	it('handles valid JSON with some missing, required data', () => {
+		const result = UD.createFromJSON(
+			JSON.stringify({
+				savedGames: [
+					{
+						createdAt: 1,
+						updatedAt: 2,
+						encounters: [
+							{
+								sceneName: 123,
+								startedAt: 'nan',
+								completedAt: null,
+								dealer: 'nope',
+							},
+						],
+					},
+				],
+			}),
+		)
 		expect(result).toEqual(UD.createDefault())
 	})
 
@@ -314,5 +338,40 @@ describe('pushEncounter', () => {
 		})
 		expect(dataWithEncounter.session.encounters[0]).toBe(startingEncounter)
 		expect(dataWithEncounter.session.encounters[1]).toBe(newEncounter)
+	})
+
+	it('updates an existing encounter', () => {
+		const targetEncounter: UD.EncounterSession = {
+			sceneName: 'SomeScene',
+			startedAt: 314,
+		}
+		const encounters = [
+			targetEncounter,
+			...Lodash.range(4).map(
+				(i): UD.EncounterSession => ({
+					sceneName: targetEncounter.sceneName,
+					startedAt: i,
+				}),
+			),
+		]
+
+		const manager = new UD.Manager({
+			options: mockOptions(),
+			savedGames: mockSavedGames(),
+			session: {
+				encounters,
+				encounter: targetEncounter,
+			},
+		})
+		const updatedEncounter = manager.pushEncounter({
+			sceneName: 'some-scene',
+			startedAt: targetEncounter.startedAt,
+			completedAt: 512,
+			dealer: Data.mockDealer(),
+		})
+		expect(manager.userData.session.encounter).toBe(updatedEncounter)
+		expect(manager.userData.session.encounters[0]).toMatchObject(
+			updatedEncounter,
+		)
 	})
 })
