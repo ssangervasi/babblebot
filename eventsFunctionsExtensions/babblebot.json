@@ -708,7 +708,7 @@
               },
               "parameters": [
                 "",
-                "assets\\encounters\\Amy1\\dialogue.json"
+                "assets\\encounters\\Amy2\\dialogue.json"
               ],
               "subInstructions": []
             }
