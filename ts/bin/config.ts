@@ -2,8 +2,9 @@ import path from 'path'
 
 const ROOT = path.resolve(__dirname, '../..')
 
+const GAME = path.resolve(ROOT, 'game.json')
 const EXTENSIONS = path.resolve(ROOT, 'eventsFunctionsExtensions')
-const DECKING = path.resolve(EXTENSIONS, 'babblebot.json')
+const BABBLEBOT = path.resolve(EXTENSIONS, 'babblebot.json')
 
 const ASSETS = path.resolve(ROOT, 'assets')
 const SCORE_TABLE_CSV = path.resolve(ASSETS, 'scoreTable.csv')
@@ -18,8 +19,9 @@ const CAMPAIGN_JSON = path.resolve(SRC, 'campaignMapping.json')
 
 export const PATHS = {
 	ROOT,
+	GAME,
 	EXTENSIONS,
-	DECKING,
+	BABBLEBOT,
 
 	ASSETS,
 	SCORE_TABLE_CSV,
