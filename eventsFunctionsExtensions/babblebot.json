@@ -331,6 +331,35 @@
       "objectGroups": []
     },
     {
+      "description": "Update the Encounter scene variable from the current encounter.",
+      "fullName": "loadEncounterVar",
+      "functionType": "Action",
+      "name": "loadEncounterVar",
+      "private": false,
+      "sentence": "loadEncounterVar",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const { log } = ssangervasi;\r\n\r\nconst vars = runtimeScene.getVariables()\r\nconst encounterVar = vars.get('Encounter')\r\nencounterVar.clearChildren()\r\n\r\nconst encounter = Babblebot.encounter;\r\nif (!encounter) {\r\n    encounterVar.fromJSObject({\r\n      SceneName: \"\",\r\n      StartedAt: 0,\r\n      MoodQuality: \"\",\r\n      Confidence: 1,\r\n    })\r\n    return\r\n}\r\n\r\nencounterVar.fromJSObject({\r\n    SceneName: encounter.session.sceneName,\r\n    StartedAt: encounter.session.startedAt,\r\n    MoodQuality: encounter.moodQuality,\r\n    Confidence: encounter.confidence,\r\n})\r\n\r\n// log(encounterVar)\r\n\r\n// encounterVar.getChild('CreatedAt').setNumber(createdAt)\r\n// encounterVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": true
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
       "description": "completeEncounter",
       "fullName": "completeEncounter",
       "functionType": "Action",
@@ -360,12 +389,12 @@
       "objectGroups": []
     },
     {
-      "description": "Update the SaveInfo scene variable with from the current session.",
-      "fullName": "loadSaveInfo",
+      "description": "Update the Save scene variable from the current session.",
+      "fullName": "loadSaveVar",
       "functionType": "Action",
-      "name": "loadSaveInfo",
+      "name": "loadSaveVar",
       "private": false,
-      "sentence": "loadSaveInfo",
+      "sentence": "loadSaveVar",
       "events": [
         {
           "disabled": false,
@@ -379,7 +408,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const vars = runtimeScene.getVariables()\r\nconst saveInfoVar = vars.get('SaveInfo')\r\nsaveInfoVar.clearChildren()\r\nconst { createdAt } = Babblebot.manager.userData?.session?.savedGame || {\r\n    createdAt: 0,\r\n};\r\nsaveInfoVar.getChild('CreatedAt').setNumber(createdAt)\r\nsaveInfoVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
+          "inlineCode": "const vars = runtimeScene.getVariables()\r\nconst saveVar = vars.get('Save')\r\nsaveVar.clearChildren()\r\nconst { createdAt } = Babblebot.manager.userData?.session?.savedGame || {\r\n    createdAt: 0,\r\n};\r\nsaveVar.getChild('CreatedAt').setNumber(createdAt)\r\nsaveVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false
@@ -608,6 +637,103 @@
           "optional": false,
           "supplementaryInformation": "",
           "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Load yarn diaolgue JSON for scene name. Some hacking b/c GD doesn't support finding files by variable name.",
+      "fullName": "loadEncounterDialogue",
+      "functionType": "Action",
+      "name": "loadEncounterDialogue",
+      "private": false,
+      "sentence": "loadEncounterDialogue _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "StrEqual"
+              },
+              "parameters": [
+                "GetArgumentAsString(\"Name\")",
+                "=",
+                "\"Amy1\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::LoadDialogueFromJsonFile"
+              },
+              "parameters": [
+                "",
+                "assets\\encounters\\Amy1\\dialogue.json"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "StrEqual"
+              },
+              "parameters": [
+                "GetArgumentAsString(\"Name\")",
+                "=",
+                "\"Amy1\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::LoadDialogueFromJsonFile"
+              },
+              "parameters": [
+                "",
+                "assets\\encounters\\Amy1\\dialogue.json"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Name",
+          "longDescription": "",
+          "name": "Name",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
         }
       ],
       "objectGroups": []

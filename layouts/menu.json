@@ -288,6 +288,50 @@
           "value": "Save"
         }
       ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 90,
+      "layer": "",
+      "locked": false,
+      "name": "Button",
+      "persistentUuid": "a3539127-2ee7-4132-ad4d-e572b036c76b",
+      "width": 270,
+      "x": 990,
+      "y": 720,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "Start"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "63d865a1-3f0f-477d-8684-7049d5753278",
+      "width": 0,
+      "x": 1050,
+      "y": 750,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": "Start"
+        }
+      ]
     }
   ],
   "objects": [
@@ -496,7 +540,53 @@
             {
               "type": {
                 "inverted": false,
-                "value": "babblebot::loadSaveInfo"
+                "value": "babblebot::load"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::loadSaveVar"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::resumeGame"
+              },
+              "parameters": [
+                "",
+                "Variable(Save.CreatedAt)",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::loadEncounter"
+              },
+              "parameters": [
+                "",
+                "babblebot::NextEncounter()",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::loadEncounterVar"
               },
               "parameters": [
                 "",
@@ -521,7 +611,7 @@
               "parameters": [
                 "SaveInfo",
                 "=",
-                "VariableString(SaveInfo.CreatedDate)"
+                "VariableString(Save.CreatedDate)"
               ],
               "subInstructions": []
             }
@@ -556,7 +646,7 @@
               "parameters": [
                 "EncounterInfo",
                 "=",
-                "babblebot::CurrentEncounter()"
+                "VariableString(Encounter.SceneName)"
               ],
               "subInstructions": []
             }
@@ -673,7 +763,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "babblebot::loadSaveInfo"
+                        "value": "babblebot::loadSaveVar"
                       },
                       "parameters": [
                         "",
@@ -697,7 +787,7 @@
                       },
                       "parameters": [
                         "",
-                        "Variable(SaveInfo.CreatedAt)",
+                        "Variable(Save.CreatedAt)",
                         ""
                       ],
                       "subInstructions": []
@@ -769,6 +859,17 @@
                   "parameters": [
                     "",
                     "babblebot::NextEncounter()",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::loadEncounterVar"
+                  },
+                  "parameters": [
+                    "",
                     ""
                   ],
                   "subInstructions": []
@@ -929,6 +1030,63 @@
         {
           "disabled": false,
           "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "Id",
+                "=",
+                "\"Start\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Button::Clicked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "Button",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Encounter\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Button",
           "conditions": [],
@@ -993,6 +1151,17 @@
                       "parameters": [
                         "",
                         "EncounterInfo.VariableString(EncounterName)",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::loadEncounterVar"
+                      },
+                      "parameters": [
+                        "",
                         ""
                       ],
                       "subInstructions": []
