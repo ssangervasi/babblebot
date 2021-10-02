@@ -1,3 +1,9 @@
+import * as fs from 'fs'
+import * as path from 'path'
+
+import { compact } from 'lodash'
+import jsonStringify from 'json-stable-stringify'
+
 import {
 	injectExt,
 	GdProject,
@@ -9,7 +15,6 @@ import {
 	findEvents,
 	GdEvent,
 } from 'gdevelop-refactor'
-import { compact } from 'lodash'
 
 import { PATHS } from './config'
 
@@ -113,9 +118,7 @@ const injectDialoge = (
 		return
 	}
 
-	console.log(
-		`${dialogueFunc.name}: ${dialogueEvents.length} events with dialogue`,
-	)
+	console.log(`${dialogueEvents.length} events with dialogue`)
 	const dialogueInfos = dialogueEvents.flatMap(event =>
 		(event.actions || []).flatMap(action =>
 			compact(
@@ -127,18 +130,32 @@ const injectDialoge = (
 						}
 						return undefined
 					}
+
 					return {
 						name,
-						file: name,
+						file: posixPath(name),
 						encounterName: match.groups.encounterName,
 					}
 				}),
 			),
 		),
 	)
-	console.log(`${dialogueFunc.name}: ${dialogueInfos.length} dialogue assets`)
+	console.log(`${dialogueInfos.length} dialogues referenced`)
 	dialogueInfos.forEach(info => {
 		resourcesNeeded.set(info.name, makeDialogueResource(info))
+	})
+
+	const dialogueFiles = listDialogueFiles()
+	console.log(`${dialogueFiles.length} dialogue files`)
+
+	const namesAlreadyHandled = new Set(dialogueInfos.map(({ name }) => name))
+	const filesNeedingEvents = dialogueFiles.filter(
+		({ name }) => !namesAlreadyHandled.has(name),
+	)
+	console.log(`${filesNeedingEvents.length} dialogue files need an events`)
+	filesNeedingEvents.forEach(dialogueInfo => {
+		const event = makeDialogueEvent(dialogueInfo)
+		dialogueFunc.events.push(event)
 	})
 	return
 }
@@ -189,6 +206,50 @@ const makeDialogueEvent = (opts: DialogueInfo): GdEvent => {
 		],
 		events: [],
 	}
+}
+
+const listDialogueFiles = (): DialogueInfo[] => {
+	return compact(
+		fs
+			.readdirSync(PATHS.ENCOUNTERS)
+			.map((encounterName): DialogueInfo | undefined => {
+				const dialoguePath = path.join(
+					PATHS.ENCOUNTERS,
+					encounterName,
+					'dialogue.json',
+				)
+				if (!fs.existsSync(dialoguePath)) {
+					return undefined
+				}
+				return {
+					name: windowsPath(dialoguePath),
+					file: posixPath(dialoguePath),
+					encounterName,
+				}
+			}),
+	)
+}
+
+const windowsPath = (original: string) => {
+	return path.win32.join(
+		...path
+			.relative(
+				PATHS.ROOT,
+				path.isAbsolute(original) ? original : path.join(PATHS.ROOT, original),
+			)
+			.split(path.sep),
+	)
+}
+
+const posixPath = (original: string) => {
+	return path.posix.join(
+		...path
+			.relative(
+				PATHS.ROOT,
+				path.isAbsolute(original) ? original : path.join(PATHS.ROOT, original),
+			)
+			.split(path.sep),
+	)
 }
 
 main()
