@@ -70,7 +70,8 @@ const injectAssets = () => {
 				},
 				{
 					inPath: PATHS.BABBLEBOT,
-					readOnly: true,
+					readOnly: false,
+					backup: true,
 				},
 			)
 
@@ -114,9 +115,6 @@ const injectDialoge = (
 			)
 		}),
 	]
-	if (dialogueEvents.length === 0) {
-		return
-	}
 
 	console.log(`${dialogueEvents.length} events with dialogue`)
 	const dialogueInfos = dialogueEvents.flatMap(event =>

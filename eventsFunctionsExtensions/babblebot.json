@@ -653,6 +653,14 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
               "type": {
@@ -695,7 +703,7 @@
               "parameters": [
                 "GetArgumentAsString(\"Name\")",
                 "=",
-                "\"Amy1\""
+                "\"Amy2\""
               ],
               "subInstructions": []
             }
@@ -719,8 +727,33 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "StrEqual"
+              },
+              "parameters": [
+                "GetArgumentAsString(\"Name\")",
+                "=",
+                "\"Lally1\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::LoadDialogueFromJsonFile"
+              },
+              "parameters": [
+                "",
+                "assets\\encounters\\Lally1\\dialogue.json"
+              ],
+              "subInstructions": []
+            }
+          ],
           "events": []
         }
       ],
