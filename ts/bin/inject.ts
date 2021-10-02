@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import { compact } from 'lodash'
-import jsonStringify from 'json-stable-stringify'
+// import jsonStringify from 'json-stable-stringify'
 
 import {
 	injectExt,
@@ -71,17 +71,22 @@ const injectAssets = () => {
 				{
 					inPath: PATHS.BABBLEBOT,
 					readOnly: false,
-					backup: true,
+					backup: false,
 				},
 			)
 
 			console.log('Total dialogue resources:', dialogueResources.size)
 			const dialogueResourcesNeeded = mapDiff(dialogueResources, resourceMap)
 			console.log('Resources needed:', dialogueResourcesNeeded.size)
+
+			dialogueResourcesNeeded.forEach(resource => {
+				gdProject.resources.resources.push(resource)
+			})
 		},
 		{
 			inPath: PATHS.GAME,
-			readOnly: true,
+			readOnly: false,
+			backup: false,
 		},
 	)
 }
