@@ -793,6 +793,14 @@
         "metadata": "",
         "name": "assets\\encounters\\Amy2\\dialogue.json",
         "userAdded": true
+      },
+      {
+        "disablePreload": false,
+        "file": "assets/encounters/Lally1/dialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "assets\\encounters\\Lally1\\dialogue.json",
+        "userAdded": true
       }
     ],
     "resourceFolders": []
