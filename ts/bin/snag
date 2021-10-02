@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cp /n/workspace/gdevelop-refactor/package.json ./node_modules/gdevelop-refactor/package.json
+cp -r /n/workspace/gdevelop-refactor/dist/* ./node_modules/gdevelop-refactor/dist/
+cp -r /n/workspace/gdevelop-refactor/src/* ./node_modules/gdevelop-refactor/src/

@@ -1,7 +1,6 @@
 import {
 	injectExt,
 	GdProject,
-	refactor,
 	rewrite,
 	isGdProject,
 	GdResource,
@@ -10,6 +9,7 @@ import {
 	findEvents,
 	GdEvent,
 } from 'gdevelop-refactor'
+import { compact } from 'lodash'
 
 import { PATHS } from './config'
 
@@ -28,6 +28,16 @@ const injectCode = () => {
 	injectExt(PATHS.BABBLEBOT)
 }
 
+const DIALOGUE_ASSET_RE =
+	/assets\\+encounters\\+(?<encounterName>\w+)\\+dialogue.json/
+const EVENT_TYPES = {
+	STANDARD: 'BuiltinCommonInstructions::Standard',
+	DIALOGUE: 'DialogueTree::LoadDialogueFromJsonFile',
+} as const
+const FUNC_NAMES = {
+	DIALOGUE: 'loadEncounterDialogue',
+} as const
+
 const injectAssets = () => {
 	rewrite(
 		gdProject => {
@@ -43,6 +53,7 @@ const injectAssets = () => {
 
 			console.log(`Project has ${resourceMap.size} resources`)
 
+			const dialogueResources = new Map<string, GdResource>()
 			rewrite(
 				gdExtension => {
 					if (!isGdExtension(gdExtension)) {
@@ -50,44 +61,134 @@ const injectAssets = () => {
 						return
 					}
 
-					gdExtension.eventsFunctions.forEach(eventsFunc => {
-						const finder = findEvents(eventsFunc.events, event => {
-							const dialogueType = 'DialogueTree::LoadDialogueFromJsonFile'
-							type EActions = {
-								actions?: Array<{
-									type: {
-										inverted: boolean
-										value: string
-									}
-									// parameters: ['', 'assets\\encounters\\Amy1\\dialogue.json'],
-									parameters: string[]
-									subInstructions: unknown[]
-								}>
-							}
-							const eventWithActions = event as GdEvent & EActions
-							return (eventWithActions.actions || []).some(
-								a => a.type.value === dialogueType,
-							)
-						})
-						const found = [...finder]
-						if (found.length > 0) {
-							console.log(
-								`${eventsFunc.name}: ${found.length} events with dialogue`,
-							)
-						}
-					})
+					injectDialoge(gdExtension, dialogueResources)
 				},
 				{
 					inPath: PATHS.BABBLEBOT,
 					readOnly: true,
 				},
 			)
+
+			console.log('Total dialogue resources:', dialogueResources.size)
+			const dialogueResourcesNeeded = mapDiff(dialogueResources, resourceMap)
+			console.log('Resources needed:', dialogueResourcesNeeded.size)
 		},
 		{
 			inPath: PATHS.GAME,
 			readOnly: true,
 		},
 	)
+}
+
+const mapDiff = <K, VL, VR>(left: Map<K, VL>, right: Map<K, VR>) => {
+	const result = new Map<K, VL>()
+	left.forEach((v, k) => {
+		if (!right.has(k)) {
+			result.set(k, v)
+		}
+	})
+	return result
+}
+
+const injectDialoge = (
+	gdExtension: GdExtension,
+	resourcesNeeded: Map<string, GdResource>,
+) => {
+	const dialogueFunc = gdExtension.eventsFunctions.find(
+		({ name }) => name === FUNC_NAMES.DIALOGUE,
+	)
+	if (!dialogueFunc) {
+		console.warn('No dialogue func')
+		return
+	}
+
+	const dialogueEvents = [
+		...findEvents(dialogueFunc.events, event => {
+			return (event.actions || []).some(
+				a => a.type.value === EVENT_TYPES.DIALOGUE,
+			)
+		}),
+	]
+	if (dialogueEvents.length === 0) {
+		return
+	}
+
+	console.log(
+		`${dialogueFunc.name}: ${dialogueEvents.length} events with dialogue`,
+	)
+	const dialogueInfos = dialogueEvents.flatMap(event =>
+		(event.actions || []).flatMap(action =>
+			compact(
+				action.parameters.map((name): DialogueInfo | undefined => {
+					const match = DIALOGUE_ASSET_RE.exec(name)
+					if (match == null || !match.groups?.encounterName) {
+						if (name.length) {
+							console.warn(`Dialogue name does not match: ${name}`)
+						}
+						return undefined
+					}
+					return {
+						name,
+						file: name,
+						encounterName: match.groups.encounterName,
+					}
+				}),
+			),
+		),
+	)
+	console.log(`${dialogueFunc.name}: ${dialogueInfos.length} dialogue assets`)
+	dialogueInfos.forEach(info => {
+		resourcesNeeded.set(info.name, makeDialogueResource(info))
+	})
+	return
+}
+
+interface DialogueInfo {
+	name: string
+	file: string
+	encounterName: string
+}
+
+const makeDialogueResource = (opts: DialogueInfo): GdResource => {
+	return {
+		disablePreload: false,
+		kind: 'json',
+		metadata: '',
+		userAdded: true,
+		...opts,
+	}
+}
+
+const makeDialogueEvent = (opts: DialogueInfo): GdEvent => {
+	return {
+		disabled: false,
+		type: EVENT_TYPES.STANDARD,
+		conditions: [
+			{
+				type: {
+					inverted: false,
+					value: 'StrEqual',
+				},
+				parameters: [
+					'GetArgumentAsString("Name")',
+					'=',
+					`"${opts.encounterName}"`,
+				],
+				subInstructions: [],
+			},
+		],
+		actions: [
+			{
+				type: {
+					inverted: false,
+					value: EVENT_TYPES.DIALOGUE,
+				},
+				parameters: ['', opts.name],
+				subInstructions: [],
+			},
+		],
+		events: [],
+	}
 }
 
 main()

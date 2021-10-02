@@ -11,7 +11,7 @@ const main = () => {
 	csvToJson(PATHS.CAMPAIGN_CSV, PATHS.CAMPAIGN_JSON, parseCampaign)
 }
 
-const csvToJson = <P extends (s: string) => unknown[] | object >(
+const csvToJson = <P extends (s: string) => unknown[] | object>(
 	inPath: string,
 	outPath: string,
 	parser: P,
