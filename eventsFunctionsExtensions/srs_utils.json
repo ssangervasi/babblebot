@@ -798,6 +798,69 @@
       "objectGroups": []
     },
     {
+      "description": "deleteLimitedTimer",
+      "fullName": "deleteLimitedTimer",
+      "functionType": "Action",
+      "name": "deleteLimitedTimer",
+      "private": false,
+      "sentence": "Delete limited timer _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VariableRemoveChild"
+              },
+              "parameters": [
+                "TimerNameToLimitMs",
+                "GetArgumentAsString(\"TimerName\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "RemoveTimer"
+              },
+              "parameters": [
+                "",
+                "GetArgumentAsString(\"TimerName\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "TimerName",
+          "longDescription": "",
+          "name": "TimerName",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "getLimitedTimerLimit",
       "fullName": "getLimitedTimerLimit",
       "functionType": "Expression",

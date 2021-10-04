@@ -32,7 +32,7 @@
 	{
 		"title": "neutral_1",
 		"tags": "agree_bad listen_bad disagree_good question_bad flattery_good nonsequitor_good",
-		"body": "So how'd you pick this restaurant?\nDo you take all your dates here?\n\n\n\n\n[[next|neutral_2]]",
+		"body": "So how'd you pick this restaurant?\nDo you take all your dates here?\n\n[[next|neutral_2]]",
 		"position": {
 			"x": -6514,
 			"y": -12748
@@ -52,7 +52,7 @@
 	{
 		"title": "neutral_2",
 		"tags": "agree_good disagree_good listen_bad question_good flattery_good",
-		"body": "I think I might order pretty light.\nI have an early workout tomorrow.\n\n\n\n\n[[next|neutral_3]]",
+		"body": "I think I might order pretty light.\nI have an early workout tomorrow.\n\n[[next|neutral_3]]",
 		"position": {
 			"x": -6514,
 			"y": -12457
