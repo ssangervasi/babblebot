@@ -780,14 +780,6 @@
       },
       {
         "disablePreload": false,
-        "file": "assets/encounters/Amy1/dialogue.json",
-        "kind": "json",
-        "metadata": "",
-        "name": "assets\\encounters\\Amy1\\dialogue.json",
-        "userAdded": false
-      },
-      {
-        "disablePreload": false,
         "file": "assets/encounters/Amy2/dialogue.json",
         "kind": "json",
         "metadata": "",
@@ -800,6 +792,14 @@
         "kind": "json",
         "metadata": "",
         "name": "assets\\encounters\\Lally1\\dialogue.json",
+        "userAdded": true
+      },
+      {
+        "disablePreload": false,
+        "file": "assets/encounters/Amy1/dialogue.json",
+        "kind": "json",
+        "metadata": "",
+        "name": "assets\\encounters\\Amy1\\dialogue.json",
         "userAdded": true
       }
     ],

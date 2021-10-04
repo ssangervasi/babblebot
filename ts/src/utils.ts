@@ -11,3 +11,13 @@ const DTF = new Intl.DateTimeFormat('en-US', {
 export const formatDate = (ms: number): string => {
 	return DTF.format(new Date(ms))
 }
+
+export const mapDiff = <K, VL, VR>(left: Map<K, VL>, right: Map<K, VR>) => {
+	const result = new Map<K, VL>()
+	left.forEach((v, k) => {
+		if (!right.has(k)) {
+			result.set(k, v)
+		}
+	})
+	return result
+}

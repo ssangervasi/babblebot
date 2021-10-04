@@ -38,3 +38,19 @@ export const PATHS = {
 	SCORE_TABLE_JSON,
 	CARDS_JSON,
 } as const
+
+export const absolutePath = (original: string) => {
+	return path.isAbsolute(original) ? original : path.join(PATHS.ROOT, original)
+}
+
+export const windowsPath = (original: string) => {
+	return path.win32.join(
+		...path.relative(PATHS.ROOT, absolutePath(original)).split(path.sep),
+	)
+}
+
+export const posixPath = (original: string) => {
+	return path.posix.join(
+		...path.relative(PATHS.ROOT, absolutePath(original)).split(path.sep),
+	)
+}

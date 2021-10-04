@@ -1,12 +1,7 @@
-import * as fs from 'fs'
-import * as path from 'path'
-
 import { compact } from 'lodash'
-// import jsonStringify from 'json-stable-stringify'
 
 import {
 	injectExt,
-	GdProject,
 	rewrite,
 	isGdProject,
 	GdResource,
@@ -16,7 +11,13 @@ import {
 	GdEvent,
 } from 'gdevelop-refactor'
 
-import { PATHS } from './config'
+import { PATHS, posixPath, absolutePath } from './config'
+import {
+	listDialogueFiles,
+	DialogueInfo,
+	DIALOGUE_ASSET_RE,
+} from './dialogueUtils'
+import { mapDiff } from '../src/utils'
 
 const main = () => {
 	const command = process.argv.slice(-1)[0]
@@ -33,8 +34,6 @@ const injectCode = () => {
 	injectExt(PATHS.BABBLEBOT)
 }
 
-const DIALOGUE_ASSET_RE =
-	/assets\\+encounters\\+(?<encounterName>\w+)\\+dialogue.json/
 const EVENT_TYPES = {
 	STANDARD: 'BuiltinCommonInstructions::Standard',
 	DIALOGUE: 'DialogueTree::LoadDialogueFromJsonFile',
@@ -89,16 +88,6 @@ const injectAssets = () => {
 			backup: false,
 		},
 	)
-}
-
-const mapDiff = <K, VL, VR>(left: Map<K, VL>, right: Map<K, VR>) => {
-	const result = new Map<K, VL>()
-	left.forEach((v, k) => {
-		if (!right.has(k)) {
-			result.set(k, v)
-		}
-	})
-	return result
 }
 
 const injectDialoge = (
@@ -163,12 +152,6 @@ const injectDialoge = (
 	return
 }
 
-interface DialogueInfo {
-	name: string
-	file: string
-	encounterName: string
-}
-
 const makeDialogueResource = (opts: DialogueInfo): GdResource => {
 	return {
 		disablePreload: false,
@@ -209,50 +192,6 @@ const makeDialogueEvent = (opts: DialogueInfo): GdEvent => {
 		],
 		events: [],
 	}
-}
-
-const listDialogueFiles = (): DialogueInfo[] => {
-	return compact(
-		fs
-			.readdirSync(PATHS.ENCOUNTERS)
-			.map((encounterName): DialogueInfo | undefined => {
-				const dialoguePath = path.join(
-					PATHS.ENCOUNTERS,
-					encounterName,
-					'dialogue.json',
-				)
-				if (!fs.existsSync(dialoguePath)) {
-					return undefined
-				}
-				return {
-					name: windowsPath(dialoguePath),
-					file: posixPath(dialoguePath),
-					encounterName,
-				}
-			}),
-	)
-}
-
-const windowsPath = (original: string) => {
-	return path.win32.join(
-		...path
-			.relative(
-				PATHS.ROOT,
-				path.isAbsolute(original) ? original : path.join(PATHS.ROOT, original),
-			)
-			.split(path.sep),
-	)
-}
-
-const posixPath = (original: string) => {
-	return path.posix.join(
-		...path
-			.relative(
-				PATHS.ROOT,
-				path.isAbsolute(original) ? original : path.join(PATHS.ROOT, original),
-			)
-			.split(path.sep),
-	)
 }
 
 main()

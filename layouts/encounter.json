@@ -2678,31 +2678,108 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::importBabblebotJs"
-              },
-              "parameters": [
-                "",
-                ""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::IsDebuggingEnabled"
+                  },
+                  "parameters": [
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::createCards"
-              },
-              "parameters": [
-                "",
-                ""
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::importBabblebotJs"
+                  },
+                  "parameters": [
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::load"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::loadSaveVar"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::resumeGame"
+                      },
+                      "parameters": [
+                        "",
+                        "Variable(Save.CreatedAt)",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::loadEncounter"
+                      },
+                      "parameters": [
+                        "",
+                        "babblebot::NextEncounter()",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::loadEncounterVar"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "parameters": []
@@ -2749,7 +2826,7 @@
                   },
                   "parameters": [
                     "",
-                    "GlobalVariableString(Encounter.Name)",
+                    "VariableString(Encounter.Name)",
                     "0",
                     "0"
                   ],
@@ -2782,11 +2859,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "DialogueTree::LoadDialogueFromJsonFile"
+                    "value": "babblebot::loadEncounterDialogue"
                   },
                   "parameters": [
                     "",
-                    "assets\\encounters\\Amy1\\dialogue.json"
+                    "VariableString(Encounter.Name)",
+                    ""
                   ],
                   "subInstructions": []
                 }
@@ -3203,11 +3281,19 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Drag management",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
         {
           "disabled": false,
           "folded": false,
@@ -3230,7 +3316,7 @@
           "events": [
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -3352,7 +3438,7 @@
             },
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -3551,7 +3637,7 @@
             },
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -3736,7 +3822,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Dialog",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3771,7 +3857,7 @@
                     "value": "DialogueTree::StartDialogueFromBranch"
                   },
                   "parameters": [
-                    "\"t0\""
+                    "\"neutral_0\""
                   ],
                   "subInstructions": []
                 }
