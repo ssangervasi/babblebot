@@ -524,10 +524,10 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "Babblebot.CardScores.CARD_TABLE.forEach((data) => {\n    const obj = runtimeScene.createObject(\"Card\")\n    const vars = obj.getVariables()\n    vars.get(\"Id\").setString(data.id)\n    vars.get(\"Text\").setString(data.text)\n    vars.get(\"Features\").setString(data.features)\n})",
+          "inlineCode": "const dealer = Babblebot.encounter.dealer;\nconst cards = [\n    ...dealer.peek('deck', 'all'),\n    ...dealer.peek('hand', 'all'),\n    ...dealer.peek('play', 'all'),\n    ...dealer.peek('discard', 'all'),\n]\n\ncards.forEach((\n    /**\n     * @type { { uuid: string, card: { id: string, text: string, features: string }} }\n     */\n    cardInstance\n) => {\n    const obj = runtimeScene.createObject(\"Card\")\n    const vars = obj.getVariables()\n    vars.get(\"InstanceId\").setString(cardInstance.uuid)\n    vars.get(\"Id\").setString(cardInstance.card.id)\n    vars.get(\"Text\").setString(cardInstance.card.text)\n    vars.get(\"Features\").setString(cardInstance.card.features)\n})",
           "parameterObjects": "",
           "useStrict": true,
-          "eventsSheetExpanded": false
+          "eventsSheetExpanded": true
         }
       ],
       "parameters": [],
@@ -793,19 +793,6 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "InstanceId",
-                    "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                },
                 {
                   "type": {
                     "inverted": false,
@@ -1173,13 +1160,13 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "VarObjet"
+                    "value": "VarObjetTxt"
                   },
                   "parameters": [
                     "Object",
                     "InstanceId",
                     "!=",
-                    "-1"
+                    "\"0\""
                   ],
                   "subInstructions": []
                 }
@@ -1192,7 +1179,7 @@
                   },
                   "parameters": [
                     "",
-                    "\"SetInstanceId to \" + ToString(GetArgumentAsNumber(\"InstanceId\")) + \" but id was already \" + ToString(Object.Variable(InstanceId))",
+                    "\"SetInstanceId to \" + GetArgumentAsString(\"InstanceId\") + \" but id was already \" + Object.VariableString(InstanceId)",
                     ""
                   ],
                   "subInstructions": []
@@ -1209,13 +1196,13 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "ModVarObjet"
+                    "value": "ModVarObjetTxt"
                   },
                   "parameters": [
                     "Object",
                     "InstanceId",
                     "=",
-                    "GetArgumentAsNumber(\"InstanceId\")"
+                    "GetArgumentAsString(\"InstanceId\")"
                   ],
                   "subInstructions": []
                 }
@@ -1252,7 +1239,7 @@
               "name": "InstanceId",
               "optional": false,
               "supplementaryInformation": "",
-              "type": "expression"
+              "type": "string"
             }
           ],
           "objectGroups": []
@@ -1260,7 +1247,7 @@
         {
           "description": "InstanceId",
           "fullName": "InstanceId",
-          "functionType": "Expression",
+          "functionType": "StringExpression",
           "name": "InstanceId",
           "private": false,
           "sentence": "_PARAM0_ Uid",
@@ -1274,10 +1261,10 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "SetReturnNumber"
+                    "value": "SetReturnString"
                   },
                   "parameters": [
-                    "Object.Variable(InstanceId)"
+                    "Object.VariableString(InstanceId)"
                   ],
                   "subInstructions": []
                 }
@@ -1344,12 +1331,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "Egal"
+                    "value": "StrEqual"
                   },
                   "parameters": [
                     "Object.Behavior::InstanceId()",
                     "=",
-                    "GetArgumentAsNumber(\"InstanceId\")"
+                    "GetArgumentAsString(\"InstanceId\")"
                   ],
                   "subInstructions": []
                 }
@@ -1398,7 +1385,7 @@
               "name": "InstanceId",
               "optional": false,
               "supplementaryInformation": "",
-              "type": "expression"
+              "type": "string"
             }
           ],
           "objectGroups": []
@@ -1995,58 +1982,6 @@
           "objectGroups": []
         },
         {
-          "description": "_PARAM0_ Tags",
-          "fullName": "Tags",
-          "functionType": "StringExpression",
-          "name": "Tags",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnString"
-                  },
-                  "parameters": [
-                    "Object.VariableString(Features)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
           "description": "Text",
           "fullName": "Text",
           "functionType": "StringExpression",
@@ -2097,69 +2032,44 @@
             }
           ],
           "objectGroups": []
-        },
-        {
-          "description": "_PARAM0_ Type",
-          "fullName": "Type",
-          "functionType": "StringExpression",
-          "name": "Type",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnString"
-                  },
-                  "parameters": [
-                    "Object.VariableString(Features)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
         {
           "value": "",
           "type": "String",
-          "label": "Id: set object variable to override",
+          "label": "Id: CardRow Id identifies the card functionality. Set object variable to override",
           "description": "",
           "extraInformation": [],
           "hidden": false,
           "name": "Id"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "InstanceId: UUID. Set object variable to override.",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "InstanceId"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "Text.  Set object variable to override.",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "Text"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "Features.  Set object variable to override.",
+          "description": "",
+          "extraInformation": [],
+          "hidden": false,
+          "name": "Features"
         }
       ]
     },

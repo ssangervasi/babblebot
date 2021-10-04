@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.44399999999999984,
+    "zoomFactor": 0.5239999999999999,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -802,12 +802,7 @@
       "updateIfNotVisible": false,
       "variables": [],
       "effects": [],
-      "behaviors": [
-        {
-          "name": "Deck",
-          "type": "babblebot::Deck"
-        }
-      ],
+      "behaviors": [],
       "animations": [
         {
           "name": "",
@@ -2882,7 +2877,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Layers",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3050,8 +3045,8 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
-      "name": "Deck",
+      "folded": false,
+      "name": "Cards",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
@@ -3090,39 +3085,10 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "babblebot::Deck::build"
+                    "value": "babblebot::createCards"
                   },
                   "parameters": [
-                    "Deck",
-                    "Deck",
-                    "Card",
-                    "Card",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Repeat",
-              "repeatExpression": "3",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Hand::drawFrom"
-                  },
-                  "parameters": [
-                    "Hand",
-                    "Hand",
-                    "Card",
-                    "Card",
-                    "Deck",
-                    "Deck",
+                    "",
                     ""
                   ],
                   "subInstructions": []
@@ -3156,60 +3122,6 @@
               "events": []
             }
           ]
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "Egal"
-              },
-              "parameters": [
-                "Hand.Hand::Size()",
-                "<",
-                "3"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Hand::drawFrom"
-              },
-              "parameters": [
-                "Hand",
-                "Hand",
-                "Card",
-                "Card",
-                "Deck",
-                "Deck",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Hand::fitIntoSlots"
-              },
-              "parameters": [
-                "Hand",
-                "Hand",
-                "Card",
-                "Card",
-                "HandSlot",
-                "Slot",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
         },
         {
           "disabled": false,
@@ -3281,7 +3193,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Drag management",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3290,9 +3202,54 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
           "actions": [],
-          "events": []
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "DragState",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "DragId",
+                    "=",
+                    "-1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
         },
         {
           "disabled": false,
@@ -3891,39 +3848,6 @@
                     "SelectionState",
                     "=",
                     "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "DragState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "DragId",
-                    "=",
-                    "-1"
                   ],
                   "subInstructions": []
                 }
@@ -4703,7 +4627,7 @@
                       "colorR": 74,
                       "creationTime": 0,
                       "disabled": false,
-                      "folded": true,
+                      "folded": false,
                       "name": "Find dialoge option indexes",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -6120,6 +6044,21 @@
       "conditions": [],
       "actions": [],
       "events": []
+    },
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "",
+      "comment2": ""
     }
   ],
   "layers": [
@@ -6205,10 +6144,6 @@
     {
       "name": "Card",
       "type": "babblebot::Card"
-    },
-    {
-      "name": "Deck",
-      "type": "babblebot::Deck"
     },
     {
       "name": "Hand",
