@@ -44,20 +44,41 @@ const structureDialogue = (
 		}
 		const index = parseInt(indexStr)
 		const nextTitle = `${branch}_${index + 1}`
-		const link = `[[next|${nextTitle}]]`
-		if (!node.body.endsWith(nextTitle)) {
-			const newBody = [node.body, '\n', link].join('\n')
-			node.body = newBody
-			// console.info('New body:', newBody)
-		}
+		const nextLink = `[[next|${nextTitle}]]`
+
+		const transitionLink = '[[transition|transition]]'
+
+		const lines = node.body.split(/\n/)
+		const noLinks = stripLinks(lines)
+		const newLines = [...noLinks, nextLink, transitionLink]
+		node.body = newLines.join('\n')
 	})
 }
 
-// const matchLink = () => {
-// 	const matches = /(?:\n)*(\[\[\w+\|\w+\]\])\s*(?:\n)*\s*$/.exec(node.body)
-// 	if (!matches) {
-// 		return
-// 	}
+const stripLinks = (lines: string[]) => {
+	return lines.filter(line => {
+		return !linkMatches(line)
+	})
+}
+
+const linkMatches = (
+	line: string,
+):
+	| {
+			text: string
+			link: string
+	  }
+	| undefined => {
+	const matches = /\[\[(\w+)\|(\w+)\]\]/.exec(line)
+	const [text, link] = matches || []
+	if (!(text && link)) {
+		return undefined
+	}
+	return {
+		text,
+		link,
+	}
+}
 
 // 	console.log(`Node matches: ${node.title} -> ${matches[1]}`)
 // 	console.log(jsonStringify(matches, { space: 2 }))
