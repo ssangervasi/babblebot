@@ -43,6 +43,7 @@
       "showGDevelopSplash": true,
       "showProgressBar": true
     },
+    "authorIds": [],
     "extensionProperties": [],
     "platforms": [
       {
@@ -869,10 +870,6 @@
     }
   ],
   "eventsFunctionsExtensions": [
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/utils"
-    },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/babblebot"

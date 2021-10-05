@@ -12,6 +12,7 @@
   "tags": [
     ""
   ],
+  "authorIds": [],
   "dependencies": [],
   "eventsFunctions": [
     {
@@ -1732,6 +1733,46 @@
       "objectGroups": []
     },
     {
+      "description": "trim _PARAM1_",
+      "fullName": "trim",
+      "functionType": "StringExpression",
+      "name": "trim",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = eventsFunctionContext.getArgument(\"ToTrim\").toString().trim()",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "ToTrim",
+          "longDescription": "",
+          "name": "ToTrim",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "Changed",
       "fullName": "Changed",
       "functionType": "Condition",
@@ -3141,6 +3182,67 @@
           "name": "DisabledTint"
         }
       ]
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "name": "HiddenAtRuntime",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "Object"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::HiddenAtRuntime",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": []
     },
     {
       "description": "",

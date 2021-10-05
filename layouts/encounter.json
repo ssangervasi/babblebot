@@ -2048,7 +2048,7 @@
       "behaviors": [
         {
           "name": "HiddenAtRuntime",
-          "type": "utils::HiddenAtRuntime"
+          "type": "srs_utils::HiddenAtRuntime"
         }
       ],
       "animations": [
@@ -2551,7 +2551,7 @@
       "behaviors": [
         {
           "name": "HiddenAtRuntime",
-          "type": "utils::HiddenAtRuntime"
+          "type": "srs_utils::HiddenAtRuntime"
         }
       ],
       "animations": [
@@ -6553,7 +6553,7 @@
     },
     {
       "name": "HiddenAtRuntime",
-      "type": "utils::HiddenAtRuntime"
+      "type": "srs_utils::HiddenAtRuntime"
     },
     {
       "name": "PlayArea",
