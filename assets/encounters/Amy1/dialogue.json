@@ -2,7 +2,7 @@
 	{
 		"title": "neutral_0",
 		"tags": "",
-		"body": "Hey! I'm Amy.\nIt's really nice to meet you.\n\n[[next|neutral_1]]",
+		"body": "Hey! I'm Amy.\nIt's really nice to meet you.\n\n[[neutral_1]]",
 		"position": {
 			"x": -6508,
 			"y": -13039
@@ -32,7 +32,7 @@
 	{
 		"title": "neutral_1",
 		"tags": "agree_bad listen_bad disagree_good question_bad flattery_good nonsequitor_good",
-		"body": "So how'd you pick this restaurant?\nDo you take all your dates here?\n\n[[next|neutral_2]]",
+		"body": "So how'd you pick this restaurant?\nDo you take all your dates here?\n\n[[next|neutral_2]]\n[[transition|transition]]",
 		"position": {
 			"x": -6514,
 			"y": -12748

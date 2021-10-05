@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.4039999999999998,
+    "zoomFactor": 0.584,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -2757,17 +2757,6 @@
                         ""
                       ],
                       "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "babblebot::loadEncounterVar"
-                      },
-                      "parameters": [
-                        "",
-                        ""
-                      ],
-                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -2811,6 +2800,26 @@
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::loadEncounterVar"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
         {
           "disabled": false,
           "folded": false,
@@ -3817,7 +3826,16 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
           "actions": [
             {
               "type": {
@@ -3844,6 +3862,60 @@
                 "ConfidenceFill.PointX(\"UpperRight\")"
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarObjet"
+              },
+              "parameters": [
+                "ConfidenceFill",
+                "OriginalWidth",
+                "=",
+                "ConfidenceFill.Width()"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::tick"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ChangeWidth"
+              },
+              "parameters": [
+                "ConfidenceFill",
+                "=",
+                "ConfidenceFill.Variable(OriginalWidth) * Variable(Encounter.Confidence)"
+              ],
+              "subInstructions": []
             }
           ],
           "events": []
@@ -3853,8 +3925,8 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "disabled": false,
-          "folded": false,
+          "disabled": true,
+          "folded": true,
           "name": "Conf Meter Empty",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3926,8 +3998,8 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "disabled": false,
-          "folded": false,
+          "disabled": true,
+          "folded": true,
           "name": "Conf Meter Pause",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -4467,14 +4539,34 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "Egal"
+                            "value": "BuiltinCommonInstructions::Or"
                           },
-                          "parameters": [
-                            "srs_utils::getLimitedTimerFraction(\"line_pause\")",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Egal"
+                              },
+                              "parameters": [
+                                "srs_utils::getLimitedTimerFraction(\"line_pause\")",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
+                          ]
                         }
                       ],
                       "actions": [
@@ -4496,35 +4588,6 @@
                             "\"line_pause\"",
                             ""
                           ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": true,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "MouseButtonReleased"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "DialogueTree::GoToNextLine"
-                          },
-                          "parameters": [],
                           "subInstructions": []
                         }
                       ],
@@ -4602,6 +4665,41 @@
                     {
                       "type": {
                         "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Encounter.State",
+                        "=",
+                        "\"waiting\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::prompt"
+                      },
+                      "parameters": [
+                        "",
+                        "DialogueTree::BranchTitle()",
+                        "DialogueTree::BranchTags()",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
                         "value": "srs_utils::Throttle"
                       },
                       "parameters": [
@@ -4628,6 +4726,66 @@
                     }
                   ],
                   "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Cache"
+                      },
+                      "parameters": [
+                        "NPC"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Montre"
+                      },
+                      "parameters": [
+                        "PC",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "PC",
+                        "=",
+                        "\"Current option: \" + DialogueTree::Option(DialogueTree::SelectedOptionIndex()) + NewLine() + \"Mood: \" + VariableString(Encounter.MoodQuality) +  NewLine() + \"State: \" + VariableString(Encounter.State)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [],
+                      "events": []
+                    }
+                  ]
                 },
                 {
                   "colorB": 228,
@@ -4690,14 +4848,6 @@
                             ""
                           ],
                           "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "DialogueTree::ConfirmSelectOption"
-                          },
-                          "parameters": [],
-                          "subInstructions": []
                         }
                       ],
                       "events": []
@@ -4731,17 +4881,73 @@
                             ""
                           ],
                           "subInstructions": []
-                        },
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "DialogueTree::ConfirmSelectOption"
+                            "value": "DialogueTree::HasSelectedOptionChanged"
                           },
                           "parameters": [],
                           "subInstructions": []
                         }
                       ],
-                      "events": []
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::consoleLog"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Selected: \" + DialogueTree::LineText()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "DialogueTree::ConfirmSelectOption"
+                              },
+                              "parameters": [],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "DialogueTree::GoToNextLine"
+                              },
+                              "parameters": [],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [],
+                          "events": []
+                        }
+                      ]
                     }
                   ],
                   "parameters": []

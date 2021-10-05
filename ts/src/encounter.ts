@@ -58,11 +58,14 @@ const PLAY_RANGES = {
 } as const
 
 interface Node {
+	title: string
 	featureReactions: string
 	promptedMs: number
 	tickedMs: number
 }
 const CONFIDENCE_DURATION_MS = 2_000
+
+export type State = 'waiting' | 'prompting' | 'complete'
 
 /**
  * Scores are magnified by responding quickly, up to this factor of the play's score.
@@ -127,6 +130,20 @@ export class Encounter {
 		return this.calculateConfidence(this.currentNode)
 	}
 
+	get completedAt() {
+		return Lodash.findLast(this.log, entry => entry.type === 'COMPLETE')?.at
+	}
+
+	get state(): State {
+		if (this.currentNode) {
+			return 'prompting'
+		}
+		if (this.completedAt) {
+			return 'complete'
+		}
+		return 'waiting'
+	}
+
 	private get idToCard(): Map<string, CardRow> {
 		if (!this._idToCard) {
 			this._idToCard = new Map(this.cardTable.map(row => [row.id, row]))
@@ -156,13 +173,9 @@ export class Encounter {
 	}
 
 	toUserData(): UserData.EncounterSession {
-		const completedAt = Lodash.findLast(
-			this.log,
-			entry => entry.type === 'COMPLETE',
-		)?.at
 		return {
 			...this.session,
-			completedAt,
+			completedAt: this.completedAt,
 			dealer: this.dealer.toUserData(),
 		}
 	}
@@ -175,16 +188,16 @@ export class Encounter {
 		return drawn.length
 	}
 
-	prompt(node: { title: string, featureReactions: string; promptedMs: number }) {
+	prompt(node: Omit<Node, 'tickedMs'>) {
 		this.currentNode = {
 			...node,
 			tickedMs: node.promptedMs,
 		}
 		this.log.push({
-			type: "PROMPT",
+			type: 'PROMPT',
 			nodeTitle: node.title,
 			featureReactions: node.featureReactions,
-			at: node.promptedMs
+			at: node.promptedMs,
 		})
 	}
 
