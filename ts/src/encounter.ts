@@ -20,6 +20,13 @@ const isType = <T extends string>(t: T) => {
 	return (u: unknown): u is { type: T } =>
 		narrow({ type: 'string' }, u) && u.type === t
 }
+
+const Prompt = Guard.narrow({
+	at: 'number',
+	nodeTitle: 'string',
+	featureReactions: 'string',
+}).and(isType('PROMPT'))
+
 const PlayCard = Guard.narrow({
 	at: 'number',
 	cardFeatures: 'string',
@@ -34,7 +41,7 @@ const Complete = Guard.narrow({
 	mood: 'number',
 }).and(isType('COMPLETE'))
 
-type LogEntry = Payload<typeof PlayCard | typeof Complete>
+type LogEntry = Payload<typeof Prompt | typeof PlayCard | typeof Complete>
 
 type Quality = 'good' | 'bad' | 'neutral'
 
@@ -168,11 +175,17 @@ export class Encounter {
 		return drawn.length
 	}
 
-	prompt(node: { featureReactions: string; promptedMs: number }) {
+	prompt(node: { title: string, featureReactions: string; promptedMs: number }) {
 		this.currentNode = {
 			...node,
 			tickedMs: node.promptedMs,
 		}
+		this.log.push({
+			type: "PROMPT",
+			nodeTitle: node.title,
+			featureReactions: node.featureReactions,
+			at: node.promptedMs
+		})
 	}
 
 	tick(tickedMs: number) {
