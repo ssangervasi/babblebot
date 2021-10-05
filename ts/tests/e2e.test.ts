@@ -59,14 +59,18 @@ describe('E2E', () => {
 			const encounter = Babblebot.encounter!
 			const dealer = encounter.dealer!
 
-			Babblebot.Lodash.range(10).forEach(() => {
+			Babblebot.Lodash.range(10).forEach(i => {
 				const card = dealer.peek('hand')[0]!
 
 				const fr = encounter.scoreTable[0]!
 				const featureReactions = Babblebot.CardScores.reactionJoin(fr)
 
 				const moodBefore = encounter.mood
-				encounter.prompt({ featureReactions, promptedMs: 1 })
+				encounter.prompt({
+					title: `node_${i}`,
+					featureReactions,
+					promptedMs: i,
+				})
 				encounter.playCard(card.uuid)
 				expect(encounter.mood).not.toEqual(moodBefore)
 

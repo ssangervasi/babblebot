@@ -252,6 +252,35 @@
       "objectGroups": []
     },
     {
+      "description": "Update the Save scene variable from the current session.",
+      "fullName": "loadSaveVar",
+      "functionType": "Action",
+      "name": "loadSaveVar",
+      "private": false,
+      "sentence": "loadSaveVar",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "const vars = runtimeScene.getVariables()\r\nconst saveVar = vars.get('Save')\r\nsaveVar.clearChildren()\r\nconst { createdAt } = Babblebot.manager.userData?.session?.savedGame || {\r\n    createdAt: 0,\r\n};\r\nsaveVar.getChild('CreatedAt').setNumber(createdAt)\r\nsaveVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
       "description": "Resume or start a new game",
       "fullName": "resumeGame",
       "functionType": "Action",
@@ -390,12 +419,12 @@
       "objectGroups": []
     },
     {
-      "description": "Update the Save scene variable from the current session.",
-      "fullName": "loadSaveVar",
+      "description": "prompt",
+      "fullName": "prompt",
       "functionType": "Action",
-      "name": "loadSaveVar",
+      "name": "prompt",
       "private": false,
-      "sentence": "loadSaveVar",
+      "sentence": "prompt _PARAM1_",
       "events": [
         {
           "disabled": false,
@@ -409,13 +438,34 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const vars = runtimeScene.getVariables()\r\nconst saveVar = vars.get('Save')\r\nsaveVar.clearChildren()\r\nconst { createdAt } = Babblebot.manager.userData?.session?.savedGame || {\r\n    createdAt: 0,\r\n};\r\nsaveVar.getChild('CreatedAt').setNumber(createdAt)\r\nsaveVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
+          "inlineCode": "if (!Babblebot.encounter) {\n    console.error(\"Cannot prompt outside of encounter\")\n    return\n}\n\nconst title = eventsFunctionContext.getArgument(\"NodeTitle\")\nconst featuresReactions = eventsFunctionContext.getArgument(\"FeatureReactions\")\nconst promptedMs = Date.now()\n\nBabblebot.encounter.prompt({\n    title,\n    featuresReactions,\n    promptedMs,\n})\n",
           "parameterObjects": "",
           "useStrict": true,
-          "eventsSheetExpanded": false
+          "eventsSheetExpanded": true
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "NodeTitle",
+          "longDescription": "",
+          "name": "NodeTitle",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "FeatureReactions",
+          "longDescription": "",
+          "name": "FeatureReactions",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
       "objectGroups": []
     },
     {
