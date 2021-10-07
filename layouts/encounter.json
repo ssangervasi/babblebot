@@ -624,7 +624,7 @@
       "persistentUuid": "d6e66566-3631-4be1-808b-e21f211a0fca",
       "width": 1154,
       "x": 542,
-      "y": 802,
+      "y": 797,
       "zOrder": 1002,
       "numberProperties": [],
       "stringProperties": [],
@@ -679,9 +679,14 @@
       "type": "BBText::BBText",
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "BBTextContained",
+          "type": "srs_utils::BBTextContained"
+        }
+      ],
       "content": {
-        "text": "NPC BBText lots of text to try this out and see the wrapping and everything oh how are you do you like really-long-hyphenated-phrases? [b]And bold?[/b]\nAnd another line lets' overflow this B A B Y \nAnd another line lets' overflow this B A B Y yesssssssssssssssssssssssssssssssssssssssssssssssss\nAnd another line lets' overflow this B A B Y ",
+        "text": "Line 1\nLine 2\nLine 3\nLine 4",
         "opacity": 255,
         "fontSize": 70,
         "visible": true,
@@ -2730,7 +2735,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "JS",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2832,27 +2837,6 @@
                       "parameters": [
                         "",
                         "babblebot::NextEncounter()",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::consoleLog"
-                      },
-                      "parameters": [
-                        "",
-                        "\"Enc name: \" + VariableString(Encounter.SceneName)",
                         ""
                       ],
                       "subInstructions": []
@@ -4623,7 +4607,7 @@
                   "events": []
                 },
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -4670,7 +4654,7 @@
                       "parameters": [
                         "",
                         "\"clipped_text\"",
-                        "75",
+                        "40",
                         ""
                       ],
                       "subInstructions": []
@@ -4800,18 +4784,6 @@
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
                       "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "srs_utils::consoleLog"
-                          },
-                          "parameters": [
-                            "",
-                            "\"line pause\"",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
                         {
                           "type": {
                             "inverted": false,
@@ -4966,29 +4938,74 @@
                         }
                       ],
                       "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "srs_utils::consoleLog"
-                          },
-                          "parameters": [
-                            "",
-                            "\"end line pause\"",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
                     }
                   ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "IsMouseWheelScrollingDown"
+                      },
+                      "parameters": [
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::BBTextContained::Scroll"
+                      },
+                      "parameters": [
+                        "NPC_BBText",
+                        "BBTextContained",
+                        "\"down\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "IsMouseWheelScrollingUp"
+                      },
+                      "parameters": [
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::BBTextContained::Scroll"
+                      },
+                      "parameters": [
+                        "NPC_BBText",
+                        "BBTextContained",
+                        "\"up\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
                 }
               ]
             },
@@ -5004,7 +5021,7 @@
               "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -6165,7 +6182,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": true,
-      "folded": false,
+      "folded": true,
       "name": "End state",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -6384,7 +6401,7 @@
       "followBaseLayerCamera": false,
       "isLightingLayer": false,
       "name": "Text_PC",
-      "visibility": true,
+      "visibility": false,
       "cameras": [],
       "effects": []
     },
@@ -6412,6 +6429,10 @@
     }
   ],
   "behaviorsSharedData": [
+    {
+      "name": "BBTextContained",
+      "type": "srs_utils::BBTextContained"
+    },
     {
       "name": "Card",
       "type": "babblebot::Card"

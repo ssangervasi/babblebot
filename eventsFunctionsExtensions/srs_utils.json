@@ -35,7 +35,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "if (!globalThis.ssangervasi) { globalThis.ssangervasi = {} }\nconst ssangervasi = globalThis.ssangervasi;\n\nssangervasi.isDebuggingEnabled = false\nif (!ssangervasi.isDebuggingEnabled) {\n    try {\n        ssangervasi.isDebuggingEnabled = runtimeScene.getGame().isPreview()\n    } catch {}\n}\n\nconst ifDebug = (f) => {\n    if (!ssangervasi.isDebuggingEnabled) {\n        return\n    }\n    f()\n}\n\n// SetupScene history\n;(() => {\n    /**\n     * @typedef SceneHistoryItem\n     * @property {string} sceneName \n     * @property {number} [startedAt]\n     */\n\n    /** @param {string} sceneName*/\n    const pushScene = (sceneName) => {\n        if (!sceneName) {\n            return\n        }\n        const newItem = {\n            sceneName,\n            startedAt: Date.now()\n        }\n        getSceneHistory().push(newItem)\n\n        return newItem\n    }\n\n    /**\n     * @param {string} defaultVal\n     * @param {number} depth\n     * @returns {string} Scene name\n     */\n    const peekScene = (defaultVal, depth) => {\n        defaultVal = defaultVal || \"\"\n        depth = depth || 0\n\n        const hist = getSceneHistory()\n        const index = hist.length - 1 - depth\n        if (index < 0) {\n            return defaultVal\n        }\n        const item = hist[index]\n        return item.sceneName\n    }\n\n    /** @returns {SceneHistoryItem[]} */\n    const getSceneHistory = () => {\n        if (!ssangervasi.sceneHistory) {\n            ssangervasi.sceneHistory = []\n            pushScene(runtimeScene.getName())\n        }\n        return ssangervasi.sceneHistory\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getSceneHistory,\n            pushScene,\n            peekScene \n        }\n    )\n})();\n\n(() => {\n    const getTimestamp = () => (new Date()).toISOString()\n    const parseTimestamp = (timestamp, defaultVal) => {\n        const d = new Date(timestamp)\n        if (isNaN(d)) { return defaultVal || 0; }\n        return d.valueOf()\n    }\n\n    const getLogCtx = () => {\n        let ctx = '(Unknown)'\n        try {\n            const stack = (new Error().stack)\n            const match = stack.match(/([a-zA-Z.]+Context)/)\n            ctx = (match && match.length && match[0]) || ctx\n        } catch (e) {\n            // Not using ssangervasi.error b/c that would recurse back to here :D\n            console.error('Context failure', e)\n        }\n        return ctx\n    }\n\n    const logHist = [];\n\n    const log = (...msgs) => ifDebug(() => {\n        console.log(getTimestamp(), getLogCtx(), ...msgs)\n        logHist.push(...(msgs).map(m => `${m}`))\n    })\n    const warn = (...msgs) => ifDebug(() => console.warn(getTimestamp(), getLogCtx(), ...msgs))\n    const info = (...msgs) => ifDebug(() => console.info(getTimestamp(), getLogCtx(), ...msgs))\n    const error = (...msgs) => ifDebug(() => console.error(getTimestamp(), getLogCtx(), ...msgs))\n\n    Object.assign(\n        ssangervasi,\n        {\n            getTimestamp,\n            log,\n            warn,\n            info,\n            error,\n            logHist,\n        }\n    )\n})();\n\n(() => {\n    const countLines = (str) => {\n        return 1 + str.split('').filter(c => c === '\\n').length\n    }\n\n    const parseArray = (arrayJson) => {\n        try {\n            const arr = JSON.parse(arrayJson)\n            if (Array.isArray(arr)) {\n                return arr\n            }\n        } catch {}\n        return []\n    } \n\n    Object.assign(\n        ssangervasi,\n        {\n            countLines,\n            parseArray\n        }\n    )\n})();\n\n(() => {\n    const getPlaylist = (aRuntimeScene, playlistName, fresh) => {\n        if (!(aRuntimeScene && playlistName)) {\n            ssangervasi.error(\"Cannot getPlaylist\", { playlistName })\n            return\n        }\n        const nameToPlaylist = ssangervasi.setupPlaylists(runtimeScene)\n        if (!nameToPlaylist.has(playlistName) || fresh) {\n            nameToPlaylist.set(playlistName, new ssangervasi.Playlist())\n        }\n        return nameToPlaylist.get(playlistName)\n    }\n\n    const setupPlaylists = (aRuntimeScene) => {\n        if (!runtimeScene._srsUtils) {\n            runtimeScene._srsUtils = {};\n        }\n        if (!runtimeScene._srsUtils.nameToPlaylist) {\n            runtimeScene._srsUtils.nameToPlaylist = new Map();\n        }\n\n        return runtimeScene._srsUtils.nameToPlaylist;\n    }\n\n    class Playlist {\n        constructor() {\n            this.items = []\n            this.current = null\n        }\n\n        getCurrent() {\n            if (this.current === null) {\n                return null\n            }\n            return this.items[this.current]\n        }\n\n        add(item) {\n            this.items.push(item)\n            if (this.current === null) {\n                this.current = 0\n            }\n        }\n\n        skipTo(targetItem) {\n            const foundIndex = this.items.findIndex(item => item === targetItem)\n            if (foundIndex === -1) { return null }\n\n            this.current = foundIndex\n            return this.getCurrent()\n        }\n\n        next() {\n            if (this.current === null) { return null }\n\n            this.current = (this.current + 1) % this.items.length\n            return this.getCurrent()\n        }\n\n        previous() {\n            if (this.current === null) { return null }\n\n            this.current = this.current - 1\n            if (this.current < 0) {\n                this.current = this.items.length + this.current\n            }\n            return this.getCurrent()\n        }\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getPlaylist,\n            setupPlaylists,\n            Playlist\n        }\n    )       \n})();\n",
+          "inlineCode": "if (!globalThis.ssangervasi) { globalThis.ssangervasi = {} }\nconst ssangervasi = globalThis.ssangervasi;\n\nssangervasi.isDebuggingEnabled = false\nif (!ssangervasi.isDebuggingEnabled) {\n    try {\n        ssangervasi.isDebuggingEnabled = runtimeScene.getGame().isPreview()\n    } catch {}\n}\n\nconst ifDebug = (f) => {\n    if (!ssangervasi.isDebuggingEnabled) {\n        return\n    }\n    f()\n}\n\n// SetupScene history\n;(() => {\n    /**\n     * @typedef SceneHistoryItem\n     * @property {string} sceneName \n     * @property {number} [startedAt]\n     */\n\n    /** @param {string} sceneName*/\n    const pushScene = (sceneName) => {\n        if (!sceneName) {\n            return\n        }\n        const newItem = {\n            sceneName,\n            startedAt: Date.now()\n        }\n        getSceneHistory().push(newItem)\n\n        return newItem\n    }\n\n    /**\n     * @param {string} defaultVal\n     * @param {number} depth\n     * @returns {string} Scene name\n     */\n    const peekScene = (defaultVal, depth) => {\n        defaultVal = defaultVal || \"\"\n        depth = depth || 0\n\n        const hist = getSceneHistory()\n        const index = hist.length - 1 - depth\n        if (index < 0) {\n            return defaultVal\n        }\n        const item = hist[index]\n        return item.sceneName\n    }\n\n    /** @returns {SceneHistoryItem[]} */\n    const getSceneHistory = () => {\n        if (!ssangervasi.sceneHistory) {\n            ssangervasi.sceneHistory = []\n            pushScene(runtimeScene.getName())\n        }\n        return ssangervasi.sceneHistory\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getSceneHistory,\n            pushScene,\n            peekScene \n        }\n    )\n})();\n\n(() => {\n    const getTimestamp = () => (new Date()).toISOString()\n    const parseTimestamp = (timestamp, defaultVal) => {\n        const d = new Date(timestamp)\n        if (isNaN(d)) { return defaultVal || 0; }\n        return d.valueOf()\n    }\n\n    const getLogCtx = () => {\n        let ctx = '(Unknown)'\n        try {\n            const stack = (new Error().stack)\n            const match = stack.match(/([a-zA-Z.]+Context)/)\n            ctx = (match && match.length && match[0]) || ctx\n        } catch (e) {\n            // Not using ssangervasi.error b/c that would recurse back to here :D\n            console.error('Context failure', e)\n        }\n        return ctx\n    }\n\n    const logHist = [];\n\n    const log = (...msgs) => ifDebug(() => {\n        console.log(getTimestamp(), getLogCtx(), ...msgs)\n        logHist.push(...(msgs).map(m => typeof m === 'string' ? m : JSON.stringify(m)))\n    })\n    const warn = (...msgs) => ifDebug(() => console.warn(getTimestamp(), getLogCtx(), ...msgs))\n    const info = (...msgs) => ifDebug(() => console.info(getTimestamp(), getLogCtx(), ...msgs))\n    const error = (...msgs) => ifDebug(() => console.error(getTimestamp(), getLogCtx(), ...msgs))\n\n    Object.assign(\n        ssangervasi,\n        {\n            getTimestamp,\n            log,\n            warn,\n            info,\n            error,\n            logHist,\n        }\n    )\n})();\n\n(() => {\n    const countLines = (str) => {\n        return 1 + str.split('').filter(c => c === '\\n').length\n    }\n\n    const parseArray = (arrayJson) => {\n        try {\n            const arr = JSON.parse(arrayJson)\n            if (Array.isArray(arr)) {\n                return arr\n            }\n        } catch {}\n        return []\n    } \n\n    Object.assign(\n        ssangervasi,\n        {\n            countLines,\n            parseArray\n        }\n    )\n})();\n\n(() => {\n    const getPlaylist = (aRuntimeScene, playlistName, fresh) => {\n        if (!(aRuntimeScene && playlistName)) {\n            ssangervasi.error(\"Cannot getPlaylist\", { playlistName })\n            return\n        }\n        const nameToPlaylist = ssangervasi.setupPlaylists(runtimeScene)\n        if (!nameToPlaylist.has(playlistName) || fresh) {\n            nameToPlaylist.set(playlistName, new ssangervasi.Playlist())\n        }\n        return nameToPlaylist.get(playlistName)\n    }\n\n    const setupPlaylists = (aRuntimeScene) => {\n        if (!runtimeScene._srsUtils) {\n            runtimeScene._srsUtils = {};\n        }\n        if (!runtimeScene._srsUtils.nameToPlaylist) {\n            runtimeScene._srsUtils.nameToPlaylist = new Map();\n        }\n\n        return runtimeScene._srsUtils.nameToPlaylist;\n    }\n\n    class Playlist {\n        constructor() {\n            this.items = []\n            this.current = null\n        }\n\n        getCurrent() {\n            if (this.current === null) {\n                return null\n            }\n            return this.items[this.current]\n        }\n\n        add(item) {\n            this.items.push(item)\n            if (this.current === null) {\n                this.current = 0\n            }\n        }\n\n        skipTo(targetItem) {\n            const foundIndex = this.items.findIndex(item => item === targetItem)\n            if (foundIndex === -1) { return null }\n\n            this.current = foundIndex\n            return this.getCurrent()\n        }\n\n        next() {\n            if (this.current === null) { return null }\n\n            this.current = (this.current + 1) % this.items.length\n            return this.getCurrent()\n        }\n\n        previous() {\n            if (this.current === null) { return null }\n\n            this.current = this.current - 1\n            if (this.current < 0) {\n                this.current = this.items.length + this.current\n            }\n            return this.getCurrent()\n        }\n    }\n\n    Object.assign(\n        ssangervasi,\n        {\n            getPlaylist,\n            setupPlaylists,\n            Playlist\n        }\n    )       \n})();\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": true
@@ -3495,6 +3495,294 @@
           "name": "Size"
         }
       ]
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "name": "BBTextContained",
+      "objectType": "BBText::BBText",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": [],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Object",
+                    "OriginalHeight",
+                    "=",
+                    "Object.Height()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Extend the behavior constructor 's prototype to share code between instances.",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "\nconst BBTextContained = gdjs.getBehaviorConstructor('srs_utils::BBTextContained')\nif (!BBTextContained?.prototype) {\n    console.warn(\"No BBTextContained constructor.\")\n    return\n}\nif (BBTextContained.prototype.bbTextContained_init) {\n    // Already extended\n    return\n}\n\nObject.assign(BBTextContained.prototype, {\n    bbTextContained_targetHeight: 0,\n    bbTextContained_targetLines: 0,\n    bbTextContained_lineGroups: {\n        above: [],\n        visible: [],\n        below: [],\n    },\n    bbTextContained_previousText: \"\",\n    \n    bbTextContained_init: function () {\n        const targetHeight = this.owner.getHeight()\n        this.bbTextContained_targetHeight = targetHeight\n        \n        const metrics = this.bbTextContained_getMetrics()\n        const targetLines = Math.floor(targetHeight / metrics.lineHeight)\n        this.bbTextContained_targetLines = targetLines\n\n        // console.log('init', this)\n    },\n    bbTextContained_refresh: function () {\n        const targetHeight = this.bbTextContained_targetHeight\n        const targetLines = this.bbTextContained_targetLines\n        const previousText = this.bbTextContained_previousText\n        const lineGroups = this.bbTextContained_lineGroups\n        \n        const text = this.owner.getBBText()\n        const height = this.owner.getHeight()\n        this.bbTextContained_previousText = text\n\n        if (text == previousText) {\n            // No text change, so line alignment should not have changed.\n            return\n        }\n\n        const pixiObject = this.owner._renderer._pixiObject\n        const style = pixiObject._style\n        const metrics = PIXI.TextMetrics.measureText(text, style)\n        const lines = metrics.lines\n\n        if (height < targetHeight) {\n            // Height is still within limits, so all lines are visible.\n            return\n        }\n\n        lineGroups.above = lines.slice(0, lines.length - targetLines)\n        lineGroups.visible = lines.slice(lines.length - targetLines, lines.length)\n\n        const newText = lineGroups.visible.join('\\n')\n        this.owner.setBBText(newText)\n        this.bbTextContained_previousText = newText\n\n        // console.log(\"bbTextContained_refresh: height too large\", {\n        //     targetLines,\n        //     lineGroups,\n        //     text,\n        //     previousText,\n        //     targetHeight,\n        //     height\n        // })\n    },\n    bbTextContained_rewrite: function () {\n        const newText = this.bbTextContained_lineGroups.visible.join('\\n')\n        this.owner.setBBText(newText)\n        this.bbTextContained_previousText = newText\n    },\n    bbTextContained_getMetrics: function () {\n        const text = this.owner.getBBText()\n        const pixiObject = this.owner._renderer._pixiObject\n        const style = pixiObject._style\n        const metrics = PIXI.TextMetrics.measureText(text, style)\n        return metrics\n    },\n    bbTextContained_shiftUp: function () {\n        const { above, visible, below } = this.bbTextContained_lineGroups\n        \n        if (0 < visible.length) {\n            above.push(visible.shift())\n        }\n\n        if (0 < below.length) {\n            visible.push(below.shift())\n        }\n\n        this.bbTextContained_rewrite()\n    },\n    bbTextContained_shiftDown: function () {\n        const { above, visible, below } = this.bbTextContained_lineGroups\n        const targetLines = this.bbTextContained_targetLines\n\n        if (0 < above.length) {\n            visible.unshift(above.pop())\n        }\n        if (targetLines < visible.length) {\n            below.unshift(visible.pop())\n        }\n\n        this.bbTextContained_rewrite()\n    },\n})\n",
+              "parameterObjects": "Object",
+              "useStrict": true,
+              "eventsSheetExpanded": true
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Run setup for every instance.",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "\nconst obj = objects[0]\nconst behavior = obj.getBehavior('BBTextContained')\nbehavior.bbTextContained_init()\n",
+              "parameterObjects": "Object",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "BBText::BBText",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::BBTextContained",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "private": false,
+          "sentence": "",
+          "events": [],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "BBText::BBText",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::BBTextContained",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "This is done in PostEvents so that when the events sheets set the BBText the extension reuns the measurements before the changes are rendered. This lets us steal the actual text assignment. I guess the text assignment could be done via a function on this extension instead. Oh well.",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "\nconst obj = objects[0]\nconst behavior = obj.getBehavior('BBTextContained')\nbehavior.bbTextContained_refresh()\n",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": false
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "BBText::BBText",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::BBTextContained",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Scroll",
+          "fullName": "Scroll",
+          "functionType": "Action",
+          "name": "Scroll",
+          "private": false,
+          "sentence": "_PARAM0_ Scroll _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "const direction = eventsFunctionContext.getArgument('Direction')\n\nconst obj = objects[0]\nconst behavior = obj.getBehavior('BBTextContained')\n\nif (direction === 'up') {\n    behavior.bbTextContained_shiftDown()\n} else if (direction === 'down') {\n    behavior.bbTextContained_shiftUp()\n} \n",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": false
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "BBText::BBText",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::BBTextContained",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Scroll up/down",
+              "longDescription": "",
+              "name": "Direction",
+              "optional": false,
+              "supplementaryInformation": "[\"up\",\"down\"]",
+              "type": "stringWithSelector"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": []
     }
   ]
 }
