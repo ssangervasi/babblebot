@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.46399999999999986,
+    "zoomFactor": 0.564,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -30,40 +30,8 @@
     {
       "angle": 0,
       "customSize": true,
-      "height": 207,
-      "layer": "Text",
-      "locked": false,
-      "name": "NPC",
-      "persistentUuid": "ba567aa2-1816-4ab6-9a9b-23906e4a20d7",
-      "width": 736,
-      "x": 766,
-      "y": 840,
-      "zOrder": 1,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "height": 207,
-      "layer": "Text",
-      "locked": false,
-      "name": "PC",
-      "persistentUuid": "31487021-7ee7-49c3-92fd-1ef096fd73e2",
-      "width": 736,
-      "x": 766,
-      "y": 840,
-      "zOrder": 1,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
       "height": 1080,
-      "layer": "Text",
+      "layer": "Text_PC",
       "locked": true,
       "name": "Res",
       "persistentUuid": "1964cdf0-7111-4dd8-90cc-3f22edeb4da2",
@@ -127,7 +95,7 @@
       "angle": 0,
       "customSize": true,
       "height": 517,
-      "layer": "OffScreen",
+      "layer": "Off_Screen",
       "locked": false,
       "name": "CardPool",
       "persistentUuid": "6e70f1a6-7331-489d-9c74-0349d79301f9",
@@ -143,7 +111,7 @@
       "angle": 0,
       "customSize": false,
       "height": 0,
-      "layer": "OffScreen",
+      "layer": "Off_Screen",
       "locked": false,
       "name": "CardPoolTitle",
       "persistentUuid": "33895c38-7a7f-4637-ba78-f4b2c2251630",
@@ -240,7 +208,7 @@
       "customSize": false,
       "height": 263,
       "layer": "UI",
-      "locked": true,
+      "locked": false,
       "name": "DialogueBox",
       "persistentUuid": "125a1593-cfec-4349-982d-b1c5215a8280",
       "width": 745,
@@ -394,7 +362,7 @@
       "angle": 0,
       "customSize": true,
       "height": 1549,
-      "layer": "OffScreen",
+      "layer": "Off_Screen",
       "locked": true,
       "name": "BgTiles",
       "persistentUuid": "6c05243a-8f94-4d32-8cb5-74303ac8459e",
@@ -645,13 +613,45 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 231,
+      "layer": "Text_NPC",
+      "locked": false,
+      "name": "NPC_BBText",
+      "persistentUuid": "d6e66566-3631-4be1-808b-e21f211a0fca",
+      "width": 1154,
+      "x": 542,
+      "y": 802,
+      "zOrder": 1002,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 232,
+      "layer": "Text_PC",
+      "locked": false,
+      "name": "PC_BBText",
+      "persistentUuid": "7682040c-e415-4b94-bc82-61886d9c320b",
+      "width": 1173,
+      "x": 545,
+      "y": 801,
+      "zOrder": 1003,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
     {
       "bold": false,
       "italic": false,
-      "name": "NPC",
+      "name": "NPC_Old",
       "smoothed": true,
       "tags": "",
       "type": "TextObject::Text",
@@ -671,6 +671,24 @@
         "b": 48,
         "g": 5,
         "r": 34
+      }
+    },
+    {
+      "name": "NPC_BBText",
+      "tags": "",
+      "type": "BBText::BBText",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "text": "NPC BBText lots of text to try this out and see the wrapping and everything oh how are you do you like really-long-hyphenated-phrases? [b]And bold?[/b]\nAnd another line lets' overflow this B A B Y \nAnd another line lets' overflow this B A B Y yesssssssssssssssssssssssssssssssssssssssssssssssss\nAnd another line lets' overflow this B A B Y ",
+        "opacity": 255,
+        "fontSize": 70,
+        "visible": true,
+        "color": "0;0;0",
+        "fontFamily": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+        "align": "left",
+        "wordWrap": true
       }
     },
     {
@@ -696,7 +714,7 @@
     {
       "bold": false,
       "italic": false,
-      "name": "PC",
+      "name": "PC_Old",
       "smoothed": true,
       "tags": "",
       "type": "TextObject::Text",
@@ -711,6 +729,24 @@
         "b": 255,
         "g": 255,
         "r": 255
+      }
+    },
+    {
+      "name": "PC_BBText",
+      "tags": "",
+      "type": "BBText::BBText",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "text": "Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText Player Character BBText ",
+        "opacity": 255,
+        "fontSize": 70,
+        "visible": false,
+        "color": "255;255;255",
+        "fontFamily": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+        "align": "left",
+        "wordWrap": true
       }
     },
     {
@@ -2694,7 +2730,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "JS",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2837,7 +2873,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Encounter-specific Setup",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3007,7 +3043,18 @@
                   },
                   "parameters": [
                     "",
-                    "\"Text\""
+                    "\"Text_NPC\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Text_PC\""
                   ],
                   "subInstructions": []
                 },
@@ -3038,7 +3085,7 @@
                   },
                   "parameters": [
                     "",
-                    "\"OffScreen\""
+                    "\"Off_Screen\""
                   ],
                   "subInstructions": []
                 }
@@ -3851,7 +3898,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Confidence",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4214,37 +4261,6 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "TextObject::SetWrapping"
-                  },
-                  "parameters": [
-                    "PC",
-                    "yes"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "TextObject::SetWrapping"
-                  },
-                  "parameters": [
-                    "NPC",
-                    "yes"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
                     "value": "ModVarSceneTxt"
                   },
                   "parameters": [
@@ -4573,10 +4589,10 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "TextObject::String"
+                        "value": "BBText::SetBBText"
                       },
                       "parameters": [
-                        "NPC",
+                        "NPC_BBText",
                         "=",
                         "DialogueTree::ClippedLineText()"
                       ],
@@ -4588,7 +4604,7 @@
                         "value": "Montre"
                       },
                       "parameters": [
-                        "NPC",
+                        "NPC_BBText",
                         ""
                       ],
                       "subInstructions": []
@@ -4599,7 +4615,7 @@
                         "value": "Cache"
                       },
                       "parameters": [
-                        "PC"
+                        "PC_BBText"
                       ],
                       "subInstructions": []
                     }
@@ -4838,76 +4854,119 @@
                 {
                   "disabled": false,
                   "folded": false,
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Making this be mouse-only to test out the text wrap.",
+                  "comment2": ""
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
                       "type": {
                         "inverted": false,
-                        "value": "BuiltinCommonInstructions::Or"
+                        "value": "MouseButtonReleased"
                       },
-                      "parameters": [],
-                      "subInstructions": [
+                      "parameters": [
+                        "",
+                        "Left"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": true,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "Egal"
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Egal"
+                              },
+                              "parameters": [
+                                "srs_utils::getLimitedTimerFraction(\"line_pause\")",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::GoToNextLine"
+                          },
+                          "parameters": [],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::deleteLimitedTimer"
                           },
                           "parameters": [
-                            "srs_utils::getLimitedTimerFraction(\"line_pause\")",
-                            "=",
-                            "1"
+                            "",
+                            "\"line_pause\"",
+                            ""
                           ],
                           "subInstructions": []
                         },
                         {
                           "type": {
                             "inverted": false,
-                            "value": "MouseButtonReleased"
+                            "value": "ModVarSceneTxt"
                           },
                           "parameters": [
-                            "",
-                            "Left"
+                            "Dialogue.NextState",
+                            "=",
+                            "\"init\""
                           ],
                           "subInstructions": []
                         }
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "DialogueTree::GoToNextLine"
-                      },
-                      "parameters": [],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::deleteLimitedTimer"
-                      },
-                      "parameters": [
-                        "",
-                        "\"line_pause\"",
-                        ""
                       ],
-                      "subInstructions": []
+                      "events": []
                     },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarSceneTxt"
-                      },
-                      "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"init\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": [
                     {
                       "disabled": false,
                       "folded": false,
@@ -5058,7 +5117,7 @@
                             "value": "Cache"
                           },
                           "parameters": [
-                            "NPC"
+                            "NPC_BBText"
                           ],
                           "subInstructions": []
                         },
@@ -5068,7 +5127,7 @@
                             "value": "Montre"
                           },
                           "parameters": [
-                            "PC",
+                            "PC_BBText",
                             ""
                           ],
                           "subInstructions": []
@@ -6106,7 +6165,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": true,
-      "folded": true,
+      "folded": false,
       "name": "End state",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -6162,7 +6221,7 @@
                     "value": "Cache"
                   },
                   "parameters": [
-                    "NPC"
+                    "NPC_BBText"
                   ],
                   "subInstructions": []
                 },
@@ -6258,7 +6317,7 @@
       "ambientLightColorR": 200,
       "followBaseLayerCamera": false,
       "isLightingLayer": false,
-      "name": "OffScreen",
+      "name": "Off_Screen",
       "visibility": true,
       "cameras": [],
       "effects": []
@@ -6308,12 +6367,23 @@
       "effects": []
     },
     {
+      "ambientLightColorB": 13190712,
+      "ambientLightColorG": 6023216,
+      "ambientLightColorR": 13344992,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "name": "Text_NPC",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
+    {
       "ambientLightColorB": 200,
       "ambientLightColorG": 200,
       "ambientLightColorR": 200,
       "followBaseLayerCamera": false,
       "isLightingLayer": false,
-      "name": "Text",
+      "name": "Text_PC",
       "visibility": true,
       "cameras": [],
       "effects": []

@@ -13,17 +13,16 @@
   "v": 209,
   "uiSettings": {
     "grid": false,
-    "gridB": 255,
-    "gridG": 180,
+    "gridType": "rectangular",
+    "gridWidth": 10,
     "gridHeight": 10,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
-    "gridR": 158,
-    "gridType": "rectangular",
-    "gridWidth": 10,
+    "gridColor": 10401023,
+    "gridAlpha": 0.8,
     "snap": false,
-    "windowMask": false,
-    "zoomFactor": 0.564
+    "zoomFactor": 0.564,
+    "windowMask": false
   },
   "objectsGroups": [],
   "variables": [],
