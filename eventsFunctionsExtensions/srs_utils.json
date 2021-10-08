@@ -3513,37 +3513,6 @@
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": [],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "OriginalHeight",
-                    "=",
-                    "Object.Height()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
               "type": "BuiltinCommonInstructions::Comment",
               "color": {
                 "b": 109,
@@ -3560,7 +3529,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "\nconst BBTextContained = gdjs.getBehaviorConstructor('srs_utils::BBTextContained')\nif (!BBTextContained?.prototype) {\n    console.warn(\"No BBTextContained constructor.\")\n    return\n}\nif (BBTextContained.prototype.bbTextContained_init) {\n    // Already extended\n    return\n}\n\nObject.assign(BBTextContained.prototype, {\n    bbTextContained_targetHeight: 0,\n    bbTextContained_targetLines: 0,\n    bbTextContained_lineGroups: {\n        above: [],\n        visible: [],\n        below: [],\n    },\n    bbTextContained_previousText: \"\",\n    \n    bbTextContained_init: function () {\n        const targetHeight = this.owner.getHeight()\n        this.bbTextContained_targetHeight = targetHeight\n        \n        const metrics = this.bbTextContained_getMetrics()\n        const targetLines = Math.floor(targetHeight / metrics.lineHeight)\n        this.bbTextContained_targetLines = targetLines\n\n        // console.log('init', this)\n    },\n    bbTextContained_refresh: function () {\n        const targetHeight = this.bbTextContained_targetHeight\n        const targetLines = this.bbTextContained_targetLines\n        const previousText = this.bbTextContained_previousText\n        const lineGroups = this.bbTextContained_lineGroups\n        \n        const text = this.owner.getBBText()\n        const height = this.owner.getHeight()\n        this.bbTextContained_previousText = text\n\n        if (text == previousText) {\n            // No text change, so line alignment should not have changed.\n            return\n        }\n\n        const pixiObject = this.owner._renderer._pixiObject\n        const style = pixiObject._style\n        const metrics = PIXI.TextMetrics.measureText(text, style)\n        const lines = metrics.lines\n\n        if (height < targetHeight) {\n            // Height is still within limits, so all lines are visible.\n            return\n        }\n\n        lineGroups.above = lines.slice(0, lines.length - targetLines)\n        lineGroups.visible = lines.slice(lines.length - targetLines, lines.length)\n\n        const newText = lineGroups.visible.join('\\n')\n        this.owner.setBBText(newText)\n        this.bbTextContained_previousText = newText\n\n        // console.log(\"bbTextContained_refresh: height too large\", {\n        //     targetLines,\n        //     lineGroups,\n        //     text,\n        //     previousText,\n        //     targetHeight,\n        //     height\n        // })\n    },\n    bbTextContained_rewrite: function () {\n        const newText = this.bbTextContained_lineGroups.visible.join('\\n')\n        this.owner.setBBText(newText)\n        this.bbTextContained_previousText = newText\n    },\n    bbTextContained_getMetrics: function () {\n        const text = this.owner.getBBText()\n        const pixiObject = this.owner._renderer._pixiObject\n        const style = pixiObject._style\n        const metrics = PIXI.TextMetrics.measureText(text, style)\n        return metrics\n    },\n    bbTextContained_shiftUp: function () {\n        const { above, visible, below } = this.bbTextContained_lineGroups\n        \n        if (0 < visible.length) {\n            above.push(visible.shift())\n        }\n\n        if (0 < below.length) {\n            visible.push(below.shift())\n        }\n\n        this.bbTextContained_rewrite()\n    },\n    bbTextContained_shiftDown: function () {\n        const { above, visible, below } = this.bbTextContained_lineGroups\n        const targetLines = this.bbTextContained_targetLines\n\n        if (0 < above.length) {\n            visible.unshift(above.pop())\n        }\n        if (targetLines < visible.length) {\n            below.unshift(visible.pop())\n        }\n\n        this.bbTextContained_rewrite()\n    },\n})\n",
+              "inlineCode": "\nconst BBTextContained = gdjs.getBehaviorConstructor('srs_utils::BBTextContained')\nif (!BBTextContained?.prototype) {\n    console.warn(\"No BBTextContained constructor.\")\n    return\n}\nif (BBTextContained.prototype.bbTextContained_init) {\n    // Already extended\n    return\n}\n\nObject.assign(BBTextContained.prototype, {\n    bbTextContained_targetHeight: 0,\n    bbTextContained_targetLines: 0,\n    bbTextContained_lineGroups: {\n        above: [],\n        visible: [],\n        below: [],\n    },\n    bbTextContained_previousText: \"\",\n    \n    bbTextContained_init: function () {\n        const targetHeight = this.owner.getHeight()\n        this.bbTextContained_targetHeight = targetHeight\n        \n        const metrics = this.bbTextContained_getMetrics()\n        const targetLines = Math.floor(targetHeight / metrics.lineHeight)\n        this.bbTextContained_targetLines = targetLines\n\n        // console.log('init', this)\n    },\n    bbTextContained_setText: function (text) {\n        const targetHeight = this.bbTextContained_targetHeight\n        const targetLines = this.bbTextContained_targetLines\n        const previousText = this.bbTextContained_previousText\n        const lineGroups = this.bbTextContained_lineGroups\n        \n        const height = this.owner.getHeight()\n        this.bbTextContained_previousText = text\n\n        if (text == previousText) {\n            // No text change, so line alignment should not have changed.\n            return\n        }\n\n        const pixiObject = this.owner._renderer._pixiObject\n        const style = pixiObject._style\n        const metrics = PIXI.TextMetrics.measureText(text, style)\n        const lines = metrics.lines\n\n        if (height < targetHeight) {\n            // Height is still within limits, so all lines are visible.\n            this.owner.setBBText(text)\n            return\n        }\n\n        lineGroups.above = lines.slice(0, lines.length - targetLines)\n        lineGroups.visible = lines.slice(lines.length - targetLines, lines.length)\n\n        const newText = lineGroups.visible.join('\\n')\n        this.owner.setBBText(newText)\n        this.bbTextContained_previousText = newText\n\n        // console.log(\"bbTextContained_setText: height too large\", {\n        //     targetLines,\n        //     lineGroups,\n        //     text,\n        //     previousText,\n        //     targetHeight,\n        //     height\n        // })\n    },\n    bbTextContained_rewrite: function () {\n        const newText = this.bbTextContained_lineGroups.visible.join('\\n')\n        this.owner.setBBText(newText)\n        this.bbTextContained_previousText = newText\n    },\n    bbTextContained_getMetrics: function () {\n        const text = this.owner.getBBText()\n        const pixiObject = this.owner._renderer._pixiObject\n        const style = pixiObject._style\n        const metrics = PIXI.TextMetrics.measureText(text, style)\n        return metrics\n    },\n    bbTextContained_shiftUp: function () {\n        const { above, visible, below } = this.bbTextContained_lineGroups\n        \n        if (0 < visible.length) {\n            above.push(visible.shift())\n        }\n\n        if (0 < below.length) {\n            visible.push(below.shift())\n        }\n\n        this.bbTextContained_rewrite()\n    },\n    bbTextContained_shiftDown: function () {\n        const { above, visible, below } = this.bbTextContained_lineGroups\n        const targetLines = this.bbTextContained_targetLines\n\n        if (0 < above.length) {\n            visible.unshift(above.pop())\n        }\n        if (targetLines < visible.length) {\n            below.unshift(visible.pop())\n        }\n\n        this.bbTextContained_rewrite()\n    },\n})\n",
               "parameterObjects": "Object",
               "useStrict": true,
               "eventsSheetExpanded": true
@@ -3663,27 +3632,27 @@
           "sentence": "",
           "events": [
             {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 109,
-                "g": 230,
-                "r": 255,
-                "textB": 0,
-                "textG": 0,
-                "textR": 0
-              },
-              "comment": "This is done in PostEvents so that when the events sheets set the BBText the extension reuns the measurements before the changes are rendered. This lets us steal the actual text assignment. I guess the text assignment could be done via a function on this extension instead. Oh well.",
-              "comment2": ""
-            },
-            {
-              "disabled": false,
+              "disabled": true,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [],
               "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "This is done in PostEvents so that when the events sheets set the BBText the extension reuns the measurements before the changes are rendered. This lets us steal the actual text assignment. I guess the text assignment could be done via a function on this extension instead. Oh well.",
+                  "comment2": ""
+                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -3721,12 +3690,12 @@
           "objectGroups": []
         },
         {
-          "description": "Scroll",
-          "fullName": "Scroll",
+          "description": "scroll",
+          "fullName": "scroll",
           "functionType": "Action",
-          "name": "Scroll",
+          "name": "scroll",
           "private": false,
-          "sentence": "_PARAM0_ Scroll _PARAM2_",
+          "sentence": "_PARAM0_ scroll _PARAM2_",
           "events": [
             {
               "disabled": false,
@@ -3777,6 +3746,75 @@
               "optional": false,
               "supplementaryInformation": "[\"up\",\"down\"]",
               "type": "stringWithSelector"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "setText string of the BBText while obeying contained",
+          "fullName": "setText",
+          "functionType": "Action",
+          "name": "setText",
+          "private": false,
+          "sentence": "_PARAM0_ setText _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "\nconst obj = objects[0]\nconst behavior = obj.getBehavior('BBTextContained')\nbehavior.bbTextContained_setText(eventsFunctionContext.getArgument('Text'))\n",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": false
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "BBText::BBText",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::BBTextContained",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Text",
+              "longDescription": "",
+              "name": "Text",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "string"
             }
           ],
           "objectGroups": []

@@ -4573,18 +4573,6 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "BBText::SetBBText"
-                      },
-                      "parameters": [
-                        "NPC_BBText",
-                        "=",
-                        "DialogueTree::ClippedLineText()"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
                         "value": "Montre"
                       },
                       "parameters": [
@@ -4600,6 +4588,19 @@
                       },
                       "parameters": [
                         "PC_BBText"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::BBTextContained::setText"
+                      },
+                      "parameters": [
+                        "NPC_BBText",
+                        "BBTextContained",
+                        "DialogueTree::ClippedLineText()",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -4961,7 +4962,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "srs_utils::BBTextContained::Scroll"
+                        "value": "srs_utils::BBTextContained::scroll"
                       },
                       "parameters": [
                         "NPC_BBText",
@@ -4994,7 +4995,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "srs_utils::BBTextContained::Scroll"
+                        "value": "srs_utils::BBTextContained::scroll"
                       },
                       "parameters": [
                         "NPC_BBText",
@@ -6182,7 +6183,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": true,
-      "folded": true,
+      "folded": false,
       "name": "End state",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
