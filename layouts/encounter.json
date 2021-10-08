@@ -4590,7 +4590,16 @@
                         "PC_BBText"
                       ],
                       "subInstructions": []
-                    },
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
                     {
                       "type": {
                         "inverted": false,
@@ -4599,7 +4608,7 @@
                       "parameters": [
                         "NPC_BBText",
                         "BBTextContained",
-                        "DialogueTree::ClippedLineText()",
+                        "DialogueTree::LineText()",
                         ""
                       ],
                       "subInstructions": []
@@ -4671,7 +4680,30 @@
                       "subInstructions": []
                     }
                   ],
-                  "events": []
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::BBTextContained::reveal"
+                          },
+                          "parameters": [
+                            "NPC_BBText",
+                            "BBTextContained",
+                            "DialogueTree::ClippedLineText()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
                 },
                 {
                   "disabled": false,
@@ -4700,7 +4732,30 @@
                       "subInstructions": []
                     }
                   ],
-                  "events": []
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::BBTextContained::reveal"
+                          },
+                          "parameters": [
+                            "NPC_BBText",
+                            "BBTextContained",
+                            "DialogueTree::LineText()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
                 }
               ]
             },
@@ -4724,27 +4779,6 @@
               ],
               "actions": [],
               "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarSceneTxt"
-                      },
-                      "parameters": [
-                        "Dialogue.LastLine",
-                        "=",
-                        "DialogueTree::ClippedLineText()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -4779,6 +4813,27 @@
                     }
                   ],
                   "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "Dialogue.LastLine",
+                            "=",
+                            "DialogueTree::ClippedLineText()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
                     {
                       "disabled": false,
                       "folded": false,
@@ -4827,78 +4882,43 @@
                 {
                   "disabled": false,
                   "folded": false,
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 109,
-                    "g": 230,
-                    "r": 255,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "Making this be mouse-only to test out the text wrap.",
-                  "comment2": ""
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
                       "type": {
                         "inverted": false,
-                        "value": "MouseButtonReleased"
+                        "value": "BuiltinCommonInstructions::Or"
                       },
-                      "parameters": [
-                        "",
-                        "Left"
-                      ],
-                      "subInstructions": []
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "srs_utils::getLimitedTimerFraction(\"line_pause\")",
+                            "=",
+                            "1"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "MouseButtonReleased"
+                          },
+                          "parameters": [
+                            "",
+                            "Left"
+                          ],
+                          "subInstructions": []
+                        }
+                      ]
                     }
                   ],
                   "actions": [],
                   "events": [
-                    {
-                      "disabled": true,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "BuiltinCommonInstructions::Or"
-                          },
-                          "parameters": [],
-                          "subInstructions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "Egal"
-                              },
-                              "parameters": [
-                                "srs_utils::getLimitedTimerFraction(\"line_pause\")",
-                                "=",
-                                "1"
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "MouseButtonReleased"
-                              },
-                              "parameters": [
-                                "",
-                                "Left"
-                              ],
-                              "subInstructions": []
-                            }
-                          ]
-                        }
-                      ],
-                      "actions": [],
-                      "events": []
-                    },
                     {
                       "disabled": false,
                       "folded": false,
@@ -4943,7 +4963,7 @@
                   ]
                 },
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -4976,7 +4996,7 @@
                   "events": []
                 },
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -5034,7 +5054,7 @@
                       "parameters": [
                         "",
                         "\"options\"",
-                        "2000",
+                        "1000",
                         ""
                       ],
                       "subInstructions": []
