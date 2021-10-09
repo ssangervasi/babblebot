@@ -1827,7 +1827,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const sceneVariableName = eventsFunctionContext.getArgument(\"SceneVariable\")\n    const vars = runtimeScene.getVariables()\n    const currentVar = vars.get(sceneVariableName)\n    const prevVar = vars.get(`${sceneVariableName}__PREVIOUS`)\n    const currentValue = currentVar.getValue()\n    if (currentValue === prevVar.getValue()) {\n        return false\n    }\n    \n    prevVar._type = currentVar.getType()\n    prevVar.setValue(currentValue)\n    return true\n})()\n",
+          "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const sceneVariableName = eventsFunctionContext.getArgument(\"SceneVariable\")\n    const vars = runtimeScene.getVariables()\n    const currentVar = vars.get(sceneVariableName)\n    const prevVar = vars.get(`PREVIOUS__${sceneVariableName}`)\n    const currentValue = currentVar.getValue()\n    if (currentValue === prevVar.getValue()) {\n        return false\n    }\n    \n    prevVar._type = currentVar.getType()\n    prevVar.setValue(currentValue)\n    return true\n})()\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": true

@@ -57,12 +57,13 @@ const PLAY_RANGES = {
 	good: [20, Infinity],
 } as const
 
-interface Node {
+interface DialogueNode {
 	title: string
 	featureReactions: string
 	promptedMs: number
 	tickedMs: number
 }
+
 const CONFIDENCE_DURATION_MS = 2_000
 
 export type State = 'waiting' | 'prompting' | 'complete'
@@ -78,7 +79,7 @@ export class Encounter {
 	log: LogEntry[] = []
 	dealer = new Dealer()
 	mood = 1
-	currentNode?: Node
+	currentNode?: DialogueNode
 
 	private _idToCard?: Map<string, CardRow>
 
@@ -188,7 +189,20 @@ export class Encounter {
 		return drawn.length
 	}
 
-	prompt(node: Omit<Node, 'tickedMs'>) {
+	prompt(node: Omit<DialogueNode, 'tickedMs'>) {
+		if (
+			!narrow(
+				{
+					title: 'string',
+					featureReactions: 'string',
+					promptedMs: 'number',
+				},
+				node,
+			)
+		) {
+			throw Object.assign(new Error('Invalid node'), { node })
+		}
+
 		this.currentNode = {
 			...node,
 			tickedMs: node.promptedMs,
@@ -257,7 +271,7 @@ export class Encounter {
 		this.currentNode = undefined
 	}
 
-	calculateScore(cardFeatures: string, node: Node) {
+	calculateScore(cardFeatures: string, node: DialogueNode) {
 		const baseScore = calculateScore(
 			cardFeatures,
 			node.featureReactions,
@@ -268,7 +282,7 @@ export class Encounter {
 		return baseScore + confidenceBoost
 	}
 
-	calculateConfidence({ promptedMs, tickedMs }: Node) {
+	calculateConfidence({ promptedMs, tickedMs }: DialogueNode) {
 		return (
 			(CONFIDENCE_DURATION_MS -
 				Lodash.clamp(tickedMs - promptedMs, 0, CONFIDENCE_DURATION_MS)) /

@@ -4541,343 +4541,6 @@
               "name": "NPC speaking states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
-              "events": [],
-              "parameters": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "Dialogue.State",
-                    "=",
-                    "\"scrolling\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Montre"
-                      },
-                      "parameters": [
-                        "NPC_BBText",
-                        ""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Cache"
-                      },
-                      "parameters": [
-                        "PC_BBText"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::BBTextContained::setText"
-                      },
-                      "parameters": [
-                        "NPC_BBText",
-                        "BBTextContained",
-                        "DialogueTree::LineText()",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": true,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::Throttle"
-                      },
-                      "parameters": [
-                        "",
-                        "\"scroll log\"",
-                        "2000",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::consoleLog"
-                      },
-                      "parameters": [
-                        "",
-                        "\"Scrolling: \" + DialogueTree::BranchTitle()",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::Throttle"
-                      },
-                      "parameters": [
-                        "",
-                        "\"clipped_text\"",
-                        "40",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "DialogueTree::ScrollClippedText"
-                      },
-                      "parameters": [],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "srs_utils::BBTextContained::reveal"
-                          },
-                          "parameters": [
-                            "NPC_BBText",
-                            "BBTextContained",
-                            "DialogueTree::ClippedLineText()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "MouseButtonReleased"
-                      },
-                      "parameters": [
-                        "",
-                        "Left"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "DialogueTree::CompleteClippedTextScrolling"
-                      },
-                      "parameters": [],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "srs_utils::BBTextContained::reveal"
-                          },
-                          "parameters": [
-                            "NPC_BBText",
-                            "BBTextContained",
-                            "DialogueTree::LineText()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "Dialogue.State",
-                    "=",
-                    "\"end_line\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "srs_utils::HasLimitedTimer"
-                      },
-                      "parameters": [
-                        "",
-                        "\"line_pause\"",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::startLimitedTimer"
-                      },
-                      "parameters": [
-                        "",
-                        "\"line_pause\"",
-                        "srs_utils::ms(1)",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "Dialogue.LastLine",
-                            "=",
-                            "DialogueTree::ClippedLineText()"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"paused\""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "Dialogue.State",
-                    "=",
-                    "\"paused\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
               "events": [
                 {
                   "disabled": false,
@@ -4887,34 +4550,14 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "BuiltinCommonInstructions::Or"
+                        "value": "VarSceneTxt"
                       },
-                      "parameters": [],
-                      "subInstructions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "srs_utils::getLimitedTimerFraction(\"line_pause\")",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "MouseButtonReleased"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
-                          ],
-                          "subInstructions": []
-                        }
-                      ]
+                      "parameters": [
+                        "Dialogue.State",
+                        "=",
+                        "\"scrolling\""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "actions": [],
@@ -4928,19 +4571,10 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "DialogueTree::GoToNextLine"
-                          },
-                          "parameters": [],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "srs_utils::deleteLimitedTimer"
+                            "value": "Montre"
                           },
                           "parameters": [
-                            "",
-                            "\"line_pause\"",
+                            "NPC_BBText",
                             ""
                           ],
                           "subInstructions": []
@@ -4948,12 +4582,444 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ModVarSceneTxt"
+                            "value": "Cache"
                           },
                           "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"init\""
+                            "PC_BBText"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::BBTextContained::setText"
+                          },
+                          "parameters": [
+                            "NPC_BBText",
+                            "BBTextContained",
+                            "DialogueTree::LineText()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": true,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::Throttle"
+                          },
+                          "parameters": [
+                            "",
+                            "\"scroll log\"",
+                            "2000",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::consoleLog"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Scrolling: \" + DialogueTree::BranchTitle()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::Throttle"
+                          },
+                          "parameters": [
+                            "",
+                            "\"clipped_text\"",
+                            "40",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::ScrollClippedText"
+                          },
+                          "parameters": [],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "srs_utils::BBTextContained::reveal"
+                              },
+                              "parameters": [
+                                "NPC_BBText",
+                                "BBTextContained",
+                                "DialogueTree::ClippedLineText()",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "MouseButtonReleased"
+                          },
+                          "parameters": [
+                            "",
+                            "Left"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "DialogueTree::CompleteClippedTextScrolling"
+                          },
+                          "parameters": [],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "srs_utils::BBTextContained::reveal"
+                              },
+                              "parameters": [
+                                "NPC_BBText",
+                                "BBTextContained",
+                                "DialogueTree::LineText()",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Dialogue.State",
+                        "=",
+                        "\"end_line\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "srs_utils::HasLimitedTimer"
+                          },
+                          "parameters": [
+                            "",
+                            "\"line_pause\"",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::startLimitedTimer"
+                          },
+                          "parameters": [
+                            "",
+                            "\"line_pause\"",
+                            "srs_utils::ms(1)",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "Dialogue.LastLine",
+                                "=",
+                                "DialogueTree::ClippedLineText()"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "Dialogue.NextState",
+                                "=",
+                                "\"paused\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Dialogue.State",
+                        "=",
+                        "\"paused\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Egal"
+                              },
+                              "parameters": [
+                                "srs_utils::getLimitedTimerFraction(\"line_pause\")",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "DialogueTree::GoToNextLine"
+                              },
+                              "parameters": [],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "srs_utils::deleteLimitedTimer"
+                              },
+                              "parameters": [
+                                "",
+                                "\"line_pause\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "Dialogue.NextState",
+                                "=",
+                                "\"init\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": true,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "IsMouseWheelScrollingDown"
+                          },
+                          "parameters": [
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::BBTextContained::scroll"
+                          },
+                          "parameters": [
+                            "NPC_BBText",
+                            "BBTextContained",
+                            "\"down\"",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": true,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "IsMouseWheelScrollingUp"
+                          },
+                          "parameters": [
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::BBTextContained::scroll"
+                          },
+                          "parameters": [
+                            "NPC_BBText",
+                            "BBTextContained",
+                            "\"up\"",
+                            ""
                           ],
                           "subInstructions": []
                         }
@@ -4961,74 +5027,9 @@
                       "events": []
                     }
                   ]
-                },
-                {
-                  "disabled": true,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "IsMouseWheelScrollingDown"
-                      },
-                      "parameters": [
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::BBTextContained::scroll"
-                      },
-                      "parameters": [
-                        "NPC_BBText",
-                        "BBTextContained",
-                        "\"down\"",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": true,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "IsMouseWheelScrollingUp"
-                      },
-                      "parameters": [
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::BBTextContained::scroll"
-                      },
-                      "parameters": [
-                        "NPC_BBText",
-                        "BBTextContained",
-                        "\"up\"",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
                 }
-              ]
+              ],
+              "parameters": []
             },
             {
               "colorB": 228,
@@ -5121,27 +5122,6 @@
                       "subInstructions": []
                     }
                   ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarSceneTxt"
-                      },
-                      "parameters": [
-                        "Dialogue.State",
-                        "=",
-                        "\"prompting\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
                   "events": [
                     {
                       "disabled": false,
@@ -5177,91 +5157,237 @@
                       "disabled": false,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "MouseButtonReleased"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
+                      "conditions": [],
                       "actions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "babblebot::selectDialogueOptionByName"
+                            "value": "BBText::SetBBText"
                           },
                           "parameters": [
-                            "0",
-                            "\"next\"",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "Dialogue.NextState",
+                            "PC_BBText",
                             "=",
-                            "\"responding\""
+                            "babblebot::HandText()"
                           ],
                           "subInstructions": []
                         }
                       ],
                       "events": []
-                    },
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
                     {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarSceneTxt"
+                      },
+                      "parameters": [
+                        "Dialogue.State",
+                        "=",
+                        "\"prompting\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
                       "disabled": false,
                       "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
+                      "name": "Play a card",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
                         {
-                          "type": {
-                            "inverted": false,
-                            "value": "MouseButtonReleased"
-                          },
-                          "parameters": [
-                            "",
-                            "Right"
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "actions": [],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "babblebot::playCard"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"\"",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            },
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "babblebot::selectDialogueOptionByName"
+                                  },
+                                  "parameters": [
+                                    "0",
+                                    "\"next\"",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarSceneTxt"
+                                  },
+                                  "parameters": [
+                                    "Dialogue.NextState",
+                                    "=",
+                                    "\"responding\""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
                         }
                       ],
-                      "actions": [
+                      "parameters": []
+                    },
+                    {
+                      "colorB": 228,
+                      "colorG": 176,
+                      "colorR": 74,
+                      "creationTime": 0,
+                      "disabled": true,
+                      "folded": false,
+                      "name": "Debug - Just select dialogue options",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
                         {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::selectDialogueOptionByName"
-                          },
-                          "parameters": [
-                            "0",
-                            "\"transition\"",
-                            ""
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::selectDialogueOptionByName"
+                              },
+                              "parameters": [
+                                "0",
+                                "\"next\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "Dialogue.NextState",
+                                "=",
+                                "\"responding\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
                         },
                         {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"responding\""
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "Right"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::selectDialogueOptionByName"
+                              },
+                              "parameters": [
+                                "0",
+                                "\"transition\"",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarSceneTxt"
+                              },
+                              "parameters": [
+                                "Dialogue.NextState",
+                                "=",
+                                "\"responding\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
                         }
                       ],
-                      "events": []
+                      "parameters": []
                     }
                   ]
                 },
