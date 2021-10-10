@@ -59,7 +59,7 @@ describe('E2E', () => {
 			const encounter = Babblebot.encounter!
 			const dealer = encounter.dealer!
 
-			Babblebot.Lodash.range(1, 1001, 100).forEach(i => {
+			Babblebot.Lodash.range(1, 10 + 1).forEach(i => {
 				const card = dealer.peek('hand')[0]!
 
 				const fr = encounter.scoreTable[0]!
@@ -68,15 +68,17 @@ describe('E2E', () => {
 				expect(encounter.state).toBe('waiting')
 
 				const moodBefore = encounter.mood
+
+				const promptedMs = 100 * i
 				encounter.prompt({
-					title: `node_${i}`,
+					title: `neutral_${i}`,
 					featureReactions,
-					promptedMs: i,
+					promptedMs,
 				})
 
 				expect(encounter.state).toBe('prompting')
 
-				Babblebot.Lodash.range(1, i).forEach(t => {
+				Babblebot.Lodash.range(promptedMs, promptedMs + 10).forEach(t => {
 					encounter.tick(t)
 				})
 				encounter.playCard(card.uuid)
@@ -86,7 +88,12 @@ describe('E2E', () => {
 				encounter.draw(1)
 			})
 
-			Babblebot.encounter!.complete(10_000)
+			expect(encounter.peekNode()).toMatchObject({
+				quality: 'neutral',
+				step: 10,
+			})
+
+			encounter.complete(10_000)
 			expect(encounter.state).toBe('complete')
 			expect(Babblebot.encounter?.toUserData()?.completedAt).toEqual(10_000)
 		})

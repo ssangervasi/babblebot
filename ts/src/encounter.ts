@@ -1,6 +1,6 @@
 import Lodash from 'lodash'
 
-import { narrow, Guard, Payload } from 'narrow-minded'
+import { Guard, Payload } from 'narrow-minded'
 
 import { ScoreTable, calculateScore, CardTable, CardRow } from './cardScores'
 import {
@@ -14,36 +14,37 @@ import {
 	CardInstance,
 } from './dealer'
 import * as UserData from './userData'
-import { UUID } from './utils'
+import { UUID, isType } from './utils'
+import {
+	Quality,
+	DialogueNode,
+	DialogueNodePayload,
+	PromptNode,
+	PromptNodePayload,
+	parseDialogueNode,
+} from './dialogue'
 
-const isType = <T extends string>(t: T) => {
-	return (u: unknown): u is { type: T } =>
-		narrow({ type: 'string' }, u) && u.type === t
-}
+const Prompt = new Guard(isType('PROMPT'))
+	.and({
+		at: 'number',
+	})
+	.and(DialogueNode)
 
-const Prompt = Guard.narrow({
-	at: 'number',
-	nodeTitle: 'string',
-	featureReactions: 'string',
-}).and(isType('PROMPT'))
-
-const PlayCard = Guard.narrow({
+const PlayCard = new Guard(isType('PLAY_CARD')).and({
 	at: 'number',
 	cardFeatures: 'string',
 	featureReactions: 'string',
 	score: 'number',
 	moodBefore: 'number',
 	moodAfter: 'number',
-}).and(isType('PLAY_CARD'))
+})
 
-const Complete = Guard.narrow({
+const Complete = new Guard(isType('COMPLETE')).and({
 	at: 'number',
 	mood: 'number',
-}).and(isType('COMPLETE'))
+})
 
 type LogEntry = Payload<typeof Prompt | typeof PlayCard | typeof Complete>
-
-type Quality = 'good' | 'bad' | 'neutral'
 
 const MOOD_RANGES = {
 	bad: [-Infinity, -33],
@@ -56,13 +57,6 @@ const PLAY_RANGES = {
 	neutral: [-20, 20],
 	good: [20, Infinity],
 } as const
-
-interface DialogueNode {
-	title: string
-	featureReactions: string
-	promptedMs: number
-	tickedMs: number
-}
 
 const CONFIDENCE_DURATION_MS = 2_000
 
@@ -79,7 +73,7 @@ export class Encounter {
 	log: LogEntry[] = []
 	dealer = new Dealer()
 	mood = 1
-	currentNode?: DialogueNode
+	currentNode?: DialogueNodePayload
 
 	private _idToCard?: Map<string, CardRow>
 
@@ -145,6 +139,31 @@ export class Encounter {
 		return 'waiting'
 	}
 
+	peekNode(): DialogueNodePayload {
+		if (this.currentNode) {
+			return this.currentNode
+		}
+		const logEntry = Lodash.findLast(this.log, ({ type }) => type === 'PROMPT')
+		if (!(logEntry && logEntry.type === 'PROMPT')) {
+			return {
+				title: 'neutral_0',
+				quality: 'neutral',
+				step: 0,
+				featureReactions: '',
+				promptedMs: 0,
+				tickedMs: 0,
+			}
+		}
+		return {
+			title: logEntry.title,
+			quality: logEntry.quality,
+			step: logEntry.step,
+			featureReactions: logEntry.featureReactions,
+			promptedMs: logEntry.promptedMs,
+			tickedMs: logEntry.tickedMs,
+		}
+	}
+
 	private get idToCard(): Map<string, CardRow> {
 		if (!this._idToCard) {
 			this._idToCard = new Map(this.cardTable.map(row => [row.id, row]))
@@ -189,29 +208,17 @@ export class Encounter {
 		return drawn.length
 	}
 
-	prompt(node: Omit<DialogueNode, 'tickedMs'>) {
-		if (
-			!narrow(
-				{
-					title: 'string',
-					featureReactions: 'string',
-					promptedMs: 'number',
-				},
-				node,
-			)
-		) {
+	prompt(node: Payload<typeof PromptNode>) {
+		if (!PromptNode.satisfied(node)) {
 			throw Object.assign(new Error('Invalid node'), { node })
 		}
 
-		this.currentNode = {
-			...node,
-			tickedMs: node.promptedMs,
-		}
+		this.currentNode = parseDialogueNode(node)
+
 		this.log.push({
 			type: 'PROMPT',
-			nodeTitle: node.title,
-			featureReactions: node.featureReactions,
-			at: node.promptedMs,
+			at: this.currentNode.promptedMs,
+			...this.currentNode,
 		})
 	}
 
@@ -271,7 +278,7 @@ export class Encounter {
 		this.currentNode = undefined
 	}
 
-	calculateScore(cardFeatures: string, node: DialogueNode) {
+	calculateScore(cardFeatures: string, node: DialogueNodePayload) {
 		const baseScore = calculateScore(
 			cardFeatures,
 			node.featureReactions,
@@ -282,7 +289,7 @@ export class Encounter {
 		return baseScore + confidenceBoost
 	}
 
-	calculateConfidence({ promptedMs, tickedMs }: DialogueNode) {
+	calculateConfidence({ promptedMs, tickedMs }: DialogueNodePayload) {
 		return (
 			(CONFIDENCE_DURATION_MS -
 				Lodash.clamp(tickedMs - promptedMs, 0, CONFIDENCE_DURATION_MS)) /

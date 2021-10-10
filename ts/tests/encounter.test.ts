@@ -1,6 +1,10 @@
+import { DialogueNode } from '../src/dialogue'
 import { Encounter } from '../src/encounter'
 
 import * as Data from './data'
+
+const title = 'neutral_1'
+const featureReactions = 'agree_bad listen_good'
 
 const mockEncounter = () => {
 	const e = new Encounter({
@@ -15,11 +19,8 @@ const mockEncounter = () => {
 	})
 	return e
 }
-
 let enc = mockEncounter()
-const title = 'dialogue_node_title'
-const featureReactions = 'agree_bad listen_good'
-enc.prompt({ title, featureReactions, promptedMs: 1 })
+
 const getCard = () =>
 	enc.dealer.find({
 		features: 'agree listen',
@@ -40,12 +41,16 @@ describe('Action logging', () => {
 			{
 				type: 'PROMPT',
 				at: 1,
-				nodeTitle: title,
+				title,
+				quality: 'neutral',
+				step: 1,
 				featureReactions,
+				promptedMs: 1,
+				tickedMs: 1,
 			},
 		])
 	})
-	
+
 	it('inserts first card play log', () => {
 		enc.prompt({ title, featureReactions, promptedMs: 1 })
 		enc.tick(5_000)
@@ -200,5 +205,54 @@ describe('lastPlayQuality', () => {
 		enc.playCard(card.uuid)
 
 		expect(enc.lastPlayQuality).toEqual('bad')
+	})
+})
+
+describe('peekNode', () => {
+	it('returns neutral_0 if the log is empty', () => {
+		const expected = DialogueNode.build({
+			title: 'neutral_0',
+			quality: 'neutral',
+			step: 0,
+			featureReactions: '',
+			promptedMs: 0,
+			tickedMs: 0,
+		})
+		expect(enc.peekNode()).toEqual(expected)
+	})
+
+	it('returns the current node if prompting is in progress', () => {
+		enc.prompt({ title: 'good_1', featureReactions, promptedMs: 1 })
+
+		const expected = DialogueNode.build({
+			title: 'good_1',
+			quality: 'good',
+			step: 1,
+			featureReactions,
+			promptedMs: 1,
+			tickedMs: 1,
+		})
+		expect(enc.peekNode()).toEqual(expected)
+	})
+
+	it('returns the most recent node after several plays', () => {
+		enc.prompt({ title: 'good_1', featureReactions, promptedMs: 100 })
+		// This highlihgts that it's fine to resolve without playing a card.
+		// This might be a feature, or need to change.
+		enc.resolve()
+		enc.prompt({ title: 'good_2', featureReactions, promptedMs: 200 })
+		enc.resolve()
+		enc.prompt({ title: 'bad_1', featureReactions, promptedMs: 300 })
+		enc.resolve()
+
+		const expected = DialogueNode.build({
+			title: 'bad_1',
+			quality: 'bad',
+			step: 1,
+			featureReactions,
+			promptedMs: 300,
+			tickedMs: 300,
+		})
+		expect(enc.peekNode()).toEqual(expected)
 	})
 })
