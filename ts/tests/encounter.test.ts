@@ -160,6 +160,7 @@ describe('transition', () => {
 		'neutral_3',
 		'good_1',
 		'good_2',
+		'good_3',
 		'neutral_4',
 		'bad_1',
 		'bad_2',
@@ -173,17 +174,37 @@ describe('transition', () => {
 				...parseDialogueNode({ title, featureReactions, promptedMs: i * 1000 }),
 			})
 		})
-	})
 
-	it('reloads the last node matching the current quality', () => {
 		enc.prompt({
 			title: 'transition',
 			featureReactions,
 			promptedMs: precusors.length * 1000,
 		})
+	})
+
+	it('reloads the last node matching good quality', () => {
+		// Force mood to be "good"
+		enc.mood = 100
+		expect(enc.moodQuality).toBe('good')
+
 		enc.transition()
 		expect(enc.currentNode).toMatchObject({
-			title: precusors.slice(-1)[0],
+			title: 'good_3',
+			quality: 'good',
+			step: 3,
+		})
+	})
+
+	it('reloads the last node matching bad quality', () => {
+		// Force mood to be "good"
+		enc.mood = -100
+		expect(enc.moodQuality).toBe('bad')
+
+		enc.transition()
+		expect(enc.currentNode).toMatchObject({
+			title: 'bad_2',
+			quality: 'bad',
+			step: 2,
 		})
 	})
 })

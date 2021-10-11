@@ -144,24 +144,7 @@ export class Encounter {
 			return this.currentNode
 		}
 		const logEntry = Lodash.findLast(this.log, ({ type }) => type === 'PROMPT')
-		if (!(logEntry && logEntry.type === 'PROMPT')) {
-			return {
-				title: 'neutral_0',
-				quality: 'neutral',
-				step: 0,
-				featureReactions: '',
-				promptedMs: 0,
-				tickedMs: 0,
-			}
-		}
-		return {
-			title: logEntry.title,
-			quality: logEntry.quality,
-			step: logEntry.step,
-			featureReactions: logEntry.featureReactions,
-			promptedMs: logEntry.promptedMs,
-			tickedMs: logEntry.tickedMs,
-		}
+		return logEntryToDialogueNode(logEntry)
 	}
 
 	private get idToCard(): Map<string, CardRow> {
@@ -209,6 +192,13 @@ export class Encounter {
 	}
 
 	prompt(node: Payload<typeof PromptNode>) {
+		if (this.currentNode) {
+			console.warn(
+				`Cannot prompt when already in node "${this.currentNode.title}"`,
+			)
+			return
+		}
+
 		if (!PromptNode.satisfied(node)) {
 			throw Object.assign(new Error('Invalid node'), { node })
 		}
@@ -268,6 +258,11 @@ export class Encounter {
 	}
 
 	resolve() {
+		if (!this.currentNode) {
+			console.warn('Cannot resolve when there is no current node.')
+			return
+		}
+
 		this.dealer.peek(PLAY, 'all').forEach(({ uuid }) => {
 			this.dealer.move({
 				uuid,
@@ -279,10 +274,18 @@ export class Encounter {
 	}
 
 	transition() {
-		if (this.currentNode) {
-			const a = this.currentNode.step
-			console.log(a)
+		if (this.currentNode?.step !== 'transition') {
+			console.warn(
+				`Cannot transition while in non-transition node ${this.currentNode?.title}.`,
+			)
+			return
 		}
+
+		const logEntry = Lodash.findLast(
+			this.log,
+			entry => entry.type === 'PROMPT' && entry.quality === this.moodQuality,
+		)
+		this.currentNode = logEntryToDialogueNode(logEntry)
 	}
 
 	calculateScore(cardFeatures: string, node: DialogueNodePayload) {
@@ -310,5 +313,26 @@ export class Encounter {
 			at: completeMs,
 			mood: this.mood,
 		})
+	}
+}
+
+const logEntryToDialogueNode = (logEntry?: LogEntry): DialogueNodePayload => {
+	if (!(logEntry && logEntry.type === 'PROMPT')) {
+		return {
+			title: 'neutral_0',
+			quality: 'neutral',
+			step: 0,
+			featureReactions: '',
+			promptedMs: 0,
+			tickedMs: 0,
+		}
+	}
+	return {
+		title: logEntry.title,
+		quality: logEntry.quality,
+		step: logEntry.step,
+		featureReactions: logEntry.featureReactions,
+		promptedMs: logEntry.promptedMs,
+		tickedMs: logEntry.tickedMs,
 	}
 }
