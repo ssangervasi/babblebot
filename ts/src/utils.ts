@@ -28,3 +28,6 @@ export const isType = <T extends string>(t: T) => {
 	return (u: unknown): u is { type: T } =>
 		narrow({ type: 'string' }, u) && u.type === t
 }
+
+export const splitList = (str: string): string[] =>
+	str.split(/(\s+|\s*,\s*)/).filter(s => s.length > 0)

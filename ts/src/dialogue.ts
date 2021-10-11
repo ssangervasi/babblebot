@@ -1,14 +1,19 @@
-import { Guard, Payload } from 'narrow-minded'
+import { Guard, Payload, some } from 'narrow-minded'
+
+export const QUALITIES = ['good', 'neutral', 'bad'] as const
+export type Quality = typeof QUALITIES[number]
+export type Step = number | 'start' | 'end' | 'transition'
 
 export const DialogueNode = Guard.narrow({
 	title: 'string',
 	quality: 'string',
-	step: 'number',
+	step: some('number', 'string'),
 	featureReactions: 'string',
 	promptedMs: 'number',
 	tickedMs: 'number',
-}).and((u): u is { quality: Quality } =>
-	QUALITIES.includes((u as any).quality as Quality),
+}).and(
+	(u: any): u is { quality: Quality; step: Step } =>
+		u.quality === parseQuality(u.quality) && u.step === parseStep(u.step),
 )
 export type DialogueNodePayload = Payload<typeof DialogueNode>
 
@@ -24,8 +29,10 @@ export const parseDialogueNode = (
 ): DialogueNodePayload => {
 	const { title, promptedMs } = promptNode
 
-	const quality = parseQuality(title)
-	const step = parseStep(title)
+	const parts = title.split('_')
+
+	const quality = parseQuality(parts[0])
+	const step = parseStep(parts[1] || parts[0])
 
 	return {
 		...promptNode,
@@ -36,25 +43,21 @@ export const parseDialogueNode = (
 	}
 }
 
-const parseQuality = (title: string): Quality => {
-	const qualityStr = title.split('_')[0]!
-	const quality = qualityStr as Quality
+const parseQuality = (maybeQuality?: string): Quality => {
+	const quality = maybeQuality as Quality
 	if (!QUALITIES.includes(quality)) {
-		console.warn('Dialogue title does not include a quality', title)
 		return 'neutral'
 	}
 	return quality
 }
 
-const parseStep = (title: string): number => {
-	const stepStr = title.split('_')[1]!
-	const step = Number(stepStr)
+const parseStep = (maybeStep?: string | number): Step => {
+	if (['start', 'end', 'transition'].includes(maybeStep as string)) {
+		return maybeStep as Step
+	}
+	const step = Number(maybeStep)
 	if (Number.isNaN(step)) {
-		console.warn('Dialogue title does not include a step', title)
-		return 1
+		return 0
 	}
 	return step
 }
-
-export const QUALITIES = ['good', 'neutral', 'bad'] as const
-export type Quality = typeof QUALITIES[number]

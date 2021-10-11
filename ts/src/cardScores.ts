@@ -2,6 +2,7 @@ import csvParse from 'csv-parse/lib/sync'
 
 import _SCORE_TABLE from './scoreTable.json'
 import _CARD_TABLE from './cards.json'
+import { splitList } from './utils'
 
 export const SCORE_TABLE = _SCORE_TABLE
 export const CARD_TABLE = _CARD_TABLE
@@ -137,9 +138,6 @@ export const calculateScore = (
 	})
 	return scoreSum
 }
-
-export const splitList = (str: string): string[] =>
-	str.split(/(\s+|\s*,\s*)/).filter(s => s.length > 0)
 
 export const reactionSplit = (joined: string): FeatureReaction => {
 	const pair = joined.split('_')

@@ -1,6 +1,6 @@
 [
 	{
-		"title": "neutral_0",
+		"title": "start",
 		"tags": "",
 		"body": "Hey! I'm Amy.\nIt's really nice to meet you.\n\n[[neutral_1]]",
 		"position": {
@@ -252,7 +252,7 @@
 	{
 		"title": "good_9",
 		"tags": "agree_good disagree_bad flattery_good aggression_good nonsequitor_bad",
-		"body": "I had a really great time tonight.\nI hope we can see each other again soon.\nYou know, I'm going to a wedding on Gorpulon IV in a few weeks. Maybe if this keeps going well, you can be my plus one.\n\n\n[[next|good_10]]\n[[transition|transition]]",
+		"body": "I had a really great time tonight.\nI hope we can see each other again soon.\nYou know, I'm going to a wedding on Gorpulon IV in a few weeks. Maybe if this keeps going well, you can be my plus one.\n\n\n[[next|good_end]]\n[[transition|transition]]",
 		"position": {
 			"x": -6852,
 			"y": -10615
@@ -262,7 +262,7 @@
 	{
 		"title": "neutral_9",
 		"tags": "agree_good disagree_bad listen_good",
-		"body": "This was pretty fun.\nThanks for taking me out tonight.\nShould I reach for the check?\n\n\n[[next|neutral_10]]\n[[transition|transition]]",
+		"body": "This was pretty fun.\nThanks for taking me out tonight.\nShould I reach for the check?\n\n\n[[next|neutral_end]]\n[[transition|transition]]",
 		"position": {
 			"x": -6556,
 			"y": -10615
@@ -272,7 +272,7 @@
 	{
 		"title": "bad_9",
 		"tags": "agree_good listen_good disagree_good",
-		"body": "You know what?\nI think I'm getting a phone call.\nI just remembered I was supposed to pick my ex up at the spaceport!\n\n\n[[next|bad_10]]\n[[transition|transition]]",
+		"body": "You know what?\nI think I'm getting a phone call.\nI just remembered I was supposed to pick my ex up at the spaceport!\n\n\n[[next|bad_end]]\n[[transition|transition]]",
 		"position": {
 			"x": -6257,
 			"y": -10620
@@ -281,11 +281,41 @@
 	},
 	{
 		"title": "transition",
-		"tags": "",
-		"body": "Anyway...\n",
+		"tags": "transition",
+		"body": "// Using transition as a tag in case different transitions would be more suitable for\n// bad -> neutral vs good -> bad, etc.\nAnyway...",
 		"position": {
 			"x": -7535,
 			"y": -11921
+		},
+		"colorID": 0
+	},
+	{
+		"title": "good_end",
+		"tags": "",
+		"body": "I had a really great time tonight!\nI look forward to seeing you again 😉",
+		"position": {
+			"x": -6862,
+			"y": -10333
+		},
+		"colorID": 0
+	},
+	{
+		"title": "neutral_end",
+		"tags": "",
+		"body": "This was pretty fun. I'll message you when I'm back in the system. Maybe we'll meet up again.",
+		"position": {
+			"x": -6556,
+			"y": -10339
+		},
+		"colorID": 0
+	},
+	{
+		"title": "bad_end",
+		"tags": "",
+		"body": "Good luck with your future Dockr dates. I hope you find someone who can keep up with you!",
+		"position": {
+			"x": -6257,
+			"y": -10335
 		},
 		"colorID": 0
 	}
