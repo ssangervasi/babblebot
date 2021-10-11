@@ -1,4 +1,4 @@
-import { DialogueNode } from '../src/dialogue'
+import { DialogueNode, parseDialogueNode } from '../src/dialogue'
 import { Encounter } from '../src/encounter'
 
 import * as Data from './data'
@@ -149,6 +149,41 @@ describe('resolve', () => {
 		expect(sizesAfter).toEqual({
 			play: 0,
 			discard: 1,
+		})
+	})
+})
+
+describe('transition', () => {
+	const precusors = [
+		'neutral_1',
+		'neutral_2',
+		'neutral_3',
+		'good_1',
+		'good_2',
+		'neutral_4',
+		'bad_1',
+		'bad_2',
+	]
+	beforeEach(() => {
+		// Disregarding the fact there are no card or transition entries.
+		precusors.forEach((title, i) => {
+			enc.log.push({
+				type: 'PROMPT',
+				at: i * 1000,
+				...parseDialogueNode({ title, featureReactions, promptedMs: i * 1000 }),
+			})
+		})
+	})
+
+	it('reloads the last node matching the current quality', () => {
+		enc.prompt({
+			title: 'transition',
+			featureReactions,
+			promptedMs: precusors.length * 1000,
+		})
+		enc.transition()
+		expect(enc.currentNode).toMatchObject({
+			title: precusors.slice(-1)[0],
 		})
 	})
 })

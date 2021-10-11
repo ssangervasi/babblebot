@@ -278,6 +278,13 @@ export class Encounter {
 		this.currentNode = undefined
 	}
 
+	transition() {
+		if (this.currentNode) {
+			const a = this.currentNode.step
+			console.log(a)
+		}
+	}
+
 	calculateScore(cardFeatures: string, node: DialogueNodePayload) {
 		const baseScore = calculateScore(
 			cardFeatures,
