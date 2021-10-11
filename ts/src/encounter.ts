@@ -130,11 +130,11 @@ export class Encounter {
 	}
 
 	get state(): State {
-		if (this.currentNode) {
-			return 'prompting'
-		}
 		if (this.completedAt) {
 			return 'complete'
+		}
+		if (this.currentNode) {
+			return 'prompting'
 		}
 		return 'waiting'
 	}
