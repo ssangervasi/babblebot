@@ -649,31 +649,6 @@
   ],
   "objects": [
     {
-      "bold": false,
-      "italic": false,
-      "name": "NPC_Old",
-      "smoothed": true,
-      "tags": "",
-      "type": "TextObject::Text",
-      "underlined": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Tween",
-          "type": "Tween::TweenBehavior"
-        }
-      ],
-      "string": "Nothing said yet",
-      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
-      "characterSize": 70,
-      "color": {
-        "b": 48,
-        "g": 5,
-        "r": 34
-      }
-    },
-    {
       "name": "NPC_BBText",
       "tags": "",
       "type": "BBText::BBText",
@@ -714,26 +689,6 @@
         "b": 0,
         "g": 0,
         "r": 0
-      }
-    },
-    {
-      "bold": false,
-      "italic": false,
-      "name": "PC_Old",
-      "smoothed": true,
-      "tags": "",
-      "type": "TextObject::Text",
-      "underlined": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "string": "No response",
-      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
-      "characterSize": 70,
-      "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
       }
     },
     {
@@ -878,9 +833,9 @@
       "font": "assets\\fonts\\pro-pixie-font\\ProcrastinatingPixie-WyVOO.ttf",
       "characterSize": 25,
       "color": {
-        "b": 253,
-        "g": 218,
-        "r": 251
+        "b": 250,
+        "g": 244,
+        "r": 250
       }
     },
     {
@@ -2841,7 +2796,7 @@
                       },
                       "parameters": [
                         "",
-                        "babblebot::NextEncounter()",
+                        "\"Amy1\"",
                         ""
                       ],
                       "subInstructions": []
@@ -3909,7 +3864,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Confidence",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4016,201 +3971,21 @@
                 "ConfidenceFill.Variable(OriginalWidth) * Variable(Encounter.Confidence)"
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "MettreX"
+              },
+              "parameters": [
+                "ConfidenceFill",
+                "=",
+                "ConfidenceFill.Variable(LeftX) + ConfidenceFill.Variable(OriginalWidth) -  ConfidenceFill.Width()"
+              ],
+              "subInstructions": []
             }
           ],
           "events": []
-        },
-        {
-          "colorB": 228,
-          "colorG": 176,
-          "colorR": 74,
-          "creationTime": 0,
-          "disabled": true,
-          "folded": true,
-          "name": "Conf Meter Empty",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "SelectionState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Tween::AddObjectScaleXTween"
-                      },
-                      "parameters": [
-                        "ConfidenceFill",
-                        "Tween",
-                        "\"confidence\"",
-                        "0",
-                        "\"linear\"",
-                        "5000",
-                        ""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarScene"
-                      },
-                      "parameters": [
-                        "Confidence",
-                        "=",
-                        "1"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "colorB": 228,
-          "colorG": 176,
-          "colorR": 74,
-          "creationTime": 0,
-          "disabled": true,
-          "folded": true,
-          "name": "Conf Meter Pause",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarSceneTxt"
-                  },
-                  "parameters": [
-                    "SelectionState",
-                    "=",
-                    "\"selected\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Tween::IsPlaying"
-                      },
-                      "parameters": [
-                        "ConfidenceFill",
-                        "Tween",
-                        "\"confidence\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Tween::PauseTween"
-                      },
-                      "parameters": [
-                        "ConfidenceFill",
-                        "Tween",
-                        "\"confidence\""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarScene"
-                      },
-                      "parameters": [
-                        "Confidence",
-                        "=",
-                        "1 - ConfidenceFill.Tween::Progress(\"confidence\")"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Tween::StopTween"
-                      },
-                      "parameters": [
-                        "ConfidenceFill",
-                        "Tween",
-                        "\"confidence\"",
-                        ""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Tween::RemoveTween"
-                      },
-                      "parameters": [
-                        "ConfidenceFill",
-                        "Tween",
-                        "\"confidence\""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ChangeScaleWidth"
-                      },
-                      "parameters": [
-                        "ConfidenceFill",
-                        "=",
-                        "1"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
-            }
-          ],
-          "parameters": []
         }
       ],
       "parameters": []
@@ -4221,7 +3996,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Dialog",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4788,14 +4563,14 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": true,
+              "folded": false,
               "name": "NPC speaking states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
                   "disabled": false,
-                  "folded": true,
+                  "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -5288,7 +5063,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": true,
+              "folded": false,
               "name": "PC response states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
