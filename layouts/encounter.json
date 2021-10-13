@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.564,
+    "zoomFactor": 0.624,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -661,7 +661,7 @@
         }
       ],
       "content": {
-        "text": "Line 1\nLine 2\nLine 3\nLine 4",
+        "text": "1 Non-Player Character BBText\n2 Non-Player Character BBText\n3 Non-Player Character BBText\n4 Non-Player Character BBText",
         "opacity": 255,
         "fontSize": 70,
         "visible": true,
@@ -704,10 +704,10 @@
         }
       ],
       "content": {
-        "text": "Player Character BBText\nPlayer Character BBText Player Character\nBBText Player Character BBText\nBBText Player Character BBText",
+        "text": "1 Player Character BBText\n2 Player Character BBText\n3 Player Character BBText\n4 Player Character BBText",
         "opacity": 255,
         "fontSize": 70,
-        "visible": false,
+        "visible": true,
         "color": "255;255;255",
         "fontFamily": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
         "align": "left",
