@@ -1827,7 +1827,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const sceneVariableName = eventsFunctionContext.getArgument(\"SceneVariable\")\n    const vars = runtimeScene.getVariables()\n    const currentVar = vars.get(sceneVariableName)\n    const prevVar = vars.get(`PREVIOUS__${sceneVariableName}`)\n    const currentValue = currentVar.getValue()\n    if (currentValue === prevVar.getValue()) {\n        return false\n    }\n    \n    prevVar._type = currentVar.getType()\n    prevVar.setValue(currentValue)\n    return true\n})()\n",
+          "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const vars = runtimeScene.getVariables()\n    /** @type {string} */\n    const sceneVariableName = eventsFunctionContext.getArgument('SceneVariable')\n\n    const parts = sceneVariableName.split('.')\n    const rootName = parts.shift()\n    const rootVar = vars.get(rootName)\n    const currentVar = parts.reduce((parentVar, childName) => parentVar.getChild(childName), rootVar)\n\n    const prevVar = vars.get(`PREVIOUS.${sceneVariableName}`)\n\n    const currentValue = currentVar.getValue()\n    if (currentValue === prevVar.getValue()) {\n        return false\n    }\n\n    console.log('changed!', { rootName, sceneVariableName, parts, currentVar, prevVar})\n    \n    prevVar._type = currentVar.getType()\n    prevVar.setValue(currentValue)\n    return true\n})()\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": true

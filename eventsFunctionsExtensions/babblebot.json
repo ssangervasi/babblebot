@@ -138,8 +138,34 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarSceneTxt"
+              },
+              "parameters": [
+                "UserDataError",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "UserDataJsonIn",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            }
+          ],
           "events": []
         }
       ],
@@ -239,6 +265,27 @@
                   },
                   "parameters": [
                     "\"UserData\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "UserDataJsonOut",
+                    "=",
+                    "\"\""
                   ],
                   "subInstructions": []
                 }
@@ -380,7 +427,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const { log } = ssangervasi;\r\n\r\nconst vars = runtimeScene.getVariables()\r\nconst encounterVar = vars.get('Encounter')\r\nencounterVar.clearChildren()\r\n\r\nlet encounterObj = {\r\n    SceneName: '',\r\n    StartedAt: 0,\r\n    MoodQuality: '',\r\n    Confidence: 1,\r\n    State: '',\r\n    Node: {\r\n        Title: '',\r\n        Quality: '',\r\n        Step: ''\r\n    }\r\n}\r\n\r\nconst encounter = Babblebot.encounter;\r\nif (encounter) {\r\n    const dialogueNode = encounter.peekNode()\r\n    encounterObj = {\r\n        SceneName: encounter.session.sceneName,\r\n        StartedAt: encounter.session.startedAt,\r\n        MoodQuality: encounter.moodQuality,\r\n        Confidence: encounter.confidence,\r\n        State: encounter.state,\r\n        Node: {\r\n            Title: dialogueNode.title,\r\n            Quality: dialogueNode.quality,\r\n            Step: dialogueNode.step,\r\n        }\r\n    }\r\n}\r\n\r\nencounterVar.fromJSObject(encounterObj)\r\n\r\n// log(encounterVar)\r\n\r\n// encounterVar.getChild('CreatedAt').setNumber(createdAt)\r\n// encounterVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
+          "inlineCode": "const { log } = ssangervasi;\r\n\r\nconst vars = runtimeScene.getVariables()\r\nconst encounterVar = vars.get('Encounter')\r\nencounterVar.clearChildren()\r\n\r\nlet encounterObj = {\r\n    SceneName: '',\r\n    StartedAt: 0,\r\n    MoodQuality: '',\r\n    Mood: 0,\r\n    Confidence: 1,\r\n    State: '',\r\n    Node: {\r\n        Title: '',\r\n        Quality: '',\r\n        Step: ''\r\n    }\r\n}\r\n\r\nconst encounter = Babblebot.encounter;\r\nif (encounter) {\r\n    const dialogueNode = encounter.peekNode()\r\n    encounterObj = {\r\n        SceneName: encounter.session.sceneName,\r\n        StartedAt: encounter.session.startedAt,\r\n        MoodQuality: encounter.moodQuality,\r\n        Mood: encounter.mood,\r\n        Confidence: encounter.confidence,\r\n        State: encounter.state,\r\n        Node: {\r\n            Title: dialogueNode.title,\r\n            Quality: dialogueNode.quality,\r\n            Step: dialogueNode.step,\r\n        }\r\n    }\r\n}\r\n\r\nencounterVar.fromJSObject(encounterObj)\r\n\r\n// log(encounterVar)\r\n\r\n// encounterVar.getChild('CreatedAt').setNumber(createdAt)\r\n// encounterVar.getChild('CreatedDate').setString(Babblebot.Utils.formatDate(createdAt))\r\n",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": true
