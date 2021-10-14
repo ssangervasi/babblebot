@@ -802,6 +802,15 @@
         "metadata": "",
         "name": "assets\\encounters\\Amy1\\dialogue.json",
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/card/front.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\card\\front.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []

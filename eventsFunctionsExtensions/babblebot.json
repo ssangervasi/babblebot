@@ -1254,6 +1254,35 @@
         }
       ],
       "objectGroups": []
+    },
+    {
+      "description": "UUID",
+      "fullName": "UUID",
+      "functionType": "StringExpression",
+      "name": "UUID",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "eventsFunctionContext.returnValue = Babblebot.Utils.makeUuid()\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
     }
   ],
   "eventsBasedBehaviors": [
@@ -1324,6 +1353,262 @@
               "name": "Behavior",
               "optional": false,
               "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "manageFront",
+          "fullName": "manageFront",
+          "functionType": "Action",
+          "name": "manageFront",
+          "private": false,
+          "sentence": "_PARAM0_ manageFront text=_PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                  },
+                  "parameters": [
+                    "",
+                    "BBText",
+                    "Object",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "BBText",
+                        "Object.X()",
+                        "Object.X()",
+                        "Object.Layer()"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "LinkedObjects::LinkObjects"
+                      },
+                      "parameters": [
+                        "",
+                        "Object",
+                        "BBText"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "BBText::SetWrappingWidth"
+                          },
+                          "parameters": [
+                            "BBText",
+                            "=",
+                            "Object.Width()"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::BBTextContained::setText"
+                          },
+                          "parameters": [
+                            "BBText",
+                            "BBTextContained",
+                            "Object.Behavior::Text()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                  },
+                  "parameters": [
+                    "",
+                    "BBText",
+                    "Object",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreAutour"
+                      },
+                      "parameters": [
+                        "BBText",
+                        "Object",
+                        "0",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Card::IsFaceUp"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Montre"
+                      },
+                      "parameters": [
+                        "BBText",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "babblebot::Card::IsFaceUp"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Cache"
+                      },
+                      "parameters": [
+                        "BBText"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "BBText",
+              "longDescription": "",
+              "name": "BBText",
+              "optional": false,
+              "supplementaryInformation": "BBText::BBText",
+              "type": "objectList"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "BBTextContained",
+              "longDescription": "",
+              "name": "BBTextContained",
+              "optional": false,
+              "supplementaryInformation": "srs_utils::BBTextContained",
               "type": "behavior"
             }
           ],
@@ -1629,6 +1914,267 @@
           "objectGroups": []
         },
         {
+          "description": "faceUp",
+          "fullName": "faceUp",
+          "functionType": "Action",
+          "name": "faceUp",
+          "private": false,
+          "sentence": "_PARAM0_ faceUp",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetAnimationName"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Object.Behavior::Id()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "AnimationName"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Object.Behavior::Id()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetAnimationName"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"give_compliment\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::consoleLog"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Failed animation: \" + Object.Behavior::Id()",
+                    "1",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "faceDown",
+          "fullName": "faceDown",
+          "functionType": "Action",
+          "name": "faceDown",
+          "private": false,
+          "sentence": "_PARAM0_ faceDown",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetAnimationName"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"Back\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "select",
+          "fullName": "select",
+          "functionType": "Action",
+          "name": "select",
+          "private": false,
+          "sentence": "_PARAM0_ select",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "SelectionState",
+                    "=",
+                    "\"selected\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "deselect",
+          "fullName": "deselect",
+          "functionType": "Action",
+          "name": "deselect",
+          "private": false,
+          "sentence": "_PARAM0_ deselect",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "SelectionState",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "SetInstanceId",
           "fullName": "SetInstanceId",
           "functionType": "Action",
@@ -1724,6 +2270,116 @@
               "optional": false,
               "supplementaryInformation": "",
               "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "_PARAM_0 Id",
+          "fullName": "Id",
+          "functionType": "StringExpression",
+          "name": "Id",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Id",
+                        "=",
+                        "\"0\""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Id",
+                        "=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::consoleLog"
+                  },
+                  "parameters": [
+                    "",
+                    "\"oh no a card without an id. instance id: \" + ToString(Object.Behavior::InstanceId())",
+                    "2",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Object.VariableString(Id)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
             }
           ],
           "objectGroups": []
@@ -1875,157 +2531,6 @@
           "objectGroups": []
         },
         {
-          "description": "faceDown",
-          "fullName": "faceDown",
-          "functionType": "Action",
-          "name": "faceDown",
-          "private": false,
-          "sentence": "_PARAM0_ faceDown",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Object",
-                    "\"Back\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "faceUp",
-          "fullName": "faceUp",
-          "functionType": "Action",
-          "name": "faceUp",
-          "private": false,
-          "sentence": "_PARAM0_ faceUp",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Object.Behavior::Id()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "AnimationName"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Object.Behavior::Id()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Object",
-                    "\"give_compliment\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Failed animation: \" + Object.Behavior::Id()",
-                    "1",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
           "description": "IsFaceUp",
           "fullName": "IsFaceUp",
           "functionType": "Condition",
@@ -2077,116 +2582,6 @@
                   },
                   "parameters": [
                     "False"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "deselect",
-          "fullName": "deselect",
-          "functionType": "Action",
-          "name": "deselect",
-          "private": false,
-          "sentence": "_PARAM0_ deselect",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "SelectionState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "select",
-          "fullName": "select",
-          "functionType": "Action",
-          "name": "select",
-          "private": false,
-          "sentence": "_PARAM0_ select",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "SelectionState",
-                    "=",
-                    "\"selected\""
                   ],
                   "subInstructions": []
                 }
@@ -2272,116 +2667,6 @@
                   },
                   "parameters": [
                     "True"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "_PARAM_0 Id",
-          "fullName": "Id",
-          "functionType": "StringExpression",
-          "name": "Id",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "Id",
-                        "=",
-                        "\"0\""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "Id",
-                        "=",
-                        "\"\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"oh no a card without an id. instance id: \" + ToString(Object.Behavior::InstanceId())",
-                    "2",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnString"
-                  },
-                  "parameters": [
-                    "Object.VariableString(Id)"
                   ],
                   "subInstructions": []
                 }
@@ -2576,37 +2861,6 @@
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastDrawnInstanceId",
-                    "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [deck] = objects\ndeck.cardInstanceIds = []",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
               "actions": [],
               "events": []
             }
@@ -2646,59 +2900,10 @@
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "BuildIndex",
-                    "=",
-                    "0"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
               "type": "BuiltinCommonInstructions::ForEach",
               "object": "CardObject",
               "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Card::SetInstanceId"
-                  },
-                  "parameters": [
-                    "CardObject",
-                    "CardBehavior",
-                    "Object.Variable(BuildIndex)",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "BuildIndex",
-                    "+",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
+              "actions": [],
               "events": [
                 {
                   "disabled": false,
@@ -3092,7 +3297,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [deck] = objects\ndeck.cardInstanceIds = global.Babblebot.Lodash.shuffle(deck.cardInstanceIds)",
+              "inlineCode": "Babblebot.encounter.dealer.shuffle('deck')",
               "parameterObjects": "Object",
               "useStrict": true,
               "eventsSheetExpanded": false
@@ -3147,58 +3352,6 @@
           "objectGroups": []
         },
         {
-          "description": "LastDrawnInstanceId",
-          "fullName": "LastDrawnInstanceId",
-          "functionType": "Expression",
-          "name": "LastDrawnInstanceId",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(LastDrawnInstanceId)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
           "description": "Size",
           "fullName": "Size",
           "functionType": "Expression",
@@ -3210,7 +3363,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [deck] = objects\neventsFunctionContext.returnValue = deck.cardInstanceIds.length",
+              "inlineCode": "Babblebot.encounter.dealer.peek('deck', 'all').length\n",
               "parameterObjects": "Object",
               "useStrict": true,
               "eventsSheetExpanded": false
@@ -3261,17 +3414,51 @@
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
-              "actions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
               "events": []
             },
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [deck] = objects\neventsFunctionContext.returnValue = (deck.cardInstanceIds.length === 0)",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Egal"
+                  },
+                  "parameters": [
+                    "Object.Behavior::Size()",
+                    "=",
+                    "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ],
           "parameters": [
@@ -3294,6 +3481,66 @@
               "optional": false,
               "supplementaryInformation": "babblebot::Deck",
               "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "contains",
+          "fullName": "contains",
+          "functionType": "Condition",
+          "name": "Contains",
+          "private": false,
+          "sentence": "_PARAM0_ contains uuid=_PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    const uuid = eventsFunctionContext.getArgument('UUID')\r\n    const found = Babblebot.encounter.dealer.find({\r\n        uuid,\r\n        from: 'deck',\r\n    })\r\n    return Boolean(found)\r\n})()",
+              "parameterObjects": "Object",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Deck",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "UUID",
+              "longDescription": "",
+              "name": "UUID",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "string"
             }
           ],
           "objectGroups": []
@@ -3333,19 +3580,6 @@
                     "\"init\""
                   ],
                   "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastPlayedId",
-                    "=",
-                    "\"\""
-                  ],
-                  "subInstructions": []
                 }
               ],
               "events": []
@@ -3359,79 +3593,31 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastDrawnInstanceId",
-                    "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastPlayedInstanceId",
-                    "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
+                    "value": "ModVarObjetTxt"
                   },
                   "parameters": [
                     "Object",
                     "SelectedInstanceId",
                     "=",
-                    "-1"
+                    "\"\""
                   ],
                   "subInstructions": []
                 },
                 {
                   "type": {
                     "inverted": false,
-                    "value": "ModVarObjet"
+                    "value": "ModVarObjetTxt"
                   },
                   "parameters": [
                     "Object",
                     "RequestedInstanceId",
                     "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Size",
-                    "=",
-                    "0"
+                    "\"\""
                   ],
                   "subInstructions": []
                 }
               ],
               "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "const [hand] = objects\nhand.cardInstanceIds = []",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
             }
           ],
           "parameters": [
@@ -3459,100 +3645,18 @@
           "objectGroups": []
         },
         {
-          "description": "drawFrom",
-          "fullName": "drawFrom",
+          "description": "fitIntoSlots",
+          "fullName": "fitIntoSlots",
           "functionType": "Action",
-          "name": "drawFrom",
+          "name": "fitIntoSlots",
           "private": false,
-          "sentence": "_PARAM0_ draw _PARAM2_ from _PARAM4_",
+          "sentence": "_PARAM0_ fitIntoSlots _PARAM2_ _PARAM4_",
           "events": [
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "PlaySoundCanal"
-                  },
-                  "parameters": [
-                    "",
-                    "assets\\sound\\Cards 3-Draw 1.wav",
-                    "1",
-                    "",
-                    "100",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "OriginalSize",
-                    "=",
-                    "Object.Behavior::Size()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Deck::drawCard"
-                  },
-                  "parameters": [
-                    "DeckObject",
-                    "DeckBehavior",
-                    "CardObject",
-                    "CardBehavior",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastDrawnInstanceId",
-                    "=",
-                    "DeckObject.DeckBehavior::LastDrawnInstanceId()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "CardObject",
+              "object": "SlotObject",
               "conditions": [],
               "actions": [],
               "events": [
@@ -3564,13 +3668,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "babblebot::Card::IsInstance"
+                        "value": "StrEqual"
                       },
                       "parameters": [
-                        "CardObject",
-                        "CardBehavior",
-                        "Object.Behavior::LastDrawnInstanceId()",
-                        ""
+                        "SlotObject.SlotBehavior::SlottedInstanceId()",
+                        "=",
+                        "Object.Behavior::LastPlayedInstanceId()"
                       ],
                       "subInstructions": []
                     }
@@ -3579,23 +3682,11 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "LinkedObjects::LinkObjects"
+                        "value": "babblebot::Slot::removeCard"
                       },
                       "parameters": [
-                        "",
-                        "Object",
-                        "CardObject"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "babblebot::Card::faceUp"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "CardBehavior",
+                        "SlotObject",
+                        "SlotBehavior",
                         ""
                       ],
                       "subInstructions": []
@@ -3604,21 +3695,6 @@
                   "events": []
                 }
               ]
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 109,
-                "g": 230,
-                "r": 255,
-                "textB": 0,
-                "textG": 0,
-                "textR": 0
-              },
-              "comment": "Re-eval size",
-              "comment2": ""
             },
             {
               "disabled": false,
@@ -3638,110 +3714,182 @@
                   "subInstructions": []
                 }
               ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Size",
-                    "=",
-                    "Count(CardObject)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Egal"
-                  },
-                  "parameters": [
-                    "Object.Variable(OriginalSize)",
-                    ">=",
-                    "Object.Behavior::Size()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Drawing card - size went from \" + ToString(Object.Variable(OriginalSize)) + \" to \" + ToString(Object.Behavior::Size())",
-                    "1",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
               "actions": [],
-              "events": []
-            },
-            {
-              "colorB": 228,
-              "colorG": 176,
-              "colorR": 74,
-              "creationTime": 0,
-              "disabled": true,
-              "folded": false,
-              "name": "DEP",
-              "source": "",
-              "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
                   "disabled": true,
-                  "folded": true,
+                  "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::consoleLog"
+                      },
+                      "parameters": [
+                        "",
+                        "\"slot - linked cards: \" + ToString(Count(CardObject))",
+                        "0",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "CardObject",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "babblebot::Card::IsInstance"
+                      },
+                      "parameters": [
+                        "CardObject",
+                        "CardBehavior",
+                        "Object.Behavior::RequestedInstanceId()",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
                   "actions": [],
                   "events": [
                     {
-                      "colorB": 228,
-                      "colorG": 176,
-                      "colorR": 74,
-                      "creationTime": 0,
                       "disabled": false,
                       "folded": false,
-                      "name": "",
-                      "source": "",
-                      "type": "BuiltinCommonInstructions::Group",
-                      "events": [],
-                      "parameters": []
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "FoundSlotId",
+                            "=",
+                            "-1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
                     },
                     {
                       "disabled": false,
                       "folded": false,
-                      "type": "BuiltinCommonInstructions::JsCode",
-                      "inlineCode": "// const [hand] = objects\n// const instanceIdVar = hand.getVariables().get('LastDrawnInstanceId')\n// const instanceId = instanceIdVar.getAsNumber()\n// hand.cardInstanceIds.push(instanceId)",
-                      "parameterObjects": "Object",
-                      "useStrict": true,
-                      "eventsSheetExpanded": false
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "SlotObject",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "CardObject.CardBehavior::InstanceId()",
+                            "=",
+                            "SlotObject.SlotBehavior::SlottedInstanceId()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "FoundSlotId",
+                            "=",
+                            "SlotObject.SlotBehavior::Id()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "SlotObject",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Egal"
+                          },
+                          "parameters": [
+                            "Object.Variable(FoundSlotId)",
+                            "=",
+                            "-1"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "babblebot::Slot::IsFilled"
+                          },
+                          "parameters": [
+                            "SlotObject",
+                            "SlotBehavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "FoundSlotId",
+                            "=",
+                            "SlotObject.SlotBehavior::Id()"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Slot::slotCard"
+                          },
+                          "parameters": [
+                            "SlotObject",
+                            "SlotBehavior",
+                            "CardObject.CardBehavior::InstanceId()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [],
+                      "events": []
                     }
                   ]
                 }
-              ],
-              "parameters": []
+              ]
             }
           ],
           "parameters": [
@@ -3788,9 +3936,9 @@
             {
               "codeOnly": false,
               "defaultValue": "",
-              "description": "DeckObject",
+              "description": "SlotObject",
               "longDescription": "",
-              "name": "DeckObject",
+              "name": "SlotObject",
               "optional": false,
               "supplementaryInformation": "Sprite",
               "type": "objectList"
@@ -3798,11 +3946,76 @@
             {
               "codeOnly": false,
               "defaultValue": "",
-              "description": "DeckBehavior",
+              "description": "SlotBehavior",
               "longDescription": "",
-              "name": "DeckBehavior",
+              "name": "SlotBehavior",
               "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
+              "supplementaryInformation": "babblebot::Slot",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "playSound",
+          "fullName": "playSound",
+          "functionType": "Action",
+          "name": "playSound",
+          "private": false,
+          "sentence": "_PARAM0_ playSound",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlaySoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "assets\\sound\\Cards 3-Draw 1.wav",
+                    "1",
+                    "",
+                    "100",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Hand",
               "type": "behavior"
             }
           ],
@@ -3883,7 +4096,7 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarObjet"
+                        "value": "ModVarObjetTxt"
                       },
                       "parameters": [
                         "Object",
@@ -3917,13 +4130,13 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarObjet"
+                        "value": "ModVarObjetTxt"
                       },
                       "parameters": [
                         "Object",
                         "SelectedInstanceId",
                         "=",
-                        "-1"
+                        "\"\""
                       ],
                       "subInstructions": []
                     }
@@ -3946,7 +4159,7 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "Egal"
+                            "value": "StrEqual"
                           },
                           "parameters": [
                             "Object.Behavior::SelectedInstanceId()",
@@ -3980,7 +4193,7 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "Egal"
+                            "value": "StrEqual"
                           },
                           "parameters": [
                             "Object.Behavior::SelectedInstanceId()",
@@ -4050,264 +4263,6 @@
               "name": "CardBehavior",
               "optional": false,
               "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "handlePlayArea",
-          "fullName": "handlePlayArea",
-          "functionType": "Action",
-          "name": "handlePlayArea",
-          "private": false,
-          "sentence": "_PARAM0_ handlePlayArea _PARAM2_",
-          "events": [
-            {
-              "colorB": 228,
-              "colorG": 176,
-              "colorR": 74,
-              "creationTime": 0,
-              "disabled": true,
-              "folded": false,
-              "name": "DEP",
-              "source": "",
-              "type": "BuiltinCommonInstructions::Group",
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "State",
-                        "=",
-                        "\"init\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Hand::IsAnySelected"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Behavior",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Montre"
-                          },
-                          "parameters": [
-                            "PlayAreaObject",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": [
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [],
-                          "events": []
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "MouseButtonReleased"
-                              },
-                              "parameters": [
-                                "",
-                                "Left"
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "SourisSurObjet"
-                              },
-                              "parameters": [
-                                "PlayAreaObject",
-                                "",
-                                "",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarObjetTxt"
-                              },
-                              "parameters": [
-                                "Object",
-                                "State",
-                                "=",
-                                "\"play_requested\""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": [
-                            {
-                              "disabled": true,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "babblebot::Slot::slotCard"
-                                  },
-                                  "parameters": [
-                                    "PlayAreaObject",
-                                    "SlotBehavior",
-                                    "Object.Behavior::SelectedInstanceId()",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "State",
-                        "=",
-                        "\"play_finished\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "State",
-                        "=",
-                        "\"init\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Cache"
-                          },
-                          "parameters": [
-                            "PlayAreaObject"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                }
-              ],
-              "parameters": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "PlayAreaObject",
-              "longDescription": "",
-              "name": "PlayAreaObject",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "objectList"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "SlotBehavior",
-              "longDescription": "",
-              "name": "SlotBehavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Slot",
               "type": "behavior"
             }
           ],
@@ -4628,838 +4583,6 @@
           "objectGroups": []
         },
         {
-          "description": "requestPlay",
-          "fullName": "requestPlay",
-          "functionType": "Action",
-          "name": "requestPlay",
-          "private": false,
-          "sentence": "_PARAM0_ requestPlay _PARAM2_",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"play_requested\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "RequestedInstanceId",
-                        "=",
-                        "GetArgumentAsNumber(\"InstanceId\")"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "InstanceId",
-              "longDescription": "",
-              "name": "InstanceId",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "expression"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "startPlaying",
-          "fullName": "startPlaying",
-          "functionType": "Action",
-          "name": "startPlaying",
-          "private": false,
-          "sentence": "_PARAM0_ startPlaying _PARAM2_ _PARAM3_",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "!=",
-                    "\"play_requested\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"startPlaying when no play was requested\"",
-                    "2",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastPlayedInstanceId",
-                    "=",
-                    "GetArgumentAsNumber(\"InstanceId\")"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "LastPlayedId",
-                    "=",
-                    "GetArgumentAsString(\"Id\")"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"play_started\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "InstanceId",
-              "longDescription": "",
-              "name": "InstanceId",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "expression"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Card Id",
-              "longDescription": "",
-              "name": "Id",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "string"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "finishPlaying",
-          "fullName": "finishPlaying",
-          "functionType": "Action",
-          "name": "finishPlaying",
-          "private": false,
-          "sentence": "_PARAM0_ finishPlaying",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "!=",
-                    "\"play_started\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"finishedPlaying when no card was played\"",
-                    "2",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"play_finished\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "fitIntoSlots",
-          "fullName": "fitIntoSlots",
-          "functionType": "Action",
-          "name": "fitIntoSlots",
-          "private": false,
-          "sentence": "_PARAM0_ fitIntoSlots _PARAM2_ _PARAM4_",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "SlotObject",
-              "conditions": [],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Egal"
-                      },
-                      "parameters": [
-                        "SlotObject.SlotBehavior::SlottedInstanceId()",
-                        "=",
-                        "Object.Behavior::LastPlayedInstanceId()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "babblebot::Slot::removeCard"
-                      },
-                      "parameters": [
-                        "SlotObject",
-                        "SlotBehavior",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "LinkedObjects::PickObjectsLinkedTo"
-                  },
-                  "parameters": [
-                    "",
-                    "CardObject",
-                    "Object"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": true,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::consoleLog"
-                      },
-                      "parameters": [
-                        "",
-                        "\"slot - linked cards: \" + ToString(Count(CardObject))",
-                        "0",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::ForEach",
-                  "object": "CardObject",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "babblebot::Card::IsInstance"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "CardBehavior",
-                        "Object.Behavior::RequestedInstanceId()",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "FoundSlotId",
-                            "=",
-                            "-1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "SlotObject",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "CardObject.CardBehavior::InstanceId()",
-                            "=",
-                            "SlotObject.SlotBehavior::SlottedInstanceId()"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "FoundSlotId",
-                            "=",
-                            "SlotObject.SlotBehavior::Id()"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "SlotObject",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Egal"
-                          },
-                          "parameters": [
-                            "Object.Variable(FoundSlotId)",
-                            "=",
-                            "-1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": true,
-                            "value": "babblebot::Slot::IsFilled"
-                          },
-                          "parameters": [
-                            "SlotObject",
-                            "SlotBehavior",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "FoundSlotId",
-                            "=",
-                            "SlotObject.SlotBehavior::Id()"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Slot::slotCard"
-                          },
-                          "parameters": [
-                            "SlotObject",
-                            "SlotBehavior",
-                            "CardObject.CardBehavior::InstanceId()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [],
-                      "events": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "CardObject",
-              "longDescription": "",
-              "name": "CardObject",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "objectList"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "CardBehavior",
-              "longDescription": "",
-              "name": "CardBehavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "SlotObject",
-              "longDescription": "",
-              "name": "SlotObject",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "objectList"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "SlotBehavior",
-              "longDescription": "",
-              "name": "SlotBehavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Slot",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "IsPlaying - call finishPlaying after handling this",
-          "fullName": "IsPlaying",
-          "functionType": "Condition",
-          "name": "IsPlaying",
-          "private": false,
-          "sentence": "_PARAM0_ IsPlaying",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnBoolean"
-                  },
-                  "parameters": [
-                    "False"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"play_started\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnBoolean"
-                  },
-                  "parameters": [
-                    "True"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "IsLastPlayed",
-          "fullName": "IsLastPlayed",
-          "functionType": "Condition",
-          "name": "IsLastPlayed",
-          "private": false,
-          "sentence": "_PARAM0_ IsLastPlayed _PARAM2_ ",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnBoolean"
-                  },
-                  "parameters": [
-                    "False"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Card::IsInstance"
-                  },
-                  "parameters": [
-                    "CardObject",
-                    "CardBehavior",
-                    "Object.Behavior::LastPlayedInstanceId()",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnBoolean"
-                  },
-                  "parameters": [
-                    "True"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "CardObject",
-              "longDescription": "",
-              "name": "CardObject",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "objectList"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "CardBehavior",
-              "longDescription": "",
-              "name": "CardBehavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
           "description": "IsAnySelected",
           "fullName": "IsAnySelected",
           "functionType": "Condition",
@@ -5494,12 +4617,12 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "Egal"
+                    "value": "StrEqual"
                   },
                   "parameters": [
                     "Object.Behavior::SelectedInstanceId()",
-                    ">",
-                    "-1"
+                    "!=",
+                    "\"\""
                   ],
                   "subInstructions": []
                 }
@@ -5546,7 +4669,7 @@
         {
           "description": "RequestedInstanceId",
           "fullName": "RequestedInstanceId",
-          "functionType": "Expression",
+          "functionType": "StringExpression",
           "name": "RequestedInstanceId",
           "private": false,
           "sentence": "",
@@ -5560,10 +4683,10 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "SetReturnNumber"
+                    "value": "SetReturnString"
                   },
                   "parameters": [
-                    "Object.Variable(RequestedInstanceId)"
+                    "Object.VariableString(RequestedInstanceId)"
                   ],
                   "subInstructions": []
                 }
@@ -5598,7 +4721,7 @@
         {
           "description": "LastPlayedInstanceId",
           "fullName": "LastPlayedInstanceId",
-          "functionType": "Expression",
+          "functionType": "StringExpression",
           "name": "SelectedInstanceId",
           "private": false,
           "sentence": "",
@@ -5612,166 +4735,10 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(SelectedInstanceId)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "LastPlayedId",
-          "fullName": "LastPlayedId",
-          "functionType": "StringExpression",
-          "name": "LastPlayedId",
-          "private": false,
-          "sentence": "_PARAM0_ IsLastPlayed _PARAM2_ ",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
                     "value": "SetReturnString"
                   },
                   "parameters": [
-                    "Object.VariableString(LastPlayedId)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "LastPlayedInstanceId",
-          "fullName": "LastPlayedInstanceId",
-          "functionType": "Expression",
-          "name": "LastPlayedInstanceId",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(LastPlayedInstanceId)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "LastDrawnInstanceId",
-          "fullName": "LastDrawnInstanceId",
-          "functionType": "Expression",
-          "name": "LastDrawnInstanceId",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(LastDrawnInstanceId)"
+                    "Object.VariableString(SelectedInstanceId)"
                   ],
                   "subInstructions": []
                 }
@@ -5814,21 +4781,11 @@
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(Size)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    return Babblebot.encounter.dealer.peek('hand', 'all').length\n})()",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
             }
           ],
           "parameters": [
@@ -5895,19 +4852,6 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "babblebot::Slot::SetPropertyLastId"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Behavior",
-                    "+",
-                    "1"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
                     "value": "ModVarObjet"
                   },
                   "parameters": [
@@ -5945,7 +4889,16 @@
                   "subInstructions": []
                 }
               ],
-              "events": []
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": []
+                }
+              ]
             }
           ],
           "parameters": [
@@ -5968,326 +4921,6 @@
               "optional": false,
               "supplementaryInformation": "babblebot::Slot",
               "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Id",
-          "fullName": "Id",
-          "functionType": "Expression",
-          "name": "Id",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(Id)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Slot",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "SlottedInstanceId",
-          "fullName": "SlottedInstanceId",
-          "functionType": "Expression",
-          "name": "SlottedInstanceId",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Object.Variable(InstanceId)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Slot",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "removeCard",
-          "fullName": "removeCard",
-          "functionType": "Action",
-          "name": "removeCard",
-          "private": false,
-          "sentence": "_PARAM0_ removeCard",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "babblebot::Slot::IsFilled"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Behavior",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"removing card but slot has no InstanceId\"",
-                    "1",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "InstanceId",
-                    "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"removed\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Slot",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "slotCard",
-          "fullName": "slotCard",
-          "functionType": "Action",
-          "name": "slotCard",
-          "private": false,
-          "sentence": "_PARAM0_ slotCard _PARAM2_",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Slot::IsFilled"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Behavior",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"slotting card \" + ToString(GetArgumentAsNumber(\"InstanceId\"))  + \" when slot already has instance \" + ToString(Object.Behavior::SlottedInstanceId())",
-                    "1",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "InstanceId",
-                    "=",
-                    "GetArgumentAsNumber(\"InstanceId\")"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"slotted\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Slot",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "InstanceId",
-              "longDescription": "",
-              "name": "InstanceId",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -6468,6 +5101,326 @@
               "name": "CardBehavior",
               "optional": false,
               "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "slotCard",
+          "fullName": "slotCard",
+          "functionType": "Action",
+          "name": "slotCard",
+          "private": false,
+          "sentence": "_PARAM0_ slotCard _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::Slot::IsFilled"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::consoleLog"
+                  },
+                  "parameters": [
+                    "",
+                    "\"slotting card \" + ToString(GetArgumentAsNumber(\"InstanceId\"))  + \" when slot already has instance \" + ToString(Object.Behavior::SlottedInstanceId())",
+                    "1",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Object",
+                    "InstanceId",
+                    "=",
+                    "GetArgumentAsNumber(\"InstanceId\")"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "\"slotted\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Slot",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "InstanceId",
+              "longDescription": "",
+              "name": "InstanceId",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "removeCard",
+          "fullName": "removeCard",
+          "functionType": "Action",
+          "name": "removeCard",
+          "private": false,
+          "sentence": "_PARAM0_ removeCard",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "babblebot::Slot::IsFilled"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::consoleLog"
+                  },
+                  "parameters": [
+                    "",
+                    "\"removing card but slot has no InstanceId\"",
+                    "1",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Object",
+                    "InstanceId",
+                    "=",
+                    "-1"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "\"removed\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Slot",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Id",
+          "fullName": "Id",
+          "functionType": "StringExpression",
+          "name": "Id",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Object.VariableString(Id)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Slot",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "SlottedInstanceId",
+          "fullName": "SlottedInstanceId",
+          "functionType": "Expression",
+          "name": "SlottedInstanceId",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Object.Variable(InstanceId)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Slot",
               "type": "behavior"
             }
           ],
@@ -6664,17 +5617,7 @@
           "objectGroups": []
         }
       ],
-      "propertyDescriptors": [
-        {
-          "value": "0",
-          "type": "Number",
-          "label": "LastId",
-          "description": "",
-          "extraInformation": [],
-          "hidden": true,
-          "name": "LastId"
-        }
-      ]
+      "propertyDescriptors": []
     },
     {
       "description": "",
