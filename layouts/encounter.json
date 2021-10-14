@@ -1801,20 +1801,28 @@
                   "subInstructions": []
                 }
               ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::importBabblebotJs"
-                  },
-                  "parameters": [
-                    "",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
+              "actions": [],
               "events": [
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::importBabblebotJs"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -2260,6 +2268,20 @@
                     ""
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::Slot::handleCard"
+                  },
+                  "parameters": [
+                    "HandSlot",
+                    "Slot",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
                 }
               ],
               "events": []
@@ -2288,7 +2310,7 @@
                     "Card",
                     "Card",
                     "Card_BBText",
-                    "",
+                    "BBTextContained",
                     ""
                   ],
                   "subInstructions": []

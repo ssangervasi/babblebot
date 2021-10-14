@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Menu",
+  "associatedLayout": "Encounter",
   "lastChangeTimeStamp": 0,
   "name": "__workaround__",
   "events": [
@@ -62,6 +62,33 @@
               },
               "parameters": [
                 "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::BBTextContained::setText"
+              },
+              "parameters": [
+                "Card_BBText",
+                "BBTextContained",
+                "\"asdf\"",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::Card::manageFront"
+              },
+              "parameters": [
+                "Card",
+                "Card",
+                "Card_BBText",
+                "BBTextContained",
                 ""
               ],
               "subInstructions": []
