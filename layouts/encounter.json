@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.1,
     "snap": true,
-    "zoomFactor": 0.6439999999999999,
+    "zoomFactor": 0.46399999999999975,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -887,6 +887,11 @@
           "name": "CardCollection",
           "type": "babblebot::CardCollection",
           "Name": "deck"
+        },
+        {
+          "name": "Deck",
+          "type": "babblebot::Deck",
+          "CardCollectionBehavior": "CardCollection"
         }
       ],
       "animations": [
@@ -1030,7 +1035,7 @@
         {
           "name": "CardCollection",
           "type": "babblebot::CardCollection",
-          "Name": ""
+          "Name": "hand"
         },
         {
           "name": "Hand",
@@ -1165,8 +1170,14 @@
       "effects": [],
       "behaviors": [
         {
+          "name": "CardCollection",
+          "type": "babblebot::CardCollection",
+          "Name": "discard"
+        },
+        {
           "name": "DiscardArea",
-          "type": "babblebot::DiscardArea"
+          "type": "babblebot::DiscardArea",
+          "CardCollectionBehavior": "CardCollection"
         }
       ],
       "animations": [
@@ -1295,8 +1306,14 @@
       "effects": [],
       "behaviors": [
         {
+          "name": "CardCollection",
+          "type": "babblebot::CardCollection",
+          "Name": "play"
+        },
+        {
           "name": "PlayArea",
-          "type": "babblebot::PlayArea"
+          "type": "babblebot::PlayArea",
+          "CardCollectionBehavior": "CardCollection"
         }
       ],
       "animations": [
@@ -2318,11 +2335,11 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "babblebot::CardCollection::handleCards"
+                    "value": "babblebot::Deck::handleCards"
                   },
                   "parameters": [
                     "Deck",
-                    "CardCollection",
+                    "Deck",
                     "Card",
                     "Card",
                     ""
@@ -2376,6 +2393,80 @@
                   "parameters": [
                     "HandSlot",
                     "Slot",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "PlayArea",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::PlayArea::handleCards"
+                  },
+                  "parameters": [
+                    "PlayArea",
+                    "PlayArea",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Discard/Pool",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::DiscardArea::handleCards"
+                  },
+                  "parameters": [
+                    "CardPool",
+                    "DiscardArea",
                     "Card",
                     "Card",
                     ""
@@ -6239,6 +6330,10 @@
     {
       "name": "DebugLog",
       "type": "srs_utils::DebugLog"
+    },
+    {
+      "name": "Deck",
+      "type": "babblebot::Deck"
     },
     {
       "name": "DiscardArea",

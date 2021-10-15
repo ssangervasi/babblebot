@@ -3390,7 +3390,7 @@
                           },
                           "parameters": [
                             "Object",
-                            "Behavior",
+                            "CardCollectionBehavior",
                             "CardObject.CardBehavior::InstanceId()",
                             ""
                           ],
@@ -3726,11 +3726,11 @@
                     {
                       "type": {
                         "inverted": true,
-                        "value": "babblebot::Hand::Contains"
+                        "value": "babblebot::CardCollection::Contains"
                       },
                       "parameters": [
                         "Object",
-                        "Behavior",
+                        "CardCollectionBehavior",
                         "SlotObject.SlotBehavior::SlottedInstanceId()",
                         ""
                       ],
@@ -3764,11 +3764,11 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "babblebot::Hand::Contains"
+                    "value": "babblebot::CardCollection::Contains"
                   },
                   "parameters": [
                     "Object",
-                    "Behavior",
+                    "CardCollectionBehavior",
                     "CardObject.CardBehavior::InstanceId()",
                     ""
                   ],
@@ -4053,18 +4053,6 @@
               "conditions": [
                 {
                   "type": {
-                    "inverted": true,
-                    "value": "babblebot::Hand::IsPlaying"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Behavior",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
                     "inverted": false,
                     "value": "LinkedObjects::PickObjectsLinkedTo"
                   },
@@ -4329,7 +4317,7 @@
                         "Object",
                         "OriginalSize",
                         "=",
-                        "Object.Behavior::Size()"
+                        "Object.CardCollectionBehavior::Size()"
                       ],
                       "subInstructions": []
                     }
@@ -4783,108 +4771,6 @@
               "optional": false,
               "supplementaryInformation": "babblebot::Hand",
               "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Size",
-          "fullName": "Size",
-          "functionType": "Expression",
-          "name": "Size",
-          "private": false,
-          "sentence": "_PARAM0_ Size",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    return Babblebot.encounter.dealer.peek('hand', 'all').length\n})()",
-              "parameterObjects": "",
-              "useStrict": true,
-              "eventsSheetExpanded": false
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Contains",
-          "fullName": "Contains",
-          "functionType": "Condition",
-          "name": "Contains",
-          "private": false,
-          "sentence": "_PARAM0_ contains uuid=_PARAM2_",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    const uuid = eventsFunctionContext.getArgument('UUID')\r\n    const found = Babblebot.encounter.dealer.find({\r\n        uuid,\r\n        from: 'hand',\r\n    })\r\n    return Boolean(found)\r\n})()",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "UUID",
-              "longDescription": "",
-              "name": "UUID",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "string"
             }
           ],
           "objectGroups": []
@@ -5903,6 +5789,237 @@
           "objectGroups": []
         },
         {
+          "description": "handleCards",
+          "fullName": "handleCards",
+          "functionType": "Action",
+          "name": "handleCards",
+          "private": false,
+          "sentence": "_PARAM0_ handleCards _PARAM2_",
+          "events": [
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Ok",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "CardObject",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::CardCollection::Contains"
+                          },
+                          "parameters": [
+                            "Object",
+                            "CardCollectionBehavior",
+                            "CardObject.CardBehavior::InstanceId()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            "True"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            "True"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::Card::faceUp"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "CardBehavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MettreAutour"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "Object",
+                                "0",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "=",
+                                "Object.ZOrder() + 1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            "False"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": []
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::PlayArea",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "CardObject",
+              "longDescription": "",
+              "name": "CardObject",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "objectList"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "CardBehavior",
+              "longDescription": "",
+              "name": "CardBehavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "activate",
           "fullName": "activate",
           "functionType": "Action",
@@ -6128,7 +6245,314 @@
           "objectGroups": []
         }
       ],
-      "propertyDescriptors": []
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "",
+          "description": "",
+          "extraInformation": [
+            "babblebot::CardCollection"
+          ],
+          "hidden": false,
+          "name": "CardCollectionBehavior"
+        }
+      ]
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "name": "DiscardArea",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "State",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DiscardArea",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "handleCards",
+          "fullName": "handleCards",
+          "functionType": "Action",
+          "name": "handleCards",
+          "private": false,
+          "sentence": "_PARAM0_ handleCards _PARAM2_",
+          "events": [
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Ok",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "CardObject",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::CardCollection::Contains"
+                          },
+                          "parameters": [
+                            "Object",
+                            "CardCollectionBehavior",
+                            "CardObject.CardBehavior::InstanceId()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            "True"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            "True"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::Card::faceDown"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "CardBehavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MettreAutour"
+                              },
+                              "parameters": [
+                                "CardObject",
+                                "Object",
+                                "0",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "ContainsCard",
+                            "False"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": []
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DiscardArea",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "CardObject",
+              "longDescription": "",
+              "name": "CardObject",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "objectList"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "CardBehavior",
+              "longDescription": "",
+              "name": "CardBehavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "",
+          "description": "",
+          "extraInformation": [
+            "babblebot::CardCollection"
+          ],
+          "hidden": false,
+          "name": "CardCollectionBehavior"
+        }
+      ]
     },
     {
       "description": "",

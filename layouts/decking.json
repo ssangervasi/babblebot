@@ -2175,8 +2175,14 @@
       "effects": [],
       "behaviors": [
         {
+          "name": "CardCollection",
+          "type": "babblebot::CardCollection",
+          "Name": ""
+        },
+        {
           "name": "PlayArea",
-          "type": "babblebot::PlayArea"
+          "type": "babblebot::PlayArea",
+          "CardCollectionBehavior": "CardCollection"
         },
         {
           "name": "Slot",
