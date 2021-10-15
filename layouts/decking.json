@@ -837,7 +837,7 @@
       "behaviors": [
         {
           "name": "Deck",
-          "type": "babblebot::Deck"
+          "type": "babblebot::CardCollection"
         }
       ],
       "animations": [
@@ -1913,8 +1913,14 @@
       "effects": [],
       "behaviors": [
         {
+          "name": "CardCollection",
+          "type": "babblebot::CardCollection",
+          "Name": ""
+        },
+        {
           "name": "Hand",
-          "type": "babblebot::Hand"
+          "type": "babblebot::Hand",
+          "CardCollectionBehavior": "CardCollection"
         }
       ],
       "animations": [
@@ -5982,7 +5988,7 @@
     },
     {
       "name": "Deck",
-      "type": "babblebot::Deck"
+      "type": "babblebot::CardCollection"
     },
     {
       "name": "Hand",

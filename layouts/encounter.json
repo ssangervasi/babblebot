@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.1,
     "snap": true,
-    "zoomFactor": 1.0240000000000002,
+    "zoomFactor": 0.6439999999999999,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -882,7 +882,13 @@
       "updateIfNotVisible": false,
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "CardCollection",
+          "type": "babblebot::CardCollection",
+          "Name": "deck"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -1022,8 +1028,14 @@
       "effects": [],
       "behaviors": [
         {
+          "name": "CardCollection",
+          "type": "babblebot::CardCollection",
+          "Name": ""
+        },
+        {
           "name": "Hand",
-          "type": "babblebot::Hand"
+          "type": "babblebot::Hand",
+          "CardCollectionBehavior": "CardCollection"
         }
       ],
       "animations": [
@@ -1151,7 +1163,12 @@
       "updateIfNotVisible": false,
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "DiscardArea",
+          "type": "babblebot::DiscardArea"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -1280,11 +1297,6 @@
         {
           "name": "PlayArea",
           "type": "babblebot::PlayArea"
-        },
-        {
-          "name": "Slot",
-          "type": "babblebot::Slot",
-          "LastId": 0
         }
       ],
       "animations": [
@@ -2287,50 +2299,105 @@
           ]
         },
         {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
           "disabled": false,
           "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
+          "name": "Deck",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Hand::fitIntoSlots"
-              },
-              "parameters": [
-                "Hand",
-                "Hand",
-                "Card",
-                "Card",
-                "HandSlot",
-                "Slot",
-                ""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::CardCollection::handleCards"
+                  },
+                  "parameters": [
+                    "Deck",
+                    "CardCollection",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Slot::handleCard"
-              },
-              "parameters": [
-                "HandSlot",
-                "Slot",
-                "Card",
-                "Card",
-                ""
-              ],
-              "subInstructions": []
+              "events": []
             }
           ],
-          "events": []
+          "parameters": []
         },
         {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
           "disabled": false,
           "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
+          "name": "Hand",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::Hand::fitIntoSlots"
+                  },
+                  "parameters": [
+                    "Hand",
+                    "Hand",
+                    "Card",
+                    "Card",
+                    "HandSlot",
+                    "Slot",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::Slot::handleCard"
+                  },
+                  "parameters": [
+                    "HandSlot",
+                    "Slot",
+                    "Card",
+                    "Card",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Card",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
           "events": [
             {
               "disabled": false,
@@ -2367,77 +2434,8 @@
               ],
               "events": []
             }
-          ]
-        },
-        {
-          "disabled": true,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Hand::handleSelection"
-                  },
-                  "parameters": [
-                    "Hand",
-                    "Hand",
-                    "Card",
-                    "Card",
-                    "Deck"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Hand::handlePlayCard"
-                  },
-                  "parameters": [
-                    "Hand",
-                    "Hand",
-                    "Card",
-                    "Card",
-                    "CardPool",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Slot::handleCard"
-                  },
-                  "parameters": [
-                    "HandSlot",
-                    "Slot",
-                    "Card",
-                    "Card",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ]
+          ],
+          "parameters": []
         }
       ],
       "parameters": []
@@ -3733,7 +3731,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "name": "NPC speaking states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -4294,7 +4292,7 @@
                       "events": []
                     },
                     {
-                      "disabled": false,
+                      "disabled": true,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
@@ -4324,7 +4322,7 @@
                       "events": []
                     },
                     {
-                      "disabled": false,
+                      "disabled": true,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
@@ -4412,6 +4410,19 @@
                               "parameters": [
                                 "",
                                 "Left"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "SourisSurObjet"
+                              },
+                              "parameters": [
+                                "DialogueBox",
+                                "",
+                                "no",
+                                ""
                               ],
                               "subInstructions": []
                             }
@@ -6222,8 +6233,16 @@
       "type": "babblebot::Card"
     },
     {
+      "name": "CardCollection",
+      "type": "babblebot::CardCollection"
+    },
+    {
       "name": "DebugLog",
       "type": "srs_utils::DebugLog"
+    },
+    {
+      "name": "DiscardArea",
+      "type": "babblebot::DiscardArea"
     },
     {
       "name": "Hand",

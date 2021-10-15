@@ -3000,8 +3000,8 @@
     {
       "description": "",
       "fullName": "",
-      "name": "Deck",
-      "objectType": "Sprite",
+      "name": "CardCollection",
+      "objectType": "",
       "eventsFunctions": [
         {
           "description": "",
@@ -3028,7 +3028,7 @@
               "longDescription": "",
               "name": "Object",
               "optional": false,
-              "supplementaryInformation": "Sprite",
+              "supplementaryInformation": "",
               "type": "object"
             },
             {
@@ -3038,12 +3038,298 @@
               "longDescription": "",
               "name": "Behavior",
               "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
+              "supplementaryInformation": "babblebot::CardCollection",
               "type": "behavior"
             }
           ],
           "objectGroups": []
         },
+        {
+          "description": "shuffle",
+          "fullName": "shuffle",
+          "functionType": "Action",
+          "name": "shuffle",
+          "private": false,
+          "sentence": "_PARAM0_ shuffle",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "const obj = objects[0]\r\nconst behavior = obj.getBehavior('CardCollection')\r\nconst name = behavior._getName()\r\n\r\nBabblebot.encounter.dealer.shuffle(name)\r\n",
+              "parameterObjects": "Object",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlaySoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "assets\\sound\\Cards 2-Shuffle 2.wav",
+                    "2",
+                    "",
+                    "100",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::CardCollection",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Size",
+          "fullName": "Size",
+          "functionType": "Expression",
+          "name": "Size",
+          "private": false,
+          "sentence": "_PARAM0_ Size",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "eventsFunctionContext.returnValue = (() => {\n    const obj = objects[0]\n    const behavior = obj.getBehavior('CardCollection')\n    const name = behavior._getName()\n\n    return Babblebot.encounter.dealer.peek(name, 'all').length\n})()",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": false
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::CardCollection",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "IsEmpty",
+          "fullName": "IsEmpty",
+          "functionType": "Condition",
+          "name": "IsEmpty",
+          "private": false,
+          "sentence": "_PARAM0_ IsEmpty",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Egal"
+                  },
+                  "parameters": [
+                    "Object.Behavior::Size()",
+                    "=",
+                    "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::CardCollection",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Contains",
+          "fullName": "Contains",
+          "functionType": "Condition",
+          "name": "Contains",
+          "private": false,
+          "sentence": "_PARAM0_ contains uuid=_PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::JsCode",
+                  "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    /** @type {gdjs.RuntimeObject} */\r\n    const obj = objects[0]\r\n    const behavior = obj.getBehavior('CardCollection')\r\n    const name = behavior._getName()\r\n\r\n    const uuid = eventsFunctionContext.getArgument('UUID')\r\n    \r\n    const found = Babblebot.encounter.dealer.find({\r\n        uuid,\r\n        from: name,\r\n    })\r\n    return Boolean(found)\r\n})()",
+                  "parameterObjects": "Object",
+                  "useStrict": true,
+                  "eventsSheetExpanded": true
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::CardCollection",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "UUID",
+              "longDescription": "",
+              "name": "UUID",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Choice",
+          "label": "Corresponds with the TS Dealer CollectionName",
+          "description": "",
+          "extraInformation": [
+            "hand",
+            "deck",
+            "play",
+            "discard"
+          ],
+          "hidden": false,
+          "name": "Name"
+        }
+      ]
+    },
+    {
+      "description": "",
+      "fullName": "",
+      "name": "Deck",
+      "objectType": "",
+      "eventsFunctions": [
         {
           "description": "handleCards",
           "fullName": "handleCards",
@@ -3100,7 +3386,7 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "babblebot::Deck::Contains"
+                            "value": "babblebot::CardCollection::Contains"
                           },
                           "parameters": [
                             "Object",
@@ -3246,150 +3532,6 @@
                 }
               ],
               "parameters": []
-            },
-            {
-              "colorB": 228,
-              "colorG": 176,
-              "colorR": 74,
-              "creationTime": 0,
-              "disabled": true,
-              "folded": false,
-              "name": "Wat",
-              "source": "",
-              "type": "BuiltinCommonInstructions::Group",
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "const dealerObj = eventsFunctionContext.getObjects('Object')[0]\r\nconst cardObj = eventsFunctionContext.getObjects('CardObject')\r\n\r\nBabblebot.encounter.dealer.peek('deck', 'all')\r\n",
-                  "parameterObjects": "",
-                  "useStrict": true,
-                  "eventsSheetExpanded": false
-                }
-              ],
-              "parameters": []
-            },
-            {
-              "colorB": 228,
-              "colorG": 176,
-              "colorR": 74,
-              "creationTime": 0,
-              "disabled": false,
-              "folded": false,
-              "name": "DEP",
-              "source": "",
-              "type": "BuiltinCommonInstructions::Group",
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "LinkedObjects::LinkObjects"
-                      },
-                      "parameters": [
-                        "",
-                        "Object",
-                        "CardObject"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "babblebot::Card::faceDown"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "CardBehavior",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "MettreAutour"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "Object",
-                        "0",
-                        "0"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ChangePlan"
-                      },
-                      "parameters": [
-                        "CardObject",
-                        "=",
-                        "Object.ZOrder() - 1"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "CardInstanceId",
-                        "=",
-                        "CardObject.CardBehavior::InstanceId()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::JsCode",
-                  "inlineCode": "const [deck] = objects\nconst instanceIdVar = deck.getVariables().get('CardInstanceId')\nconst instanceId = instanceIdVar.getAsNumber()\nif (deck.cardInstanceIds.includes(instanceId)) {\n    console.warn(\"Deck already includes card\", { instanceId })\n}\ndeck.cardInstanceIds.push(instanceId)",
-                  "parameterObjects": "Object",
-                  "useStrict": true,
-                  "eventsSheetExpanded": false
-                }
-              ],
-              "parameters": []
             }
           ],
           "parameters": [
@@ -3400,7 +3542,7 @@
               "longDescription": "",
               "name": "Object",
               "optional": false,
-              "supplementaryInformation": "Sprite",
+              "supplementaryInformation": "",
               "type": "object"
             },
             {
@@ -3435,269 +3577,21 @@
             }
           ],
           "objectGroups": []
-        },
-        {
-          "description": "shuffle",
-          "fullName": "shuffle",
-          "functionType": "Action",
-          "name": "shuffle",
-          "private": false,
-          "sentence": "_PARAM0_ shuffle",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "Babblebot.encounter.dealer.shuffle('deck')",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "PlaySoundCanal"
-                  },
-                  "parameters": [
-                    "",
-                    "assets\\sound\\Cards 2-Shuffle 2.wav",
-                    "2",
-                    "",
-                    "100",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Size",
-          "fullName": "Size",
-          "functionType": "Expression",
-          "name": "Size",
-          "private": false,
-          "sentence": "_PARAM0_ Size",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "Babblebot.encounter.dealer.peek('deck', 'all').length\n",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "IsEmpty",
-          "fullName": "IsEmpty",
-          "functionType": "Condition",
-          "name": "IsEmpty",
-          "private": false,
-          "sentence": "_PARAM0_ IsEmpty",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnBoolean"
-                  },
-                  "parameters": [
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Egal"
-                  },
-                  "parameters": [
-                    "Object.Behavior::Size()",
-                    "=",
-                    "0"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetReturnBoolean"
-                  },
-                  "parameters": [
-                    "True"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Contains",
-          "fullName": "Contains",
-          "functionType": "Condition",
-          "name": "Contains",
-          "private": false,
-          "sentence": "_PARAM0_ contains uuid=_PARAM2_",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "eventsFunctionContext.returnValue = (() => {\r\n    const uuid = eventsFunctionContext.getArgument('UUID')\r\n    const found = Babblebot.encounter.dealer.find({\r\n        uuid,\r\n        from: 'deck',\r\n    })\r\n    return Boolean(found)\r\n})()",
-              "parameterObjects": "Object",
-              "useStrict": true,
-              "eventsSheetExpanded": false
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Deck",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "UUID",
-              "longDescription": "",
-              "name": "UUID",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "string"
-            }
-          ],
-          "objectGroups": []
         }
       ],
-      "propertyDescriptors": []
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "",
+          "description": "",
+          "extraInformation": [
+            "babblebot::CardCollection"
+          ],
+          "hidden": false,
+          "name": "CardCollectionBehavior"
+        }
+      ]
     },
     {
       "description": "",
@@ -4996,7 +4890,19 @@
           "objectGroups": []
         }
       ],
-      "propertyDescriptors": []
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "",
+          "description": "",
+          "extraInformation": [
+            "babblebot::CardCollection"
+          ],
+          "hidden": false,
+          "name": "CardCollectionBehavior"
+        }
+      ]
     },
     {
       "description": "",
@@ -5879,7 +5785,7 @@
           "sentence": "",
           "events": [
             {
-              "disabled": false,
+              "disabled": true,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
@@ -6055,7 +5961,16 @@
                         ""
                       ],
                       "subInstructions": []
-                    },
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
                     {
                       "type": {
                         "inverted": false,
@@ -6081,7 +5996,16 @@
                         "Object.ZOrder()"
                       ],
                       "subInstructions": []
-                    },
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
                     {
                       "type": {
                         "inverted": false,
