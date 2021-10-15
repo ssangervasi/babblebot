@@ -818,7 +818,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "const dealer = Babblebot.encounter.dealer;\nconst cards = [\n    ...dealer.peek('deck', 'all'),\n    ...dealer.peek('hand', 'all'),\n    ...dealer.peek('play', 'all'),\n    ...dealer.peek('discard', 'all'),\n]\n\ncards.forEach((\n    /**\n     * @type { { uuid: string, card: { id: string, text: string, features: string }} }\n     */\n    cardInstance\n) => {\n    const obj = runtimeScene.createObject(\"Card\")\n    const vars = obj.getVariables()\n    vars.get(\"InstanceId\").setString(cardInstance.uuid)\n    vars.get(\"Id\").setString(cardInstance.card.id)\n    vars.get(\"Text\").setString(cardInstance.card.text)\n    vars.get(\"Features\").setString(cardInstance.card.features)\n})",
+          "inlineCode": "const dealer = Babblebot.encounter.dealer;\nconst cards = [\n    ...dealer.peek('deck', 'all'),\n    ...dealer.peek('hand', 'all'),\n    ...dealer.peek('play', 'all'),\n    ...dealer.peek('discard', 'all'),\n]\n\ncards.forEach((\n    /**\n     * @type { { uuid: string, card: { id: string, text: string, features: string }} }\n     */\n    cardInstance\n) => {\n    const obj = runtimeScene.createObject(\"Card\")\n    const vars = obj.getVariables()\n    vars.get(\"InstanceId\").setString(cardInstance.uuid)\n    vars.get(\"Id\").setString(cardInstance.card.id)\n    vars.get(\"Text\").setString(cardInstance.card.text)\n    vars.get(\"Features\").setString(cardInstance.card.features)\n    // obj.activateBehavior('Card', true)\n})",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": true
@@ -1392,6 +1392,28 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Face",
+                    "=",
+                    "\"down\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ],
           "parameters": [
@@ -1462,7 +1484,7 @@
                         "",
                         "BBText",
                         "Object.X()",
-                        "Object.X()",
+                        "Object.Y()",
                         "Object.Layer()"
                       ],
                       "subInstructions": []
@@ -1476,18 +1498,6 @@
                         "",
                         "Object",
                         "BBText"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ActivateBehavior"
-                      },
-                      "parameters": [
-                        "BBText",
-                        "BBTextContained",
-                        "yes"
                       ],
                       "subInstructions": []
                     }
@@ -1507,20 +1517,28 @@
                           "parameters": [
                             "BBText",
                             "=",
-                            "Object.Width()"
+                            "Object.Width()-80"
                           ],
                           "subInstructions": []
-                        },
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "srs_utils::BBTextContained::setText"
+                            "value": "ActivateBehavior"
                           },
                           "parameters": [
                             "BBText",
                             "BBTextContained",
-                            "Object.Behavior::Text()",
-                            ""
+                            "yes"
                           ],
                           "subInstructions": []
                         }
@@ -1552,6 +1570,70 @@
               ],
               "actions": [],
               "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ChangePlan"
+                      },
+                      "parameters": [
+                        "BBText",
+                        "=",
+                        "Object.ZOrder() + 1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::BBTextContained::setText"
+                      },
+                      "parameters": [
+                        "BBText",
+                        "BBTextContained",
+                        "Object.Behavior::Text()",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "BBText::SetBBText"
+                      },
+                      "parameters": [
+                        "BBText",
+                        "=",
+                        "\"Slinky binky\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -2002,11 +2084,13 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "SetAnimationName"
+                    "value": "ModVarObjetTxt"
                   },
                   "parameters": [
                     "Object",
-                    "Object.Behavior::Id()"
+                    "Face",
+                    "=",
+                    "\"up\""
                   ],
                   "subInstructions": []
                 }
@@ -2017,19 +2101,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "AnimationName"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Object.Behavior::Id()"
-                  ],
-                  "subInstructions": []
-                }
-              ],
+              "conditions": [],
               "actions": [
                 {
                   "type": {
@@ -2038,20 +2110,7 @@
                   },
                   "parameters": [
                     "Object",
-                    "\"give_compliment\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "srs_utils::consoleLog"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Failed animation: \" + Object.Behavior::Id()",
-                    "1",
-                    ""
+                    "\"Front\""
                   ],
                   "subInstructions": []
                 }
@@ -2091,6 +2150,28 @@
           "private": false,
           "sentence": "_PARAM0_ faceDown",
           "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Face",
+                    "=",
+                    "\"down\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
             {
               "disabled": false,
               "folded": false,
@@ -2622,7 +2703,7 @@
                     "value": "SetReturnBoolean"
                   },
                   "parameters": [
-                    "True"
+                    "False"
                   ],
                   "subInstructions": []
                 }
@@ -2637,11 +2718,13 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "AnimationName"
+                    "value": "VarObjetTxt"
                   },
                   "parameters": [
                     "Object",
-                    "\"Back\""
+                    "Face",
+                    "=",
+                    "\"up\""
                   ],
                   "subInstructions": []
                 }
@@ -2653,7 +2736,7 @@
                     "value": "SetReturnBoolean"
                   },
                   "parameters": [
-                    "False"
+                    "True"
                   ],
                   "subInstructions": []
                 }
@@ -3827,63 +3910,49 @@
                   "folded": false,
                   "type": "BuiltinCommonInstructions::ForEach",
                   "object": "SlotObject",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "StrEqual"
-                      },
-                      "parameters": [
-                        "CardObject.CardBehavior::InstanceId()",
-                        "=",
-                        "SlotObject.SlotBehavior::SlottedInstanceId()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "SlottedId",
-                        "=",
-                        "SlotObject.SlotBehavior::Id()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjetTxt"
-                      },
-                      "parameters": [
-                        "Object",
-                        "SlottedId",
-                        "=",
-                        "\"\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
+                  "conditions": [],
                   "actions": [],
                   "events": [
                     {
                       "disabled": false,
                       "folded": false,
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "SlotObject",
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Slot::IsFilledWith"
+                          },
+                          "parameters": [
+                            "SlotObject",
+                            "SlotBehavior",
+                            "CardObject.CardBehavior::InstanceId()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "SlottedId",
+                            "=",
+                            "SlotObject.SlotBehavior::Id()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
                           "type": {
@@ -3896,9 +3965,35 @@
                             ""
                           ],
                           "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "SlottedId",
+                            "=",
+                            "\"\""
+                          ],
+                          "subInstructions": []
                         }
                       ],
                       "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "SlottedId",
+                            "=",
+                            "SlotObject.SlotBehavior::Id()"
+                          ],
+                          "subInstructions": []
+                        },
                         {
                           "type": {
                             "inverted": false,

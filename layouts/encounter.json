@@ -12,16 +12,16 @@
   "title": "",
   "v": 209,
   "uiSettings": {
-    "grid": false,
+    "grid": true,
     "gridType": "rectangular",
     "gridWidth": 10,
     "gridHeight": 10,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
     "gridColor": 10401023,
-    "gridAlpha": 0.8,
-    "snap": false,
-    "zoomFactor": 0.5239999999999999,
+    "gridAlpha": 0.1,
+    "snap": true,
+    "zoomFactor": 1.0240000000000002,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -645,6 +645,43 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 198,
+      "layer": "Debug",
+      "locked": false,
+      "name": "Card_BBText",
+      "persistentUuid": "1407bae3-d5ae-4137-9e3a-c03086793165",
+      "width": 345,
+      "x": 1640,
+      "y": -868,
+      "zOrder": 10,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 270,
+      "layer": "Debug",
+      "locked": false,
+      "name": "Card",
+      "persistentUuid": "cb860614-8f57-40d2-8983-2c34516898ec",
+      "width": 420,
+      "x": 1600,
+      "y": -900,
+      "zOrder": 1,
+      "numberProperties": [
+        {
+          "name": "animation",
+          "value": 1
+        }
+      ],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
@@ -966,9 +1003,9 @@
         }
       ],
       "content": {
-        "text": "1 Some card text\n2 Some card text\n3 Some card text",
+        "text": "1 Some card text one two three\n2 Some card text\n3 Some card text\n4 Some card text\n5 Some card text one two three",
         "opacity": 255,
-        "fontSize": 70,
+        "fontSize": 40,
         "visible": true,
         "color": "255;255;255",
         "fontFamily": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
@@ -2246,47 +2283,47 @@
                 }
               ],
               "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Hand::fitIntoSlots"
-                  },
-                  "parameters": [
-                    "Hand",
-                    "Hand",
-                    "Card",
-                    "Card",
-                    "HandSlot",
-                    "Slot",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Slot::handleCard"
-                  },
-                  "parameters": [
-                    "HandSlot",
-                    "Slot",
-                    "Card",
-                    "Card",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
             }
           ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::Hand::fitIntoSlots"
+              },
+              "parameters": [
+                "Hand",
+                "Hand",
+                "Card",
+                "Card",
+                "HandSlot",
+                "Slot",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::Slot::handleCard"
+              },
+              "parameters": [
+                "HandSlot",
+                "Slot",
+                "Card",
+                "Card",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         },
         {
           "disabled": false,
@@ -2311,6 +2348,18 @@
                     "Card",
                     "Card_BBText",
                     "BBTextContained",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::Card::handleHover"
+                  },
+                  "parameters": [
+                    "Card",
+                    "Card",
                     ""
                   ],
                   "subInstructions": []
