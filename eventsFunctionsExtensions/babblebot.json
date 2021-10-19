@@ -7440,7 +7440,7 @@
                             "Object",
                             "NextDragState",
                             "=",
-                            "\"dropped\""
+                            "\"dropping\""
                           ],
                           "subInstructions": []
                         }
@@ -7463,7 +7463,7 @@
                         "Object",
                         "DragState",
                         "=",
-                        "\"dropped\""
+                        "\"dropping\""
                       ],
                       "subInstructions": []
                     }
@@ -7509,6 +7509,51 @@
                             "Object.Variable(Initial.X)",
                             "=",
                             "Object.Variable(Initial.Y)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "DragState",
+                        "=",
+                        "\"dropped\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "NextDragState",
+                            "=",
+                            "\"init\""
                           ],
                           "subInstructions": []
                         }
@@ -7580,6 +7625,199 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "drop",
+          "fullName": "drop",
+          "functionType": "Action",
+          "name": "drop",
+          "private": false,
+          "sentence": "_PARAM0_ drop _PARAM2_ ",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "DragState",
+                    "=",
+                    "\"dropping\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "DragState",
+                        "=",
+                        "\"dropped\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Dragable",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Target",
+              "longDescription": "",
+              "name": "Target",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "objectList"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "DropTargetBehavior",
+              "longDescription": "",
+              "name": "DropTargetBehavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DropTarget",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "IsState",
+          "fullName": "IsState",
+          "functionType": "Condition",
+          "name": "IsState",
+          "private": false,
+          "sentence": "_PARAM0_ IsState _PARAM2_ ",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "DragState",
+                    "=",
+                    "GetArgumentAsString(\"State\")"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Dragable",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "State",
+              "longDescription": "",
+              "name": "State",
+              "optional": false,
+              "supplementaryInformation": "[\"init\",\"dragging\",\"dropped\"]",
+              "type": "stringWithSelector"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": []
@@ -7647,7 +7885,7 @@
               "longDescription": "",
               "name": "Behavior",
               "optional": false,
-              "supplementaryInformation": "babblebot::Dragable",
+              "supplementaryInformation": "babblebot::DropTarget",
               "type": "behavior"
             }
           ],
@@ -7661,566 +7899,6 @@
           "private": false,
           "sentence": "",
           "events": [
-            {
-              "colorB": 228,
-              "colorG": 176,
-              "colorR": 74,
-              "creationTime": 0,
-              "disabled": false,
-              "folded": false,
-              "name": "Drag management",
-              "source": "",
-              "type": "BuiltinCommonInstructions::Group",
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "DepartScene"
-                      },
-                      "parameters": [
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarSceneTxt"
-                      },
-                      "parameters": [
-                        "SelectionState",
-                        "=",
-                        "\"waiting\""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "VarSceneTxt"
-                          },
-                          "parameters": [
-                            "DragState",
-                            "=",
-                            "\"init\""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [],
-                      "events": [
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::Card::handleHover"
-                              },
-                              "parameters": [
-                                "Card",
-                                "Card",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "SourisBouton"
-                              },
-                              "parameters": [
-                                "",
-                                "Left"
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "SourisSurObjet"
-                              },
-                              "parameters": [
-                                "Card",
-                                "",
-                                "",
-                                ""
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::Card::IsFaceUp"
-                              },
-                              "parameters": [
-                                "Card",
-                                "Card",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [],
-                          "events": [
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "ModVarSceneTxt"
-                                  },
-                                  "parameters": [
-                                    "DragState",
-                                    "=",
-                                    "\"dragging\""
-                                  ],
-                                  "subInstructions": []
-                                },
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "ModVarScene"
-                                  },
-                                  "parameters": [
-                                    "DragId",
-                                    "=",
-                                    "Card.Card::InstanceId()"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "disabled": false,
-                      "folded": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "VarSceneTxt"
-                          },
-                          "parameters": [
-                            "DragState",
-                            "=",
-                            "\"dragging\""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::PlayArea::activate"
-                          },
-                          "parameters": [
-                            "PlayArea",
-                            "PlayArea",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": [
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::ForEach",
-                          "object": "HandSlot",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::Slot::IsFilledWith"
-                              },
-                              "parameters": [
-                                "HandSlot",
-                                "Slot",
-                                "Variable(DragId)",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::Slot::removeCard"
-                              },
-                              "parameters": [
-                                "HandSlot",
-                                "Slot",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::ForEach",
-                          "object": "Card",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::Card::IsInstance"
-                              },
-                              "parameters": [
-                                "Card",
-                                "Card",
-                                "Variable(DragId)",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "MettreAutourPos"
-                              },
-                              "parameters": [
-                                "Card",
-                                "MouseX()",
-                                "MouseY()",
-                                "1",
-                                "15"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "MouseButtonReleased"
-                              },
-                              "parameters": [
-                                "",
-                                "Left"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarSceneTxt"
-                              },
-                              "parameters": [
-                                "DragState",
-                                "=",
-                                "\"dropped\""
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarScene"
-                              },
-                              "parameters": [
-                                "DropId",
-                                "=",
-                                "Variable(DragId)"
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarScene"
-                              },
-                              "parameters": [
-                                "DragId",
-                                "=",
-                                "-1"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        },
-                        {
-                          "disabled": true,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "SourisBouton"
-                              },
-                              "parameters": [
-                                "",
-                                "Left"
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "SourisSurObjet"
-                              },
-                              "parameters": [
-                                "PlayArea",
-                                "",
-                                "",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [],
-                          "events": []
-                        }
-                      ]
-                    },
-                    {
-                      "disabled": false,
-                      "folded": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "VarSceneTxt"
-                          },
-                          "parameters": [
-                            "DragState",
-                            "=",
-                            "\"dropped\""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarSceneTxt"
-                          },
-                          "parameters": [
-                            "DragState",
-                            "=",
-                            "\"init\""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::PlayArea::deactivate"
-                          },
-                          "parameters": [
-                            "PlayArea",
-                            "PlayArea",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": [
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::ForEach",
-                          "object": "Card",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::Card::IsInstance"
-                              },
-                              "parameters": [
-                                "Card",
-                                "Card",
-                                "Variable(DropId)",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [],
-                          "events": [
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "CollisionNP"
-                                  },
-                                  "parameters": [
-                                    "Card",
-                                    "PlayArea",
-                                    "",
-                                    "",
-                                    "yes"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "babblebot::Hand::requestPlay"
-                                  },
-                                  "parameters": [
-                                    "Hand",
-                                    "Hand",
-                                    "Card.Card::InstanceId()",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                },
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "MettreAutour"
-                                  },
-                                  "parameters": [
-                                    "Card",
-                                    "CardPool",
-                                    "0",
-                                    "0"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Comment",
-                              "color": {
-                                "b": 109,
-                                "g": 230,
-                                "r": 255,
-                                "textB": 0,
-                                "textG": 0,
-                                "textR": 0
-                              },
-                              "comment": "The hand fitIntoSlots should reposition the card otherwise",
-                              "comment2": ""
-                            },
-                            {
-                              "disabled": false,
-                              "folded": false,
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "inverted": true,
-                                    "value": "CollisionNP"
-                                  },
-                                  "parameters": [
-                                    "Card",
-                                    "PlayArea",
-                                    "",
-                                    "",
-                                    "yes"
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "inverted": false,
-                                    "value": "babblebot::Hand::fitIntoSlots"
-                                  },
-                                  "parameters": [
-                                    "Hand",
-                                    "Hand",
-                                    "Card",
-                                    "Card",
-                                    "HandSlot",
-                                    "Slot",
-                                    ""
-                                  ],
-                                  "subInstructions": []
-                                }
-                              ],
-                              "events": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "parameters": []
-            },
             {
               "disabled": false,
               "folded": false,
@@ -8247,6 +7925,130 @@
               "description": "Behavior",
               "longDescription": "",
               "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DropTarget",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "handleDragables",
+          "fullName": "handleDragables",
+          "functionType": "Action",
+          "name": "handleDragables",
+          "private": false,
+          "sentence": "_PARAM0_ handleDragables _PARAM2_",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Dragable",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Dragable::IsState"
+                      },
+                      "parameters": [
+                        "Dragable",
+                        "DragableBehavior",
+                        "\"dropping\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "CollisionNP"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Dragable",
+                            "",
+                            "",
+                            "yes"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Dragable::drop"
+                          },
+                          "parameters": [
+                            "Dragable",
+                            "DragableBehavior",
+                            "Object",
+                            "Behavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DropTarget",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Dragable",
+              "longDescription": "",
+              "name": "Dragable",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "objectList"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "DragableBehavior",
+              "longDescription": "",
+              "name": "DragableBehavior",
               "optional": false,
               "supplementaryInformation": "babblebot::Dragable",
               "type": "behavior"
