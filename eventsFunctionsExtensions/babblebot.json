@@ -3804,7 +3804,7 @@
                   "actions": [],
                   "events": [
                     {
-                      "disabled": false,
+                      "disabled": true,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
@@ -3940,70 +3940,38 @@
                 {
                   "disabled": false,
                   "folded": false,
-                  "type": "BuiltinCommonInstructions::ForEach",
-                  "object": "SlotObject",
-                  "conditions": [],
-                  "actions": [],
-                  "events": [
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
                     {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Slot::IsFilledWith"
-                          },
-                          "parameters": [
-                            "SlotObject",
-                            "SlotBehavior",
-                            "CardObject.CardBehavior::InstanceId()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Slot::IsFilledWith"
+                      },
+                      "parameters": [
+                        "SlotObject",
+                        "SlotBehavior",
+                        "CardObject.CardBehavior::InstanceId()",
+                        ""
                       ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjetTxt"
-                          },
-                          "parameters": [
-                            "Object",
-                            "SlottedId",
-                            "=",
-                            "SlotObject.SlotBehavior::Id()"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": [
-                        {
-                          "disabled": true,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "srs_utils::consoleLog"
-                              },
-                              "parameters": [
-                                "",
-                                "\"Already slotted: \" + CardObject.CardBehavior::InstanceId()",
-                                ""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        }
-                      ]
+                      "subInstructions": []
                     }
-                  ]
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SlottedId",
+                        "=",
+                        "SlotObject.SlotBehavior::Id()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
                 },
                 {
                   "disabled": false,
@@ -4109,7 +4077,7 @@
                           ],
                           "events": [
                             {
-                              "disabled": false,
+                              "disabled": true,
                               "folded": false,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [],
