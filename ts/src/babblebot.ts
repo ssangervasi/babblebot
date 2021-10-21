@@ -7,6 +7,7 @@ import * as Utils from './utils'
 import { Encounter } from './encounter'
 
 class Game {
+	Game = Game
 	UserData = UserData
 	CardScores = CardScores
 	Encounter = Encounter
@@ -14,7 +15,7 @@ class Game {
 	Utils = Utils
 
 	_manager: UserData.Manager | undefined
-	encounter: Encounter | undefined
+	_encounter: Encounter | undefined
 
 	get manager(): UserData.Manager {
 		if (!this._manager) {
@@ -23,10 +24,17 @@ class Game {
 		return this._manager
 	}
 
+	get encounter(): Encounter {
+		if (this._encounter) {
+			return this._encounter
+		}
+		return Utils.Placeholder({} as Encounter, 'Babblebot.encounter')
+	}
+
 	load(userDataJSON: string) {
 		this._manager = new UserData.Manager(UserData.createFromJSON(userDataJSON))
 		this._manager.resumeGame()
-		this.encounter = undefined
+		this._encounter = undefined
 	}
 
 	save(): string {
@@ -41,7 +49,7 @@ class Game {
 		const incompletes = this.manager.listIncompleteEncounters()
 		const resumableSession = incompletes.find(e => e.sceneName === sceneName)
 		if (resumableSession) {
-			this.encounter = this.makeEncounter(resumableSession)
+			this._encounter = this.makeEncounter(resumableSession)
 			return this.encounter
 		}
 
@@ -49,7 +57,7 @@ class Game {
 			sceneName: sceneName,
 			startedAt: Date.now(),
 		})
-		this.encounter = this.makeEncounter(newSession)
+		this._encounter = this.makeEncounter(newSession)
 		return this.encounter
 	}
 

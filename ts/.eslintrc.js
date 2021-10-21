@@ -28,6 +28,8 @@ module.exports = {
 			'error',
 			{
 				code: 100,
+				tabWidth: 2,
+				ignoreTemplateLiterals: true,
 			},
 		],
 		// Prettier handles it.

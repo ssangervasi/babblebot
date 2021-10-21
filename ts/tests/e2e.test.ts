@@ -1,4 +1,3 @@
-import { CardInstance } from '@babblebot/dealer'
 import { jest } from '@jest/globals'
 
 import '../src/babblebot'
@@ -56,8 +55,8 @@ describe('E2E', () => {
 			Babblebot.load(JSON.stringify(Data.mockUserData()))
 			Babblebot.loadEncounter(Babblebot.nextEncounter())
 
-			const encounter = Babblebot.encounter!
-			const dealer = encounter.dealer!
+			const encounter = Babblebot.encounter
+			const dealer = encounter.dealer
 
 			Babblebot.Lodash.range(1, 10 + 1).forEach(i => {
 				const card = dealer.peek('hand')[0]!
@@ -97,5 +96,12 @@ describe('E2E', () => {
 			expect(encounter.state).toBe('complete')
 			expect(Babblebot.encounter?.toUserData()?.completedAt).toEqual(10_000)
 		})
+	})
+
+	test('Uses a placeholder when there is no encounter', () => {
+		const warnSpy = jest.spyOn(global.console, 'warn')
+		warnSpy.mockClear()
+		expect(new Babblebot.Game().encounter.mood).toBe(undefined)
+		expect(warnSpy.mock.calls[0]![0]!).toMatch(/Babblebot\.encounter/)
 	})
 })

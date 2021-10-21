@@ -31,3 +31,24 @@ export const isType = <T extends string>(t: T) => {
 
 export const splitList = (str: string): string[] =>
 	str.split(/(\s+|\s*,\s*)/).filter(s => s.length > 0)
+
+export const Placeholder = <T extends object>(
+	defaults: T,
+	nickname = 'object',
+): T => {
+	return new Proxy(defaults, {
+		get: function (_target: T, property, _receiver: T) {
+			if (property in defaults) {
+				console.warn(
+					`Returning default value for property "${property.toString()}" in ${nickname} placeholder.`,
+				)
+				return defaults[property as keyof T]
+			}
+
+			console.warn(
+				`Property "${property.toString()}" does not exist in ${nickname} placeholder.`,
+			)
+			return undefined
+		},
+	})
+}

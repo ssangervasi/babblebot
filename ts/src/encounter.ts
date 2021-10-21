@@ -11,7 +11,6 @@ import {
 	DISCARD,
 	makeCollection,
 	makeCardInstance,
-	CardInstance,
 } from './dealer'
 import * as UserData from './userData'
 import { UUID, isType } from './utils'
@@ -20,7 +19,6 @@ import {
 	DialogueNode,
 	DialogueNodePayload,
 	PromptNode,
-	PromptNodePayload,
 	parseDialogueNode,
 } from './dialogue'
 
