@@ -3801,21 +3801,74 @@
                       "subInstructions": []
                     }
                   ],
-                  "actions": [
+                  "actions": [],
+                  "events": [
                     {
-                      "type": {
-                        "inverted": false,
-                        "value": "babblebot::Slot::removeCard"
-                      },
-                      "parameters": [
-                        "SlotObject",
-                        "SlotBehavior",
-                        ""
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "srs_utils::consoleLog"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Removed \" + SlotObject.SlotBehavior::SlottedInstanceId() + \" from slot \" + SlotObject.SlotBehavior::Id()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
                       ],
-                      "subInstructions": []
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Slot::removeCard"
+                          },
+                          "parameters": [
+                            "SlotObject",
+                            "SlotBehavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Slot::handleCard"
+                          },
+                          "parameters": [
+                            "SlotObject",
+                            "SlotBehavior",
+                            "CardObject",
+                            "CardBehavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
                     }
-                  ],
-                  "events": []
+                  ]
                 }
               ]
             },
@@ -3841,6 +3894,27 @@
               ],
               "actions": [],
               "events": [
+                {
+                  "disabled": true,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "srs_utils::consoleLog"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Card in hand: \" + CardObject.CardBehavior::InstanceId()",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -3905,68 +3979,159 @@
                           "subInstructions": []
                         }
                       ],
-                      "events": []
-                    },
+                      "events": [
+                        {
+                          "disabled": true,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "srs_utils::consoleLog"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Already slotted: \" + CardObject.CardBehavior::InstanceId()",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjetTxt"
+                      },
+                      "parameters": [
+                        "Object",
+                        "SlottedId",
+                        "=",
+                        "\"\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
                     {
                       "disabled": false,
                       "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "SlotObject",
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
                         {
-                          "type": {
-                            "inverted": true,
-                            "value": "babblebot::Slot::IsFilled"
-                          },
-                          "parameters": [
-                            "SlotObject",
-                            "SlotBehavior",
-                            ""
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "babblebot::Slot::IsFilled"
+                              },
+                              "parameters": [
+                                "SlotObject",
+                                "SlotBehavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "SlottedId",
+                                "=",
+                                "\"\""
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "VarObjetTxt"
-                          },
-                          "parameters": [
-                            "Object",
-                            "SlottedId",
-                            "=",
-                            "\"\""
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "SlottedId",
+                                "=",
+                                "SlotObject.SlotBehavior::Id()"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::Slot::slotCard"
+                              },
+                              "parameters": [
+                                "SlotObject",
+                                "SlotBehavior",
+                                "CardObject.CardBehavior::InstanceId()",
+                                ""
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::Slot::handleCard"
+                              },
+                              "parameters": [
+                                "SlotObject",
+                                "SlotBehavior",
+                                "CardObject",
+                                "CardBehavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "srs_utils::consoleLog"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "\"Hand Slotted \" + CardObject.CardBehavior::InstanceId() + \" into slot \" + SlotObject.SlotBehavior::Id()",
+                                    ""
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
                         }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjetTxt"
-                          },
-                          "parameters": [
-                            "Object",
-                            "SlottedId",
-                            "=",
-                            "SlotObject.SlotBehavior::Id()"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Slot::slotCard"
-                          },
-                          "parameters": [
-                            "SlotObject",
-                            "SlotBehavior",
-                            "CardObject.CardBehavior::InstanceId()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
+                      ]
                     }
                   ]
                 }
@@ -4333,320 +4498,6 @@
               "optional": false,
               "supplementaryInformation": "babblebot::Card",
               "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "handlePlayCard",
-          "fullName": "handlePlayCard",
-          "functionType": "Action",
-          "name": "handlePlayCard",
-          "private": false,
-          "sentence": "_PARAM0_ handlePlayCard _PARAM2_ (_PARAM4_)",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"play_requested\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "OriginalSize",
-                        "=",
-                        "Object.CardCollectionBehavior::Size()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "LinkedObjects::PickObjectsLinkedTo"
-                      },
-                      "parameters": [
-                        "",
-                        "CardObject",
-                        "Object"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "CardObject",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Card::IsInstance"
-                          },
-                          "parameters": [
-                            "CardObject",
-                            "CardBehavior",
-                            "Object.Behavior::RequestedInstanceId()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Hand::startPlaying"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Behavior",
-                            "CardObject.CardBehavior::InstanceId()",
-                            "CardObject.CardBehavior::Id()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "LinkedObjects::RemoveLinkBetween"
-                          },
-                          "parameters": [
-                            "",
-                            "Object",
-                            "CardObject"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 109,
-                    "g": 230,
-                    "r": 255,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "Re-eval size",
-                  "comment2": ""
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "LinkedObjects::PickObjectsLinkedTo"
-                      },
-                      "parameters": [
-                        "",
-                        "CardObject",
-                        "Object"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "Size",
-                        "=",
-                        "Count(CardObject)"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Egal"
-                      },
-                      "parameters": [
-                        "Object.Variable(OriginalSize)",
-                        "<=",
-                        "Object.Behavior::Size()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "srs_utils::consoleLog"
-                      },
-                      "parameters": [
-                        "",
-                        "\"Playing card - size went from \" + ToString(Object.Variable(OriginalSize)) + \" to \" + ToString(Object.Behavior::Size())",
-                        "1",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"play_finished\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Object",
-                    "RequestedInstanceId",
-                    "=",
-                    "-1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Hand",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "CardObject",
-              "longDescription": "",
-              "name": "CardObject",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "objectList"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "CardBehavior",
-              "longDescription": "",
-              "name": "CardBehavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "PoolObject",
-              "longDescription": "",
-              "name": "PoolObject",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "objectList"
             }
           ],
           "objectGroups": []
@@ -5234,13 +5085,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "babblebot::Slot::IsFilledWith"
+                        "value": "StrEqual"
                       },
                       "parameters": [
-                        "Object",
-                        "Behavior",
-                        "CardObject.CardBehavior::InstanceId()",
-                        ""
+                        "Object.Behavior::SlottedInstanceId()",
+                        "=",
+                        "CardObject.CardBehavior::InstanceId()"
                       ],
                       "subInstructions": []
                     }
@@ -5261,6 +5111,28 @@
                           "parameters": [
                             "CardObject",
                             "Slot.Id",
+                            "=",
+                            "\"\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "InstanceId",
                             "=",
                             "\"\""
                           ],
@@ -5389,6 +5261,27 @@
                     "State",
                     "=",
                     "\"slotted\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::consoleLog"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Slot Slotted \" + GetArgumentAsString(\"InstanceId\") + \" into slot \" + Object.Behavior::Id()",
+                    ""
                   ],
                   "subInstructions": []
                 }
