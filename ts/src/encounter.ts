@@ -144,7 +144,7 @@ export class Encounter {
 			return this.currentNode
 		}
 		const logEntry = Lodash.findLast(this.log, ({ type }) => type === 'PROMPT')
-		return logEntryToDialogueNode(logEntry)
+		return logEntryToDialogueNode(logEntry, this.moodQuality)
 	}
 
 	private get idToCard(): Map<string, CardRow> {
@@ -285,7 +285,7 @@ export class Encounter {
 			this.log,
 			entry => entry.type === 'PROMPT' && entry.quality === this.moodQuality,
 		)
-		this.currentNode = logEntryToDialogueNode(logEntry)
+		this.currentNode = logEntryToDialogueNode(logEntry, this.moodQuality)
 	}
 
 	calculateScore(cardFeatures: string, node: DialogueNodePayload) {
@@ -316,23 +316,28 @@ export class Encounter {
 	}
 }
 
-const logEntryToDialogueNode = (logEntry?: LogEntry): DialogueNodePayload => {
-	if (!(logEntry && logEntry.type === 'PROMPT')) {
+const logEntryToDialogueNode = (
+	logEntry: LogEntry | undefined,
+	quality: Quality,
+): DialogueNodePayload => {
+	if (logEntry && logEntry.type === 'PROMPT') {
 		return {
-			title: 'neutral_0',
-			quality: 'neutral',
-			step: 0,
-			featureReactions: '',
-			promptedMs: 0,
-			tickedMs: 0,
+			title: logEntry.title,
+			quality: logEntry.quality,
+			step: logEntry.step,
+			featureReactions: logEntry.featureReactions,
+			promptedMs: logEntry.promptedMs,
+			tickedMs: logEntry.tickedMs,
 		}
 	}
+
+	const step = 1
 	return {
-		title: logEntry.title,
-		quality: logEntry.quality,
-		step: logEntry.step,
-		featureReactions: logEntry.featureReactions,
-		promptedMs: logEntry.promptedMs,
-		tickedMs: logEntry.tickedMs,
+		title: `${quality}_${step}`,
+		quality,
+		step,
+		featureReactions: '',
+		promptedMs: 0,
+		tickedMs: 0,
 	}
 }

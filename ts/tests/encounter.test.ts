@@ -162,8 +162,6 @@ describe('transition', () => {
 		'good_2',
 		'good_3',
 		'neutral_4',
-		'bad_1',
-		'bad_2',
 	]
 	beforeEach(() => {
 		// Disregarding the fact there are no card or transition entries.
@@ -182,7 +180,7 @@ describe('transition', () => {
 		})
 	})
 
-	it('reloads the last node matching good quality', () => {
+	it('reloads the last node matching the current quality', () => {
 		// Force mood to be "good"
 		enc.mood = 100
 		expect(enc.moodQuality).toBe('good')
@@ -195,16 +193,16 @@ describe('transition', () => {
 		})
 	})
 
-	it('reloads the last node matching bad quality', () => {
+	it('loads the first step of a new quality', () => {
 		// Force mood to be "good"
 		enc.mood = -100
 		expect(enc.moodQuality).toBe('bad')
 
 		enc.transition()
 		expect(enc.currentNode).toMatchObject({
-			title: 'bad_2',
+			title: 'bad_1',
 			quality: 'bad',
-			step: 2,
+			step: 1,
 		})
 	})
 })
@@ -265,11 +263,11 @@ describe('lastPlayQuality', () => {
 })
 
 describe('peekNode', () => {
-	it('returns neutral_0 if the log is empty', () => {
+	it('returns neutral_1 if the log is empty', () => {
 		const expected = DialogueNode.build({
-			title: 'neutral_0',
+			title: 'neutral_1',
 			quality: 'neutral',
-			step: 0,
+			step: 1,
 			featureReactions: '',
 			promptedMs: 0,
 			tickedMs: 0,
