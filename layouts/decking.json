@@ -883,7 +883,12 @@
         {
           "name": "Card",
           "type": "babblebot::Card",
-          "Id": ""
+          "Id": "",
+          "DragableBehavior": "Dragable"
+        },
+        {
+          "name": "Dragable",
+          "type": "babblebot::Dragable"
         }
       ],
       "animations": [

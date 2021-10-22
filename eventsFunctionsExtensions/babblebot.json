@@ -1372,6 +1372,152 @@
       ],
       "parameters": [],
       "objectGroups": []
+    },
+    {
+      "description": "IsAnyDragged",
+      "fullName": "IsAnyDragged",
+      "functionType": "Condition",
+      "name": "IsAnyDragged",
+      "private": false,
+      "sentence": "IsAnyDragged",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnBoolean"
+              },
+              "parameters": [
+                "False"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VariableChildExists"
+              },
+              "parameters": [
+                "Drag",
+                "\"Id\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarSceneTxt"
+                  },
+                  "parameters": [
+                    "Drag.Id",
+                    "!=",
+                    "\"\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "DraggedId",
+      "fullName": "DraggedId",
+      "functionType": "StringExpression",
+      "name": "DraggedId",
+      "private": false,
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnString"
+              },
+              "parameters": [
+                "\"\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::IsAnyDragged"
+              },
+              "parameters": [
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SetReturnString"
+              },
+              "parameters": [
+                "VariableString(Drag.Id)"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
     }
   ],
   "eventsBasedBehaviors": [
@@ -1473,6 +1619,410 @@
                   "subInstructions": []
                 }
               ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "Sprite",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Card",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::Card::IsFaceUp"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "ObjectVariableChildExists"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Z",
+                        "\"Base\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Z.Base",
+                        "=",
+                        "Object.ZOrder()"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Z.Hover",
+                        "=",
+                        "Object.ZOrder() + 10"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Z.Drag",
+                        "=",
+                        "Object.ZOrder() + 20"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Dragable::IsState"
+                      },
+                      "parameters": [
+                        "Object",
+                        "DragableBehavior",
+                        "\"init\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "Object.Variable(Z.Base)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Scale",
+                            "=",
+                            "1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Dragable::IsState"
+                      },
+                      "parameters": [
+                        "Object",
+                        "DragableBehavior",
+                        "\"hover\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "babblebot::IsAnyDragged"
+                      },
+                      "parameters": [
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "Object.Variable(Z.Hover)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Card::IsSelected"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Behavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Scale",
+                            "=",
+                            "1.5"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "babblebot::Card::IsSelected"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Behavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangeScale"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "1.1"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Scale",
+                            "=",
+                            "1.1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Dragable::IsState"
+                      },
+                      "parameters": [
+                        "Object",
+                        "DragableBehavior",
+                        "\"dragging\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "Object.Variable(Z.Drag)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangeWidth"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "Object.Variable(Slot.Width) * Object.Variable(Scale)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ChangeHeight"
+                          },
+                          "parameters": [
+                            "Object",
+                            "=",
+                            "Object.Variable(Slot.Height) * Object.Variable(Scale)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
               "events": []
             }
           ],
@@ -1630,6 +2180,28 @@
               ],
               "actions": [],
               "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Dragable::IsState"
+                      },
+                      "parameters": [
+                        "Object",
+                        "DragableBehavior",
+                        "\"dragging\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": []
+                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -1810,322 +2382,6 @@
               "name": "BBTextContained",
               "optional": false,
               "supplementaryInformation": "srs_utils::BBTextContained",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "handleHover",
-          "fullName": "handleHover",
-          "functionType": "Action",
-          "name": "handleHover",
-          "private": false,
-          "sentence": "_PARAM0_ handleHover",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Card::IsFaceUp"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Behavior",
-                    ""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "OriginalZ",
-                        "=",
-                        "0"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "OriginalZ",
-                        "=",
-                        "Object.ZOrder()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "SourisSurObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "",
-                        "",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ChangePlan"
-                          },
-                          "parameters": [
-                            "Object",
-                            "=",
-                            "Object.Variable(OriginalZ) + 10"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Card::IsSelected"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Behavior",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Scale",
-                            "=",
-                            "1.5"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": true,
-                            "value": "babblebot::Card::IsSelected"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Behavior",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ChangeScale"
-                          },
-                          "parameters": [
-                            "Object",
-                            "=",
-                            "1.1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Scale",
-                            "=",
-                            "1.1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "SourisSurObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "",
-                        "",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ChangePlan"
-                          },
-                          "parameters": [
-                            "Object",
-                            "=",
-                            "Object.Variable(OriginalZ)"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Scale",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ChangeWidth"
-                          },
-                          "parameters": [
-                            "Object",
-                            "=",
-                            "Object.Variable(Slot.Width) * Object.Variable(Scale)"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ChangeHeight"
-                          },
-                          "parameters": [
-                            "Object",
-                            "=",
-                            "Object.Variable(Slot.Height) * Object.Variable(Scale)"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "Sprite",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::Card",
               "type": "behavior"
             }
           ],
@@ -3058,6 +3314,17 @@
           "extraInformation": [],
           "hidden": false,
           "name": "Features"
+        },
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "DragableBehavior",
+          "description": "",
+          "extraInformation": [
+            "babblebot::Dragable"
+          ],
+          "hidden": false,
+          "name": "DragableBehavior"
         }
       ]
     },
@@ -5722,7 +5989,7 @@
           "sentence": "",
           "events": [
             {
-              "disabled": false,
+              "disabled": true,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
@@ -5739,7 +6006,16 @@
                     "\"init\""
                   ],
                   "subInstructions": []
-                },
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
                 {
                   "type": {
                     "inverted": false,
@@ -5752,132 +6028,6 @@
                 }
               ],
               "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::PlayArea",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "",
-          "fullName": "",
-          "functionType": "Action",
-          "name": "doStepPreEvents",
-          "private": false,
-          "sentence": "",
-          "events": [
-            {
-              "disabled": true,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"active\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "SourisSurObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "",
-                        "",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ChangeScale"
-                      },
-                      "parameters": [
-                        "Object",
-                        "=",
-                        "1.1 * Object.Variable(OriginalScale)"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "SourisSurObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "",
-                        "",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ChangeScale"
-                      },
-                      "parameters": [
-                        "Object",
-                        "=",
-                        "Object.Variable(OriginalScale)"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
             }
           ],
           "parameters": [
@@ -6130,231 +6280,6 @@
               "name": "CardBehavior",
               "optional": false,
               "supplementaryInformation": "babblebot::Card",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "activate",
-          "fullName": "activate",
-          "functionType": "Action",
-          "name": "activate",
-          "private": false,
-          "sentence": "_PARAM0_ activate",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"active\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "Montre"
-                      },
-                      "parameters": [
-                        "Object",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "OriginalScale",
-                        "=",
-                        "Object.ScaleX()"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Object",
-                        "OriginalZ",
-                        "=",
-                        "Object.ZOrder()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
-                {
-                  "disabled": true,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ChangeScale"
-                      },
-                      "parameters": [
-                        "Object",
-                        "=",
-                        "1.5 * Object.Variable(OriginalScale)"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::PlayArea",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "deactivate",
-          "fullName": "deactivate",
-          "functionType": "Action",
-          "name": "deactivate",
-          "private": false,
-          "sentence": "_PARAM0_ deactivate",
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"active\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarObjetTxt"
-                  },
-                  "parameters": [
-                    "Object",
-                    "State",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Cache"
-                  },
-                  "parameters": [
-                    "Object"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ],
-          "parameters": [
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Object",
-              "longDescription": "",
-              "name": "Object",
-              "optional": false,
-              "supplementaryInformation": "",
-              "type": "object"
-            },
-            {
-              "codeOnly": false,
-              "defaultValue": "",
-              "description": "Behavior",
-              "longDescription": "",
-              "name": "Behavior",
-              "optional": false,
-              "supplementaryInformation": "babblebot::PlayArea",
               "type": "behavior"
             }
           ],
@@ -7025,6 +6950,49 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjetTxt"
+                  },
+                  "parameters": [
+                    "Object",
+                    "DragId",
+                    "=",
+                    "babblebot::UUID()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ],
           "parameters": [
@@ -7076,11 +7044,68 @@
                   "colorR": 74,
                   "creationTime": 0,
                   "disabled": false,
-                  "folded": true,
-                  "name": "Always evaluate mouse press state",
+                  "folded": false,
+                  "name": "Always evaluate mouse state",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
                   "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "SetObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "IsHovered",
+                            "="
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "SourisSurObjet"
+                              },
+                              "parameters": [
+                                "Object",
+                                "",
+                                "",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "SetObjectVariableAsBoolean"
+                              },
+                              "parameters": [
+                                "Object",
+                                "IsHovered",
+                                "True"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
                     {
                       "disabled": false,
                       "folded": false,
@@ -7100,53 +7125,41 @@
                           "subInstructions": []
                         }
                       ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
+                      "events": [
                         {
-                          "type": {
-                            "inverted": false,
-                            "value": "MouseButtonPressed"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "MouseButtonPressed"
+                              },
+                              "parameters": [
+                                "",
+                                "Left"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "SourisSurObjet"
-                          },
-                          "parameters": [
-                            "Object",
-                            "",
-                            "",
-                            ""
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "SetObjectVariableAsBoolean"
+                              },
+                              "parameters": [
+                                "Object",
+                                "IsPressed",
+                                "True"
+                              ],
+                              "subInstructions": []
+                            }
                           ],
-                          "subInstructions": []
+                          "events": []
                         }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "SetObjectVariableAsBoolean"
-                          },
-                          "parameters": [
-                            "Object",
-                            "IsPressed",
-                            "True"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
+                      ]
                     }
                   ],
                   "parameters": []
@@ -7159,13 +7172,13 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "VarObjetTxt"
+                        "value": "babblebot::Dragable::IsState"
                       },
                       "parameters": [
                         "Object",
-                        "DragState",
-                        "=",
-                        "\"init\""
+                        "Behavior",
+                        "\"init\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -7180,61 +7193,47 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ObjectVariableAsBoolean"
+                            "value": "babblebot::Dragable::IsEnabled"
                           },
                           "parameters": [
                             "Object",
-                            "IsPressed",
-                            "True"
+                            "Behavior",
+                            ""
                           ],
                           "subInstructions": []
                         }
                       ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjetTxt"
-                          },
-                          "parameters": [
-                            "Object",
-                            "NextDragState",
-                            "=",
-                            "\"dragging\""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
+                      "actions": [],
                       "events": [
                         {
                           "disabled": false,
                           "folded": false,
                           "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ObjectVariableAsBoolean"
+                              },
+                              "parameters": [
+                                "Object",
+                                "IsHovered",
+                                "True"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
                           "actions": [
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarObjet"
+                                "value": "ModVarObjetTxt"
                               },
                               "parameters": [
                                 "Object",
-                                "Initial.X",
+                                "NextDragState",
                                 "=",
-                                "Object.X()"
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarObjet"
-                              },
-                              "parameters": [
-                                "Object",
-                                "Initial.Y",
-                                "=",
-                                "Object.Y()"
+                                "\"hover\""
                               ],
                               "subInstructions": []
                             }
@@ -7253,19 +7252,215 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "VarObjetTxt"
+                        "value": "babblebot::Dragable::IsState"
                       },
                       "parameters": [
                         "Object",
-                        "DragState",
-                        "=",
-                        "\"dragging\""
+                        "Behavior",
+                        "\"hover\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
                   ],
                   "actions": [],
                   "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "babblebot::Dragable::IsEnabled"
+                          },
+                          "parameters": [
+                            "Object",
+                            "Behavior",
+                            ""
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "IsHovered",
+                            "True"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ObjectVariableAsBoolean"
+                              },
+                              "parameters": [
+                                "Object",
+                                "WasPressed",
+                                "False"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ObjectVariableAsBoolean"
+                              },
+                              "parameters": [
+                                "Object",
+                                "IsPressed",
+                                "True"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjetTxt"
+                              },
+                              "parameters": [
+                                "Object",
+                                "NextDragState",
+                                "=",
+                                "\"dragging\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": [
+                            {
+                              "disabled": false,
+                              "folded": false,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarObjet"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "Initial.X",
+                                    "=",
+                                    "Object.X()"
+                                  ],
+                                  "subInstructions": []
+                                },
+                                {
+                                  "type": {
+                                    "inverted": false,
+                                    "value": "ModVarObjet"
+                                  },
+                                  "parameters": [
+                                    "Object",
+                                    "Initial.Y",
+                                    "=",
+                                    "Object.Y()"
+                                  ],
+                                  "subInstructions": []
+                                }
+                              ],
+                              "events": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ObjectVariableAsBoolean"
+                          },
+                          "parameters": [
+                            "Object",
+                            "IsHovered",
+                            "False"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjetTxt"
+                          },
+                          "parameters": [
+                            "Object",
+                            "NextDragState",
+                            "=",
+                            "\"init\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "babblebot::Dragable::IsState"
+                      },
+                      "parameters": [
+                        "Object",
+                        "Behavior",
+                        "\"dragging\"",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "Drag.Id",
+                            "=",
+                            "Object.Behavior::DragId()"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
                     {
                       "disabled": false,
                       "folded": false,
@@ -7347,19 +7542,40 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "VarObjetTxt"
+                        "value": "babblebot::Dragable::IsState"
                       },
                       "parameters": [
                         "Object",
-                        "DragState",
-                        "=",
-                        "\"dropping\""
+                        "Behavior",
+                        "\"dropping\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
                   ],
                   "actions": [],
                   "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "Drag.Id",
+                            "=",
+                            "\"\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
                     {
                       "disabled": false,
                       "folded": false,
@@ -7415,13 +7631,13 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "VarObjetTxt"
+                        "value": "babblebot::Dragable::IsState"
                       },
                       "parameters": [
                         "Object",
-                        "DragState",
-                        "=",
-                        "\"dropped\""
+                        "Behavior",
+                        "\"dropped\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -7486,6 +7702,82 @@
                       "subInstructions": []
                     }
                   ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ObjectVariableAsBoolean"
+                      },
+                      "parameters": [
+                        "Object",
+                        "IsPressed",
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetObjectVariableAsBoolean"
+                      },
+                      "parameters": [
+                        "Object",
+                        "WasPressed",
+                        "True"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ObjectVariableAsBoolean"
+                      },
+                      "parameters": [
+                        "Object",
+                        "IsPressed",
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SetObjectVariableAsBoolean"
+                      },
+                      "parameters": [
+                        "Object",
+                        "WasPressed",
+                        "False"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
                   "events": []
                 }
               ],
@@ -7703,8 +7995,259 @@
               "longDescription": "",
               "name": "State",
               "optional": false,
-              "supplementaryInformation": "[\"init\",\"dragging\",\"dropped\"]",
+              "supplementaryInformation": "[\"init\",\"dragging\",\"dropped\",\"hover\",\"dropping\"]",
               "type": "stringWithSelector"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "IsEnabled",
+          "fullName": "IsEnabled",
+          "functionType": "Condition",
+          "name": "IsEnabled",
+          "private": false,
+          "sentence": "_PARAM0_ IsEnabled",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Dragable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "setEnabled",
+          "fullName": "setEnabled",
+          "functionType": "Action",
+          "name": "setEnabled",
+          "private": false,
+          "sentence": "_PARAM0_ setEnabled _PARAM2_ ",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "GetArgumentAsBoolean"
+                  },
+                  "parameters": [
+                    "\"Enabled\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "GetArgumentAsBoolean"
+                  },
+                  "parameters": [
+                    "\"Enabled\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Dragable",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Enabled",
+              "longDescription": "",
+              "name": "Enabled",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "trueorfalse"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "",
+          "fullName": "DragId",
+          "functionType": "StringExpression",
+          "name": "DragId",
+          "private": false,
+          "sentence": "",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Object.VariableString(DragId)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::Dragable",
+              "type": "behavior"
             }
           ],
           "objectGroups": []
@@ -7753,7 +8296,20 @@
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
-              "actions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
               "events": []
             }
           ],
@@ -7833,30 +8389,29 @@
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Dragable",
-              "conditions": [],
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::DropTarget::IsEnabled"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
               "actions": [],
               "events": [
                 {
                   "disabled": false,
                   "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "babblebot::Dragable::IsState"
-                      },
-                      "parameters": [
-                        "Dragable",
-                        "DragableBehavior",
-                        "\"dropping\"",
-                        ""
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "Dragable",
+                  "conditions": [],
                   "actions": [],
                   "events": [
                     {
@@ -7867,35 +8422,58 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "CollisionNP"
-                          },
-                          "parameters": [
-                            "Object",
-                            "Dragable",
-                            "",
-                            "",
-                            "yes"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "babblebot::Dragable::drop"
+                            "value": "babblebot::Dragable::IsState"
                           },
                           "parameters": [
                             "Dragable",
                             "DragableBehavior",
-                            "Object",
-                            "Behavior",
+                            "\"dropping\"",
                             ""
                           ],
                           "subInstructions": []
                         }
                       ],
-                      "events": []
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "CollisionNP"
+                              },
+                              "parameters": [
+                                "Object",
+                                "Dragable",
+                                "",
+                                "",
+                                "yes"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::Dragable::drop"
+                              },
+                              "parameters": [
+                                "Dragable",
+                                "DragableBehavior",
+                                "Object",
+                                "Behavior",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
                     }
                   ]
                 }
@@ -7942,6 +8520,205 @@
               "optional": false,
               "supplementaryInformation": "babblebot::Dragable",
               "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "IsEnabled",
+          "fullName": "IsEnabled",
+          "functionType": "Condition",
+          "name": "IsEnabled",
+          "private": false,
+          "sentence": "_PARAM0_ IsEnabled",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DropTarget",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "setEnabled",
+          "fullName": "setEnabled",
+          "functionType": "Action",
+          "name": "setEnabled",
+          "private": false,
+          "sentence": "_PARAM0_ setEnabled _PARAM2_ ",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "GetArgumentAsBoolean"
+                  },
+                  "parameters": [
+                    "\"Enabled\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "True"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "GetArgumentAsBoolean"
+                  },
+                  "parameters": [
+                    "\"Enabled\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetObjectVariableAsBoolean"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Enabled",
+                    "False"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
+            }
+          ],
+          "parameters": [
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Object",
+              "longDescription": "",
+              "name": "Object",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "object"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Behavior",
+              "longDescription": "",
+              "name": "Behavior",
+              "optional": false,
+              "supplementaryInformation": "babblebot::DropTarget",
+              "type": "behavior"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "Enabled",
+              "longDescription": "",
+              "name": "Enabled",
+              "optional": false,
+              "supplementaryInformation": "",
+              "type": "trueorfalse"
             }
           ],
           "objectGroups": []

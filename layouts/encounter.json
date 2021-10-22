@@ -937,7 +937,8 @@
         {
           "name": "Card",
           "type": "babblebot::Card",
-          "Id": ""
+          "Id": "",
+          "DragableBehavior": "Dragable"
         },
         {
           "name": "Dragable",
@@ -2320,6 +2321,28 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::DropTarget::setEnabled"
+                  },
+                  "parameters": [
+                    "PlayArea",
+                    "DropTarget",
+                    "False",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -2531,18 +2554,6 @@
                     ""
                   ],
                   "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "babblebot::Card::handleHover"
-                  },
-                  "parameters": [
-                    "Card",
-                    "Card",
-                    ""
-                  ],
-                  "subInstructions": []
                 }
               ],
               "events": []
@@ -2692,7 +2703,7 @@
       "creationTime": 0,
       "disabled": false,
       "folded": true,
-      "name": "Dialog",
+      "name": "Dialog/Play Loop",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
@@ -3258,14 +3269,14 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": true,
+              "folded": false,
               "name": "NPC speaking states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
                   "disabled": false,
-                  "folded": false,
+                  "folded": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -3819,7 +3830,7 @@
                       "events": []
                     },
                     {
-                      "disabled": true,
+                      "disabled": false,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
@@ -3827,42 +3838,12 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "Cache"
+                            "value": "babblebot::DropTarget::setEnabled"
                           },
                           "parameters": [
-                            "NPC_BBText"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Montre"
-                          },
-                          "parameters": [
-                            "PC_BBText",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": true,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "srs_utils::BBTextContained::setText"
-                          },
-                          "parameters": [
-                            "PC_BBText",
-                            "BBTextContained",
-                            "babblebot::HandText()",
+                            "PlayArea",
+                            "DropTarget",
+                            "True",
                             ""
                           ],
                           "subInstructions": []
@@ -3889,7 +3870,60 @@
                           "subInstructions": []
                         }
                       ],
-                      "events": []
+                      "events": [
+                        {
+                          "disabled": true,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Cache"
+                              },
+                              "parameters": [
+                                "NPC_BBText"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Montre"
+                              },
+                              "parameters": [
+                                "PC_BBText",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": true,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "srs_utils::BBTextContained::setText"
+                              },
+                              "parameters": [
+                                "PC_BBText",
+                                "BBTextContained",
+                                "babblebot::HandText()",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
                     }
                   ]
                 },
@@ -3996,6 +4030,43 @@
                             }
                           ],
                           "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 109,
+                            "g": 230,
+                            "r": 255,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Prevent subsequent drops",
+                          "comment2": ""
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "babblebot::DropTarget::setEnabled"
+                              },
+                              "parameters": [
+                                "PlayArea",
+                                "DropTarget",
+                                "True",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
                         }
                       ]
                     },
@@ -4005,7 +4076,7 @@
                       "colorR": 74,
                       "creationTime": 0,
                       "disabled": false,
-                      "folded": false,
+                      "folded": true,
                       "name": "Debug",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -4116,7 +4187,7 @@
                       "colorR": 74,
                       "creationTime": 0,
                       "disabled": true,
-                      "folded": false,
+                      "folded": true,
                       "name": "Debug - Just select dialogue options",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -4432,7 +4503,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "name": "Stopped States",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -4753,328 +4824,6 @@
                     "Dialogue.State",
                     "=",
                     "VariableString(Dialogue.NextState)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "colorB": 228,
-      "colorG": 176,
-      "colorR": 74,
-      "creationTime": 0,
-      "disabled": true,
-      "folded": true,
-      "name": "Mood",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "DepartScene"
-              },
-              "parameters": [
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "ModVarScene"
-              },
-              "parameters": [
-                "Mood",
-                "=",
-                "0"
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "ModVarScene"
-              },
-              "parameters": [
-                "PreviousMood",
-                "=",
-                "1"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "TextObject::String"
-              },
-              "parameters": [
-                "Mood",
-                "=",
-                "ToString(Variable(Mood))"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "Egal"
-              },
-              "parameters": [
-                "Variable(Mood)",
-                "!=",
-                "Variable(PreviousMood)"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "ModVarScene"
-              },
-              "parameters": [
-                "PreviousMood",
-                "=",
-                "Variable(Mood)"
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Heart::updateMood"
-              },
-              "parameters": [
-                "Heart",
-                "Heart",
-                "Variable(Mood)",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 109,
-                "g": 230,
-                "r": 255,
-                "textB": 0,
-                "textG": 0,
-                "textR": 0
-              },
-              "comment": "Need a way to reference any character object, not just Amy1",
-              "comment2": ""
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Egal"
-                  },
-                  "parameters": [
-                    "Variable(Mood)",
-                    "<",
-                    "-33"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Amy1",
-                    "\"Bad\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Endings",
-                    "\"Bad\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "Track",
-                    "=",
-                    "\"Bad\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Egal"
-                  },
-                  "parameters": [
-                    "-33",
-                    "<=",
-                    "Variable(Mood)"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Egal"
-                  },
-                  "parameters": [
-                    "Variable(Mood)",
-                    "<=",
-                    "30"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Amy1",
-                    "\"Neutral\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Endings",
-                    "\"Neutral\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "Track",
-                    "=",
-                    "\"Neutral\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Egal"
-                  },
-                  "parameters": [
-                    "30",
-                    "<",
-                    "Variable(Mood)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Amy1",
-                    "\"Good\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SetAnimationName"
-                  },
-                  "parameters": [
-                    "Endings",
-                    "\"Good\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "Track",
-                    "=",
-                    "\"Good\""
                   ],
                   "subInstructions": []
                 }
@@ -5664,7 +5413,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Debugging",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
