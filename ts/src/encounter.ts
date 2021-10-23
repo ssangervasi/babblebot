@@ -22,48 +22,6 @@ import {
 	parseDialogueNode,
 } from './dialogue'
 
-const Prompt = new Guard(isType('PROMPT'))
-	.and({
-		at: 'number',
-	})
-	.and(DialogueNode)
-
-const PlayCard = new Guard(isType('PLAY_CARD')).and({
-	at: 'number',
-	cardFeatures: 'string',
-	featureReactions: 'string',
-	score: 'number',
-	moodBefore: 'number',
-	moodAfter: 'number',
-})
-
-const Complete = new Guard(isType('COMPLETE')).and({
-	at: 'number',
-	mood: 'number',
-})
-
-type LogEntry = Payload<typeof Prompt | typeof PlayCard | typeof Complete>
-
-const MOOD_RANGES = {
-	bad: [-Infinity, -33],
-	neutral: [-33, 33],
-	good: [33, Infinity],
-} as const
-
-const PLAY_RANGES = {
-	bad: [-Infinity, -20],
-	neutral: [-20, 20],
-	good: [20, Infinity],
-} as const
-
-const CONFIDENCE_DURATION_MS = 2_000
-
-export type State = 'waiting' | 'prompting' | 'complete'
-
-/**
- * Scores are magnified by responding quickly, up to this factor of the play's score.
- */
-const CONFIDENCE_FACTOR = 0.25
 export class Encounter {
 	session: UserData.EncounterSession
 	scoreTable: ScoreTable = []
@@ -88,13 +46,7 @@ export class Encounter {
 	}
 
 	get moodQuality(): Quality {
-		if (Lodash.inRange(this.mood, ...MOOD_RANGES.bad)) {
-			return 'bad'
-		} else if (Lodash.inRange(this.mood, ...MOOD_RANGES.good)) {
-			return 'good'
-		}
-
-		return 'neutral'
+		return calculateMoodQuality(this.mood)
 	}
 
 	get lastPlayQuality(): Quality {
@@ -218,6 +170,33 @@ export class Encounter {
 		this.currentNode.tickedMs = tickedMs
 	}
 
+	estimate(uuid: UUID): { score: number; mood: number; quality: Quality } {
+		const defaultResult = {
+			score: 0,
+			mood: this.mood,
+			quality: this.moodQuality,
+		}
+		if (!this.currentNode) {
+			return defaultResult
+		}
+
+		const instance = this.dealer.find({ uuid, from: HAND })
+		if (!instance) {
+			return defaultResult
+		}
+
+		const { card } = instance
+		const score = this.calculateScore(card.features, this.currentNode)
+		const mood = this.mood + score
+		const quality = calculateMoodQuality(mood)
+
+		return {
+			score,
+			mood,
+			quality,
+		}
+	}
+
 	playCard(uuid: UUID) {
 		if (!this.currentNode) {
 			console.error(`Cannot play card "${uuid}" with no current node.`)
@@ -294,7 +273,7 @@ export class Encounter {
 		)
 		const confidence = this.calculateConfidence(node)
 		const confidenceBoost = CONFIDENCE_FACTOR * confidence * baseScore
-		return baseScore + confidenceBoost
+		return Lodash.round(baseScore + confidenceBoost, 2)
 	}
 
 	calculateConfidence({ promptedMs, tickedMs }: DialogueNodePayload) {
@@ -313,6 +292,49 @@ export class Encounter {
 		})
 	}
 }
+
+const Prompt = new Guard(isType('PROMPT'))
+	.and({
+		at: 'number',
+	})
+	.and(DialogueNode)
+
+const PlayCard = new Guard(isType('PLAY_CARD')).and({
+	at: 'number',
+	cardFeatures: 'string',
+	featureReactions: 'string',
+	score: 'number',
+	moodBefore: 'number',
+	moodAfter: 'number',
+})
+
+const Complete = new Guard(isType('COMPLETE')).and({
+	at: 'number',
+	mood: 'number',
+})
+
+type LogEntry = Payload<typeof Prompt | typeof PlayCard | typeof Complete>
+
+const MOOD_RANGES = {
+	bad: [-Infinity, -33],
+	neutral: [-33, 33],
+	good: [33, Infinity],
+} as const
+
+const PLAY_RANGES = {
+	bad: [-Infinity, -20],
+	neutral: [-20, 20],
+	good: [20, Infinity],
+} as const
+
+const CONFIDENCE_DURATION_MS = 2_000
+
+export type State = 'waiting' | 'prompting' | 'complete'
+
+/**
+ * Scores are magnified by responding quickly, up to this factor of the play's score.
+ */
+const CONFIDENCE_FACTOR = 0.25
 
 const logEntryToDialogueNode = (
 	logEntry: LogEntry | undefined,
@@ -338,4 +360,14 @@ const logEntryToDialogueNode = (
 		promptedMs: 0,
 		tickedMs: 0,
 	}
+}
+
+const calculateMoodQuality = (mood: number): Quality => {
+	if (Lodash.inRange(mood, ...MOOD_RANGES.bad)) {
+		return 'bad'
+	} else if (Lodash.inRange(mood, ...MOOD_RANGES.good)) {
+		return 'good'
+	}
+
+	return 'neutral'
 }

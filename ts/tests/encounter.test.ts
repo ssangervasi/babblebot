@@ -21,9 +21,9 @@ const mockEncounter = () => {
 }
 let enc = mockEncounter()
 
-const getCard = () =>
+const getCard = (features = 'agree listen') =>
 	enc.dealer.find({
-		features: 'agree listen',
+		features,
 		from: 'hand',
 	})!
 let card = getCard()
@@ -96,6 +96,53 @@ describe('confidence', () => {
 
 		enc.tick(10_000)
 		expect(enc.confidence).toEqual(0)
+	})
+})
+
+describe('estimate', () => {
+	const testCases = [
+		{
+			card: getCard('agree listen'),
+			featureReactions: 'agree_good listen_good',
+			score: 30 + 20,
+			quality: 'good',
+		},
+		{
+			card: getCard('disagree butt'),
+			featureReactions: 'disagree_bad',
+			score: -40,
+			quality: 'bad',
+		},
+		{
+			card: getCard('agree listen'),
+			featureReactions: 'agree',
+			score: 2,
+			quality: 'neutral',
+		},
+	] as const
+
+	testCases.forEach(testCase => {
+		test(`${testCase.card.card.features} on ${testCase.featureReactions}`, () => {
+			enc.prompt({
+				title,
+				featureReactions: testCase.featureReactions,
+				promptedMs: 1,
+			})
+			enc.tick(2_001) // :wink:
+			const estimation = enc.estimate(testCase.card.uuid)
+			expect(estimation).toMatchObject({
+				score: testCase.score,
+				quality: testCase.quality,
+			})
+		})
+	})
+
+	test('without prompting', () => {
+		const estimation = enc.estimate(card.uuid)
+		expect(estimation).toMatchObject({
+			score: 0,
+			quality: 'neutral',
+		})
 	})
 })
 
