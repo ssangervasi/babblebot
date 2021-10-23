@@ -1030,6 +1030,29 @@
       }
     },
     {
+      "name": "Card_DebugText",
+      "tags": "",
+      "type": "BBText::BBText",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BBTextContained",
+          "type": "srs_utils::BBTextContained"
+        }
+      ],
+      "content": {
+        "text": "Estimate: 12.34",
+        "opacity": 255,
+        "fontSize": 33,
+        "visible": true,
+        "color": "26;48;0",
+        "fontFamily": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
+        "align": "left",
+        "wordWrap": true
+      }
+    },
+    {
       "name": "Hand",
       "tags": "",
       "type": "Sprite",
@@ -2551,6 +2574,7 @@
                     "Card",
                     "Card_BBText",
                     "BBTextContained",
+                    "Card_DebugText",
                     ""
                   ],
                   "subInstructions": []
