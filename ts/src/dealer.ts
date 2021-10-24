@@ -55,6 +55,38 @@ export class Dealer {
 		return dealer
 	}
 
+	static fromSpec(cardIds: string[], idToCard: Map<string, CardRow>): Dealer {
+		const dealer = new Dealer()
+		dealer.addCollection(HAND)
+		dealer.addCollection(PLAY)
+		dealer.addCollection(DISCARD)
+
+		const deckCollection = makeCollection(
+			cardIds.map(id => {
+				return makeCardInstance(idToCard.get(id)!)
+			}),
+		)
+		dealer.addCollection(DECK, deckCollection)
+
+		return dealer
+	}
+
+	static fromAll(idToCard: Map<string, CardRow>): Dealer {
+		const dealer = new Dealer()
+		dealer.addCollection(HAND)
+		dealer.addCollection(PLAY)
+		dealer.addCollection(DISCARD)
+
+		const deckCollection = makeCollection(
+			[...idToCard.values()].map(cardRow => {
+				return makeCardInstance(cardRow)
+			}),
+		)
+		dealer.addCollection(DECK, deckCollection)
+
+		return dealer
+	}
+
 	toUserData(): UserData.Dealer {
 		const userDataDealer: Partial<UserData.Dealer> = {}
 		;([DECK, HAND, PLAY, DISCARD] as const).forEach(name => {

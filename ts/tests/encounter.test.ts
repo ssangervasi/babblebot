@@ -357,3 +357,26 @@ describe('peekNode', () => {
 		expect(enc.peekNode()).toEqual(expected)
 	})
 })
+
+describe('constructor', () => {
+	it('builds a deck from a spec', () => {
+		const deckSpec = ['card-1', 'card-2', 'card-3', 'card-2', 'card-1']
+		const encounter = new Encounter({
+			session: {
+				sceneName: 'Amy1',
+				startedAt: 100,
+			},
+			spec: {
+				deck: deckSpec,
+			},
+			scoreTable: Data.scoreTable,
+			cardTable: Data.cardTable,
+		})
+		expect(encounter.dealer.peek('hand', 'all').map(c => c.card.id)).toEqual(
+			deckSpec.slice(0, 3),
+		)
+		expect(encounter.dealer.peek('deck', 'all').map(c => c.card.id)).toEqual(
+			deckSpec.slice(3, deckSpec.length),
+		)
+	})
+})

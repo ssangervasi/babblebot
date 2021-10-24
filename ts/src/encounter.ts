@@ -3,15 +3,7 @@ import Lodash from 'lodash'
 import { Guard, Payload } from 'narrow-minded'
 
 import { ScoreTable, calculateScore, CardTable, CardRow } from './cardScores'
-import {
-	Dealer,
-	HAND,
-	DECK,
-	PLAY,
-	DISCARD,
-	makeCollection,
-	makeCardInstance,
-} from './dealer'
+import { Dealer, HAND, DECK, PLAY, DISCARD } from './dealer'
 import * as UserData from './userData'
 import { UUID, isType } from './utils'
 import { EncounterSpec } from './campaign'
@@ -118,17 +110,11 @@ export class Encounter {
 			return
 		}
 
-		this.dealer = new Dealer()
-		this.dealer.addCollection(HAND)
-		this.dealer.addCollection(PLAY)
-		this.dealer.addCollection(DISCARD)
-
-		const deckCollection = makeCollection(
-			this.cardTable.map(cardRow => {
-				return makeCardInstance(cardRow)
-			}),
-		)
-		this.dealer.addCollection(DECK, deckCollection)
+		if (this.spec) {
+			this.dealer = Dealer.fromSpec(this.spec.deck, this.idToCard)
+		} else {
+			this.dealer = Dealer.fromAll(this.idToCard)
+		}
 
 		this.draw(3)
 	}
