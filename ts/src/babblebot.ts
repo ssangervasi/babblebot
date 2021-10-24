@@ -77,6 +77,7 @@ class Game {
 	private makeEncounter(session: UserData.EncounterSession) {
 		return new Encounter({
 			session,
+			spec: Campaign.ENCOUNTER_SPEC_MAPPING[session.sceneName],
 			scoreTable: CardScores.SCORE_TABLE,
 			cardTable: CardScores.CARD_TABLE,
 		})

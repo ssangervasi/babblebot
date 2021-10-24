@@ -1,21 +1,24 @@
 import csvParse from 'csv-parse/lib/sync'
 
 import _CAMPAIGN_MAPPING from './campaignMapping.json'
+import _ENCOUNTER_SPEC_MAPPING from './encounterSpecMapping.json'
 
 export const CAMPAIGN_MAPPING = _CAMPAIGN_MAPPING
+export const ENCOUNTER_SPEC_MAPPING: EncounterSpecMapping =
+	_ENCOUNTER_SPEC_MAPPING
 
 export const HEADINGS = {
 	SCENE_NAME: 'Scene Name',
 	PREREQ: 'Prereq',
 } as const
 
-export type Mapping = {
-	[sceneName: string]: string[]
-}
-
 export type CsvRow = {
 	[HEADINGS.SCENE_NAME]?: string
 	[HEADINGS.PREREQ]?: string
+}
+
+export type Mapping = {
+	[sceneName: string]: string[]
 }
 
 const PARSE_OPTIONS = {
@@ -66,4 +69,37 @@ export const listAvailableEncounters = (
 			campaignMapping[sceneName]!.every(prereq => completed.includes(prereq))
 		)
 	})
+}
+
+export const DECK_HEADINGS = {
+	ID: 'Id',
+} as const
+
+export type DeckCsvRow = {
+	[DECK_HEADINGS.ID]?: string
+}
+
+export type EncounterSpecMapping = {
+	[sceneName: string]: EncounterSpec
+}
+
+export type EncounterSpec = {
+	deck: string[]
+}
+
+export const parseDeck = (raw: string): string[] => {
+	const parsed: DeckCsvRow[] = csvParse(raw, PARSE_OPTIONS)
+
+	const deck: string[] = []
+	parsed.forEach(csvRow => {
+		const { [DECK_HEADINGS.ID]: id } = csvRow
+
+		if (!id) {
+			return
+		}
+
+		deck.push(id)
+	})
+
+	return deck
 }

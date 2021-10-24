@@ -1,0 +1,22 @@
+{
+	"Amy1": {
+		"deck": [
+			"agree_neutral",
+			"agree_softly",
+			"agree_strongly",
+			"compliment_appearance",
+			"compliment_style",
+			"clarifying_question",
+			"express_empathy",
+			"express_gratitude",
+			"express_sympathy",
+			"give_compliment",
+			"indicate_agreement",
+			"learn_more_family",
+			"learn_more_job",
+			"provide_information_hobbies",
+			"provide_information_job",
+			"respond_emotionally"
+		]
+	}
+}

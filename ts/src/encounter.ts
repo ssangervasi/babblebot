@@ -14,6 +14,7 @@ import {
 } from './dealer'
 import * as UserData from './userData'
 import { UUID, isType } from './utils'
+import { EncounterSpec } from './campaign'
 import {
 	Quality,
 	DialogueNode,
@@ -26,6 +27,7 @@ export class Encounter {
 	session: UserData.EncounterSession
 	scoreTable: ScoreTable = []
 	cardTable: CardTable = []
+	spec?: EncounterSpec
 	log: LogEntry[] = []
 	dealer = new Dealer()
 	mood = 1
@@ -37,12 +39,18 @@ export class Encounter {
 		session: UserData.EncounterSession
 		cardTable: CardTable
 		scoreTable: ScoreTable
+		spec?: EncounterSpec
 	}) {
 		this.session = options.session
 		this.scoreTable = options.scoreTable
 		this.cardTable = options.cardTable
+		this.spec = options.spec
 
 		this.initDealer()
+	}
+
+	get name(): string {
+		return this.session.sceneName
 	}
 
 	get moodQuality(): Quality {

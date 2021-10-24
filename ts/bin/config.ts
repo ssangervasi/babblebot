@@ -1,4 +1,7 @@
+import fs from 'fs'
 import path from 'path'
+
+import { compact } from 'lodash'
 
 const ROOT = path.resolve(__dirname, '../..')
 
@@ -17,6 +20,7 @@ const SRC = path.resolve(TS, 'src')
 const SCORE_TABLE_JSON = path.resolve(SRC, 'scoreTable.json')
 const CARDS_JSON = path.resolve(SRC, 'cards.json')
 const CAMPAIGN_JSON = path.resolve(SRC, 'campaignMapping.json')
+const ENCOUNTERS_JSON = path.resolve(SRC, 'encounterSpecMapping.json')
 
 export const PATHS = {
 	ROOT,
@@ -32,6 +36,7 @@ export const PATHS = {
 	CAMPAIGN_JSON,
 
 	ENCOUNTERS,
+	ENCOUNTERS_JSON,
 
 	TS,
 	SRC,
@@ -53,4 +58,42 @@ export const posixPath = (original: string) => {
 	return path.posix.join(
 		...path.relative(PATHS.ROOT, absolutePath(original)).split(path.sep),
 	)
+}
+
+export const ENCOUNTER_BASE_NAMES = [
+	//
+	'dialogue.json',
+	'deck.csv',
+] as const
+
+export interface EncounterFileInfo {
+	name: string
+	file: string
+	basename: typeof ENCOUNTER_BASE_NAMES[number]
+	encounterName: string
+}
+
+export const listEncounterFiles = (): EncounterFileInfo[] => {
+	return fs
+		.readdirSync(PATHS.ENCOUNTERS)
+		.flatMap((encounterName): EncounterFileInfo[] => {
+			return compact(
+				ENCOUNTER_BASE_NAMES.map(basename => {
+					const dialoguePath = path.join(
+						PATHS.ENCOUNTERS,
+						encounterName,
+						basename,
+					)
+					if (!fs.existsSync(dialoguePath)) {
+						return undefined
+					}
+					return {
+						name: windowsPath(dialoguePath),
+						file: posixPath(dialoguePath),
+						encounterName,
+						basename: basename,
+					}
+				}),
+			)
+		})
 }

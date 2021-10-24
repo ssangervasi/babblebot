@@ -3,15 +3,14 @@
 import { rewrite } from 'gdevelop-refactor'
 import { narrow } from 'narrow-minded'
 
-import {
-	listDialogueFiles,
-	DialogueInfo,
-	DIALOGUE_ASSET_RE,
-} from './dialogueUtils'
-import { absolutePath } from './config'
+import { absolutePath, listEncounterFiles, EncounterFileInfo } from './config'
 
 const main = () => {
-	listDialogueFiles().forEach(dialogueInfo => {
+	listEncounterFiles().forEach(dialogueInfo => {
+		if (dialogueInfo.basename !== 'dialogue.json') {
+			return
+		}
+
 		if (dialogueInfo.encounterName !== 'Amy1') {
 			console.log(`Skipping ${dialogueInfo.name}`)
 			return
@@ -32,7 +31,7 @@ const main = () => {
 }
 
 const structureDialogue = (
-	info: DialogueInfo,
+	info: EncounterFileInfo,
 	nodes: Array<{ title: string; body: string }>,
 ) => {
 	console.log(`Encounter: ${info.encounterName} - Nodes: ${nodes.length}`)
