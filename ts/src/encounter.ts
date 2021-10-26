@@ -114,6 +114,7 @@ export class Encounter {
 			this.dealer = Dealer.fromSpec(this.spec.deck, this.idToCard)
 		} else {
 			this.dealer = Dealer.fromAll(this.idToCard)
+			this.dealer.shuffle('deck')
 		}
 
 		this.draw(3)

@@ -42,7 +42,7 @@ class Game {
 			this.manager.pushEncounter(this.encounter.toUserData())
 		}
 		this.manager.saveGame()
-		return JSON.stringify(this.manager.userData)
+		return this.manager.toJSON()
 	}
 
 	loadEncounter(sceneName: string): Encounter {
@@ -92,12 +92,14 @@ class Game {
 	}
 }
 
-const BabblebotC = new Game()
-
-Object.assign(globalThis, {
-	Babblebot: BabblebotC,
-})
-
 declare global {
-	const Babblebot: typeof BabblebotC
+	const Babblebot: Game
+}
+
+if (!('Babblebot' in globalThis)) {
+	const BabblebotC = new Game()
+
+	Object.assign(globalThis, {
+		Babblebot: BabblebotC,
+	})
 }

@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.1,
     "snap": true,
-    "zoomFactor": 0.5799999999999996,
+    "zoomFactor": 0.5999999999999996,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -263,7 +263,7 @@
         {
           "name": "Label",
           "type": "string",
-          "value": "Choose"
+          "value": "Choose Next"
         }
       ]
     },
@@ -332,6 +332,66 @@
           "value": "Start"
         }
       ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "41f4fb0c-65e3-4da4-ad0e-aadad8134ee7",
+      "width": 0,
+      "x": 360,
+      "y": 750,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": "New"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 90,
+      "layer": "",
+      "locked": false,
+      "name": "Button",
+      "persistentUuid": "0b41d491-c865-4519-b7c5-89e06491ba8a",
+      "width": 270,
+      "x": 300,
+      "y": 720,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Id",
+          "type": "string",
+          "value": "New"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1800,
+      "layer": "BG",
+      "locked": true,
+      "name": "BgTiles",
+      "persistentUuid": "ccceb645-c7d7-4cb5-b3e4-a45e0b0b3e9c",
+      "width": 4710,
+      "x": -1410,
+      "y": -300,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
@@ -481,33 +541,11 @@
     {
       "disabled": false,
       "folded": false,
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": false,
-            "value": "DepartScene"
-          },
-          "parameters": [
-            ""
-          ],
-          "subInstructions": []
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "inverted": false,
-            "value": "babblebot::importBabblebotJs"
-          },
-          "parameters": [
-            "",
-            ""
-          ],
-          "subInstructions": []
-        }
-      ],
-      "events": []
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Resolution"
     },
     {
       "colorB": 228,
@@ -579,6 +617,26 @@
               "parameters": [
                 "",
                 "babblebot::NextEncounter()",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "babblebot::loadSaveVar"
+              },
+              "parameters": [
+                "",
                 ""
               ],
               "subInstructions": []
@@ -744,7 +802,7 @@
               "actions": [],
               "events": [
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
@@ -973,6 +1031,75 @@
                 "Button",
                 "Id",
                 "=",
+                "\"New\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "srs_utils::Button::Clicked"
+                  },
+                  "parameters": [
+                    "Button",
+                    "Button",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "SaveState",
+                    "=",
+                    "\"New\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::resumeGame"
+                  },
+                  "parameters": [
+                    "",
+                    "0",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarObjetTxt"
+              },
+              "parameters": [
+                "Button",
+                "Id",
+                "=",
                 "\"Complete\""
               ],
               "subInstructions": []
@@ -1075,7 +1202,7 @@
                   "parameters": [
                     "",
                     "\"Encounter\"",
-                    ""
+                    "yes"
                   ],
                   "subInstructions": []
                 }
@@ -1167,7 +1294,29 @@
                       "subInstructions": []
                     }
                   ],
-                  "events": []
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarSceneTxt"
+                          },
+                          "parameters": [
+                            "SaveState",
+                            "=",
+                            "\"Clicked\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
                 }
               ]
             }

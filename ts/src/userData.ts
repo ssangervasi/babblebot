@@ -123,6 +123,14 @@ export class Manager {
 		this.userData = userData || createDefault()
 	}
 
+	toJSON() {
+		const stored: StoredUserData = {
+			savedGames: this.userData.savedGames,
+			options: this.userData.options,
+		}
+		return JSON.stringify(stored)
+	}
+
 	newGame(): SavedGame {
 		const now = Date.now()
 		const savedGame = {

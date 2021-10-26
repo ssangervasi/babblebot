@@ -65,7 +65,7 @@ const injectAssets = () => {
 						return
 					}
 
-					injectDialoge(gdExtension, dialogueResources)
+					injectDialogue(gdExtension, dialogueResources)
 				},
 				{
 					inPath: PATHS.BABBLEBOT,
@@ -90,7 +90,7 @@ const injectAssets = () => {
 	)
 }
 
-const injectDialoge = (
+const injectDialogue = (
 	gdExtension: GdExtension,
 	resourcesNeeded: Map<string, GdResource>,
 ) => {
