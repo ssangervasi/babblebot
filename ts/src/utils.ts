@@ -39,9 +39,9 @@ export const Placeholder = <T extends object>(
 	return new Proxy(defaults, {
 		get: function (_target: T, property, _receiver: T) {
 			if (property in defaults) {
-				console.warn(
-					`Returning default value for property "${property.toString()}" in ${nickname} placeholder.`,
-				)
+				// console.warn(
+				// 	`Returning default value for property "${property.toString()}" in ${nickname} placeholder.`,
+				// )
 				return defaults[property as keyof T]
 			}
 

@@ -30,6 +30,7 @@ module.exports = {
 				code: 100,
 				tabWidth: 2,
 				ignoreTemplateLiterals: true,
+				ignoreComments: true,
 			},
 		],
 		// Prettier handles it.

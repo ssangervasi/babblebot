@@ -4,14 +4,17 @@ import * as CardScores from './cardScores'
 import * as UserData from './userData'
 import * as Campaign from './campaign'
 import * as Utils from './utils'
+import { Dealer } from './dealer'
 import { Encounter } from './encounter'
 
 class Game {
 	Game = Game
-	UserData = UserData
+	Campaign = Campaign
 	CardScores = CardScores
+	Dealer = Dealer
 	Encounter = Encounter
 	Lodash = Lodash
+	UserData = UserData
 	Utils = Utils
 
 	_manager: UserData.Manager | undefined
@@ -28,7 +31,12 @@ class Game {
 		if (this._encounter) {
 			return this._encounter
 		}
-		return Utils.Placeholder({} as Encounter, 'Babblebot.encounter')
+		return Utils.Placeholder(
+			{
+				mood: 1,
+			} as Encounter,
+			'Babblebot.encounter',
+		)
 	}
 
 	load(userDataJSON: string) {

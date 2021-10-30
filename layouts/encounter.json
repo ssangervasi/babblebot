@@ -1823,7 +1823,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "JS",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -1888,7 +1888,7 @@
                     "value": "StrEqual"
                   },
                   "parameters": [
-                    "Encounter.SceneName",
+                    "VariableString(Encounter.SceneName)",
                     "=",
                     "\"\""
                   ],
@@ -2195,7 +2195,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": false,
+      "folded": true,
       "name": "Cards",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
