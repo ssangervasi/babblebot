@@ -1044,7 +1044,7 @@
       "content": {
         "text": "Estimate: 12.34",
         "opacity": 255,
-        "fontSize": 33,
+        "fontSize": 25,
         "visible": true,
         "color": "26;48;0",
         "fontFamily": "assets\\fonts\\aware-font\\AwareBold-qZo3x.ttf",
