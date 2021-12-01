@@ -1,29 +1,28 @@
 {
-  "b": 0,
+  "b": 115,
   "disableInputWhenNotFocused": true,
   "mangledName": "Splash",
   "name": "Splash",
   "oglFOV": 90,
   "oglZFar": 500,
   "oglZNear": 1,
-  "r": 0,
+  "r": 121,
   "standardSortMethod": true,
   "stopSoundsOnStartup": false,
   "title": "",
-  "v": 0,
+  "v": 115,
   "uiSettings": {
     "grid": false,
-    "gridB": 255,
-    "gridG": 180,
+    "gridType": "rectangular",
+    "gridWidth": 32,
     "gridHeight": 32,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
-    "gridR": 158,
-    "gridType": "rectangular",
-    "gridWidth": 32,
+    "gridColor": 10401023,
+    "gridAlpha": 0.8,
     "snap": true,
-    "windowMask": false,
-    "zoomFactor": 0.472
+    "zoomFactor": 0.2919999999999998,
+    "windowMask": false
   },
   "objectsGroups": [],
   "variables": [],
@@ -39,13 +38,87 @@
       "width": 0,
       "x": 0,
       "y": 0,
-      "zOrder": 3,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1080,
+      "layer": "",
+      "locked": false,
+      "name": "Res",
+      "persistentUuid": "739e4a49-4e95-4794-ba5f-ae2af34fbf03",
+      "width": 1920,
+      "x": 0,
+      "y": 0,
+      "zOrder": 4,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 2600,
+      "layer": "BG",
+      "locked": false,
+      "name": "BgTiles",
+      "persistentUuid": "c96f5c57-3d6e-4907-aa0a-a321adf690d3",
+      "width": 4196,
+      "x": -1047,
+      "y": -725,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Label",
+      "persistentUuid": "a946472a-d491-4d5c-9657-04481cf3616e",
+      "width": 0,
+      "x": 765,
+      "y": 713,
+      "zOrder": 5,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
     }
   ],
   "objects": [
+    {
+      "bold": false,
+      "italic": false,
+      "name": "Label",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [
+        {
+          "name": "Label",
+          "type": "string",
+          "value": ""
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "string": "Click To Start",
+      "font": "assets\\fonts\\really-font\\ReallyFree-ALwl7.ttf",
+      "characterSize": 70,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      }
+    },
     {
       "name": "Title",
       "tags": "",
@@ -91,36 +164,11 @@
     {
       "disabled": false,
       "folded": false,
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": false,
-            "value": "Timer"
-          },
-          "parameters": [
-            "",
-            "3",
-            "\"wait\""
-          ],
-          "subInstructions": []
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "inverted": false,
-            "value": "Scene"
-          },
-          "parameters": [
-            "",
-            "\"Profile\"",
-            ""
-          ],
-          "subInstructions": []
-        }
-      ],
-      "events": []
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Resolution"
     },
     {
       "disabled": false,
@@ -130,11 +178,213 @@
         {
           "type": {
             "inverted": false,
-            "value": "MouseButtonReleased"
+            "value": "DepartScene"
           },
           "parameters": [
-            "",
-            "Left"
+            ""
+          ],
+          "subInstructions": []
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "State",
+                "=",
+                "\"init\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "srs_utils::startLimitedTimer"
+              },
+              "parameters": [
+                "",
+                "\"wait\"",
+                "srs_utils::ms(3)",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::Opacity"
+              },
+              "parameters": [
+                "Label",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": false,
+            "value": "VarSceneTxt"
+          },
+          "parameters": [
+            "State",
+            "=",
+            "\"init\""
+          ],
+          "subInstructions": []
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Egal"
+              },
+              "parameters": [
+                "srs_utils::getLimitedTimerFraction(\"wait\")",
+                "=",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::Opacity"
+                  },
+                  "parameters": [
+                    "Label",
+                    "=",
+                    "0.75 * 255"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "AnyKeyReleased"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MouseButtonReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ],
+                  "subInstructions": []
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "State",
+                "=",
+                "\"change\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "disabled": false,
+      "folded": false,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": false,
+            "value": "VarSceneTxt"
+          },
+          "parameters": [
+            "State",
+            "=",
+            "\"change\""
           ],
           "subInstructions": []
         }
@@ -143,20 +393,53 @@
         {
           "type": {
             "inverted": false,
-            "value": "Scene"
+            "value": "ModVarSceneTxt"
           },
           "parameters": [
-            "",
-            "\"Profile\"",
-            ""
+            "State",
+            "=",
+            "\"changing\""
           ],
           "subInstructions": []
         }
       ],
-      "events": []
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Scene"
+              },
+              "parameters": [
+                "",
+                "\"Menu\"",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ]
     }
   ],
   "layers": [
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "name": "BG",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
     {
       "ambientLightColorB": 200,
       "ambientLightColorG": 200,
@@ -178,18 +461,12 @@
         }
       ],
       "effects": []
-    },
-    {
-      "ambientLightColorB": 200,
-      "ambientLightColorG": 200,
-      "ambientLightColorR": 200,
-      "followBaseLayerCamera": false,
-      "isLightingLayer": false,
-      "name": "Slides",
-      "visibility": true,
-      "cameras": [],
-      "effects": []
     }
   ],
-  "behaviorsSharedData": []
+  "behaviorsSharedData": [
+    {
+      "name": "HiddenAtRuntime",
+      "type": "srs_utils::HiddenAtRuntime"
+    }
+  ]
 }
