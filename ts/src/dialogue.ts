@@ -28,11 +28,7 @@ export const parseDialogueNode = (
 	promptNode: PromptNodePayload,
 ): DialogueNodePayload => {
 	const { title, promptedMs } = promptNode
-
-	const parts = title.split('_')
-
-	const quality = parseQuality(parts[0])
-	const step = parseStep(parts[1] || parts[0])
+	const { step, quality } = parseTitle(title)
 
 	return {
 		...promptNode,
@@ -41,6 +37,20 @@ export const parseDialogueNode = (
 		step,
 		tickedMs: promptedMs,
 	}
+}
+
+export const parseTitle = (
+	title: string,
+): {
+	quality: Quality
+	step: Step
+} => {
+	const parts = title.split('_')
+
+	const quality = parseQuality(parts[0])
+	const step = parseStep(parts[1] || parts[0])
+
+	return { quality, step }
 }
 
 const parseQuality = (maybeQuality?: string): Quality => {

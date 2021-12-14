@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.1,
     "snap": true,
-    "zoomFactor": 0.24399999999999958,
+    "zoomFactor": 0.5239999999999998,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -2619,7 +2619,7 @@
       "colorR": 74,
       "creationTime": 0,
       "disabled": false,
-      "folded": true,
+      "folded": false,
       "name": "Dialog/Play Loop",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3186,7 +3186,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "name": "NPC speaking states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -3977,7 +3977,7 @@
                               "parameters": [
                                 "PlayArea",
                                 "DropTarget",
-                                "True",
+                                "False",
                                 ""
                               ],
                               "subInstructions": []
