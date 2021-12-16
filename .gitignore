@@ -2,3 +2,4 @@
 *.refactor.json
 build/*/Babblebot-*
 backup-*
+*sample.scores.csv
