@@ -14,13 +14,11 @@ import {
 import {
 	PATHS,
 	posixPath,
+	listDialogueFiles,
+	EncounterFileInfo,
+	DIALOGUE_ASSET_RE,
 	// absolutePath
 } from './config'
-import {
-	listDialogueFiles,
-	DialogueInfo,
-	DIALOGUE_ASSET_RE,
-} from './dialogueUtils'
 import { mapDiff } from '../src/utils'
 
 const main = () => {
@@ -118,7 +116,7 @@ const injectDialogue = (
 	const dialogueInfos = dialogueEvents.flatMap(event =>
 		(event.actions || []).flatMap(action =>
 			compact(
-				action.parameters.map((name): DialogueInfo | undefined => {
+				action.parameters.map((name): EncounterFileInfo | undefined => {
 					const match = DIALOGUE_ASSET_RE.exec(name)
 					if (match == null || !match.groups?.encounterName) {
 						if (name.length) {
@@ -131,6 +129,7 @@ const injectDialogue = (
 						name,
 						file: posixPath(name),
 						encounterName: match.groups.encounterName,
+						basename: 'dialogue.json',
 					}
 				}),
 			),
@@ -156,7 +155,7 @@ const injectDialogue = (
 	return
 }
 
-const makeDialogueResource = (opts: DialogueInfo): GdResource => {
+const makeDialogueResource = (opts: EncounterFileInfo): GdResource => {
 	return {
 		disablePreload: false,
 		kind: 'json',
@@ -166,7 +165,7 @@ const makeDialogueResource = (opts: DialogueInfo): GdResource => {
 	}
 }
 
-const makeDialogueEvent = (opts: DialogueInfo): GdEvent => {
+const makeDialogueEvent = (opts: EncounterFileInfo): GdEvent => {
 	return {
 		disabled: false,
 		type: EVENT_TYPES.STANDARD,

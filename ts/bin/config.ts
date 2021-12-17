@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 import { compact } from 'lodash'
+import { Payload, Guard } from 'narrow-minded'
 
 const ROOT = path.resolve(__dirname, '../..')
 
@@ -14,6 +15,7 @@ const SCORE_TABLE_CSV = path.resolve(ASSETS, 'scoreTable.csv')
 const CARDS_CSV = path.resolve(ASSETS, 'cards.csv')
 const CAMPAIGN_CSV = path.resolve(ASSETS, 'campaign.csv')
 const ENCOUNTERS = path.resolve(ASSETS, 'encounters')
+const ANALYSIS_CSV = path.resolve(ASSETS, 'analysis.csv')
 
 const TS = path.resolve(ROOT, 'ts')
 const SRC = path.resolve(TS, 'src')
@@ -31,6 +33,7 @@ export const PATHS = {
 	ASSETS,
 	SCORE_TABLE_CSV,
 	CARDS_CSV,
+	ANALYSIS_CSV,
 
 	CAMPAIGN_CSV,
 	CAMPAIGN_JSON,
@@ -73,27 +76,40 @@ export interface EncounterFileInfo {
 	encounterName: string
 }
 
+let _encounterFiles: EncounterFileInfo[] | null = null
 export const listEncounterFiles = (): EncounterFileInfo[] => {
-	return fs
+	if (_encounterFiles) {
+		return _encounterFiles
+	}
+
+	_encounterFiles = fs
 		.readdirSync(PATHS.ENCOUNTERS)
 		.flatMap((encounterName): EncounterFileInfo[] => {
 			return compact(
 				ENCOUNTER_BASE_NAMES.map(basename => {
-					const dialoguePath = path.join(
-						PATHS.ENCOUNTERS,
-						encounterName,
-						basename,
-					)
-					if (!fs.existsSync(dialoguePath)) {
+					const filePath = path.join(PATHS.ENCOUNTERS, encounterName, basename)
+					if (!fs.existsSync(filePath)) {
 						return undefined
 					}
 					return {
-						name: windowsPath(dialoguePath),
-						file: posixPath(dialoguePath),
+						name: windowsPath(filePath),
+						file: posixPath(filePath),
 						encounterName,
 						basename: basename,
 					}
 				}),
 			)
 		})
+	return _encounterFiles
 }
+
+export const DIALOGUE_ASSET_RE =
+	/assets\\+encounters\\+(?<encounterName>\w+)\\+dialogue.json/
+
+export const listDialogueFiles = () =>
+	listEncounterFiles().filter(efi => efi.basename === 'dialogue.json')
+
+export const DialogueGuard = Guard.narrow([
+	{ title: 'string', body: 'string', tags: 'string' },
+])
+export type DialogueArray = Payload<typeof DialogueGuard>

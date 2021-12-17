@@ -24,6 +24,7 @@
 		"gen": "npm run csvToJson && npm run encountersToJson",
 		"csvToJson": "npm run bin bin/csvToJson.ts",
 		"encountersToJson": "npm run bin bin/encountersToJson",
+		"analyze": "npm run bin bin/analyzeScores.ts",
 		"lint": "eslint --cache src/**/*.ts tests/**/*.ts bin/**/*.ts",
 		"lint-fix": "eslint --fix --cache src/**/*.ts tests/**/*.ts bin/**/*.ts",
 		"shell": "ts-node",
