@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-// import jsonStringify from 'json-stable-stringify'
-import { rewrite } from 'gdevelop-refactor'
+import csvStringify from 'csv-stringify/lib/sync'
 import { narrow } from 'narrow-minded'
 
 import { absolutePath, listEncounterFiles, EncounterFileInfo } from './config'
@@ -13,29 +12,7 @@ import { parseTitle } from '../src/dialogue'
  * 	"transition" = To the transition node
  */
 const main = () => {
-	listEncounterFiles().forEach(dialogueInfo => {
-		if (dialogueInfo.basename !== 'dialogue.json') {
-			return
-		}
-
-		// if (dialogueInfo.encounterName !== 'Amy1') {
-		// 	console.log(`Skipping ${dialogueInfo.name}`)
-		// 	return
-		// }
-
-		rewrite(
-			dialogueJson => {
-				if (narrow([{ title: 'string', body: 'string' }], dialogueJson)) {
-					structureDialogue(dialogueInfo, dialogueJson)
-				}
-			},
-			{
-				inPath: absolutePath(dialogueInfo.file),
-				// readOnly: true,
-				readOnly: false,
-			},
-		)
-	})
+	listEncounterFiles().forEach(dialogueInfo => {})
 }
 
 const structureDialogue = (

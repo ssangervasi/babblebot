@@ -1,17 +1,21 @@
 import { compact } from 'lodash'
 
 import {
-	injectExt,
-	rewrite,
-	isGdProject,
-	GdResource,
-	isGdExtension,
-	GdExtension,
 	findEvents,
 	GdEvent,
+	GdExtension,
+	GdResource,
+	injectExt,
+	isGdExtension,
+	isGdProject,
+	rewrite,
 } from 'gdevelop-refactor'
 
-import { PATHS, posixPath, absolutePath } from './config'
+import {
+	PATHS,
+	posixPath,
+	// absolutePath
+} from './config'
 import {
 	listDialogueFiles,
 	DialogueInfo,
