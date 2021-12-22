@@ -90,7 +90,7 @@ const scoreEncounter = (
 		})
 	})
 
-	result.average = result.sum / result.count
+	result.average = Math.round(result.sum / result.count)
 
 	return result
 }
