@@ -67,6 +67,7 @@ export const ENCOUNTER_BASE_NAMES = [
 	//
 	'dialogue.json',
 	'deck.csv',
+	'cutscene.json',
 ] as const
 
 export interface EncounterFileInfo {

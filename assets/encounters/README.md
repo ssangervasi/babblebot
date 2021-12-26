@@ -2,6 +2,7 @@
 Each encounter directory matches the name of the external layout for that encounter.
 
 Each encounter has this structure:
+- `cutscene.json` - A dialogue file for a cutscene.
 - `dialogue.json` - The dialogue tree for the encounter.
 - `scoreOverrides.csv` - Scores that apply only to this encounter.
 - `deck.csv` - If present, determines the exact deck that will be used for the encounter, in order, instead of using random cards.
