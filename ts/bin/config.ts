@@ -107,6 +107,26 @@ export const listEncounterFiles = (): EncounterFileInfo[] => {
 export const DIALOGUE_ASSET_RE =
 	/assets\\+encounters\\+(?<encounterName>\w+)\\+dialogue.json/
 
+export const matchEncounterAsset = (
+	assetName: string,
+): EncounterFileInfo | undefined => {
+	const match =
+		/assets\\+encounters\\+(?<encounterName>\w+)\\+(?<basename>[\w.]+)/.exec(
+			assetName,
+		)
+	const matchedEncounterName = match?.groups?.encounterName
+	const matchedBasename = match?.groups?.basename
+	if (match === null || !matchedEncounterName || !matchedBasename) {
+		return undefined
+	}
+	return {
+		name: assetName,
+		file: posixPath(assetName),
+		encounterName: matchedEncounterName,
+		basename: matchedBasename as any,
+	}
+}
+
 export const listDialogueFiles = () =>
 	listEncounterFiles().filter(efi => efi.basename === 'dialogue.json')
 

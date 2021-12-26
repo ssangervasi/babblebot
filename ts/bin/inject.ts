@@ -1,5 +1,3 @@
-import { compact } from 'lodash'
-
 import {
 	findEvents,
 	GdEvent,
@@ -13,10 +11,9 @@ import {
 
 import {
 	PATHS,
-	posixPath,
-	listDialogueFiles,
 	EncounterFileInfo,
-	DIALOGUE_ASSET_RE,
+	listEncounterFiles,
+	matchEncounterAsset,
 	// absolutePath
 } from './config'
 import { mapDiff } from '../src/utils'
@@ -40,9 +37,11 @@ const EVENT_TYPES = {
 	STANDARD: 'BuiltinCommonInstructions::Standard',
 	DIALOGUE: 'DialogueTree::LoadDialogueFromJsonFile',
 } as const
-const FUNC_NAMES = {
-	DIALOGUE: 'loadEncounterDialogue',
-} as const
+
+const FUNC_BASENAMES = [
+	['loadEncounterDialogue', 'dialogue.json'] as const,
+	['loadEncounterCutsceneDialogue', 'cutscene.json'] as const,
+] as const
 
 const injectAssets = () => {
 	rewrite(
@@ -52,14 +51,6 @@ const injectAssets = () => {
 				return
 			}
 
-			const resourceMap = new Map<string, GdResource>()
-			gdProject.resources.resources.forEach(resource => {
-				resourceMap.set(resource.name, resource)
-			})
-
-			console.log(`Project has ${resourceMap.size} resources`)
-
-			const dialogueResources = new Map<string, GdResource>()
 			rewrite(
 				gdExtension => {
 					if (!isGdExtension(gdExtension)) {
@@ -67,16 +58,32 @@ const injectAssets = () => {
 						return
 					}
 
-					injectDialogue(gdExtension, dialogueResources)
+					injectDialogue(gdExtension)
 				},
 				{
 					inPath: PATHS.BABBLEBOT,
-					readOnly: false,
+					readOnly: true,
 					backup: false,
 				},
 			)
 
+			console.log('-- Resources --')
+
+			const resourceMap = new Map<string, GdResource>()
+			gdProject.resources.resources.forEach(resource => {
+				resourceMap.set(resource.name, resource)
+			})
+			console.log(`Project resources: ${resourceMap.size}`)
+
+			const dialogueResources = new Map<string, GdResource>()
+			listEncounterFiles().forEach(info => {
+				if (!['dialogue.json', 'cutscene.json'].includes(info.basename)) {
+					return
+				}
+				dialogueResources.set(info.name, makeDialogueResource(info))
+			})
 			console.log('Total dialogue resources:', dialogueResources.size)
+
 			const dialogueResourcesNeeded = mapDiff(dialogueResources, resourceMap)
 			console.log('Resources needed:', dialogueResourcesNeeded.size)
 
@@ -86,73 +93,71 @@ const injectAssets = () => {
 		},
 		{
 			inPath: PATHS.GAME,
-			readOnly: false,
+			readOnly: true,
 			backup: false,
 		},
 	)
 }
 
-const injectDialogue = (
-	gdExtension: GdExtension,
-	resourcesNeeded: Map<string, GdResource>,
-) => {
-	const dialogueFunc = gdExtension.eventsFunctions.find(
-		({ name }) => name === FUNC_NAMES.DIALOGUE,
-	)
-	if (!dialogueFunc) {
-		console.warn('No dialogue func')
-		return
-	}
+const injectDialogue = (gdExtension: GdExtension) => {
+	FUNC_BASENAMES.forEach(([funcName, basename]) => {
+		console.log(`-- ${funcName} => ${basename} --`)
 
-	const dialogueEvents = [
-		...findEvents(dialogueFunc.events, event => {
-			return (event.actions || []).some(
-				a => a.type.value === EVENT_TYPES.DIALOGUE,
-			)
-		}),
-	]
+		const dialogueFunc = gdExtension.eventsFunctions.find(
+			({ name }) => name === funcName,
+		)
+		if (!dialogueFunc) {
+			console.warn(`No dialogue func for '${funcName}'`)
+			return
+		}
 
-	console.log(`${dialogueEvents.length} events with dialogue`)
-	const dialogueInfos = dialogueEvents.flatMap(event =>
-		(event.actions || []).flatMap(action =>
-			compact(
-				action.parameters.map((name): EncounterFileInfo | undefined => {
-					const match = DIALOGUE_ASSET_RE.exec(name)
-					if (match == null || !match.groups?.encounterName) {
-						if (name.length) {
-							console.warn(`Dialogue name does not match: ${name}`)
-						}
-						return undefined
+		const dialogueEvents = [
+			...findEvents(dialogueFunc.events, event => {
+				return (event.actions || []).some(
+					a => a.type.value === EVENT_TYPES.DIALOGUE,
+				)
+			}),
+		]
+
+		console.log(`Events with dialogue: ${dialogueEvents.length} `)
+		const dialogueInfos: EncounterFileInfo[] = []
+		dialogueEvents.forEach(event =>
+			(event.actions || []).forEach(action =>
+				action.parameters.forEach(assetName => {
+					const matchedInfo = matchEncounterAsset(assetName)
+					if (!matchedInfo) {
+						return
 					}
 
-					return {
-						name,
-						file: posixPath(name),
-						encounterName: match.groups.encounterName,
-						basename: 'dialogue.json',
+					console.warn(`Matched asset: ${JSON.stringify(assetName)}`)
+					if (matchedInfo.basename !== basename) {
+						console.warn(
+							`Wrong basename: '${matchedInfo.basename}' != '${basename}'`,
+						)
+						return
 					}
+
+					dialogueInfos.push(matchedInfo)
 				}),
 			),
-		),
-	)
-	console.log(`${dialogueInfos.length} dialogues referenced`)
-	dialogueInfos.forEach(info => {
-		resourcesNeeded.set(info.name, makeDialogueResource(info))
-	})
+		)
+		console.log(`Dialogues already referenced: ${dialogueInfos.length} `)
 
-	const dialogueFiles = listDialogueFiles()
-	console.log(`${dialogueFiles.length} dialogue files`)
+		const basenameFiles = listEncounterFiles().filter(
+			efi => efi.basename === basename,
+		)
+		console.log(`Files with basename: ${basenameFiles.length}`)
 
-	const namesAlreadyHandled = new Set(dialogueInfos.map(({ name }) => name))
-	const filesNeedingEvents = dialogueFiles.filter(
-		({ name }) => !namesAlreadyHandled.has(name),
-	)
-	console.log(`${filesNeedingEvents.length} dialogue files need an events`)
-	filesNeedingEvents.forEach(dialogueInfo => {
-		const event = makeDialogueEvent(dialogueInfo)
-		dialogueFunc.events.push(event)
+		const namesAlreadyHandled = new Set(dialogueInfos.map(({ name }) => name))
+		const filesNeedingEvents = basenameFiles.filter(
+			({ name }) => !namesAlreadyHandled.has(name),
+		)
+		console.log(`Files needing an event: ${filesNeedingEvents.length}`)
+		filesNeedingEvents.forEach(dialogueInfo => {
+			const event = makeDialogueEvent(dialogueInfo)
+			dialogueFunc.events.push(event)
+		})
 	})
-	return
 }
 
 const makeDialogueResource = (opts: EncounterFileInfo): GdResource => {
@@ -161,7 +166,8 @@ const makeDialogueResource = (opts: EncounterFileInfo): GdResource => {
 		kind: 'json',
 		metadata: '',
 		userAdded: true,
-		...opts,
+		file: opts.file,
+		name: opts.name,
 	}
 }
 
