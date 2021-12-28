@@ -5,7 +5,7 @@ import { narrow } from 'narrow-minded'
 
 import { absolutePath, listEncounterFiles, EncounterFileInfo } from './config'
 
-import { parseTitle } from '../src/dialogue'
+import { parseTitle, Quality, Step } from '../src/dialogue'
 
 /**
  * Format each encountes dialogue.json so that it has exactly two links:
@@ -18,10 +18,10 @@ const main = () => {
 			return
 		}
 
-		// if (dialogueInfo.encounterName !== 'Amy1') {
-		// 	console.log(`Skipping ${dialogueInfo.name}`)
-		// 	return
-		// }
+		if (dialogueInfo.encounterName !== 'Amy1') {
+			console.log(`Skipping ${dialogueInfo.name}`)
+			return
+		}
 
 		rewrite(
 			dialogueJson => {
@@ -43,6 +43,26 @@ const structureDialogue = (
 	nodes: Array<{ title: string; body: string }>,
 ) => {
 	console.log(`Encounter: ${info.encounterName} - Nodes: ${nodes.length}`)
+	const maxSteps: Record<Quality, number> = {
+		bad: 0,
+		neutral: 0,
+		good: 0,
+	}
+
+	// Find maxes.
+	nodes.forEach(node => {
+		const { step, quality } = parseTitle(node.title)
+
+		if (typeof step !== 'number') {
+			return
+		}
+
+		if (maxSteps[quality] < step) {
+			maxSteps[quality] = step
+		}
+	})
+
+	// Rewrite links.
 	nodes.forEach(node => {
 		const { step, quality } = parseTitle(node.title)
 
@@ -51,7 +71,8 @@ const structureDialogue = (
 			return
 		}
 
-		const nextTitle = `${quality}_${step + 1}`
+		const nextStep: Step = step === maxSteps[quality] ? 'end' : step + 1
+		const nextTitle = `${quality}_${nextStep}`
 		const nextLink = `[[next|${nextTitle}]]`
 
 		const transitionLink = '[[transition|transition]]'

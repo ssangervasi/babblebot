@@ -250,7 +250,7 @@
     "title": "bad_8"
   },
   {
-    "body": "I had a really great time tonight.\nI hope we can see each other again soon.\nYou know, I'm going to a wedding on Gorpulon IV in a few weeks. Maybe if this keeps going well, you can be my plus one.\n\n\n[[next|good_10]]\n[[transition|transition]]",
+    "body": "I had a really great time tonight.\nI hope we can see each other again soon.\nYou know, I'm going to a wedding on Gorpulon IV in a few weeks. Maybe if this keeps going well, you can be my plus one.\n\n\n[[next|good_end]]\n[[transition|transition]]",
     "colorID": 0,
     "position": {
       "x": -6852,
@@ -260,7 +260,7 @@
     "title": "good_9"
   },
   {
-    "body": "This was pretty fun.\nThanks for taking me out tonight.\nShould I reach for the check?\n\n\n[[next|neutral_10]]\n[[transition|transition]]",
+    "body": "This was pretty fun.\nThanks for taking me out tonight.\nShould I reach for the check?\n\n\n[[next|neutral_end]]\n[[transition|transition]]",
     "colorID": 0,
     "position": {
       "x": -6556,
@@ -270,7 +270,7 @@
     "title": "neutral_9"
   },
   {
-    "body": "You know what?\nI think I'm getting a phone call.\nI just remembered I was supposed to pick my ex up at the spaceport!\n\n\n[[next|bad_10]]\n[[transition|transition]]",
+    "body": "You know what?\nI think I'm getting a phone call.\nI just remembered I was supposed to pick my ex up at the spaceport!\n\n\n[[next|bad_end]]\n[[transition|transition]]",
     "colorID": 0,
     "position": {
       "x": -6257,

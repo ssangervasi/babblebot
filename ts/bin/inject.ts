@@ -62,7 +62,8 @@ const injectAssets = () => {
 				},
 				{
 					inPath: PATHS.BABBLEBOT,
-					readOnly: true,
+					// readOnly: true,
+					readOnly: false,
 					backup: false,
 				},
 			)
@@ -93,7 +94,8 @@ const injectAssets = () => {
 		},
 		{
 			inPath: PATHS.GAME,
-			readOnly: true,
+			// readOnly: true,
+			readOnly: false,
 			backup: false,
 		},
 	)
