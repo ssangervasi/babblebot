@@ -1363,6 +1363,218 @@
       "objectGroups": []
     },
     {
+      "description": "Update the Dialogue scene variable with the dialogue fixes",
+      "fullName": "loadDialogueVar",
+      "functionType": "Action",
+      "name": "loadDialogueVar",
+      "private": false,
+      "sentence": "loadDialogueVar",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "VariableChildExists"
+              },
+              "parameters": [
+                "Dialogue",
+                "\"State\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "Dialogue.State",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "Dialogue.NextState",
+                    "=",
+                    "\"init\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "DialogueTree::IsDialogueRunning"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Stash current branch info because the function calls will return blank once the dialogue stops.",
+              "comment2": ""
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "Dialogue.Title",
+                    "=",
+                    "DialogueTree::BranchTitle()"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "Dialogue.Tags",
+                    "=",
+                    "DialogueTree::BranchTags()"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "State always updates after all checks.",
+          "comment2": ""
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "Dialogue.State",
+                "=",
+                "VariableString(Dialogue.NextState)"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "Set dialogue state that will apply at next loop",
+      "fullName": "setDialogueState",
+      "functionType": "Action",
+      "name": "setDialogueState",
+      "private": false,
+      "sentence": "setDialogueState _PARAM1_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "Dialogue.NextState",
+                "=",
+                "GetArgumentAsString(\"NextState\")"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "",
+          "longDescription": "",
+          "name": "NextState",
+          "optional": false,
+          "supplementaryInformation": "[\"init\",\"scrolling\",\"end_line\",\"paused\",\"stopping\",\"stopped\",\"transitioned\",\"end_complete\",\"prompting\",\"responding\",\"confirming\"]",
+          "type": "stringWithSelector"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "Is the current dialogue node (branch) of a certain type",
       "fullName": "IsDialogueNode (branch) a certain type",
       "functionType": "Condition",
@@ -1374,7 +1586,7 @@
           "disabled": false,
           "folded": false,
           "type": "BuiltinCommonInstructions::JsCode",
-          "inlineCode": "",
+          "inlineCode": "// WTF was I going to do here?",
           "parameterObjects": "",
           "useStrict": true,
           "eventsSheetExpanded": false

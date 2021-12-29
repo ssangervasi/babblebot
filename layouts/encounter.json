@@ -21,7 +21,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.1,
     "snap": true,
-    "zoomFactor": 0.48399999999999976,
+    "zoomFactor": 0.5839999999999999,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -2629,72 +2629,6 @@
                 }
               ],
               "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "Dialogue.State",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "Dialogue.NextState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": true,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "ChosenCardId",
-                    "=",
-                    "\"\""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "SelectionState",
-                    "=",
-                    "\"init\""
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
             }
           ]
         },
@@ -2720,6 +2654,26 @@
           "events": [
             {
               "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "babblebot::loadDialogueVar"
+                  },
+                  "parameters": [
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
               "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
@@ -2734,54 +2688,6 @@
               ],
               "actions": [],
               "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 109,
-                    "g": 230,
-                    "r": 255,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "Stash current branch info because the function calls will return blank once the dialogue stops.",
-                  "comment2": ""
-                },
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarSceneTxt"
-                      },
-                      "parameters": [
-                        "Dialogue.Title",
-                        "=",
-                        "DialogueTree::BranchTitle()"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarSceneTxt"
-                      },
-                      "parameters": [
-                        "Dialogue.Tags",
-                        "=",
-                        "DialogueTree::BranchTags()"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "events": []
-                },
                 {
                   "disabled": false,
                   "folded": false,
@@ -2888,12 +2794,12 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ModVarSceneTxt"
+                            "value": "babblebot::setDialogueState"
                           },
                           "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"scrolling\""
+                            "",
+                            "\"scrolling\"",
+                            ""
                           ],
                           "subInstructions": []
                         }
@@ -2938,12 +2844,12 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarSceneTxt"
+                                "value": "babblebot::setDialogueState"
                               },
                               "parameters": [
-                                "Dialogue.NextState",
-                                "=",
-                                "\"end_line\""
+                                "",
+                                "\"end_line\"",
+                                ""
                               ],
                               "subInstructions": []
                             }
@@ -2994,12 +2900,12 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ModVarSceneTxt"
+                            "value": "babblebot::setDialogueState"
                           },
                           "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"options\""
+                            "",
+                            "\"options\"",
+                            ""
                           ],
                           "subInstructions": []
                         }
@@ -3012,7 +2918,7 @@
             },
             {
               "disabled": false,
-              "folded": true,
+              "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -3119,12 +3025,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "babblebot::setDialogueState"
                       },
                       "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"stopping\""
+                        "",
+                        "\"stopping\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -3139,7 +3045,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": true,
+              "folded": false,
               "name": "NPC speaking states",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -3361,7 +3267,7 @@
                 },
                 {
                   "disabled": false,
-                  "folded": true,
+                  "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -3443,12 +3349,12 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarSceneTxt"
+                                "value": "babblebot::setDialogueState"
                               },
                               "parameters": [
-                                "Dialogue.NextState",
-                                "=",
-                                "\"paused\""
+                                "",
+                                "\"paused\"",
+                                ""
                               ],
                               "subInstructions": []
                             }
@@ -3461,7 +3367,7 @@
                 },
                 {
                   "disabled": false,
-                  "folded": false,
+                  "folded": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -3548,12 +3454,12 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarSceneTxt"
+                                "value": "babblebot::setDialogueState"
                               },
                               "parameters": [
-                                "Dialogue.NextState",
-                                "=",
-                                "\"init\""
+                                "",
+                                "\"init\"",
+                                ""
                               ],
                               "subInstructions": []
                             }
@@ -3646,7 +3552,7 @@
               "events": [
                 {
                   "disabled": false,
-                  "folded": false,
+                  "folded": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -3666,12 +3572,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "babblebot::setDialogueState"
                       },
                       "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"prompting\""
+                        "",
+                        "\"prompting\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -3889,12 +3795,12 @@
                             {
                               "type": {
                                 "inverted": false,
-                                "value": "ModVarSceneTxt"
+                                "value": "babblebot::setDialogueState"
                               },
                               "parameters": [
-                                "Dialogue.NextState",
-                                "=",
-                                "\"responding\""
+                                "",
+                                "\"responding\"",
+                                ""
                               ],
                               "subInstructions": []
                             }
@@ -3946,7 +3852,7 @@
                       "colorR": 74,
                       "creationTime": 0,
                       "disabled": false,
-                      "folded": true,
+                      "folded": false,
                       "name": "Debug",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -4032,12 +3938,12 @@
                                     {
                                       "type": {
                                         "inverted": false,
-                                        "value": "ModVarSceneTxt"
+                                        "value": "babblebot::setDialogueState"
                                       },
                                       "parameters": [
-                                        "Dialogue.NextState",
-                                        "=",
-                                        "\"responding\""
+                                        "",
+                                        "\"responding\"",
+                                        ""
                                       ],
                                       "subInstructions": []
                                     }
@@ -4047,110 +3953,6 @@
                               ]
                             }
                           ]
-                        }
-                      ],
-                      "parameters": []
-                    },
-                    {
-                      "colorB": 228,
-                      "colorG": 176,
-                      "colorR": 74,
-                      "creationTime": 0,
-                      "disabled": true,
-                      "folded": true,
-                      "name": "Debug - Just select dialogue options",
-                      "source": "",
-                      "type": "BuiltinCommonInstructions::Group",
-                      "events": [
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "MouseButtonReleased"
-                              },
-                              "parameters": [
-                                "",
-                                "Left"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::selectDialogueOptionByName"
-                              },
-                              "parameters": [
-                                "0",
-                                "\"next\"",
-                                ""
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarSceneTxt"
-                              },
-                              "parameters": [
-                                "Dialogue.NextState",
-                                "=",
-                                "\"responding\""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
-                        },
-                        {
-                          "disabled": false,
-                          "folded": false,
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "MouseButtonReleased"
-                              },
-                              "parameters": [
-                                "",
-                                "Right"
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "babblebot::selectDialogueOptionByName"
-                              },
-                              "parameters": [
-                                "0",
-                                "\"transition\"",
-                                ""
-                              ],
-                              "subInstructions": []
-                            },
-                            {
-                              "type": {
-                                "inverted": false,
-                                "value": "ModVarSceneTxt"
-                              },
-                              "parameters": [
-                                "Dialogue.NextState",
-                                "=",
-                                "\"responding\""
-                              ],
-                              "subInstructions": []
-                            }
-                          ],
-                          "events": []
                         }
                       ],
                       "parameters": []
@@ -4179,12 +3981,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "babblebot::setDialogueState"
                       },
                       "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"confirming\""
+                        "",
+                        "\"confirming\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -4312,12 +4114,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "babblebot::setDialogueState"
                       },
                       "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"init\""
+                        "",
+                        "\"init\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -4373,7 +4175,7 @@
               "colorR": 74,
               "creationTime": 0,
               "disabled": false,
-              "folded": true,
+              "folded": false,
               "name": "Stopped States",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -4400,12 +4202,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "babblebot::setDialogueState"
                       },
                       "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"stopped\""
+                        "",
+                        "\"stopped\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -4477,12 +4279,12 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ModVarSceneTxt"
+                            "value": "babblebot::setDialogueState"
                           },
                           "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"transitioned\""
+                            "",
+                            "\"transitioned\"",
+                            ""
                           ],
                           "subInstructions": []
                         }
@@ -4532,12 +4334,12 @@
                         {
                           "type": {
                             "inverted": false,
-                            "value": "ModVarSceneTxt"
+                            "value": "babblebot::setDialogueState"
                           },
                           "parameters": [
-                            "Dialogue.NextState",
-                            "=",
-                            "\"end_complete\""
+                            "",
+                            "\"end_complete\"",
+                            ""
                           ],
                           "subInstructions": []
                         }
@@ -4609,12 +4411,12 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ModVarSceneTxt"
+                        "value": "babblebot::setDialogueState"
                       },
                       "parameters": [
-                        "Dialogue.NextState",
-                        "=",
-                        "\"init\""
+                        "",
+                        "\"init\"",
+                        ""
                       ],
                       "subInstructions": []
                     }
@@ -4663,42 +4465,6 @@
                 }
               ],
               "parameters": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 109,
-                "g": 230,
-                "r": 255,
-                "textB": 0,
-                "textG": 0,
-                "textR": 0
-              },
-              "comment": "State always updates after all checks.",
-              "comment2": ""
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarSceneTxt"
-                  },
-                  "parameters": [
-                    "Dialogue.State",
-                    "=",
-                    "VariableString(Dialogue.NextState)"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
             }
           ]
         }
@@ -5480,7 +5246,7 @@
       "followBaseLayerCamera": false,
       "isLightingLayer": false,
       "name": "Cards",
-      "visibility": true,
+      "visibility": false,
       "cameras": [],
       "effects": []
     },

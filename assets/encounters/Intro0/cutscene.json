@@ -2,7 +2,7 @@
 	{
 		"title": "start",
 		"tags": "",
-		"body": "This is the start of a cutscene.\nNew line.\nBlank line <-\n\n->\nEnd of node\n[[neutral_1]]",
+		"body": "This is the start of a cutscene.\nNew line.\nBlank line <-\n\n->\nEnd of node\n[[1]]",
 		"position": {
 			"x": -4690,
 			"y": -8693
@@ -10,9 +10,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "neutral_1",
+		"title": "1",
 		"tags": "",
-		"body": "Next node.\nCommand: animate\n<<animate>>",
+		"body": "Next node.\nCommand: animate\n<<animate>>\n[[end]]",
 		"position": {
 			"x": -4689,
 			"y": -8397
@@ -24,8 +24,8 @@
 		"tags": "",
 		"body": "End",
 		"position": {
-			"x": -4731,
-			"y": -8181
+			"x": -4688,
+			"y": -8074
 		},
 		"colorID": 0
 	}
