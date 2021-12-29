@@ -218,16 +218,40 @@ describe('transition', () => {
 				at: i * 1000,
 				...parseDialogueNode({ title, featureReactions, promptedMs: i * 1000 }),
 			})
+			// This is a fake log, but it's important to test that transition logs are ignore
+			// when searching for the node to switch back to.
+			enc.log.push({
+				type: 'PROMPT',
+				at: i * 1000,
+				...parseDialogueNode({
+					title: 'transition',
+					featureReactions: 'transition',
+					promptedMs: i * 1000 + 1,
+				}),
+			})
 		})
 
 		enc.prompt({
 			title: 'transition',
-			featureReactions,
+			featureReactions: 'transition',
 			promptedMs: precusors.length * 1000,
 		})
 	})
 
-	it('reloads the last node matching the current quality', () => {
+	it('reloads the last node matching the updated quality', () => {
+		// Force mood to be "neutral"
+		enc.mood = 1
+		expect(enc.moodQuality).toBe('neutral')
+
+		enc.transition()
+		expect(enc.currentNode).toMatchObject({
+			title: 'neutral_4',
+			quality: 'neutral',
+			step: 4,
+		})
+	})
+
+	it('reloads the last node matching the updated quality that is farther back in the log', () => {
 		// Force mood to be "good"
 		enc.mood = 100
 		expect(enc.moodQuality).toBe('good')
@@ -240,8 +264,8 @@ describe('transition', () => {
 		})
 	})
 
-	it('loads the first step of a new quality', () => {
-		// Force mood to be "good"
+	it('loads the first step of a quality that has not been in the log', () => {
+		// Force mood to be "bad"
 		enc.mood = -100
 		expect(enc.moodQuality).toBe('bad')
 

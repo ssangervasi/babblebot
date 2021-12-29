@@ -255,7 +255,10 @@ export class Encounter {
 
 		const logEntry = Lodash.findLast(
 			this.log,
-			entry => entry.type === 'PROMPT' && entry.quality === this.moodQuality,
+			entry =>
+				entry.type === 'PROMPT' &&
+				entry.quality === this.moodQuality &&
+				entry.step !== 'transition',
 		)
 		this.currentNode = logEntryToDialogueNode(logEntry, this.moodQuality)
 	}

@@ -16,7 +16,20 @@
 			"learn_more_family",
 			"express_sympathy",
 			"learn_more_job",
-			"respond_emotionally"
+			"respond_emotionally",
+			"provide_information_hobbies",
+			"clarifying_question",
+			"compliment_style",
+			"agree_softly",
+			"compliment_style",
+			"provide_information_job",
+			"clarifying_question",
+			"express_gratitude",
+			"provide_information_hobbies",
+			"agree_strongly",
+			"compliment_appearance",
+			"agree_neutral",
+			"compliment_appearance"
 		]
 	}
 }

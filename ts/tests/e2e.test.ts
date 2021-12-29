@@ -101,7 +101,6 @@ describe('E2E', () => {
 	test('Uses a placeholder when there is no encounter', () => {
 		const warnSpy = jest.spyOn(global.console, 'warn')
 		warnSpy.mockClear()
-		expect(new Babblebot.Game().encounter.mood).toBe(undefined)
 		expect(warnSpy.mock.calls[0]![0]!).toMatch(/Babblebot\.encounter/)
 	})
 })
