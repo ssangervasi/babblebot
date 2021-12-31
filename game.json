@@ -906,6 +906,32 @@
           ]
         }
       ]
+    },
+    {
+      "bold": false,
+      "italic": false,
+      "name": "DebugLog",
+      "smoothed": true,
+      "tags": "",
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "DebugLog",
+          "type": "srs_utils::DebugLog",
+          "Size": 5
+        }
+      ],
+      "string": "Debug Log",
+      "font": "assets\\fonts\\pro-pixie-font\\ProcrastinatingPixie-WyVOO.ttf",
+      "characterSize": 25,
+      "color": {
+        "b": 250,
+        "g": 244,
+        "r": 250
+      }
     }
   ],
   "objectsGroups": [],

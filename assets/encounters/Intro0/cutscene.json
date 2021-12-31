@@ -2,7 +2,7 @@
 	{
 		"title": "start",
 		"tags": "",
-		"body": "This is the start of a cutscene.\nNew line.\nBlank line <-\n\n->\nEnd of node\n[[1]]",
+		"body": "This is the start of a cutscene.\nNew line.\nBlank line ..\n\n..\n\n//Waiting\n//<<wait 500>>\n//Done Waiting\n\nEnd of node\n[[neutral_1]]",
 		"position": {
 			"x": -4690,
 			"y": -8693
@@ -10,9 +10,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "1",
+		"title": "neutral_1",
 		"tags": "",
-		"body": "Next node.\nCommand: animate\n<<animate>>\n[[end]]",
+		"body": "Next node.\nCommand: ssangervasi\n <<ssangervasi my_butt>>\n <<ssangervasi my_butt2>>\nAfter command\n[[neutral_end]]",
 		"position": {
 			"x": -4689,
 			"y": -8397
@@ -20,7 +20,7 @@
 		"colorID": 0
 	},
 	{
-		"title": "end",
+		"title": "neutral_end",
 		"tags": "",
 		"body": "End",
 		"position": {
