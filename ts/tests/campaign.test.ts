@@ -1,4 +1,8 @@
-import { listAvailableEncounters, parseCampaign } from '../src/campaign'
+import {
+	listAvailableEncounters,
+	parseCampaign,
+	makeNodeMapping,
+} from '../src/campaign'
 
 import * as Data from './data'
 
@@ -17,5 +21,44 @@ describe('listAvailableEncounters', () => {
 			Data.campaignMapping,
 		)
 		expect(result).toEqual(['Castille1', 'Lally2'])
+	})
+})
+
+describe('makeNodeMapping', () => {
+	test('works', () => {
+		const result = makeNodeMapping({
+			Intro0: [],
+			Amy1: [],
+			Amy2: ['Amy1'],
+			Lally1: ['Amy1'],
+			Castille1: ['Amy1', 'Lally1'],
+		})
+		expect(result).toEqual({
+			Intro0: {
+				sceneName: 'Intro0',
+				prereqs: [],
+				depth: 1,
+			},
+			Amy1: {
+				sceneName: 'Amy1',
+				prereqs: [],
+				depth: 1,
+			},
+			Amy2: {
+				sceneName: 'Amy2',
+				prereqs: ['Amy1'],
+				depth: 2,
+			},
+			Lally1: {
+				sceneName: 'Lally1',
+				prereqs: ['Amy1'],
+				depth: 2,
+			},
+			Castille1: {
+				sceneName: 'Castille1',
+				prereqs: ['Amy1', 'Lally1'],
+				depth: 3,
+			},
+		})
 	})
 })

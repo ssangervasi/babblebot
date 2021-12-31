@@ -846,6 +846,15 @@
         "name": "assets\\encounters\\Intro0\\background.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "art/Node.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "art\\Node.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []

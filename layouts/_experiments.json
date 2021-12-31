@@ -1,16 +1,16 @@
 {
-  "b": 209,
+  "b": 17,
   "disableInputWhenNotFocused": true,
   "mangledName": "_95Experiments",
   "name": "_Experiments",
   "oglFOV": 90,
   "oglZFar": 500,
   "oglZNear": 1,
-  "r": 209,
+  "r": 17,
   "standardSortMethod": true,
   "stopSoundsOnStartup": true,
   "title": "",
-  "v": 209,
+  "v": 17,
   "uiSettings": {
     "grid": false,
     "gridType": "rectangular",
@@ -21,13 +21,87 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 1,
+    "zoomFactor": 0.5199999999999996,
     "windowMask": false
   },
   "objectsGroups": [],
   "variables": [],
-  "instances": [],
-  "objects": [],
+  "instances": [
+    {
+      "angle": 0,
+      "customSize": true,
+      "height": 1940,
+      "layer": "",
+      "locked": false,
+      "name": "BgTiles",
+      "persistentUuid": "09c97edf-b550-42a8-8de9-8e6851ca533e",
+      "width": 3625,
+      "x": -693,
+      "y": -288,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "layer": "",
+      "locked": false,
+      "name": "Node",
+      "persistentUuid": "0c164840-da88-4bde-b463-8f807bbc21ab",
+      "width": 0,
+      "x": 595,
+      "y": 478,
+      "zOrder": 2,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "Node",
+      "tags": "",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "art\\Node.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "events": [
     {
       "colorB": 228,
@@ -42,7 +116,7 @@
       "events": [
         {
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -81,147 +155,23 @@
     {
       "disabled": false,
       "folded": false,
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": false,
-            "value": "Egal"
-          },
-          "parameters": [
-            "0",
-            "=",
-            "1"
-          ],
-          "subInstructions": []
-        }
-      ],
-      "actions": [],
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "__workaround__"
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": false,
+      "folded": false,
+      "name": "Campaign tree",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
       "events": [
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Slot::IsFilled"
-              },
-              "parameters": [
-                "HandSlot",
-                "Slot",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::Slot::slotCard"
-              },
-              "parameters": [
-                "HandSlot",
-                "Slot",
-                "123",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "babblebot::importBabblebotJs"
-              },
-              "parameters": [
-                "",
-                ""
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "Egal"
-              },
-              "parameters": [
-                "srs_utils::getLimitedTimerFraction(\"\")",
-                ">=",
-                "1"
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Egal"
-              },
-              "parameters": [
-                "srs_utils::getLimitedTimerElapsed(\"\")",
-                ">=",
-                "1"
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Egal"
-              },
-              "parameters": [
-                "srs_utils::getLimitedTimerLimit(\"\")",
-                ">=",
-                "1"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": true,
-                "value": "srs_utils::HasLimitedTimer"
-              },
-              "parameters": [
-                "",
-                "\"\"",
-                "GetArgumentAsString(\"TimerName\")"
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Egal"
-              },
-              "parameters": [
-                "srs_utils::getLimitedTimerFraction(\"\")",
-                ">=",
-                "1"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [],
-          "events": []
-        },
         {
           "disabled": false,
           "folded": false,
@@ -229,25 +179,18 @@
           "conditions": [],
           "actions": [],
           "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "\nconst vars = runtimeScene.getVariables()\n\nif (vars.has('Nodes')) {\n    return\n}\n\nconst nodesVar = vars.get('Nodes')\nnodesVar.fromJSObject(makeNodes())\n",
+          "parameterObjects": "Node",
+          "useStrict": true,
+          "eventsSheetExpanded": true
         }
-      ]
-    },
-    {
-      "disabled": false,
-      "folded": false,
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [],
-      "events": []
-    },
-    {
-      "disabled": false,
-      "folded": false,
-      "type": "BuiltinCommonInstructions::Link",
-      "include": {
-        "includeConfig": 0
-      },
-      "target": "__workaround__"
+      ],
+      "parameters": []
     }
   ],
   "layers": [
@@ -274,5 +217,14 @@
       "effects": []
     }
   ],
-  "behaviorsSharedData": []
+  "behaviorsSharedData": [
+    {
+      "name": "DebugLog",
+      "type": "srs_utils::DebugLog"
+    },
+    {
+      "name": "HiddenAtRuntime",
+      "type": "srs_utils::HiddenAtRuntime"
+    }
+  ]
 }

@@ -103,3 +103,68 @@ export const parseDeck = (raw: string): string[] => {
 
 	return deck
 }
+
+export type SceneName = keyof typeof CAMPAIGN_MAPPING
+export interface CampaignNode {
+	sceneName: SceneName
+	prereqs: SceneName[]
+	depth: number
+}
+export type NodeMapping = Record<SceneName, CampaignNode>
+
+export const makeNodeMapping = (
+	campaignMapping: Partial<Record<SceneName, SceneName[]>>,
+): NodeMapping => {
+	const nodes: Partial<NodeMapping> = {}
+
+	const q = Object.keys(campaignMapping) as SceneName[]
+	while (q.length) {
+		const sceneName = q.pop()!
+		if (sceneName in nodes) {
+			continue
+		}
+
+		const prereqs = campaignMapping[sceneName]
+		if (!prereqs) {
+			continue
+		}
+
+		let maxDepth: number | undefined = 0
+		prereqs.forEach(prereq => {
+			const pDepth = nodes[prereq]?.depth
+			if (pDepth === undefined) {
+				maxDepth = undefined
+				q.push(prereq)
+			} else if (maxDepth !== undefined) {
+				maxDepth = Math.max(maxDepth, pDepth)
+			}
+		})
+
+		if (maxDepth === undefined) {
+			q.unshift(sceneName)
+			continue
+		}
+
+		nodes[sceneName] = {
+			sceneName: sceneName,
+			prereqs,
+			depth: maxDepth + 1,
+		}
+	}
+
+	return nodes as NodeMapping
+}
+
+// const isSceneName = (s: string): s is SceneName => s in CAMPAIGN_MAPPING
+
+let _nodeMapping: NodeMapping | undefined
+export const getNodeMapping = (): NodeMapping => {
+	if (_nodeMapping) {
+		return _nodeMapping
+	}
+
+	_nodeMapping = makeNodeMapping(
+		CAMPAIGN_MAPPING as Partial<Record<SceneName, SceneName[]>>,
+	)
+	return _nodeMapping
+}
