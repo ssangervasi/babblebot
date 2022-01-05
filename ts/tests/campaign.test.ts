@@ -25,7 +25,7 @@ describe('listAvailableEncounters', () => {
 })
 
 describe('makeNodeMapping', () => {
-	test('works', () => {
+	it('works', () => {
 		const result = makeNodeMapping({
 			Intro0: [],
 			Amy1: [],
@@ -60,5 +60,30 @@ describe('makeNodeMapping', () => {
 				depth: 3,
 			},
 		})
+	})
+
+	test('catches cycles', () => {
+		expect(() => {
+			makeNodeMapping({
+				Intro0: ['Intro0'],
+				Amy1: [],
+				Amy2: ['Amy1'],
+			})
+		}).toThrow('Cycle detected: Intro0 <-> Intro0')
+		expect(() => {
+			makeNodeMapping({
+				Intro0: [],
+				Amy1: ['Amy2'],
+				Amy2: ['Amy1'],
+			})
+		}).toThrow('Cycle detected: Amy1 <-> Amy2')
+		expect(() => {
+			makeNodeMapping({
+				Intro0: [],
+				Amy1: ['Lally1'],
+				Amy2: ['Amy1'],
+				Lally1: ['Amy2'],
+			})
+		}).toThrow('Cycle detected: Amy1 <-> Lally1')
 	})
 })

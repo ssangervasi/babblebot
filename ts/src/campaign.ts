@@ -118,8 +118,10 @@ export const makeNodeMapping = (
 	const nodes: Partial<NodeMapping> = {}
 
 	const q = Object.keys(campaignMapping) as SceneName[]
+	let cycleStart: string | undefined
+	let cycleEnd: string | undefined
 	while (q.length) {
-		const sceneName = q.pop()!
+		const sceneName = q.shift()!
 		if (sceneName in nodes) {
 			continue
 		}
@@ -134,14 +136,22 @@ export const makeNodeMapping = (
 			const pDepth = nodes[prereq]?.depth
 			if (pDepth === undefined) {
 				maxDepth = undefined
-				q.push(prereq)
+				cycleEnd = prereq
 			} else if (maxDepth !== undefined) {
 				maxDepth = Math.max(maxDepth, pDepth)
 			}
 		})
 
 		if (maxDepth === undefined) {
-			q.unshift(sceneName)
+			if (sceneName === cycleStart) {
+				throw new Error(`Cycle detected: ${cycleStart} <-> ${cycleEnd}`)
+			}
+
+			if (!cycleStart) {
+				cycleStart = sceneName
+			}
+
+			q.push(sceneName)
 			continue
 		}
 
