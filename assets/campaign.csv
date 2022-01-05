@@ -1,6 +1,6 @@
 Scene Name,Prereq
 Intro0,
-Amy1,
+Amy1,Intro0
 Amy2,Amy1
 Lally1,Amy1
 Lally2,Lally1

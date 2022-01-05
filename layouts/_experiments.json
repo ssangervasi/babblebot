@@ -364,7 +364,7 @@
                   "events": []
                 },
                 {
-                  "disabled": false,
+                  "disabled": true,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
@@ -484,7 +484,7 @@
                       "events": []
                     },
                     {
-                      "disabled": false,
+                      "disabled": true,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
@@ -499,6 +499,29 @@
                             "Node",
                             "400 + Variable(Node.depth) * Variable(DepthMult)",
                             "400 + Variable(DepthToBreadth[Variable(Node.depth)]) * Variable(BreadthMult)",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Node",
+                            "100 + Variable(Node.depth) * Variable(DepthMult)",
+                            "100 + Variable(Node.breadth) * Variable(BreadthMult)",
                             ""
                           ],
                           "subInstructions": []
@@ -590,7 +613,7 @@
                       ]
                     },
                     {
-                      "disabled": false,
+                      "disabled": true,
                       "folded": false,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
