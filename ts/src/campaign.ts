@@ -3,7 +3,13 @@ import csvParse from 'csv-parse/lib/sync'
 import _CAMPAIGN_MAPPING from './campaignMapping.json'
 import _ENCOUNTER_SPEC_MAPPING from './encounterSpecMapping.json'
 
-export const CAMPAIGN_MAPPING = _CAMPAIGN_MAPPING
+export type SceneName = keyof typeof _CAMPAIGN_MAPPING
+export type Mapping = {
+	[sceneName: string]: string[]
+}
+export type MappingStrict = Partial<Record<SceneName, SceneName[]>>
+
+export const CAMPAIGN_MAPPING = _CAMPAIGN_MAPPING as MappingStrict
 export const ENCOUNTER_SPEC_MAPPING: EncounterSpecMapping =
 	_ENCOUNTER_SPEC_MAPPING
 
@@ -15,10 +21,6 @@ export const HEADINGS = {
 export type CsvRow = {
 	[HEADINGS.SCENE_NAME]?: string
 	[HEADINGS.PREREQ]?: string
-}
-
-export type Mapping = {
-	[sceneName: string]: string[]
 }
 
 const PARSE_OPTIONS = {
@@ -104,26 +106,36 @@ export const parseDeck = (raw: string): string[] => {
 	return deck
 }
 
-export type SceneName = keyof typeof CAMPAIGN_MAPPING
 export interface CampaignNode {
 	sceneName: SceneName
 	prereqs: SceneName[]
+	/**
+	 * The number of nodes that preceed this one in the prereq tree. With no prereqs, this is zero.
+	 */
 	depth: number
+	/**
+	 * The node's alignment at its level in the tree. This will be unique among nodes at the same
+	 * depth so that they cannot overlap with each other (visually).
+	 */
 	breadth: number
 }
 export type NodeMapping = Record<SceneName, CampaignNode>
 
 export const makeNodeMapping = (
-	campaignMapping: Partial<Record<SceneName, SceneName[]>>,
+	campaignMapping: MappingStrict,
 ): NodeMapping => {
 	const nodes: Partial<NodeMapping> = {}
 
 	const q = Object.keys(campaignMapping) as SceneName[]
-	let cycleStart: string | undefined
-	let cycleEnd: string | undefined
+	const nameToPreviousLength = new Map<SceneName, number>()
 	const depthToBreadth = new Map<number, number>()
 
+	let limit = 10 ** 10
 	while (q.length) {
+		if (limit-- < 0) {
+			throw new Error('Limit reached.')
+		}
+
 		const sceneName = q.shift()!
 		if (sceneName in nodes) {
 			continue
@@ -134,35 +146,38 @@ export const makeNodeMapping = (
 			continue
 		}
 
-		let maxDepth = 0
-		let maxBreadth = 0
-		cycleEnd = undefined
+		let maxDepth = -1
+		let maxBreadth = -1
+		let unsatisfied: SceneName | undefined
 		prereqs.forEach(prereq => {
 			const pNode = nodes[prereq]
 			if (pNode === undefined) {
-				cycleEnd = prereq
-			} else if (maxDepth !== undefined) {
+				unsatisfied = prereq
+			} else {
 				maxDepth = Math.max(maxDepth, pNode.depth)
 				maxBreadth = Math.max(maxBreadth, pNode.breadth)
 			}
 		})
 
-		if (cycleEnd) {
-			if (sceneName === cycleStart) {
-				throw new Error(`Cycle detected: ${cycleStart} <-> ${cycleEnd}`)
+		if (unsatisfied) {
+			// Final cycle detection method: store the length the queue when the node was
+			// found to have an unmet dependency. We won't encounter the node again until
+			// we've checked every other node. If the queue didn't get shorter, then there
+			// is no way the dependency will ever get resolved.
+			if (nameToPreviousLength.get(sceneName) === q.length) {
+				throw new Error(`Cycle detected: ${sceneName} <-> ${unsatisfied}`)
 			}
 
-			if (!cycleStart) {
-				cycleStart = sceneName
-			}
-
+			nameToPreviousLength.set(sceneName, q.length)
 			q.push(sceneName)
 			continue
 		}
 
 		const depth = maxDepth + 1
-		const usedBreadth = depthToBreadth.get(depth) || 0
 		let breadth = maxBreadth
+		const usedBreadth = depthToBreadth.has(depth)
+			? depthToBreadth.get(depth)!
+			: -1
 		if (breadth <= usedBreadth) {
 			breadth = usedBreadth + 1
 		}
@@ -183,14 +198,15 @@ export const makeNodeMapping = (
 
 // const isSceneName = (s: string): s is SceneName => s in CAMPAIGN_MAPPING
 
+/**
+ * This should probably just be generated and stored as json instead of memoized.
+ */
 let _nodeMapping: NodeMapping | undefined
 export const getNodeMapping = (): NodeMapping => {
 	if (_nodeMapping) {
 		return _nodeMapping
 	}
 
-	_nodeMapping = makeNodeMapping(
-		CAMPAIGN_MAPPING as Partial<Record<SceneName, SceneName[]>>,
-	)
+	_nodeMapping = makeNodeMapping(CAMPAIGN_MAPPING)
 	return _nodeMapping
 }

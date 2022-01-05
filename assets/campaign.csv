@@ -2,7 +2,10 @@ Scene Name,Prereq
 Intro0,
 Amy1,Intro0
 Amy2,Amy1
+Amy3,Amy2
+Amy4,Amy3
 Lally1,Amy1
 Lally2,Lally1
-Castille1,Amy1
+Lally3,Lally2
 Castille1,Lally1
+Castille2,Castille1

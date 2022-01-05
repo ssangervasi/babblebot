@@ -2,6 +2,7 @@ import {
 	listAvailableEncounters,
 	parseCampaign,
 	makeNodeMapping,
+	CAMPAIGN_MAPPING,
 } from '../src/campaign'
 
 import * as Data from './data'
@@ -37,37 +38,44 @@ describe('makeNodeMapping', () => {
 			Intro0: {
 				sceneName: 'Intro0',
 				prereqs: [],
-				depth: 1,
-				breadth: 1,
+				depth: 0,
+				breadth: 0,
 			},
 			Amy1: {
 				sceneName: 'Amy1',
 				prereqs: [],
-				depth: 1,
-				breadth: 2,
+				depth: 0,
+				breadth: 1,
 			},
 			Amy2: {
 				sceneName: 'Amy2',
 				prereqs: ['Amy1'],
-				depth: 2,
-				breadth: 2,
+				depth: 1,
+				breadth: 1,
 			},
 			Lally1: {
 				sceneName: 'Lally1',
 				prereqs: ['Amy1'],
-				depth: 2,
-				breadth: 3,
+				depth: 1,
+				breadth: 2,
 			},
 			Castille1: {
 				sceneName: 'Castille1',
 				prereqs: ['Amy1', 'Lally1'],
-				depth: 3,
-				breadth: 3,
+				depth: 2,
+				breadth: 2,
 			},
 		})
 	})
 
-	test('catches cycles', () => {
+	it('works with the actual mapping', () => {
+		const result = makeNodeMapping(CAMPAIGN_MAPPING)
+		expect(Object.keys(result).length).toEqual(
+			Object.keys(CAMPAIGN_MAPPING).length,
+		)
+	})
+
+	it('catches cycles', () => {
 		expect(() => {
 			makeNodeMapping({
 				Intro0: ['Intro0'],
@@ -90,5 +98,17 @@ describe('makeNodeMapping', () => {
 				Lally1: ['Amy2'],
 			})
 		}).toThrow('Cycle detected: Amy1 <-> Lally1')
+		expect(() => {
+			makeNodeMapping({
+				Lally2: ['Lally1'],
+				Lally3: ['Castille2'], // Depends on a cycle.
+				Castille1: ['Lally1'],
+				Castille2: ['Castille2'], // Is a cycle
+				Amy3: ['Amy2'],
+				Amy2: ['Amy1'],
+				Amy1: ['Amy3'], // Is also a cycle, but not first detected.
+				Lally1: [],
+			})
+		}).toThrow('Cycle detected: Castille2 <-> Castille2')
 	})
 })

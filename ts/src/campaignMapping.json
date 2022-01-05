@@ -5,9 +5,17 @@
 	"Amy2": [
 		"Amy1"
 	],
+	"Amy3": [
+		"Amy2"
+	],
+	"Amy4": [
+		"Amy3"
+	],
 	"Castille1": [
-		"Amy1",
 		"Lally1"
+	],
+	"Castille2": [
+		"Castille1"
 	],
 	"Intro0": [
 	],
@@ -16,5 +24,8 @@
 	],
 	"Lally2": [
 		"Lally1"
+	],
+	"Lally3": [
+		"Lally2"
 	]
 }
