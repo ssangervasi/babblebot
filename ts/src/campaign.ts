@@ -109,6 +109,7 @@ export interface CampaignNode {
 	sceneName: SceneName
 	prereqs: SceneName[]
 	depth: number
+	breadth: number
 }
 export type NodeMapping = Record<SceneName, CampaignNode>
 
@@ -120,6 +121,8 @@ export const makeNodeMapping = (
 	const q = Object.keys(campaignMapping) as SceneName[]
 	let cycleStart: string | undefined
 	let cycleEnd: string | undefined
+	const depthToBreadth = new Map<number, number>()
+
 	while (q.length) {
 		const sceneName = q.shift()!
 		if (sceneName in nodes) {
@@ -131,18 +134,20 @@ export const makeNodeMapping = (
 			continue
 		}
 
-		let maxDepth: number | undefined = 0
+		let maxDepth = 0
+		let maxBreadth = 0
+		cycleEnd = undefined
 		prereqs.forEach(prereq => {
-			const pDepth = nodes[prereq]?.depth
-			if (pDepth === undefined) {
-				maxDepth = undefined
+			const pNode = nodes[prereq]
+			if (pNode === undefined) {
 				cycleEnd = prereq
 			} else if (maxDepth !== undefined) {
-				maxDepth = Math.max(maxDepth, pDepth)
+				maxDepth = Math.max(maxDepth, pNode.depth)
+				maxBreadth = Math.max(maxBreadth, pNode.breadth)
 			}
 		})
 
-		if (maxDepth === undefined) {
+		if (cycleEnd) {
 			if (sceneName === cycleStart) {
 				throw new Error(`Cycle detected: ${cycleStart} <-> ${cycleEnd}`)
 			}
@@ -155,10 +160,21 @@ export const makeNodeMapping = (
 			continue
 		}
 
+		const depth = maxDepth + 1
+		const usedBreadth = depthToBreadth.get(depth) || 0
+		let breadth = maxBreadth
+		if (breadth <= usedBreadth) {
+			breadth = usedBreadth + 1
+		}
+		if (usedBreadth < breadth) {
+			depthToBreadth.set(depth, breadth)
+		}
+
 		nodes[sceneName] = {
 			sceneName: sceneName,
 			prereqs,
-			depth: maxDepth + 1,
+			depth,
+			breadth,
 		}
 	}
 
