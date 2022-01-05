@@ -38,26 +38,31 @@ describe('makeNodeMapping', () => {
 				sceneName: 'Intro0',
 				prereqs: [],
 				depth: 1,
+				breadth: 1,
 			},
 			Amy1: {
 				sceneName: 'Amy1',
 				prereqs: [],
 				depth: 1,
+				breadth: 2,
 			},
 			Amy2: {
 				sceneName: 'Amy2',
 				prereqs: ['Amy1'],
 				depth: 2,
+				breadth: 2,
 			},
 			Lally1: {
 				sceneName: 'Lally1',
 				prereqs: ['Amy1'],
 				depth: 2,
+				breadth: 3,
 			},
 			Castille1: {
 				sceneName: 'Castille1',
 				prereqs: ['Amy1', 'Lally1'],
 				depth: 3,
+				breadth: 3,
 			},
 		})
 	})

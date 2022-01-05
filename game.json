@@ -930,7 +930,7 @@
         {
           "name": "DebugLog",
           "type": "srs_utils::DebugLog",
-          "Size": 5
+          "Size": 50
         }
       ],
       "string": "Debug Log",
